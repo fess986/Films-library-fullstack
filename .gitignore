@@ -10,3 +10,4 @@ node_modules
 .env.example.development
 .env.example.test
 .env.example.production
+node_modules
