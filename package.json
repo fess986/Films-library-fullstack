@@ -1,0 +1,20 @@
+{
+  "name": "films-library-fullstack",
+  "version": "1.0.0",
+  "description": "films-library-fullstack",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mern",
+    "fullstack",
+    "node",
+    "express",
+    "mongo",
+    "react",
+    "styledComponents"
+  ],
+  "author": "Karpov Maxim <fess986@mail.ru>",
+  "license": "ISC"
+}
