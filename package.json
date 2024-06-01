@@ -4,7 +4,8 @@
   "description": "films-library-fullstack",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "server": "nodemon app.js"
   },
   "keywords": [
     "mern",
@@ -16,5 +17,13 @@
     "styledComponents"
   ],
   "author": "Karpov Maxim <fess986@mail.ru>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.4.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.2"
+  }
 }
