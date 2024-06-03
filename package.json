@@ -20,6 +20,7 @@
   "author": "Karpov Maxim <fess986@mail.ru>",
   "license": "ISC",
   "dependencies": {
+    "config": "^3.3.11",
     "express": "^4.19.2",
     "mongoose": "^8.4.1"
   },
