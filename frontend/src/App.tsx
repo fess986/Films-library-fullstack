@@ -1,4 +1,5 @@
 import './App.css'
+import { AppRoutes } from './const/const'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './Components/Layout/Layout'
 import Main from './Components/pages/Main/Main'
@@ -29,8 +30,8 @@ function App() {
       <BrowserRouter>
 
         <Routes>
-          <Route path="/" element={<Layout
-            HeaderComponent={HeaderMain} // Можно не указывать, тогда будет использоваться MainHeader
+          <Route path={AppRoutes.ROOT} element={<Layout
+            HeaderComponent={HeaderMain} 
             FooterComponent={FooterMain}
             BodyComponent={BodyMain}
             headerProps={{}}
@@ -43,47 +44,47 @@ function App() {
             />
 
             <Route
-              path="main"
+              path={AppRoutes.MAIN}
               element={<Main />}
             />
 
             <Route
-              path={'films/:id'}
+              path={AppRoutes.FILM_CARD}
               element={<FilmCard />}
             />
           </Route>
 
-          <Route path='/' element={<Layout
-            HeaderComponent={HeaderReview} // Можно не указывать, тогда будет использоваться MainHeader
+          <Route path={AppRoutes.ROOT} element={<Layout
+            HeaderComponent={HeaderReview} 
             FooterComponent={FooterReview}
             BodyComponent={BodyReview}
             headerProps={{}}
             footerProps={{}}
-            bodyProps={{}} // Дополнительные пропсы для Body, если нужны> 
+            bodyProps={{}}  
           />}>
             <Route
-              path={'films/:id/review'}
+              path={AppRoutes.ADD_REVIEW}
               element={<AddReview />
               }
             />
           </Route>
 
-          <Route path='/' element={<Layout
-            HeaderComponent={HeaderSignIn} // Можно не указывать, тогда будет использоваться MainHeader
+          <Route path={AppRoutes.ROOT} element={<Layout
+            HeaderComponent={HeaderSignIn} 
             FooterComponent={FooterSignIn}
             BodyComponent={BodySignIn}
             headerProps={{}}
             footerProps={{}}
-            bodyProps={{}} // Дополнительные пропсы для Body, если нужны> 
+            bodyProps={{}}  
           />}>
 
             <Route
-              path={'login'}
+              path={AppRoutes.SIGN_IN}
               element={<SignIn />}
             />
 
             <Route
-              path={'mylist'}
+              path={AppRoutes.MY_LIST}
               element={<MyList />
               }
             />
@@ -91,16 +92,16 @@ function App() {
           </Route>
 
           <Route path='/' element={<Layout
-            HeaderComponent={HeaderPlayer} // Можно не указывать, тогда будет использоваться MainHeader
+            HeaderComponent={HeaderPlayer} 
             FooterComponent={FooterPlayer}
             BodyComponent={BodyPlayer}
             headerProps={{}}
             footerProps={{}}
-            bodyProps={{}} // Дополнительные пропсы для Body, если нужны> 
+            bodyProps={{}}  
           />}>
 
             <Route
-              path={'player/:id'}
+              path={AppRoutes.PLAYER}
               element={<Player />}
             />
 
