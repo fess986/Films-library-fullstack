@@ -1,6 +1,9 @@
 import './App.css'
-import { AppRoutes } from './const/const'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+import { AppRoutes } from './const/const'
+import { Films } from './mock/films'
+
 import Layout from './Components/Layout/Layout'
 import Main from './Components/pages/Main/Main'
 import FilmCard from './Components/pages/FilmCard/FilmCard'
@@ -25,6 +28,8 @@ import BodyMain from './Components/Layout/Body/BodyMain/BodyMain'
 
 function App() {
 
+  const films = Films;
+
   return (
     <>
       <BrowserRouter>
@@ -40,12 +45,12 @@ function App() {
 
             <Route
               index
-              element={<Main />}
+              element={<Main films={films}/>}
             />
 
             <Route
               path={AppRoutes.MAIN}
-              element={<Main />}
+              element={<Main films={films}/>}
             />
 
             <Route
