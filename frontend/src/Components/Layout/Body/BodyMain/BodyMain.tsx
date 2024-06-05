@@ -7,8 +7,9 @@ interface BodyMainProps {
 const BodyMain: React.FC<BodyMainProps> = ({ children }) => {
   return (
     <>
-      <h1>BodyMain</h1>
-      {children}
+      <div className="main-page">
+        {children}
+      </div>
     </>
   )
 };
