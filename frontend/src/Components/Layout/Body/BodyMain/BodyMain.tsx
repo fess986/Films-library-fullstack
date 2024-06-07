@@ -6,10 +6,8 @@ interface BodyMainProps {
 
 const BodyMain: React.FC<BodyMainProps> = ({ children }) => {
   return (
-    <>
       <div className="main-page">
-
-        <div>
+        
           <div className="visually-hidden">
             {/* inject:svg */}
             <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -47,18 +45,11 @@ const BodyMain: React.FC<BodyMainProps> = ({ children }) => {
           </div>
 
           <div className="main-page__container container">
-
             {children}
-
           </div>
-        </div>
-
-
 
       </div>
 
-
-    </>
   )
 };
 
