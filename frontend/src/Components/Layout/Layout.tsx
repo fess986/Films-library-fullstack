@@ -25,8 +25,11 @@ const Layout: React.FC<LayoutProps> = ({
   return (
     <BodyComponent {...bodyProps}>
       <HeaderComponent {...headerProps} />
+
       <Outlet />
+
       <FooterComponent {...footerProps} />
+      
     </BodyComponent>
   );
 };
