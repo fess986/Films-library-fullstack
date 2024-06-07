@@ -9,7 +9,7 @@ const BodyMain: React.FC<BodyMainProps> = ({ children }) => {
   return (
       <div className="main-page">
 
-        <InjectListSVG add play/>
+        <InjectListSVG add play pause/>
 
           <div className="main-page__container container">
             {children}
