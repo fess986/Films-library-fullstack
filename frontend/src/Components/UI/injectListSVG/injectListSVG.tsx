@@ -1,13 +1,14 @@
-import { Add, FullScreen, InList, Play } from "./svgList";
+import { Add, FullScreen, InList, Play, Pause } from "./svgList";
 
 type InjectListSVGProps = {
   add?: boolean,
   fullScreen?: boolean,
   inList?: boolean,
-  play?: boolean
+  play?: boolean,
+  pause?: boolean
 }
 
-const InjectListSVG: React.FC<InjectListSVGProps> = ({ add, fullScreen, inList, play }) => {
+const InjectListSVG: React.FC<InjectListSVGProps> = ({ add, fullScreen, inList, play, pause }) => {
   return (
     <div className="visually-hidden">
       {/* inject:svg */}
@@ -20,6 +21,8 @@ const InjectListSVG: React.FC<InjectListSVGProps> = ({ add, fullScreen, inList, 
         {inList && <InList />}
 
         {play && <Play />}
+
+        {pause && <Pause />}
 
       </svg>
       {/* endinject */}
