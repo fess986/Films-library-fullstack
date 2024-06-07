@@ -4,20 +4,25 @@ import { AppRoutes } from '../const/const'
 import { FilmProps } from '../mock/films'
 
 import Layout from '../Components/Layout/Layout'
+
 import Main from '../Components/pages/Main/Main'
 import FilmCard from '../Components/pages/FilmCard/FilmCard'
-import HeaderReview from '../Components/Layout/Header/HeaderReview/HeaderReview'
-import BodyReview from '../Components/Layout/Body/BodyReview/BodyReview'
 import AddReview from '../Components/pages/AddReview/AddReview'
-import HeaderSignIn from '../Components/Layout/Header/HeaderSignIn/HeaderSignIn'
-import BodySignIn from '../Components/Layout/Body/BodySignIn/BodySignIn'
 import SignIn from '../Components/pages/SignIn/SignIn'
 import MyList from '../Components/pages/MyList/MyList'
-import HeaderPlayer from '../Components/Layout/Header/HeaderPlayer/HeaderPlayer'
-import BodyPlayer from '../Components/Layout/Body/BodyPlayer/BodyPlayer'
 import Player from '../Components/pages/Player/Player'
-import HeaderMain from '../Components/Layout/Header/HeaderMain/HeaderMain'
+
+import BodyReview from '../Components/Layout/Body/BodyReview/BodyReview'
+import BodySignIn from '../Components/Layout/Body/BodySignIn/BodySignIn'
 import BodyMain from '../Components/Layout/Body/BodyMain/BodyMain'
+import BodyPlayer from '../Components/Layout/Body/BodyPlayer/BodyPlayer'
+
+import HeaderReview from '../Components/Layout/Header/HeaderReview/HeaderReview'
+import HeaderSignIn from '../Components/Layout/Header/HeaderSignIn/HeaderSignIn'
+import HeaderFilmCard from '../Components/Layout/Header/HeaderFilmCard/HeaderFilmCard'
+import HeaderMain from '../Components/Layout/Header/HeaderMain/HeaderMain'
+import HeaderPlayer from '../Components/Layout/Header/HeaderPlayer/HeaderPlayer'
+
 import Footer from '../Components/Layout/Footer/Footer'
 
 export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
@@ -26,11 +31,12 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
   return (
     <Routes>
       <Route path={AppRoutes.ROOT} element={<Layout
+        BodyComponent={BodyMain}
         HeaderComponent={HeaderMain}
         FooterComponent={Footer}
-        BodyComponent={BodyMain}
+        bodyProps={{}} 
         headerProps={{}}
-        bodyProps={{}} />}>
+        />}>
 
         <Route
           index
@@ -42,6 +48,16 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
           element={<Main films={films} />}
         />
 
+      </Route>
+
+      <Route path={AppRoutes.ROOT} element={<Layout
+        BodyComponent={BodyMain}
+        HeaderComponent={HeaderFilmCard}
+        FooterComponent={Footer}
+        bodyProps={{}} 
+        headerProps={{}}
+        />}>
+
         <Route
           path={AppRoutes.FILM_CARD}
           element={<FilmCard />}
@@ -49,11 +65,11 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
       </Route>
 
       <Route path={AppRoutes.ROOT} element={<Layout
+        BodyComponent={BodyReview}
         HeaderComponent={HeaderReview}
         FooterComponent={Footer}
-        BodyComponent={BodyReview}
-        headerProps={{}}
         bodyProps={{}}
+        headerProps={{}}
       />}>
         <Route
           path={AppRoutes.ADD_REVIEW}
@@ -63,11 +79,11 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
       </Route>
 
       <Route path={AppRoutes.ROOT} element={<Layout
+        BodyComponent={BodySignIn}
         HeaderComponent={HeaderSignIn}
         FooterComponent={Footer}
-        BodyComponent={BodySignIn}
-        headerProps={{}}
         bodyProps={{}}
+        headerProps={{}}
       />}>
 
         <Route
@@ -83,22 +99,17 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
       </Route>
 
       <Route path={AppRoutes.ROOT} element={<Layout
-        HeaderComponent={HeaderPlayer}
         BodyComponent={BodyPlayer}
-        headerProps={{}}
+        HeaderComponent={HeaderPlayer}
         bodyProps={{}}
+        headerProps={{}}
       />}>
 
         <Route
           path={AppRoutes.PLAYER}
           element={<Player />}
         />
-
       </Route>
-      {/* <Route
-      path='*'
-      element={<Page404 />}
-    /> */}
 
       <Route path="*" element={<Navigate to={AppRoutes.MAIN} replace />} />
 
