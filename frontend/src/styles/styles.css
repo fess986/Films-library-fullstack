@@ -1149,7 +1149,8 @@ body {
 }
 .sign-in__title {
   position: relative;
-  margin: 0 auto
+  margin: 0 auto;
+  transform: translateY(-200px);
 }
 .title {
   font-size: 32px;
