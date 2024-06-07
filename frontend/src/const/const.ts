@@ -1,6 +1,6 @@
 export default {}
 
-export const AppRoutes : {[key: string]: string} = {
+export const AppRoutes = {
   ROOT: '/',
   MAIN: 'main',
   SIGN_IN: 'login',
@@ -8,4 +8,5 @@ export const AppRoutes : {[key: string]: string} = {
   PLAYER: 'player/:id',
   FILM_CARD: 'films/:id',
   ADD_REVIEW: 'films/:id/review'
-}
+} as const;
+
