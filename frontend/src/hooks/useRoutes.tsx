@@ -21,7 +21,6 @@ import HeaderReview from '../Components/Layout/Header/HeaderReview/HeaderReview'
 import HeaderSignIn from '../Components/Layout/Header/HeaderSignIn/HeaderSignIn'
 import HeaderFilmCard from '../Components/Layout/Header/HeaderFilmCard/HeaderFilmCard'
 import HeaderMain from '../Components/Layout/Header/HeaderMain/HeaderMain'
-import HeaderPlayer from '../Components/Layout/Header/HeaderPlayer/HeaderPlayer'
 
 import Footer from '../Components/Layout/Footer/Footer'
 
@@ -100,7 +99,6 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
 
       <Route path={AppRoutes.ROOT} element={<Layout
         BodyComponent={BodyPlayer}
-        HeaderComponent={HeaderPlayer}
         bodyProps={{}}
         headerProps={{}}
       />}>

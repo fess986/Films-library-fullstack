@@ -4,7 +4,7 @@ import { BodyProps } from './Body/Body';
 import { Outlet } from 'react-router-dom';
 
 interface LayoutProps {
-  HeaderComponent: React.FC<HeaderProps>;
+  HeaderComponent?: React.FC<HeaderProps>;
   FooterComponent?: React.FC;
   BodyComponent: React.FC<BodyProps>;
   headerProps?: HeaderProps;
@@ -21,7 +21,7 @@ const Layout: React.FC<LayoutProps> = ({
 }) => {
   return (
     <BodyComponent {...bodyProps}>
-      <HeaderComponent {...headerProps} />
+      {HeaderComponent &&  <HeaderComponent {...headerProps}/>}
       <Outlet />
       {FooterComponent &&  <FooterComponent />}
     </BodyComponent>
