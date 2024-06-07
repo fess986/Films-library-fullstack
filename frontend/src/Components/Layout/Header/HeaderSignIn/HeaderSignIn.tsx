@@ -29,7 +29,6 @@ const HeaderSignIn: React.FC = ( ) => {
           </li>
         </ul>
       </header>
-      <h2 className="sign-in__title title">Sign in</h2>
     </section>
   )
 };
