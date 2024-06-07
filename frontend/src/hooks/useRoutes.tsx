@@ -19,10 +19,10 @@ import HeaderPlayer from '../Components/Layout/Header/HeaderPlayer/HeaderPlayer'
 import FooterPlayer from '../Components/Layout/Footer/FooterPlayer/FooterPlayer'
 import BodyPlayer from '../Components/Layout/Body/BodyPlayer/BodyPlayer'
 import Player from '../Components/pages/Player/Player'
-import Page404 from '../Components/pages/Page404/Page404'
 import HeaderMain from '../Components/Layout/Header/HeaderMain/HeaderMain'
 import FooterMain from '../Components/Layout/Footer/FooterMain/FooterMain'
 import BodyMain from '../Components/Layout/Body/BodyMain/BodyMain'
+// import Page404 from '../Components/pages/Page404/Page404'
 
 export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
   console.log(isAuth);
@@ -89,7 +89,7 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
         />
       </Route>
 
-      <Route path='/' element={<Layout
+      <Route path={AppRoutes.ROOT} element={<Layout
         HeaderComponent={HeaderPlayer}
         FooterComponent={FooterPlayer}
         BodyComponent={BodyPlayer}

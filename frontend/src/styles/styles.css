@@ -58,7 +58,8 @@ ul {
   width: 100%;
   margin: 0 auto;
   background-color: gray;
-  background: gray url(../../../src/images/content-fone.jpg) -330px 330px repeat
+  /* background: gray url(../../../src/images/content-fone.jpg) -330px 330px repeat */
+  background: gray url('/images/content-fone.jpg') -330px 330px repeat
 }
 .hero__container {
   position: absolute;
@@ -1173,18 +1174,21 @@ body {
   margin-top: -50px
 }
 .form-container {
-  background: url(../../../src/images/script-scroll.jpg) 32px 246px repeat-y;
+  /* background: url(../../../src/images/script-scroll.jpg) 32px 246px repeat-y; */
+  background: url('/images/script-scroll.jpg') 32px 246px repeat-y;
   min-height: 400px
 }
 .form-container--bottom {
   min-height: 440px;
-  background-image: url(../../../src/images/script-bottom-without-bg.png);
+  /* background-image: url(../../../src/images/script-bottom-without-bg.png); */
+  background-image: url('/images/script-bottom-without-bg.png');
   background-position: 6px calc(100% + 32px);
   background-repeat: no-repeat
 }
 .form-container--top {
   min-height: 440px;
-  background: url(../../../src/images/script-top-without-bg.png) left -40px no-repeat
+  /* background: url(../../../src/images/script-top-without-bg.png) left -40px no-repeat */
+  background: url('/images/script-top-without-bg.png') left -40px no-repeat
 }
 .sign-in__form {
   padding: 60px 50px 50px 60px
