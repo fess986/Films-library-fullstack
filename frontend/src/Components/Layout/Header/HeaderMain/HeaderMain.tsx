@@ -1,29 +1,18 @@
-const HeaderMain: React.FC = () => {
+import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
+import Header from "../../../blocks/Header/Header";
+
+type HeaderMainProps = {
+  isAuth?: boolean,
+}
+const HeaderMain: React.FC<HeaderMainProps> = ( { isAuth } ) => {
   return (
     <section className="main-page__hero-image hero">
-      <div className="hero__container">
-        <picture>
-          <source srcSet="/images/hero-poster2.webp" type="image/webp" />
-          <img className="hero__image" src="/images/hero-poster2.jpg" alt="The Grand Budapest Hotel" />
-        </picture>
-      </div>
+
+      <HeroPicture />
+
       <h1 className="visually-hidden">Films Library</h1>
 
-      <header className="hero__header main-page-header">
-        <a className="main-page-header__logo logo">
-          <img className="logo__image" src="/images/logo.jpeg" alt="Films Library" />
-        </a>
-        <ul className="main-page-header__user-block user-block">
-          <li className="user-block__item">
-            <div className="user-block__avatar user-avatar">
-              <img className="user-avatar__image" src="/images/avatar.png" alt="User avatar" />
-            </div>
-          </li>
-          <li className="user-block__item user-block-text">
-            <a className="user-block__link">Sign out</a>
-          </li>
-        </ul>
-      </header>
+      <Header isAuth={isAuth}/>
 
       <div className="main-page__film-card film-card film-card__container">
         <div className="film-card__poster">

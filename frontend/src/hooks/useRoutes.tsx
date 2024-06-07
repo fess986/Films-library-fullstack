@@ -34,7 +34,7 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
         HeaderComponent={HeaderMain}
         FooterComponent={Footer}
         bodyProps={{}} 
-        headerProps={{}}
+        headerProps={{isAuth: isAuth}}
         />}>
 
         <Route
