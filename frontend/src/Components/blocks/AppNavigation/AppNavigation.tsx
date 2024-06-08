@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { AppRoutes } from "../../../const/const";
+import Logo from "../../UI/Logo.tsx/Logo"
 
 type AppNavigationProps = {
   breadcrumbs?: boolean
@@ -11,9 +10,7 @@ const AppNavigation: React.FC<AppNavigationProps> = ({ breadcrumbs }) => {
     <nav className="main-page-header__logo">
       <ul>
         <li>
-          <Link to={AppRoutes.ROOT} className="logo">
-            <img className="logo__image" src="/images/logo.jpeg" alt="Films Library" />
-          </Link>
+          <Logo/>
         </li>
 
         {breadcrumbs &&
