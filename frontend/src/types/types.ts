@@ -4,8 +4,6 @@ export type FilmProps = {
   name: string;
   posterImage: string;
   previewImage: string;
-  backgroundImage: string;
-  backgroundColor: string;
   videoLink: string;
   previewVideoLink: string;
   description: string;

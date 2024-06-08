@@ -5,7 +5,6 @@ type AppNavigationProps = {
 }
 
 const UserNavigation: React.FC<AppNavigationProps> = ({ isAuth }) => {
-  console.log(isAuth);
 
   return (
   <nav>

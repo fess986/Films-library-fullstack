@@ -1,11 +1,10 @@
-import { FilmProps } from "../../../mock/films";
+import { FilmProps } from "../../../types/types";
 
 type MainProps = {
   films: FilmProps[];
 }
 
 const Main: React.FC<MainProps> = ({ films }) => {
-  console.log(films);
   return (
     <div className="main-page__content main-page-content">
       <section className="main-page-content__catalog catalog">
