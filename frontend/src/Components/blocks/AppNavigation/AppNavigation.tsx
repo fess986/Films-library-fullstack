@@ -6,7 +6,6 @@ type AppNavigationProps = {
 }
 
 const AppNavigation: React.FC<AppNavigationProps> = ({ breadcrumbs }) => {
-  console.log(breadcrumbs);
 
   return (
     <nav className="main-page-header__logo">

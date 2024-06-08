@@ -10,15 +10,10 @@ type HeaderMainProps = {
 const HeaderMain: React.FC<HeaderMainProps> = ( { isAuth, currentFilm } ) => {
   return (
     <section className="main-page__hero-image hero">
-
       <HeroPicture />
-
       <h1 className="visually-hidden">Films Library</h1>
-
       <Header isAuth={isAuth}/>
-
       <FilmInfo film={currentFilm} />
-
     </section>
   )
 };

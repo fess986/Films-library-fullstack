@@ -25,7 +25,6 @@ import HeaderMain from '../Components/Layout/Header/HeaderMain/HeaderMain'
 import Footer from '../Components/Layout/Footer/Footer'
 
 export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
-  console.log(isAuth);
 
   return (
     <Routes>
