@@ -11,7 +11,6 @@ const Header: React.FC<HeaderProps> = ({ breadcrumbs, isAuth }) => {
     <header className="hero__header main-page-header">
 
       <AppNavigation breadcrumbs={breadcrumbs} />
-
       <UserNavigation isAuth={isAuth}/>
 
     </header>
