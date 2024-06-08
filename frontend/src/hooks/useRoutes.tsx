@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { AppRoutes } from '../const/const'
-import { FilmProps } from '../mock/films'
+import { FilmProps } from '../types/types'
 
 import Layout from '../Components/Layout/Layout'
 
@@ -34,7 +34,7 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
         HeaderComponent={HeaderMain}
         FooterComponent={Footer}
         bodyProps={{}} 
-        headerProps={{isAuth: isAuth}}
+        headerProps={{isAuth: isAuth, currentFilm: films[0]}}
         />}>
 
         <Route
