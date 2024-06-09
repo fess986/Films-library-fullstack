@@ -1,4 +1,5 @@
 import { FilmProps } from "../../../types/types";
+import GenreList from "../../blocks/GenreList/GenreList";
 
 type MainProps = {
   films: FilmProps[];
@@ -9,38 +10,9 @@ const Main: React.FC<MainProps> = ({ films }) => {
     <div className="main-page__content main-page-content">
       <section className="main-page-content__catalog catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <ul className="catalog__genres-list genres-list">
-          <li className="genres-list__item">
-            <a href="#" className="genres-list__link genres-list__link--active">All genres</a>
-          </li>
-          <li className="genres-list__item">
-            <a href="#" className="genres-list__link">Comedies</a>
-          </li>
-          <li className="genres-list__item">
-            <a href="#" className="genres-list__link">Crime</a>
-          </li>
-          <li className="genres-list__item">
-            <a href="#" className="genres-list__link">Documentary</a>
-          </li>
-          <li className="genres-list__item">
-            <a href="#" className="genres-list__link">Dramas</a>
-          </li>
-          <li className="genres-list__item">
-            <a href="#" className="genres-list__link">Horror</a>
-          </li>
-          <li className="genres-list__item">
-            <a href="#" className="genres-list__link">Kids &amp; Family</a>
-          </li>
-          <li className="genres-list__item">
-            <a href="#" className="genres-list__link">Romance</a>
-          </li>
-          <li className="genres-list__item">
-            <a href="#" className="genres-list__link">Sci-Fi</a>
-          </li>
-          <li className="genres-list__item">
-            <a href="#" className="genres-list__link">Thrillers</a>
-          </li>
-        </ul>
+
+        <GenreList films={films} />
+
         <div className="catalog__films-list films-list">
           <article className="films-list__films-card small-film-card">
             <div className="small-film-card__image">
