@@ -1,5 +1,5 @@
 import { FilmProps } from "../../../types/types";
-import { H2 } from "../../styled/Titles/H2";
+import { H2 } from "../../styled/Components/Title/H2";
 
 type FilmCardDescriptionProps = {
   film: FilmProps,

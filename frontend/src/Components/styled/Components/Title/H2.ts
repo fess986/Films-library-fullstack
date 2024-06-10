@@ -1,13 +1,13 @@
 import styled from "styled-components";
+import { sizeH2 } from "../../Mixins/mixins";
 
 interface H2Props {
   size?: string;
 }
 
 export const H2 = styled.h2<H2Props>`
-  font-size: ${(props) => props.size || "32"}px;
-  line-height: 45px;
-  line-height: 45px;
+  ${sizeH2}
+  
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
   color: ${(props) => props.theme.textColorMain};
@@ -17,3 +17,5 @@ export const H2 = styled.h2<H2Props>`
   overflow: hidden;
 `;
 
+// font-size: ${(props) => props.size || "32"}px;
+//   line-height: 45px;
