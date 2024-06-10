@@ -1,4 +1,5 @@
 import { FilmProps } from "../../../types/types";
+import MoreFilmsButton from "../../UI/Buttons/MoreFilmsButton/MoreFilmsButton";
 import FilmList from "../../blocks/FilmList/FilmList";
 import GenreList from "../../blocks/GenreList/GenreList";
 
@@ -13,12 +14,9 @@ const Main: React.FC<MainProps> = ({ films }) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <GenreList films={films} />
-
         <FilmList films={films} />
+        <MoreFilmsButton />
 
-        <div className="catalog__more-films-button more-films-button">
-          <button className="more-films__button" type="button">Show more</button>
-        </div>
       </section>
     </div>
   )
