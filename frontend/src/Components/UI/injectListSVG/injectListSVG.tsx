@@ -1,5 +1,5 @@
 import { Add, FullScreen, InList, Play, Pause } from "./svgList";
-import { DivHidden } from "../../styled/Components/Div/DivHidden";
+import { DivHidden } from "../../styled/Components";
 
 type InjectListSVGProps = {
   add?: boolean,

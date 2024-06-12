@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { StyledLink } from "../../styled/Components/Link/Link";
-import { Img } from "../../styled/Components/Img/Img";
 import { zIndexTop } from "../../styled/Mixins/mixins";
-
+import { Img, StyledLink } from "../../styled/Components";
 type LogoProps = {
-	footer?: boolean;
+	$footer?: boolean;
 };
 
 export const LinkLogo = styled(StyledLink)<LogoProps>`
@@ -15,7 +13,7 @@ border-radius: 50%;
 overflow: hidden;
 cursor: pointer;
 
-margin-right: ${(props) => (props.footer ? "20px" : "0")};
+margin-right: ${(props) => (props.$footer  ? "20px" : "0")};
 
 will-change: transform; // говорим браузеру что будет изменяться размер
 transition: 0.5s transform, 0.5s -webkit-transform; // задаём время трансформации

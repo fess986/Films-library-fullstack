@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Img } from "../../styled/Components/Img/Img";
+import { Img } from "../../styled/Components";
 import { zIndexBack } from "../../styled/Mixins/mixins";
 
 export const PictureHero = styled.picture`
