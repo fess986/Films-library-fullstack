@@ -1,10 +1,5 @@
 import styled from "styled-components";
-import { StyledLink } from "../../styled/Components/Link/Link";
-import { H3 } from "../../styled/Components/Title/H3";
-import { Img } from "../../styled/Components/Img/Img";
-import { Div } from "../../styled/Components/Div/Div";
-import { Article } from "../../styled/Components/Article.ts/Article";
-
+import { H3, Article, Img, Div, StyledLink } from "../../styled/Components";
 import {
 	zIndexMiddle,
 	zIndexTop,

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Ul } from "../../styled/Components/Ul/Ul";
-import { Li } from "../../styled/Components/Li/Li";
+import { Ul, Li } from "../../styled/Components";
+
 import {
 	whiteTextStroke,
 	blackTextStroke,

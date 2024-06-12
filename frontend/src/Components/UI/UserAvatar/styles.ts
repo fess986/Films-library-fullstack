@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Img } from "../../styled/Components/Img/Img";
-import { Div } from "../../styled/Components/Div/Div";
+import { Div, Img } from "../../styled/Components";
 
 export const ImgUserAvatar = styled(Img).attrs(() => ({
 	alt: "User avatar",

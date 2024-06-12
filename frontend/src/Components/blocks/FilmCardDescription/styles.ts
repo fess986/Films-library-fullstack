@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import { H2Main } from "../../styled/Components/Title/H2Main";
-import { Span } from "../../styled/Components/Span/Span";
-import { PMediumMain } from "../../styled/Components/P/PMediumMain";
-import { Div } from "../../styled/Components/Div/Div";
+
+import { Div, PMediumMain, Span, H2Main } from "../../styled/Components";
 
 export const H2FilmName = styled(H2Main)`
 	max-width: 750px;
