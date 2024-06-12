@@ -2,7 +2,10 @@ import styled from "styled-components";
 import { Img } from "../../styled/Components/Img/Img";
 import { Div } from "../../styled/Components/Div/Div";
 
-export const ImgUserAvatar = styled(Img)`
+export const ImgUserAvatar = styled(Img).attrs(() => ({
+	alt: "User avatar",
+	// src: props.src,  // оправдываем передачу пропсов, но это не обязательно
+}))`
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
