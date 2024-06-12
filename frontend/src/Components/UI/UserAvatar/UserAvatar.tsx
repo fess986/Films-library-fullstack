@@ -1,3 +1,5 @@
+import { ImgUserAvatar, DivUserAvatar } from "./styles";
+
 type UserAvatarProps = {
   isAuth?: boolean
 }
@@ -6,9 +8,9 @@ type UserAvatarProps = {
 const UserAvatar: React.FC<UserAvatarProps> = ({ isAuth }) => {
   
   return (
-    <div className="user-block__avatar user-avatar">
-      <img className="user-avatar__image" src={isAuth ? "/images/avatar.png" : "/images/avatar.png" } alt="User avatar" />
-    </div>
+    <DivUserAvatar>
+      <ImgUserAvatar src={isAuth ? "/images/avatar.png" : "/images/avatar.png" } alt="User avatar" />
+    </DivUserAvatar>
   )
 }
 
