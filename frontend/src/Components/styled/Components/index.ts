@@ -18,3 +18,5 @@ export {H2} from "./Title/H2";
 export {H2Main} from "./Title/H2Main";
 export { H3 } from "./Title/H3";
 
+export {Button} from "./Buttons/Button";
+
