@@ -8,7 +8,7 @@ type UserAvatarProps = {
 const UserAvatar: React.FC<UserAvatarProps> = ({ isAuth }) => {
   return (
     <DivUserAvatar>
-      <ImgUserAvatar src={isAuth ? "/images/avatar.png" : "/images/avatar.png" } alt="User avatar" />
+      <ImgUserAvatar src={isAuth ? "/images/avatar.png" : "/images/avatar.png"} />
     </DivUserAvatar>
   )
 }
