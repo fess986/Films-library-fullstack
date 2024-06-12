@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { AppRoutes } from "../../../const/const";
+import { LinkLogo, ImgLogo } from "./styled";
 
 type LogoProps = {
   footer?: boolean,
@@ -7,9 +7,9 @@ type LogoProps = {
 
 const Logo: React.FC<LogoProps> = ({ footer }) => {
   return (
-    <Link to={AppRoutes.ROOT} className={`logo ${footer ? 'footer__logo' : ''}`} >
-      <img className="logo__image" src="/images/logo.jpeg" alt="Films Library" />
-    </Link>
+    <LinkLogo to={AppRoutes.ROOT} footer={footer}>
+      <ImgLogo src="/images/logo.jpeg" alt="Films Library" />
+    </LinkLogo>
   )
 }
 
