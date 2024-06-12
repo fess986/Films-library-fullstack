@@ -6,7 +6,6 @@ type UserAvatarProps = {
 
 // добавить вариант с isAuth=false
 const UserAvatar: React.FC<UserAvatarProps> = ({ isAuth }) => {
-  
   return (
     <DivUserAvatar>
       <ImgUserAvatar src={isAuth ? "/images/avatar.png" : "/images/avatar.png" } alt="User avatar" />

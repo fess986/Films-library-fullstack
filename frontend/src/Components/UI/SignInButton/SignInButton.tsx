@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
 import { AppRoutes } from "../../../const/const"
+import { LinkSignIn } from "./styles"
 
 type SignInButtonProps = {
   isAuth?: boolean
@@ -8,8 +8,8 @@ type SignInButtonProps = {
 const SignIn: React.FC<SignInButtonProps> = ({ isAuth }) => {
   return (
     <>
-      {isAuth && <Link to={AppRoutes.ROOT} className="user-block__link">Sign out</Link>}
-      {!isAuth && <Link to={AppRoutes.SIGN_IN} className="user-block__link">Sign in</Link>}
+      {isAuth && <LinkSignIn to={AppRoutes.ROOT} >Sign out</LinkSignIn>}
+      {!isAuth && <LinkSignIn to={AppRoutes.SIGN_IN} >Sign in</LinkSignIn>}
     </>
   )
 }
