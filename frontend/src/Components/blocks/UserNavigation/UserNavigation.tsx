@@ -1,5 +1,6 @@
 import UserAvatar from "../../UI/UserAvatar/UserAvatar";
 import SignIn from "../../UI/SignInButton/SignInButton";
+import { UserBlockItem, UserBlockText, UserBlockUl } from "./styles";
 type AppNavigationProps = {
   isAuth?: boolean
 }
@@ -8,14 +9,14 @@ const UserNavigation: React.FC<AppNavigationProps> = ({ isAuth }) => {
 
   return (
   <nav>
-    <ul className="main-page-header__user-block user-block">
-      <li className="user-block__item">
+    <UserBlockUl>
+      <UserBlockItem>
         <UserAvatar isAuth={isAuth}/>
-      </li>
-      <li className="user-block__item user-block-text">
+      </UserBlockItem>
+      <UserBlockText >
         <SignIn isAuth={isAuth}/>
-      </li>
-    </ul>
+      </UserBlockText>
+    </UserBlockUl>
   </nav>
   )
 }
