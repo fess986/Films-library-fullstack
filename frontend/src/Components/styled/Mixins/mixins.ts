@@ -20,6 +20,10 @@ export const textColorMain = css`
 color: ${(props) => props.theme.textColorMain};
 `
 
+export const textColorMainDark = css`
+color: ${(props) => props.theme.textColorMainDark};
+`
+
 export const textColorAdditional = css`
 color: ${(props) => props.theme.textColorAdditional};
 `
