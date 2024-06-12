@@ -16,6 +16,14 @@ export const textColor = css<colorProps>`
 	color: ${(props) => props.color || props.theme.textColorMain};
 `;
 
+export const textColorMain = css`
+color: ${(props) => props.theme.textColorMain};
+`
+
+export const textColorAdditional = css`
+color: ${(props) => props.theme.textColorAdditional};
+`
+
 export const fontSmall = css`
 	font-size: ${(props) => props.theme.textSizeSmall || "17px"};
 	line-height: ${(props) => props.theme.textLineHeightSmall || "20px"};

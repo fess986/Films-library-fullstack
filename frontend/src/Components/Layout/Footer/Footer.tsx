@@ -1,14 +1,13 @@
 import React from 'react';
 import Logo from '../../UI/Logo.tsx/Logo';
+import { DivCopyright, FooterMain } from './styles';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="main-page__footer footer">
+    <FooterMain>
       <Logo footer={true} />
-      <div className="footer__copyright copypright">
-        <p>Fess inc@</p>
-      </div>
-    </footer>
+      <DivCopyright>Fess inc@</DivCopyright>
+    </FooterMain>
   )
 };
 
