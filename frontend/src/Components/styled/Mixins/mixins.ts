@@ -1,10 +1,5 @@
 import { css } from "styled-components";
 
-export const sizeH2 = css`
-	font-size: ${(props) => props.theme.textSizeH2 || "32"}px;
-	line-height: ${(props) => props.theme.textLineHeightH2 || "45"}px;
-`;
-
 export const mainFontFamily = css`
 	font-family: ${(props) => props.theme.fontFamilyMain};
 `;
@@ -22,22 +17,22 @@ export const textColor = css<colorProps>`
 `;
 
 export const fontSmall = css`
-	font-size: ${(props) => props.theme.textSizeSmall || "17"}px;
-	line-height: ${(props) => props.theme.textLineHeightSmall || "20"}px;
+	font-size: ${(props) => props.theme.textSizeSmall || "17px"};
+	line-height: ${(props) => props.theme.textLineHeightSmall || "20px"};
 `;
 
 export const fontMedium = css`
-	font-size: ${(props) => props.theme.textSizeMedium || "19"}px;
-	line-height: ${(props) => props.theme.textLineHeightMedium || "23"}px;
+	font-size: ${(props) => props.theme.textSizeMedium || "19px"};
+	line-height: ${(props) => props.theme.textLineHeightMedium || "23px"};
 `;
 
 export const fontBig = css`
-	font-size: ${(props) => props.theme.textSizeBig || "25"}px;
-	line-height: ${(props) => props.theme.textLineHeightBig || "30"}px;
+	font-size: ${(props) => props.theme.textSizeBig || "25px"};
+	line-height: ${(props) => props.theme.textLineHeightBig || "30px"};
 `;
 export const fontH2 = css`
-	font-size: ${(props) => props.theme.textSizeH2 || "32"}px;
-	line-height: ${(props) => props.theme.textLineHeightH2 || "45"}px;
+	font-size: ${(props) => props.theme.textSizeH2 || "32px"};
+	line-height: ${(props) => props.theme.textLineHeightH2 || "45px"};
 `;
 export const blackTextStroke = css`
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
