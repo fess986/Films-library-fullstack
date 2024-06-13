@@ -1,6 +1,7 @@
 export {Article} from "./Article/Article";
 export {Div} from "./Div/Div";
 export {DivHidden} from "./Div/DivHidden";
+export {Section} from "./Section/Section";
 
 export {Header} from "./Header/Header";
 export {Footer} from "./Footer/Footer";
