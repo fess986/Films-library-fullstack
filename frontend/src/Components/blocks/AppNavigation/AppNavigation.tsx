@@ -1,28 +1,31 @@
 import Logo from "../../UI/Logo.tsx/Logo"
+import { Ul, Li } from "../../styled/Components"
+import { PageList } from "../../../const/const"
+import { NavApp } from "./styles"
 
 type AppNavigationProps = {
-  breadcrumbs?: boolean
+  breadcrumbs?: boolean,
+  $page?: PageList
 }
 
-const AppNavigation: React.FC<AppNavigationProps> = ({ breadcrumbs }) => {
+const AppNavigation: React.FC<AppNavigationProps> = ({ breadcrumbs, $page=PageList.MAIN }) => {
 
   return (
-    <nav className="main-page-header__logo">
-      <ul>
-        <li>
+    <NavApp $page={$page}>
+      <Ul>
+        <Li>
           <Logo/>
-        </li>
+        </Li>
 
         {breadcrumbs &&
-          <li>
+          <Li>
             Крошки
-          </li>
+          </Li>
         }
 
-      </ul>
-    </nav>
+      </Ul>
+    </NavApp>
   )
-
 }
 
 export default AppNavigation
