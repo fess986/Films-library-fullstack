@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import InjectListSVG from '../../../UI/injectListSVG/injectListSVG';
+import { DivMainContainer, BodyMainStyled } from './styles';
 
 interface BodyMainProps {
   children?: ReactNode
@@ -7,15 +8,14 @@ interface BodyMainProps {
 
 const BodyMain: React.FC<BodyMainProps> = ({ children }) => {
   return (
-      <div className="main-page">
+    <BodyMainStyled>
+      <InjectListSVG add play pause />
 
-        <InjectListSVG add play pause/>
+      <DivMainContainer>
+        {children}
+      </DivMainContainer>
 
-          <div className="main-page__container container">
-            {children}
-          </div>
-
-      </div>
+    </BodyMainStyled>
 
   )
 };
