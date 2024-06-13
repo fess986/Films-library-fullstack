@@ -1,15 +1,13 @@
 import ButtonAdd from "../../UI/Buttons/ButtonAdd/ButtonAdd";
 import ButtonPlay from "../../UI/Buttons/ButtonPlay/ButtonPlay";
-
-
-
+import { DivFilmButtons } from "./styles";
 
 const FilmButtons: React.FC = () => {
   return (
-    <div className="film-card__buttons">
+    <DivFilmButtons>
       <ButtonPlay />
       <ButtonAdd />
-    </div>
+    </DivFilmButtons>
   )
 }
 
