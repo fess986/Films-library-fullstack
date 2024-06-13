@@ -10,3 +10,14 @@ export const AppRoutes = {
   ADD_REVIEW: 'films/:id/review'
 } as const;
 
+export const PageList = {
+  MAIN: 'main',
+  MYLIST: 'mylist',
+  PLAYER: 'player',
+  FILM_CARD: 'film-card',
+  ADD_REVIEW: 'add-review',
+  SIGN_IN: 'sign-in'
+} as const;
+
+export type PageList = (typeof PageList)[keyof typeof PageList];
+
