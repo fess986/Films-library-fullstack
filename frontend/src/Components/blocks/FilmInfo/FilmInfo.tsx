@@ -2,6 +2,7 @@ import { FilmProps } from "../../../types/types";
 import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
 import FilmButtons from "../FilmButtons/FilmButtons";
 import FilmCardDescription from "../FilmCardDescription/FilmCardDescription";
+import { DivFilmInfo, DivFilmCard } from "./styles";
 
 type FilmInfoProps = {
   film: FilmProps,
@@ -9,15 +10,14 @@ type FilmInfoProps = {
 
 const FilmInfo: React.FC<FilmInfoProps> = ({ film }) => {
   return (
-    <div className="main-page__film-card film-card film-card__container">
+    <DivFilmCard>
+      <FilmCardPoster img={film.posterImage} title={film.name} />
 
-    <FilmCardPoster img={film.posterImage} title={film.name} />
-
-        <div className="film-card__info">
+      <DivFilmInfo>
         <FilmButtons />
         <FilmCardDescription film={film} />
-        </div>
-      </div>
+      </DivFilmInfo>
+    </DivFilmCard>
   )
 }
 
