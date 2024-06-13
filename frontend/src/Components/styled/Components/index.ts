@@ -3,6 +3,7 @@ export {Div} from "./Div/Div";
 export {DivHidden} from "./Div/DivHidden";
 export {Section} from "./Section/Section";
 
+export {Body} from "./Body/Body";
 export {Header} from "./Header/Header";
 export {Footer} from "./Footer/Footer";
 
