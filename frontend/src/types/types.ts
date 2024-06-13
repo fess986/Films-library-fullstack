@@ -1,4 +1,3 @@
-
 export type FilmProps = {
   id: number,
   name: string;
