@@ -2,6 +2,8 @@ import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
 import Header from "../../../blocks/Header/Header";
 import FilmInfo from "../../../blocks/FilmInfo/FilmInfo";
 import { FilmProps } from "../../../../types/types";
+import { H1Hidden } from "../../../styled/Components/Title/H1Hidden";
+import { SectionHero } from "./styles";
 
 type HeaderMainProps = {
   isAuth?: boolean,
@@ -9,12 +11,12 @@ type HeaderMainProps = {
 }
 const HeaderMain: React.FC<HeaderMainProps> = ( { isAuth, currentFilm } ) => {
   return (
-    <section className="main-page__hero-image hero">
+    <SectionHero>
       <HeroPicture />
-      <h1 className="visually-hidden">Films Library</h1>
+      <H1Hidden>Films Library</H1Hidden>
       <Header isAuth={isAuth}/>
       <FilmInfo film={currentFilm} />
-    </section>
+    </SectionHero>
   )
 };
 
