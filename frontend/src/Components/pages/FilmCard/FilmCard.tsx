@@ -1,10 +1,16 @@
-const FilmCard: React.FC = () => {
+import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
+import { FilmProps } from "../../../types/types";
+type FilmCardProps = {
+  film: FilmProps
+}
+
+const FilmCard: React.FC<FilmCardProps> = ( {film} ) => {
   return (
     <>
       <section className="movie-page__additional-film-info additional-film-info">
-        <div className="additional-film-info__poster">
-          <img className="additional-film-info__image" src="/images/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" />
-        </div>
+
+        <FilmCardPoster title={film.name} img={film.posterImage} />
+
         <div className="additional-film-info__info">
           <ul className="additional-film-info__film-menu film-menu">
             <li className="film-menu__item film-menu__item--active">
