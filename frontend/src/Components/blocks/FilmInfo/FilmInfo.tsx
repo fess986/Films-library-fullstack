@@ -8,14 +8,14 @@ type FilmInfoProps = {
   film: FilmProps,
 }
 
-const FilmInfo: React.FC<FilmInfoProps> = ({ film }) => {
+const FilmInfo: React.FC<FilmInfoProps> = ({film}) => {
   return (
-    <DivFilmCard>
+    <DivFilmCard >
       <FilmCardPoster img={film.posterImage} title={film.name} />
 
       <DivFilmInfo>
-        <FilmButtons />
         <FilmCardDescription film={film} />
+        <FilmButtons />
       </DivFilmInfo>
     </DivFilmCard>
   )

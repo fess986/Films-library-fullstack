@@ -1,29 +1,22 @@
-const HeaderFilmCard: React.FC = ( ) => {
+import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
+import { FilmProps } from "../../../../types/types";
+import { H1Hidden } from "../../../styled/Components";
+import Header from "../../../blocks/Header/Header";
+import FilmInfoCard from "../../../blocks/FilmInfoCard/FilmInfoCard";
+
+type HeaderFilmCardProps = {
+  currentFilm: FilmProps,
+  isAuth?: boolean,
+}
+
+const HeaderFilmCard: React.FC<HeaderFilmCardProps> = ( {currentFilm, isAuth} ) => {
   return (
     <section className="main-page__hero-image hero">
-          <div className="hero__container">
-            <picture>
-              <source srcSet="/images/hero-poster2.webp" type="image/webp" />
-              <img className="hero__image" src="/images/hero-poster2.jpg" alt="The Grand Budapest Hotel" />
-            </picture>
-          </div>
-          <h1 className="visually-hidden">Films Library</h1>
-          <header className="hero__header main-page-header">
-            <a className="main-page-header__logo logo">
-              <img className="logo__image" src="/images/logo.jpeg" alt="Films Library" />
-            </a>
-            <ul className="main-page-header__user-block user-block">
-              <li className="user-block__item">
-                <div className="user-block__avatar user-avatar">
-                  <img className="user-avatar__image" src="/images/avatar.png" alt="User avatar" />
-                </div>
-              </li>
-              <li className="user-block__item user-block-text">
-                <a className="user-block__link">Sign out</a>
-              </li>
-            </ul>
-          </header>
-          <div className="movie-page__film-card film-card">
+      <HeroPicture />
+      <H1Hidden>{`${currentFilm.name} Page`}</H1Hidden>
+      <Header isAuth={isAuth}/>
+      <FilmInfoCard film={currentFilm} />
+          {/* <div className="movie-page__film-card film-card">
             <div className="movie-page__film-card-info film-card__info">
               <div className="film-card__description">
                 <h2 className="film-card__title">The Grand Budapest Hotel</h2>
@@ -50,7 +43,7 @@ const HeaderFilmCard: React.FC = ( ) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </section>
   )
 };

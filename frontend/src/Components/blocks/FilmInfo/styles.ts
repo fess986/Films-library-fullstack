@@ -10,9 +10,9 @@ export const DivFilmInfo = styled(Div)`
 
 export const DivFilmCard = styled(Div)`
 	display: flex;
-	position: relative;
-
 	max-width: 1300px;
+
+	position: relative;
 	margin: 0 auto;
 	padding: 25px 75px;
 
