@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Div, Body } from "../../../styled/Components"
+import { Div } from "../../../styled/Components"
 import imgFont from '/images/content-fone.jpg'
 import { mainFontFamily, fontMedium } from "../../../styled/Mixins/mixins"
 
@@ -13,7 +13,7 @@ export const DivMainContainer = styled(Div)`
 	background: gray url(${imgFont}) -330px 330px repeat;
 `
 
-export const BodyMainStyled = styled(Body)`
+export const BodyMainStyled = styled(Div)`
 	position: relative;
 	min-height: 100vh;
 
