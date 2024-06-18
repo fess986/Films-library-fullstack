@@ -1,5 +1,8 @@
 import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
+import FilmMenu from "../../blocks/FilmMenu/FilmMenu";
+
 import { FilmProps } from "../../../types/types";
+import { FilmMenuList } from "../../../const/const";
 type FilmCardProps = {
   film: FilmProps
 }
@@ -12,7 +15,10 @@ const FilmCard: React.FC<FilmCardProps> = ( {film} ) => {
         <FilmCardPoster title={film.name} img={film.posterImage} />
 
         <div className="additional-film-info__info">
-          <ul className="additional-film-info__film-menu film-menu">
+
+          <FilmMenu items={FilmMenuList} activeItem={FilmMenuList[0]}/>
+
+          {/* <ul className="additional-film-info__film-menu film-menu">
             <li className="film-menu__item film-menu__item--active">
               <a href className="film-menu__link">Overview</a>
             </li>
@@ -22,7 +28,7 @@ const FilmCard: React.FC<FilmCardProps> = ( {film} ) => {
             <li className="film-menu__item">
               <a href className="film-menu__link">Reviews</a>
             </li>
-          </ul>
+          </ul> */}
           <div className="additional-film-info__overview overview">
             <div className="overview__rating">
               <span className="overview__rating-value">8.1</span>
@@ -45,7 +51,10 @@ const FilmCard: React.FC<FilmCardProps> = ( {film} ) => {
             </div>
           </div>
         </div>
+
       </section>
+
+
       <section className="movie-page__more-films more-films">
         <h2 className="visually-hidden">More films like this</h2>
         <h2 className="more-films__title">More films like this</h2>
