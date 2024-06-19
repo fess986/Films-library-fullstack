@@ -13,6 +13,7 @@ export {Li} from "./Li/Li";
 export {Ul} from "./Ul/Ul";
 export {StyledLink} from "./Link/Link";
 
+export {P} from "./P/P";
 export {PMedium} from "./P/PMedium";
 export {PMediumMain} from "./P/PMediumMain";
 export {Span} from "./Span/Span";

@@ -23,32 +23,11 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
 
           <Routes>
             <Route path="/" element={<FilmDetails film={film} />} />
-            <Route path={FilmMenuList[0].toLowerCase()} element={<FilmDetails film={film} />} />
-            <Route path={FilmMenuList[1].toLowerCase()} element={<FilmOverview film={film} />} />
+            <Route path={FilmMenuList[0].toLowerCase()} element={<FilmOverview film={film} />} />
+            <Route path={FilmMenuList[1].toLowerCase()} element={<FilmDetails film={film} />} />
             <Route path={FilmMenuList[2].toLowerCase()} element={<FilmReviews film={film}/>} />
           </Routes>
 
-          <div className="additional-film-info__overview overview">
-            <div className="overview__rating">
-              <span className="overview__rating-value">8.1</span>
-              <span className="overview__rating-text-value">very good</span>
-              <span className="overview__rating-count">количество оценок</span>
-            </div>
-            <div className="overview__description">
-              <p className="overview__description-text">In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.
-              </p>
-              <p className="overview__description-text">In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.
-              </p>
-            </div>
-            <div className="overview__director">
-              <span className="overview__director-title">Director:</span>
-              <span className="overview__director-name">Wes Anderson</span>
-            </div>
-            <div className="overview__starring">
-              <span className="overview__starring-title">Starring:</span>
-              <span className="overview__starring-names">Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other </span>
-            </div>
-          </div>
         </div>
 
       </section>
