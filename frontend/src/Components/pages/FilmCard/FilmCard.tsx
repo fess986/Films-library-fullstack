@@ -1,13 +1,16 @@
+import { Routes, Route } from "react-router-dom";
 import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
 import FilmMenu from "../../blocks/FilmMenu/FilmMenu";
-
+import FilmDetails from "../../blocks/FilmCard/FilmDetails/FilmDetails";
+import FilmOverview from "../../blocks/FilmCard/FilmOverview/FilmOverview";
+import FilmReviews from "../../blocks/FilmCard/FilmReviews/FilmReviews";
 import { FilmProps } from "../../../types/types";
 import { FilmMenuList } from "../../../const/const";
 type FilmCardProps = {
   film: FilmProps
 }
 
-const FilmCard: React.FC<FilmCardProps> = ( {film} ) => {
+const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
   return (
     <>
       <section className="movie-page__additional-film-info additional-film-info">
@@ -16,19 +19,15 @@ const FilmCard: React.FC<FilmCardProps> = ( {film} ) => {
 
         <div className="additional-film-info__info">
 
-          <FilmMenu items={FilmMenuList} activeItem={FilmMenuList[0]}/>
+          <FilmMenu items={FilmMenuList} />
 
-          {/* <ul className="additional-film-info__film-menu film-menu">
-            <li className="film-menu__item film-menu__item--active">
-              <a href className="film-menu__link">Overview</a>
-            </li>
-            <li className="film-menu__item">
-              <a href className="film-menu__link">Details</a>
-            </li>
-            <li className="film-menu__item">
-              <a href className="film-menu__link">Reviews</a>
-            </li>
-          </ul> */}
+          <Routes>
+            <Route path="/" element={<FilmDetails film={film} />} />
+            <Route path={FilmMenuList[0].toLowerCase()} element={<FilmDetails film={film} />} />
+            <Route path={FilmMenuList[1].toLowerCase()} element={<FilmOverview film={film} />} />
+            <Route path={FilmMenuList[2].toLowerCase()} element={<FilmReviews film={film}/>} />
+          </Routes>
+
           <div className="additional-film-info__overview overview">
             <div className="overview__rating">
               <span className="overview__rating-value">8.1</span>
