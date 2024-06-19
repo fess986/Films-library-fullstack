@@ -6,7 +6,6 @@ type SignInButtonProps = {
 }
 
 const SignIn: React.FC<SignInButtonProps> = ({ isAuth }) => {
-  console.log(isAuth)
   return (
     <>
       {isAuth && <LinkSignIn to={AppRoutes.ROOT} >Sign out</LinkSignIn>}
