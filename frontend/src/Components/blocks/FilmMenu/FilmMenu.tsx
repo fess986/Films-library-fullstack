@@ -1,17 +1,37 @@
+import { useState } from "react";
 import { FilmMenuItemProps } from "../../../const/const";
 import FilmMenuItem from "../../UI/FilmMenuItem/FilmMenuItem";
 import { UlFilmMenu } from "./styles";
+import { useParams } from "react-router-dom";
 
 type FilmMenuProps = {
   items: readonly FilmMenuItemProps[],
-  activeItem: FilmMenuItemProps,
 }
 
-const FilmMenu: React.FC<FilmMenuProps> = ( {items, activeItem} ) => {
+const FilmMenu: React.FC<FilmMenuProps> = ( {items} ) => {
+  const params = useParams();
+  // console.log(params)
+
+  let initState: string = items[0];
+
+  // для того чтобы правильно отображался активный пункт меню при перезагрузке страницы и наборе адреса в браузере
+  switch (params['*']) {
+    case items[0].toLowerCase():
+      initState = items[0].toLowerCase();
+      break;
+    case items[1].toLowerCase():
+      initState = items[1].toLowerCase();
+      break;
+    case items[2].toLowerCase():
+      initState = items[2].toLowerCase();
+      break;
+  }
+
+  const [activeItem, setActiveItem] = useState(initState);
 
   return (
     <UlFilmMenu>
-      {items.map((item) => <FilmMenuItem key={item} itemName={item} isActive={item === activeItem}/>)}
+      {items.map((item) => <FilmMenuItem key={item} itemName={item} isActive={item.toLowerCase() === activeItem.toLowerCase()} onclick={() => setActiveItem(item)}/>)}
     </UlFilmMenu>
   )
 }
