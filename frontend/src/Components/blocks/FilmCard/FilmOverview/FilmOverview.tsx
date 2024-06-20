@@ -6,11 +6,30 @@ type FilmOverviewProps = {
 }
 
 const FilmOverview: React.FC<FilmOverviewProps> = ({ film }) => {
+  const { rating } = film
+  let textRating;
+
+  if (rating < 0 || rating > 10) {
+    textRating = 'Invalid rating';
+  } else if (rating <= 3) {
+    textRating = 'Bad';
+  } else if (rating <= 5) {
+    textRating = 'Normal';
+  } else if (rating <= 8) {
+    textRating = 'Good';
+  } else if (rating < 10) {
+    textRating = 'Very Good';
+  } else if (rating === 10) {
+    textRating = 'Awesome!';
+  } else {
+    textRating = 'Invalid rating';
+  }
+
   return (
     <DivOverviewContainer>
       <DivOverviewParagraph>
-        <SpanRatingValue>{film.rating}</SpanRatingValue>
-        <SpanRatingTextValue>very good</SpanRatingTextValue>
+        <SpanRatingValue>{rating}</SpanRatingValue>
+        <SpanRatingTextValue>{textRating}</SpanRatingTextValue>
         <SpanRatingCount>{film.scoresCount}</SpanRatingCount>
       </DivOverviewParagraph>
       <DivOverviewParagraph>

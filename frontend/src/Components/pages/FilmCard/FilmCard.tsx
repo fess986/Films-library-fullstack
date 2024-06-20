@@ -22,7 +22,7 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
           <FilmMenu items={FilmMenuList} />
 
           <Routes>
-            <Route path="/" element={<FilmDetails film={film} />} />
+            <Route path="/" element={<FilmOverview film={film} />} />
             <Route path={FilmMenuList[0].toLowerCase()} element={<FilmOverview film={film} />} />
             <Route path={FilmMenuList[1].toLowerCase()} element={<FilmDetails film={film} />} />
             <Route path={FilmMenuList[2].toLowerCase()} element={<FilmReviews film={film}/>} />
