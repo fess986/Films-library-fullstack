@@ -1,5 +1,6 @@
 import { FilmProps } from "../../../../types/types";
 import { DivDetailsContainer, DivItem, SpanDetailsItemTitle, SpanDetailsItemValue } from "./styles";
+import { getDuration } from "../../../../utils/utils";
 
 type FilmDetailsProps = {
   film: FilmProps
@@ -20,7 +21,7 @@ const FilmDetails: React.FC<FilmDetailsProps> = ({ film }) => {
 
       <DivItem>
         <SpanDetailsItemTitle>Run Time:</SpanDetailsItemTitle>
-        <SpanDetailsItemValue>1h 34m</SpanDetailsItemValue>
+        <SpanDetailsItemValue>{getDuration(film.runTime)}</SpanDetailsItemValue>
       </DivItem>
 
       <DivItem>
