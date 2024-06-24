@@ -6,6 +6,7 @@ import FilmOverview from "../../blocks/FilmCard/FilmOverview/FilmOverview";
 import FilmReviews from "../../blocks/FilmCard/FilmReviews/FilmReviews";
 import { FilmProps } from "../../../types/types";
 import { FilmMenuList } from "../../../const/const";
+import { Reviews } from "../../../mock/reviews";
 type FilmCardProps = {
   film: FilmProps
 }
@@ -25,7 +26,7 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
             <Route path="/" element={<FilmDetails film={film} />} />
             <Route path={FilmMenuList[0].toLowerCase()} element={<FilmOverview film={film} />} />
             <Route path={FilmMenuList[1].toLowerCase()} element={<FilmDetails film={film} />} />
-            <Route path={FilmMenuList[2].toLowerCase()} element={<FilmReviews film={film}/>} />
+            <Route path={FilmMenuList[2].toLowerCase()} element={<FilmReviews reviews={Reviews}/>} />
           </Routes>
 
         </div>
