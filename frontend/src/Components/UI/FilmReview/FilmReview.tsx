@@ -7,7 +7,6 @@ type FilmReviewProps = {
 }
 
 const FilmReview: React.FC<FilmReviewProps> = ({ review }) => {
-  console.log(review)
   return (
     <ReviewContainer>
       <ReviewQuote>
