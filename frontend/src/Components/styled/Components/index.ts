@@ -17,6 +17,9 @@ export {P} from "./P/P";
 export {PMedium} from "./P/PMedium";
 export {PMediumMain} from "./P/PMediumMain";
 export {Span} from "./Span/Span";
+export {Blockquote} from "./Blockquote/Blockquote";
+export {Cite} from "./Cite/Cite";
+export {Time} from "./Time/Time";
 
 export {H2} from "./Title/H2";
 export {H2Main} from "./Title/H2Main";

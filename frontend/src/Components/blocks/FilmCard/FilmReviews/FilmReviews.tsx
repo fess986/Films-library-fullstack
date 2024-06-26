@@ -1,4 +1,5 @@
 import { Review } from "../../../../types/types";
+import FilmReview from "../../../UI/FilmReview/FilmReview";
 
 type FilmReviewsProps = {
   reviews: Review[]
@@ -9,6 +10,9 @@ const FilmReviews: React.FC<FilmReviewsProps> = ({ reviews }) => {
   return (
     <div className="additional-film-info__movie-page-reviews movie-page-reviews">
       <div className="movie-page-reviews__col">
+        
+        <FilmReview review={reviews[0]} />
+
         <div className="movie-page-reviews__movie-page-review movie-page-review">
           <blockquote className="movie-page-review__quote">
             <p className="movie-page-review__text">
