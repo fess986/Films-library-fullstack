@@ -1,5 +1,6 @@
 import { Review } from "../../../types/types";
-import { ReviewText, ReviewFooter, ReviewQuote, ReviewAuthor, ReviewDate, ReviewContainer } from "./styles";
+import { ReviewText, ReviewFooter, ReviewQuote, ReviewAuthor, ReviewDate, ReviewContainer, ReviewRating } from "./styles";
+import { parseCommentDate, formatDate } from "../../../utils/utils";
 
 type FilmReviewProps = {
   review: Review,
@@ -11,17 +12,14 @@ const FilmReview: React.FC<FilmReviewProps> = ({ review }) => {
     <ReviewContainer>
       <ReviewQuote>
         <ReviewText>
-          Discerning travellers and Wes Anderson fans will luxuriate
-          in the glorious Mittel-European kitsch of one of the
-          director's funniest and most exquisitely designed films in
-          years.
+          {review.comment}
         </ReviewText>
         <ReviewFooter>
-          <ReviewAuthor>Kate Muir</ReviewAuthor>
-          <ReviewDate dateTime="2016-12-24">December 24, 2016</ReviewDate>
+          <ReviewAuthor>{review.user.name}</ReviewAuthor>
+          <ReviewDate dateTime={formatDate(review.date)}>{parseCommentDate(review.date)}</ReviewDate>
         </ReviewFooter>
       </ReviewQuote>
-      <div className="movie-page-review__rating">8,9</div>
+      <ReviewRating>{review.rating.toFixed(1)}</ReviewRating>
     </ReviewContainer>
   )
 }

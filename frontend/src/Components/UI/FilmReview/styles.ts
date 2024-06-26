@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { P, Footer, Blockquote, Cite, Time, Div } from "../../styled/Components";
-import { fontMedium, textColorAdditional } from "../../styled/Mixins/mixins";
+import { fontMedium, textColorAdditional, fontBig } from "../../styled/Mixins/mixins";
 
 export const ReviewText = styled(P)`
 	${fontMedium}
@@ -37,4 +37,16 @@ export const ReviewContainer = styled(Div)`
 
   border-bottom: 2px solid ${({ theme }) => theme.textColorAdditional};
 `
+export const ReviewRating = styled(Div)`
+	position: absolute;
+	right: 0;
+	top: 0px;
 
+	${fontBig}
+	${textColorAdditional}
+
+	padding: 8px 12px;
+
+	background: rgba(0, 0, 0, 0.24);
+	border-radius: 8px;
+`

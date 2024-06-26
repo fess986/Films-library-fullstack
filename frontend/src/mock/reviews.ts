@@ -7,9 +7,9 @@ export const Reviews: Review[] = [
       id: 4,
       name: 'my name',
     },
-    rating: 1.0,
+    rating: 1.4,
     comment: 'very good film i think!',
-    date: '2019-09-08T14:13:56.569Z',
+    date: '2023-09-08T14:13:56.569Z',
   },
 
   {
@@ -35,7 +35,7 @@ export const Reviews: Review[] = [
               "The Grand Budapest Hotel" is no different, except that he
               has added a hint of gravitas to the mix, improving the
               recipe.'`,
-    date: '2019-06-08T14:13:52.569Z',
+    date: '2022-06-08T14:13:52.569Z',
   },
 
   {
@@ -46,7 +46,7 @@ export const Reviews: Review[] = [
     },
     rating: 7.0,
     comment: 'didnt find it amusing, and while I can appreciate the   creativity, its an hour and 40 minutes I wish I could take     back',
-    date: '2019-05-08T14:13:52.569Z',
+    date: '2023-05-08T14:13:52.569Z',
   },
 
   {
@@ -59,6 +59,6 @@ export const Reviews: Review[] = [
     comment: `The mannered, madcap proceedings are often delightful,
               occasionally silly, and here and there, gruesome and/or
               heartbreaking`,
-    date: '2021-11-08T14:13:52.569Z',
+    date: '2023-11-08T14:13:52.569Z',
   },
 ];
