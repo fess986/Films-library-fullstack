@@ -1,5 +1,6 @@
 import { Review } from "../../../../types/types";
 import FilmReview from "../../../UI/FilmReview/FilmReview";
+import {DivReviewsCol, DivReviewsContainer} from "./styles";
 
 type FilmReviewsProps = {
   reviews: Review[]
@@ -19,15 +20,15 @@ const FilmReviews: React.FC<FilmReviewsProps> = ({ reviews }) => {
 
 
   return (
-    <div className="additional-film-info__movie-page-reviews movie-page-reviews">
-      <div className="movie-page-reviews__col">
+    <DivReviewsContainer>
+      <DivReviewsCol>
         {getReviews(0, firstColEnd)}
-      </div>
+      </DivReviewsCol>
 
-      <div className="movie-page-reviews__col">
+      <DivReviewsCol>
         {getReviews(firstColEnd, reviews.length)}
-      </div>
-    </div>
+      </DivReviewsCol>
+    </DivReviewsContainer>
   )
 }
 
