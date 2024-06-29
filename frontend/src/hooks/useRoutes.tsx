@@ -23,6 +23,7 @@ import HeaderFilmCard from '../Components/Layout/Header/HeaderFilmCard/HeaderFil
 import HeaderMain from '../Components/Layout/Header/HeaderMain/HeaderMain'
 
 import Footer from '../Components/Layout/Footer/Footer'
+import FooterFilmCard from '../Components/Layout/Footer/FooterFilmCard'
 
 export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
 
@@ -51,7 +52,7 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
       <Route path={AppRoutes.ROOT} element={<Layout
         BodyComponent={BodyMain}
         HeaderComponent={HeaderFilmCard}
-        FooterComponent={Footer}
+        FooterComponent={FooterFilmCard}
         bodyProps={{}} 
         headerProps={{isAuth: isAuth, currentFilm: films[1]}}
         />}>
