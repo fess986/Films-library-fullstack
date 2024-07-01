@@ -1,10 +1,15 @@
 import { PictureHero, SourceWebpHero, ImgHero } from "./styles"
+import { PageList } from "../../../const/const"
 
-const HeroPicture = (): JSX.Element => {
+type HeroPictureProps = {
+  $page?: PageList
+}
+
+const HeroPicture: React.FC<HeroPictureProps> = ({$page = PageList.MAIN}) => {
   return (
     <PictureHero>
       <SourceWebpHero srcSet="/images/hero-poster2.webp" />
-      <ImgHero src="/images/hero-poster2.jpg" />
+      <ImgHero $page={$page} src="/images/hero-poster2.jpg" />
     </PictureHero>
   )
 }
