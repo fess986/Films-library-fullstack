@@ -4,7 +4,7 @@ export const Films : FilmProps[] = [
   {
     id: 0,
     name: 'The Grand Budapest Hotel',
-    posterImage: '/images/the-grand-budapest-hotel-poster.jpg',
+    posterImage: '/images/posters/The grand budapest hotel poster.jpg',
     previewImage: '/images/the-grand-budapest-hotel-poster.jpg',
     videoLink: 'https://download.blender.org/peach/trailer/trailer_400p.ogg',
     previewVideoLink: 'https://download.blender.org/peach/trailer/trailer_400p.ogg',
@@ -24,7 +24,7 @@ export const Films : FilmProps[] = [
   {
     id: 1,
     name: 'Moonrise Kingdom',
-    posterImage: '/images/moonrise-kingdom.jpg',
+    posterImage: '/images/posters/Moonrise Kingdom.jpg',
     previewImage: '/images/moonrise-kingdom.jpg',
     videoLink: 'https://download.blender.org/peach/trailer/trailer_400p.ogg',
     previewVideoLink: 'https://download.blender.org/peach/trailer/trailer_400p.ogg',
@@ -42,7 +42,7 @@ export const Films : FilmProps[] = [
   {
     id: 2,
     name: 'Pulp Fiction',
-    posterImage: '/images/pulp-fiction.jpg',
+    posterImage: '/images/posters/Pulp Fiction.jpg',
     previewImage: '/images/pulp-fiction.jpg',
     videoLink: 'https://download.blender.org/peach/trailer/trailer_400p.ogg',
     previewVideoLink: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -60,7 +60,7 @@ export const Films : FilmProps[] = [
   {
     id: 3,
     name: 'The Darjeeling Limited',
-    posterImage: '/images/dardjeeling-limited.jpg',
+    posterImage: '/images/posters/The Darjeeling Limited.jpg',
     previewImage: '/images/dardjeeling-limited.jpg',
     videoLink: 'https://download.blender.org/peach/trailer/trailer_400p.ogg',
     previewVideoLink: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -78,7 +78,7 @@ export const Films : FilmProps[] = [
   {
     id: 4,
     name: 'The Aviator',
-    posterImage: '/images/aviator.jpg',
+    posterImage: '/images/posters/The Aviator.jpg',
     previewImage: '/images/aviator.jpg',
     videoLink: 'https://download.blender.org/peach/trailer/trailer_400p.ogg',
     previewVideoLink: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -96,7 +96,7 @@ export const Films : FilmProps[] = [
   {
     id: 5,
     name: 'The Revenant',
-    posterImage: '/images/revenant.jpg',
+    posterImage: '/images/posters/The Revenant.jpg',
     previewImage: '/images/revenant.jpg',
     videoLink: 'https://download.blender.org/peach/trailer/trailer_400p.ogg',
     previewVideoLink: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -114,7 +114,7 @@ export const Films : FilmProps[] = [
   {
     id: 6,
     name: 'Johnny English',
-    posterImage: '/images/johnny-english.jpg',
+    posterImage: '/images/posters/Johnny English.jpg',
     previewImage: '/images/johnny-english.jpg',
     videoLink: 'https://download.blender.org/peach/trailer/trailer_400p.ogg',
     previewVideoLink: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
@@ -132,7 +132,7 @@ export const Films : FilmProps[] = [
   {
     id: 7,
     name: 'Bohemian Rhapsody',
-    posterImage: '/images/bohemian-rhapsody.jpg',
+    posterImage: '/images/posters/Bohemian Rhapsody.jpg',
     previewImage: '/images/bohemian-rhapsody.jpg',
     videoLink: 'https://download.blender.org/peach/trailer/trailer_400p.ogg',
     previewVideoLink: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
