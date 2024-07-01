@@ -59,7 +59,7 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
 
         <Route
           path={AppRoutes.FILM_CARD}
-          element={<FilmCard film={films[1]} />}
+          element={<FilmCard film={films[6]} />}
         />
       </Route>
 
