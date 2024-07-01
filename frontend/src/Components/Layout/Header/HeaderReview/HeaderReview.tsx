@@ -1,12 +1,19 @@
-const HeaderReview: React.FC = () => {
+import { FilmProps } from "../../../../types/types";
+import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
+import { PageList } from "../../../../const/const";
+
+type HeaderMainProps = {
+  isAuth?: boolean,
+  currentFilm: FilmProps,
+}
+
+const HeaderReview: React.FC<HeaderMainProps> = ({ isAuth, currentFilm }) => {
+  console.log(currentFilm, isAuth)
   return (
     <section className="add-review__hero-image hero">
-      <div className="hero__container">
-        <picture>
-          <source srcSet="/images/hero-poster2.webp" type="image/webp" />
-          <img className="hero__image hero__image__add-review" src="/images/hero-poster2.jpg" alt="The Grand Budapest Hotel" />
-        </picture>
-      </div>
+      
+      <HeroPicture $page={PageList.ADD_REVIEW}/>
+
       <h1 className="visually-hidden">Films Library</h1>
       <header className="add-review-page-header hero__header">
         <div className="main-page-header__logo">
