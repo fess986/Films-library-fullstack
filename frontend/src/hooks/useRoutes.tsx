@@ -64,8 +64,7 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
       </Route>
 
       <Route path={AppRoutes.ROOT} element={<Layout
-        BodyComponent={BodyReview}
-        // BodyComponent={BodyMain}
+        BodyComponent={BodyMain}
         HeaderComponent={HeaderReview}
         FooterComponent={Footer}
         bodyProps={{}}

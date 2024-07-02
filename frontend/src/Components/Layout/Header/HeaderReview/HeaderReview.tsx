@@ -1,6 +1,9 @@
 import { FilmProps } from "../../../../types/types";
 import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
 import { PageList } from "../../../../const/const";
+import { H1Hidden } from "../../../styled/Components";
+import Header from "../../../blocks/Header/Header";
+
 
 type HeaderMainProps = {
   isAuth?: boolean,
@@ -14,8 +17,11 @@ const HeaderReview: React.FC<HeaderMainProps> = ({ isAuth, currentFilm }) => {
       
       <HeroPicture $page={PageList.ADD_REVIEW}/>
 
-      <h1 className="visually-hidden">Films Library</h1>
-      <header className="add-review-page-header hero__header">
+      <H1Hidden>Add review</H1Hidden>
+
+      <Header isAuth={isAuth} breadcrumbs $page={PageList.ADD_REVIEW}/>
+
+      {/* <header className="add-review-page-header hero__header">
         <div className="main-page-header__logo">
           <a className="logo">
             <img className="logo__image" src="/images/logo.jpeg" alt="Films Library" />
@@ -30,6 +36,7 @@ const HeaderReview: React.FC<HeaderMainProps> = ({ isAuth, currentFilm }) => {
               </li>
             </ul>
           </nav>
+
         </div>
         <ul className="main-page-header__user-block user-block">
           <li className="user-block__item">
@@ -41,7 +48,8 @@ const HeaderReview: React.FC<HeaderMainProps> = ({ isAuth, currentFilm }) => {
             <a className="user-block__link">Sign out</a>
           </li>
         </ul>
-      </header>
+      </header> */}
+
       <div className="add-review__film-card film-card">
         <div className="movie-page__film-card-info film-card__info">
           <div className="film-card__description">
