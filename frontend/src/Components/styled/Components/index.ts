@@ -11,7 +11,9 @@ export {Img} from "./Img/Img";
 
 export {Li} from "./Li/Li";
 export {Ul} from "./Ul/Ul";
+
 export {StyledLink} from "./Link/Link";
+export {Nav} from "./Nav/Nav";
 
 export {P} from "./P/P";
 export {PMedium} from "./P/PMedium";
