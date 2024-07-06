@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react';
 import InjectListSVG from '../../../UI/injectListSVG/injectListSVG';
 import { DivMainContainer, BodyMainStyled } from './styles';
 
-interface BodyMainProps {
-  children?: ReactNode
+export type BodyMainProps = {
+  children?: ReactNode,
 }
 
 const BodyMain: React.FC<BodyMainProps> = ({ children }) => {
