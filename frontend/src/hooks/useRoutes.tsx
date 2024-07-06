@@ -12,7 +12,6 @@ import SignIn from '../Components/pages/SignIn/SignIn'
 import MyList from '../Components/pages/MyList/MyList'
 import Player from '../Components/pages/Player/Player'
 
-import BodyReview from '../Components/Layout/Body/BodyReview/BodyReview'
 import BodySignIn from '../Components/Layout/Body/BodySignIn/BodySignIn'
 import BodyMain from '../Components/Layout/Body/BodyMain/BodyMain'
 import BodyPlayer from '../Components/Layout/Body/BodyPlayer/BodyPlayer'
@@ -24,6 +23,9 @@ import HeaderMain from '../Components/Layout/Header/HeaderMain/HeaderMain'
 
 import Footer from '../Components/Layout/Footer/Footer'
 import FooterFilmCard from '../Components/Layout/Footer/FooterFilmCard'
+
+import {BodyMainProps} from '../Components/Layout/Body/BodyMain/BodyMain'
+import { HeaderReviewProps } from '../Components/Layout/Header/HeaderReview/HeaderReview'
 
 export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
 
@@ -68,7 +70,7 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
         HeaderComponent={HeaderReview}
         FooterComponent={Footer}
         bodyProps={{}}
-        headerProps={{}}
+        headerProps={{isAuth: isAuth, currentFilm: films[0]}}
       />}>
         <Route
           path={AppRoutes.ADD_REVIEW}
