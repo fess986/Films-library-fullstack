@@ -5,6 +5,7 @@ type Props = {
 }
 
 const AddReview: React.FC<Props> = ({film}) => {
+  console.log(film);
   
   return (
     <section className="add-review__additional-film-info additional-film-info additional-film-info--add-review">

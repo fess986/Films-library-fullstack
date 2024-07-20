@@ -14,3 +14,4 @@ export const parseCommentDate = (date: string): string => {
 export const formatDate = (date: string) => {
   return moment(date).format('YYYY-MM-DD');
 }
+

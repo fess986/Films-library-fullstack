@@ -3,8 +3,6 @@ import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
 import { PageList } from "../../../../const/const";
 import { H1Hidden } from "../../../styled/Components";
 import Header from "../../../blocks/Header/Header";
-import { H2FilmTitle } from "./styles"
-
 
 export type HeaderReviewProps = {
   isAuth?: boolean,

@@ -24,9 +24,6 @@ import HeaderMain from '../Components/Layout/Header/HeaderMain/HeaderMain'
 import Footer from '../Components/Layout/Footer/Footer'
 import FooterFilmCard from '../Components/Layout/Footer/FooterFilmCard'
 
-import {BodyMainProps} from '../Components/Layout/Body/BodyMain/BodyMain'
-import { HeaderReviewProps } from '../Components/Layout/Header/HeaderReview/HeaderReview'
-
 export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
 
   return (
