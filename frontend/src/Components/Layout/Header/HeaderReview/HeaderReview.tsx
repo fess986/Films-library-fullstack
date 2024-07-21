@@ -11,8 +11,6 @@ export type HeaderReviewProps = {
 }
 
 const HeaderReview: React.FC<HeaderReviewProps> = ({ isAuth, currentFilm }) => {
-  console.log(currentFilm)
-  console.log(isAuth)
   return (
     <SectionHero>
       <HeroPicture $page={PageList.ADD_REVIEW} />
