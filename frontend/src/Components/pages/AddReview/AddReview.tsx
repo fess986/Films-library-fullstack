@@ -1,4 +1,5 @@
 import { FilmProps } from "../../../types/types";
+import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
 
 type Props = {
   film: FilmProps
@@ -9,9 +10,8 @@ const AddReview: React.FC<Props> = ({film}) => {
   
   return (
     <section className="add-review__additional-film-info additional-film-info additional-film-info--add-review">
-      <div className="additional-film-info__poster additional-film-info__poster--add-review">
-        <img className="additional-film-info__image" src="/images/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" />
-      </div>
+      <FilmCardPoster img={film.posterImage} title={film.name} center={true}/>
+
       <form action="#" className="additional-film-info__add-review-form add-review-form">
         <div className="add-review-form__rating-stars rating-stars">
           <input className="rating__input" id="star-10" type="radio" name="rating" defaultValue={10} />
