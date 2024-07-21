@@ -8,7 +8,7 @@ type FilmCardPosterProps = {
 
 const FilmCardPoster: React.FC<FilmCardPosterProps> = ({ img, title, center = false }) => {
   return (
-    <DivFilmCardPosterContainer isCentered={center}>
+    <DivFilmCardPosterContainer $isCentered={center}>
       <ImgFilmCardPoster src={img} alt={title} />
     </DivFilmCardPosterContainer>
   )
