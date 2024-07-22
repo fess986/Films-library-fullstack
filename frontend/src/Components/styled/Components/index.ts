@@ -11,6 +11,7 @@ export {Img} from "./Img/Img";
 
 export {Li} from "./Li/Li";
 export {Ul} from "./Ul/Ul";
+export {Textarea} from "./Textarea/Textarea";
 
 export {StyledLink} from "./Link/Link";
 export {Nav} from "./Nav/Nav";

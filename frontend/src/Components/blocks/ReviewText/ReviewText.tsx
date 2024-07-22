@@ -1,4 +1,5 @@
 import ReviewPostButton from "./ReviewPostButton/ReviewPostButton";
+import {DivReviewTextContainer, TextareaReviewText, DivReviewText} from "./styles";
 
 type ReviewTextProps = {
   text: string
@@ -6,12 +7,12 @@ type ReviewTextProps = {
 
 const ReviewText: React.FC<ReviewTextProps> = ({ text }) => {
   return (
-    <div className="add-review-form___review-text review-text">
-      <textarea className="review-text__input" name="review-text" id="review-text" placeholder="Review text" defaultValue={text} />
-      <div className="review-text__btn-container">
+    <DivReviewText>
+      <TextareaReviewText name="review-text" id="review-text" placeholder="Review text" defaultValue={text} />
+      <DivReviewTextContainer>
         <ReviewPostButton onClick={() => {}} />
-      </div>
-    </div>
+      </DivReviewTextContainer>
+    </DivReviewText>
   )
 }
 
