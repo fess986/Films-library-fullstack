@@ -29,4 +29,6 @@ export { H3 } from "./Title/H3";
 export {H1Hidden} from "./Title/H1Hidden";
 
 export {Button} from "./Buttons/Button";
+export {Input} from "./Input/Input";
+export {Label} from "./Label/Label";
 
