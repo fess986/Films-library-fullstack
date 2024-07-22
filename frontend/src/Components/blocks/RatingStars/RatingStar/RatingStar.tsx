@@ -1,3 +1,5 @@
+import { RatingInput, RatingLabel } from "./styles";
+
 type RatingStarProps = {
   rating: number,
   isCurrent: boolean
@@ -6,8 +8,8 @@ type RatingStarProps = {
 const RatingStar: React.FC<RatingStarProps> = ({ rating, isCurrent }) => {
   return (
     <>
-      <input className="rating__input" id={`star-${rating}`} type="radio" name="rating" defaultValue={ rating } defaultChecked={isCurrent} />
-      <label className="rating__label" htmlFor={`star-${rating}`}>{`Rating ${rating}`}</label>
+      <RatingInput id={`star-${rating}`} type="radio" name="rating" defaultValue={ rating } defaultChecked={isCurrent} />
+      <RatingLabel htmlFor={`star-${rating}`}>{`Rating ${rating}`}</RatingLabel>
     </>
   )
 }
