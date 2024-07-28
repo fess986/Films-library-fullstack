@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { StyledLink, Li, Nav, Ul } from "../../styled/Components";
 import { fontMedium, textColorMain } from "../../styled/Mixins/mixins";
 
-export const BreadcrumbLink = styled(StyledLink)<{ $active?: boolean }>`
+export const BreadcrumbLink = styled(StyledLink)<{ $isActive?: boolean }>`
 	display: inline-block;
 	height: ${(props) => props.theme.textSizeMedium};
 	max-width: 450px;
@@ -15,11 +15,14 @@ export const BreadcrumbLink = styled(StyledLink)<{ $active?: boolean }>`
 
   transition: transform .5s linear;
 
-  ${(props) => props.$active && `color: ${props.theme.textColorMainDark}`};
-
 	&:hover {
 		transform: scale(1.1);
 	}
+
+	${(props) => props.$isActive && `
+		color: ${props.theme.textColorMainDark};
+		opacity: 0.7;
+	`};
 `;
 
 export const BreadcrumbLi = styled(Li)`

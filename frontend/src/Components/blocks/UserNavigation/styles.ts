@@ -16,7 +16,7 @@ export const UserBlockItem = styled(Li)`
 `;
 
 type UserBlockProps = {
-	dark?: boolean;
+	$dark?: boolean;
 };
 
 export const UserBlockText = styled(UserBlockItem)<UserBlockProps>`
@@ -29,14 +29,14 @@ export const UserBlockText = styled(UserBlockItem)<UserBlockProps>`
 	transition: 0.5s color;
 
   ${(props) =>
-		props.dark && {
+		props.$dark && {
 			color: props.theme.textColorAdditional,
 			textShadow: "none",
 		}}
 
   &:hover {
     ${(props) => {
-			if (props.dark) {
+			if (props.$dark) {
 				return textColorMain;
 			} else {
 				return whiteTextStroke;
