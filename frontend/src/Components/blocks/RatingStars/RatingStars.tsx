@@ -8,7 +8,7 @@ type RatingStarsProps = {
 }
 
 const RatingStars: React.FC<RatingStarsProps> = ({ currentRating = 5 }) => {
-  console.log(currentRating)
+  
   return (
     <DivRatingStars>
 

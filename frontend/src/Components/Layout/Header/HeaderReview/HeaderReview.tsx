@@ -15,7 +15,7 @@ const HeaderReview: React.FC<HeaderReviewProps> = ({ isAuth, currentFilm }) => {
     <SectionHero>
       <HeroPicture $page={PageList.ADD_REVIEW} />
       <H1Hidden>Add review</H1Hidden>
-      <Header isAuth={isAuth} breadcrumbs $page={PageList.ADD_REVIEW} />
+      <Header isAuth={isAuth} breadcrumbs $page={PageList.ADD_REVIEW} isDark={false} />
 
       <DivFilmCard>
         <DivFilmInfo>
