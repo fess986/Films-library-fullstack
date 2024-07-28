@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { DivMainContainer, BodyMainStyled } from './styles';
 
 interface BodySignInProps {
   children?: ReactNode
@@ -6,13 +7,13 @@ interface BodySignInProps {
 
 const BodySignIn: React.FC<BodySignInProps> = ({ children }) => {
   return (
-<div className="main-page">
+    <BodyMainStyled>
 
-  <div className="main-page__container container">
-  { children }
-  </div>
-  
-</div>
+      <DivMainContainer>
+        {children}
+      </DivMainContainer>
+
+    </BodyMainStyled>
 
   )
 };
