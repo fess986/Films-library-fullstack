@@ -1,13 +1,13 @@
 import Header from "../../../blocks/Header/Header";
+import { SectionHero } from "./styles";
+import { H1Hidden } from "../../../styled/Components";
 
 const HeaderSignIn: React.FC = ( ) => {
   return (
-    <section className="add-review__hero-image hero">
-      <h1 className="visually-hidden">Films Library</h1>
-
+    <SectionHero>
+      <H1Hidden>Films Library</H1Hidden>
         <Header isDark={true} isAuth={false}/>
-
-    </section>
+    </SectionHero>
   )
 };
 
