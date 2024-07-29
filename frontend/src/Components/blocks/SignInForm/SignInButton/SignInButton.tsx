@@ -1,6 +1,8 @@
+import { ButtonSignIn } from "./styles";
+
 const SignInButton: React.FC = () => {
   return (
-    <button className="more-films__button sign-in__button" type="submit">Sign in</button>
+    <ButtonSignIn > Sign in </ButtonSignIn>
   )
 }
 
