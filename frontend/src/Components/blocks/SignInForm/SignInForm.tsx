@@ -1,6 +1,7 @@
 import SignInMessage from "./SignInMessage/SignInMessage";
 import SignInFields from "./SignInFields/SignInFields";
 import SignInButton from "./SignInButton/SignInButton";
+import { FormSignIn, DivFormContainerTop, DivFormContainerBottom, SectionFormContainer } from "./styles";
 
 // type SignInFormProps = {
 
@@ -8,10 +9,10 @@ import SignInButton from "./SignInButton/SignInButton";
 
 const SignInForm: React.FC = () => {
   return (
-    <section className="sign-in__form-container form-container">
-      <div className="form-container--bottom">
-        <div className="form-container--top">
-          <form action="#" className="sign-in__form sign-in">
+    <SectionFormContainer>
+      <DivFormContainerBottom>
+        <DivFormContainerTop>
+          <FormSignIn action="#">
             <SignInMessage isError={false}>
               Please sign in if you have an account or sign up if you don’t
             </SignInMessage>
@@ -19,10 +20,10 @@ const SignInForm: React.FC = () => {
             <SignInFields />
 
             <SignInButton />
-          </form>
-        </div>
-      </div>
-    </section>
+          </FormSignIn>
+        </DivFormContainerTop>
+      </DivFormContainerBottom>
+    </SectionFormContainer>
   )
 }
 
