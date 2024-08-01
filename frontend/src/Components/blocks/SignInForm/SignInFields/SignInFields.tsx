@@ -1,19 +1,18 @@
-// type SignInFieldsProps = {
-
-// }
-
+import { DivSignInFields, DivSignInField, DivSignInInputEmail, DivSignInInputPass } from "./styles";
+import { DivHidden } from "../../../styled/Components";
 const SignInFields: React.FC = () => {
   return (
-    <div className="sign-in__fields">
+    <DivSignInFields>
+      <DivSignInField>
+        <DivSignInInputEmail name="user-email" id="user-email">
+        </DivSignInInputEmail>
+        <DivHidden as={"label"} htmlFor="user-email">Email address</DivHidden>
+      </DivSignInField>
       <div className="sign-in__field">
-        <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" />
-        <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
+        <DivSignInInputPass name="user-password" id="user-password" />
+        <DivHidden as={"label"} htmlFor="user-password">Password</DivHidden>
       </div>
-      <div className="sign-in__field">
-        <input className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" />
-        <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
-      </div>
-    </div>
+    </DivSignInFields>
   )
 }
 
