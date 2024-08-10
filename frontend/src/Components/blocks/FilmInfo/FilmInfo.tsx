@@ -15,7 +15,7 @@ const FilmInfo: React.FC<FilmInfoProps> = ({film}) => {
 
       <DivFilmInfo>
         <FilmCardDescription film={film} />
-        <FilmButtons />
+        <FilmButtons callback={() => {console.log('callback1')}} />
       </DivFilmInfo>
     </DivFilmCard>
   )

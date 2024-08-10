@@ -1,8 +1,13 @@
+import React from "react";
 import { StyledButton } from "../styles";
 
-const ButtonAdd = (): JSX.Element => {
+type ButtonAddProps = {
+  callback: () => void
+}
+
+const ButtonAdd : React.FC<ButtonAddProps> = ( {callback} ) => {
   return (
-    <StyledButton>
+    <StyledButton onClick={callback}>
       <svg viewBox="0 0 19 20" width={19} height={20}>
         <use xlinkHref="#add" />
       </svg>
