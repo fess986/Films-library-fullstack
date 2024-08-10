@@ -91,8 +91,7 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
 
         <Route
           path={AppRoutes.MY_LIST}
-          element={<MyList />
-          }
+          element={<MyList films={films}/>}
         />
       </Route>
 
