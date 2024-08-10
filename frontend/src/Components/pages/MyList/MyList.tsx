@@ -1,5 +1,6 @@
 import FilmList from "../../blocks/FilmList/FilmList";
 import { FilmProps } from "../../../types/types";
+import MoreFilmsButton from "../../UI/Buttons/MoreFilmsButton/MoreFilmsButton";
 
 type MyListProps = {
   films: FilmProps[],
@@ -15,9 +16,8 @@ const MyList: React.FC<MyListProps> = ( { films } ) => {
 
         <FilmList films={films} />
 
-        <div className="catalog__more-films-button more-films-button">
-          <button className="more-films__button" type="button">Show more</button>
-        </div>
+        <MoreFilmsButton />
+
       </section>
     </div>
 
