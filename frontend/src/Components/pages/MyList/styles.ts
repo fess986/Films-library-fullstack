@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { H1Hidden, H2 } from "../../styled/Components";
+import { H1Hidden, H2, Section } from "../../styled/Components";
 import { fontH2 } from "../../styled/Mixins/mixins";
 
 export const H2Hidden = styled(H1Hidden)`
@@ -10,4 +10,13 @@ export const H2Hidden = styled(H1Hidden)`
 export const H2CatalogTitle = styled(H2)`
 ${fontH2}
 `
+export const SectionCatalog = styled(Section)`
+	width: 100%;
+  width: 1200px;
+	max-width: 1200px;
 
+	padding: 20px 75px;
+`
+export const SectionCatalogContainer = styled(Section)`
+width: 1200px;
+`

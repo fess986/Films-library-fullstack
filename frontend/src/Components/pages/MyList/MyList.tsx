@@ -2,7 +2,7 @@ import FilmList from "../../blocks/FilmList/FilmList";
 import { FilmProps } from "../../../types/types";
 import MoreFilmsButton from "../../UI/Buttons/MoreFilmsButton/MoreFilmsButton";
 
-import { H2Hidden, H2CatalogTitle } from "./styles";
+import { H2Hidden, H2CatalogTitle, SectionCatalog, SectionCatalogContainer } from "./styles";
 
 type MyListProps = {
   films: FilmProps[],
@@ -11,8 +11,8 @@ type MyListProps = {
 const MyList: React.FC<MyListProps> = ( { films } ) => {
   console.log(films);
   return (
-    <div className="main-page__content main-page-content">
-      <section className="main-page-content__catalog catalog">
+    <SectionCatalogContainer>
+      <SectionCatalog>
 
         <H2Hidden as="h2">My list</H2Hidden>
         <H2CatalogTitle>My list</H2CatalogTitle>
@@ -21,8 +21,8 @@ const MyList: React.FC<MyListProps> = ( { films } ) => {
 
         <MoreFilmsButton />
 
-      </section>
-    </div>
+      </SectionCatalog>
+    </SectionCatalogContainer>
 
   )
 };
