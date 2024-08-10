@@ -1,18 +1,20 @@
 import React, { ReactNode } from 'react';
 import InjectListSVG from '../../../UI/injectListSVG/injectListSVG';
 
+import { DivPlayer } from './styles';
+
 interface BodyPlayerProps {
   children?: ReactNode
 }
 
 const BodyPlayer: React.FC<BodyPlayerProps> = ({ children }) => {
   return (
-    <div className="player-page">
-
+    <DivPlayer>
       <InjectListSVG play pause fullScreen/>
 
       { children }
-    </div>
+      
+    </DivPlayer>
 
   )
 };
