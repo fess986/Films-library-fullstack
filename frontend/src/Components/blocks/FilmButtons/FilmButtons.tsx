@@ -5,7 +5,7 @@ import { DivFilmButtons } from "./styles";
 const FilmButtons: React.FC = () => {
   return (
     <DivFilmButtons>
-      <ButtonPlay />
+      <ButtonPlay id={1}/>
       <ButtonAdd />
     </DivFilmButtons>
   )
