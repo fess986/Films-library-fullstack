@@ -14,6 +14,7 @@ export type FilmProps = {
   genre: string[];
   released: number;
   isFavorite: boolean;
+  playerImage?: string;
 }
 
 export type Review = {

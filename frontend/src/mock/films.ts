@@ -26,6 +26,7 @@ export const Films : FilmProps[] = [
     name: 'Moonrise Kingdom',
     posterImage: '/images/posters/Moonrise Kingdom.jpg',
     previewImage: '/images/moonrise-kingdom.jpg',
+    playerImage: '/images/posters/The grand budapest hotel poster.jpg',
     videoLink: 'https://download.blender.org/peach/trailer/trailer_400p.ogg',
     previewVideoLink: 'https://download.blender.org/peach/trailer/trailer_400p.ogg',
     description: 'A pair of young lovers flee their New England town, which causes a local search party to fan out to find them',

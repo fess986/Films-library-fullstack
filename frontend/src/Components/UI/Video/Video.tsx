@@ -1,3 +1,5 @@
+import {VideoPlayer} from "./styles";
+
 type VideoProps = {
   poster: string,
   src?: string,
@@ -5,9 +7,7 @@ type VideoProps = {
 
 const Video: React.FC<VideoProps> = ({ poster, src }) => {
   return (
-    <>
-      <video src={src ? src : '#'} className="player__video" poster={poster} />
-    </>
+      <VideoPlayer src={src ? src : '#'} poster={poster} />
   )
 }
 
