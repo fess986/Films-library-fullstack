@@ -103,7 +103,7 @@ export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
 
         <Route
           path={AppRoutes.PLAYER}
-          element={<Player />}
+          element={<Player film={films[0]}/>}
         />
       </Route>
 
