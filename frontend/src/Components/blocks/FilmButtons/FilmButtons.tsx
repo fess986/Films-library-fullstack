@@ -2,11 +2,14 @@ import ButtonAdd from "../../UI/Buttons/ButtonAdd/ButtonAdd";
 import ButtonPlay from "../../UI/Buttons/ButtonPlay/ButtonPlay";
 import { DivFilmButtons } from "./styles";
 
-const FilmButtons: React.FC = () => {
+type FilmButtonsProps = {
+  callback: () => void
+}
+const FilmButtons: React.FC<FilmButtonsProps> = ( {callback} ) => {
   return (
     <DivFilmButtons>
       <ButtonPlay id={1}/>
-      <ButtonAdd />
+      <ButtonAdd callback={callback} />
     </DivFilmButtons>
   )
 }
