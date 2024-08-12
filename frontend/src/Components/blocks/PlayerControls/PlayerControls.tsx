@@ -2,25 +2,30 @@ import ButtonPlayerPlay from "../../UI/Buttons/ButtonPlayerPlay/ButtonPlayerPlay
 import ButtonFullScreen from "../../UI/Buttons/ButtonFullScreen/ButtonFullScreen";
 import ProgressBar from "../../UI/ProgressBar/ProgressBar";
 
+import {DivConrolRow, DivControlsTime, DivControlsName, DivControlsContainer} from "./styles";
+
 const PlayerControls: React.FC = () => {
   return (
-    <div className="player__controls controls">
-      <div className="controls__row">
+    <DivControlsContainer>
+      <DivConrolRow>
 
-        <ProgressBar value={30} max={100} />
+        <ProgressBar value={30} max={100} />  {/* дописать */}
 
-        <div className="controls__time-value">1:30:29</div>
-      </div>
-      <div className="controls__row">
+        <DivControlsTime>1:30:29</DivControlsTime>
+      </DivConrolRow>
 
-        <ButtonPlayerPlay callback={() => { console.log('нажата кнопка плеера') }} />
+      <DivConrolRow>
 
-        <div className="controls__name">Transpotting</div>
 
-        <ButtonFullScreen callback={() => { console.log('нажата кнопка фуллскрина') }} />
+        <ButtonPlayerPlay callback={() => { console.log('нажата кнопка плеера') }} /> {/* дописать */}
 
-      </div>
-    </div>
+        <DivControlsName>Transpotting</DivControlsName>
+
+
+        <ButtonFullScreen callback={() => { console.log('нажата кнопка фуллскрина') }} />  {/* дописать */}
+
+      </DivConrolRow>
+    </DivControlsContainer>
   )
 }
 
