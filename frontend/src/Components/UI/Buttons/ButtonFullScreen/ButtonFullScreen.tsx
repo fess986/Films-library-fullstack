@@ -1,15 +1,17 @@
+import { ButtonFullScreenStyle, SvgIcon } from "./styles.ts";
+
 type ButtonFullScreenProps = {
   callback: () => void
 }
 
-const ButtonFullScreen: React.FC<ButtonFullScreenProps> = ({callback}) => {
+const ButtonFullScreen: React.FC<ButtonFullScreenProps> = ({ callback }) => {
   return (
-    <button onClick={callback} type="button" className="controls__full-screen-button full-screen-button">
-            <svg className="full-screen-button__icon" viewBox="0 0 50 50" width={27} height={27}>
-              <use xlinkHref="#full-screen" />
-            </svg>
-            <span>Full screen</span>
-          </button>
+    <ButtonFullScreenStyle onClick={callback} >
+      <SvgIcon viewBox="0 0 50 50" width={27} height={27}>
+        <use xlinkHref="#full-screen" />
+      </SvgIcon>
+      <span>Full screen</span>
+    </ButtonFullScreenStyle>
   )
 }
 
