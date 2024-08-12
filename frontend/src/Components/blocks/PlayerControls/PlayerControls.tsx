@@ -9,7 +9,7 @@ const PlayerControls: React.FC = () => {
     <DivControlsContainer>
       <DivConrolRow>
 
-        <ProgressBar value={30} max={100} />  {/* дописать */}
+        <ProgressBar value={30} max={100} name="Toggler" />  {/* дописать */}
 
         <DivControlsTime>1:30:29</DivControlsTime>
       </DivConrolRow>
