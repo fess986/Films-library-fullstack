@@ -34,3 +34,4 @@ export {Button} from "./Buttons/Button";
 export {Input} from "./Input/Input";
 export {Label} from "./Label/Label";
 export {Video} from "./Video/Video";
+export {Progress} from "./Progress/Progress";
