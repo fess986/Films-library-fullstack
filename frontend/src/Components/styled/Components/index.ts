@@ -8,6 +8,7 @@ export {Header} from "./Header/Header";
 export {Footer} from "./Footer/Footer";
 
 export {Img} from "./Img/Img";
+export {Svg} from "./Svg/Svg";
 
 export {Li} from "./Li/Li";
 export {Ul} from "./Ul/Ul";
