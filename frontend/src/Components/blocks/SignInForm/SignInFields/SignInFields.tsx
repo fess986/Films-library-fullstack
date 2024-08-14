@@ -8,10 +8,10 @@ const SignInFields: React.FC = () => {
         </DivSignInInputEmail>
         <DivHidden as={"label"} htmlFor="user-email">Email address</DivHidden>
       </DivSignInField>
-      <div className="sign-in__field">
+      <DivSignInField>
         <DivSignInInputPass name="user-password" id="user-password" />
         <DivHidden as={"label"} htmlFor="user-password">Password</DivHidden>
-      </div>
+      </DivSignInField>
     </DivSignInFields>
   )
 }
