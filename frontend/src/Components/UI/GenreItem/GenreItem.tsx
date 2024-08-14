@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom"
+import { LiGenresListItem, LinkGenresListItem } from "./styles";
 
 type GenreItemProps = {
   genre: string,
@@ -7,9 +7,9 @@ type GenreItemProps = {
 
 const GenreItem: React.FC<GenreItemProps> = ({ genre, active }) => {
   return (
-    <li className="genres-list__item">
-      <a href="#" className={`genres-list__link ${active ? 'genres-list__link--active' : ''}`}>{genre}</a>
-    </li>
+    <LiGenresListItem>
+      <LinkGenresListItem to={'#'} $active={active}>{genre}</LinkGenresListItem>
+    </LiGenresListItem>
   )
 }
 

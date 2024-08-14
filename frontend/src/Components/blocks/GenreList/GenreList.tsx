@@ -1,5 +1,6 @@
 import { FilmProps } from "../../../types/types";
 import GenreItem from "../../UI/GenreItem/GenreItem";
+import { UlGenreList } from "./styles";
 
 type GenreListProps = {
   films: FilmProps[]
@@ -15,10 +16,10 @@ const GenreList: React.FC<GenreListProps> = ({films}) => {
 const uniqueGenres = getUniqueGenres(films);
 
   return (
-    <ul className="catalog__genres-list genres-list">
+    <UlGenreList>
       <GenreItem genre={'All genres'} active />
-      {uniqueGenres && uniqueGenres.map(genre => <GenreItem key={genre} genre={genre} />)}
-    </ul>
+      {uniqueGenres && uniqueGenres.map(genre => <GenreItem key={genre} genre={genre} active={false}/>)}
+    </UlGenreList>
   )
 }
 
