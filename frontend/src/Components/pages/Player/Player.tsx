@@ -13,7 +13,6 @@ const Player: React.FC<PlayerProps> = ( { film } ) => {
     <div className="player-page__player player">
       <Video poster={film?.playerImage ? film?.playerImage : '/images/player-poster.jpg'} />
 
-      {/* <button type="button" className="player__exit-button exit-button">Exit</button> */}
       <ButtonPlayerExit callback={() => {console.log('нажата кнопка плеера')}} />
 
       <PlayerControls />
