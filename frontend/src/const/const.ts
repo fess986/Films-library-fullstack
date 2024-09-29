@@ -19,6 +19,19 @@ export const PageList = {
 	SIGN_IN: "sign-in",
 } as const;
 
+export enum StoreNames {
+  App = 'APP',
+  Films = 'FILMS',
+  Reviews = 'REVIEWS',
+  User = 'USER',
+}
+
+export enum AuthStatus {
+	AUTH = "AUTH",
+	NO_AUTH = "NO_AUTH",
+	UNKNOWN = "UNKNOWN",
+} 
+
 export type PageList = (typeof PageList)[keyof typeof PageList];
 
 export const FilmMenuList = ["Overview", "Details", "Reviews"] as const;
