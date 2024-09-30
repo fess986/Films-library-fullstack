@@ -57,3 +57,14 @@ export const appSlice = createSlice({
     },
   },
 });
+
+export const {
+  setFilmsShownCount,
+  setActiveGenre,
+  setIsActiveFilmLoaded,
+  setIsFilmsLoaded,
+  setIsSimilarFilmsLoaded,
+  setIsFavoriteFilmsLoaded,
+  setIsPromoFilmLoaded,
+  setError,
+} = appSlice.actions;
