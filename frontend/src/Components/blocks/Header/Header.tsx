@@ -5,10 +5,11 @@ import { HeaderMain } from "./styles"
 
 import { PageList } from "../../../const/const"
 import ColorProvider from "../../../context/ColorContext/colorContext"
+import { AuthStatus } from "../../../const/const"
 
 type HeaderProps = {
   breadcrumbs?: boolean,
-  isAuth?: boolean,
+  isAuth?: AuthStatus,
   $page?: PageList,
   isDark?: boolean
 }

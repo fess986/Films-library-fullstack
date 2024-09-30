@@ -1,12 +1,15 @@
 import { FilmProps } from "../../../../types/types";
-import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
 import { PageList } from "../../../../const/const";
+import { AuthStatus } from "../../../../const/const";
+
+import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
 import { H1Hidden } from "../../../styled/Components";
 import Header from "../../../blocks/Header/Header";
+
 import { H2FilmTitle, DivFilmInfo, DivFilmCard, SectionHero } from "./styles";
 
 export type HeaderReviewProps = {
-  isAuth?: boolean,
+  isAuth?: AuthStatus,
   currentFilm: FilmProps,
 }
 

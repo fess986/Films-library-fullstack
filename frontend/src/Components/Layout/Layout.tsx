@@ -23,7 +23,7 @@ const Layout = <HP, BP>({
       HeaderComponent &&
         // @ts-expect-error HeaderComponent - ругается на то, что возможные передаваемые параметры не поддерживаются, если пробовать её исправить, потом при использовании компонента Layout все компоненты нужно будет приводить к этому типу, что очень сильно тормозит разработку, и в итоге TS уже не помогает, а мешает разработке
         <HeaderComponent
-          {...headerProps} />}
+          {...headerProps as HP} />}
       <Outlet />
       {FooterComponent && <FooterComponent />}
     </BodyComponent>

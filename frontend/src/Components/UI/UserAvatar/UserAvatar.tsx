@@ -1,7 +1,8 @@
 import { ImgUserAvatar, DivUserAvatar } from "./styles";
+import { AuthStatus } from "../../../const/const";
 
 type UserAvatarProps = {
-  isAuth?: boolean
+  isAuth?: AuthStatus
 }
 
 // добавить вариант с isAuth=false

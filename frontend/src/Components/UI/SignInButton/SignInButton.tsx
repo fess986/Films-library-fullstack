@@ -1,8 +1,9 @@
 import { AppRoutes } from "../../../const/const"
 import { LinkSignIn } from "./styles"
+import { AuthStatus } from "../../../const/const"
 
 type SignInButtonProps = {
-  isAuth?: boolean
+  isAuth?: AuthStatus
 }
 
 const SignIn: React.FC<SignInButtonProps> = ({ isAuth }) => {
