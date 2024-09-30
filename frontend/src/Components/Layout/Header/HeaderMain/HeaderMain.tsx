@@ -5,8 +5,10 @@ import { FilmProps } from "../../../../types/types";
 import { H1Hidden } from "../../../styled/Components/Title/H1Hidden";
 import { SectionHero } from "./styles";
 
+import { AuthStatus } from "../../../../const/const";
+
 type HeaderMainProps = {
-  isAuth?: boolean,
+  isAuth: AuthStatus,
   currentFilm: FilmProps,
 }
 const HeaderMain: React.FC<HeaderMainProps> = ( { isAuth, currentFilm } ) => {

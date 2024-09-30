@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { AppRoutes } from '../const/const'
 import { FilmProps } from '../types/types'
+import { AuthStatus } from '../const/const'
 
 import Layout from '../Components/Layout/Layout'
 
@@ -24,7 +25,7 @@ import HeaderMain from '../Components/Layout/Header/HeaderMain/HeaderMain'
 import Footer from '../Components/Layout/Footer/Footer'
 import FooterFilmCard from '../Components/Layout/Footer/FooterFilmCard'
 
-export default function useRoutes(isAuth: boolean, films: FilmProps[]) {
+export default function useRoutes(isAuth: AuthStatus, films: FilmProps[]) {
 
   return (
     <Routes>

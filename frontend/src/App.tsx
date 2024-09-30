@@ -1,14 +1,15 @@
-// import './App.css'
 import { BrowserRouter } from 'react-router-dom'
-
-import { Films } from './mock/films'
+import { useSelector } from 'react-redux';
+import { getFilmList } from './store/films/filmsSelector';
+import { getIsAuth } from './store/user/userSelectors';
 
 import useRoutes from './hooks/useRoutes';
 
 function App() {
-
-  const films = Films;
-  const isAuth = false;
+  // const films = Films;
+  const films = useSelector(getFilmList);
+  const isAuth = useSelector(getIsAuth);
+  
   const routes = useRoutes(isAuth, films)
 
   return (
