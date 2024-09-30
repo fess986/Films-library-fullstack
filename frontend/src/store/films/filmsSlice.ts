@@ -40,3 +40,11 @@ export const filmsSlice = createSlice({
     },
   },
 });
+
+export const {
+  setActiveFilm,
+  setFilmList,
+  setSimilarFilmList,
+  setMyFilmList,
+  setPromoFilm
+} = filmsSlice.actions;
