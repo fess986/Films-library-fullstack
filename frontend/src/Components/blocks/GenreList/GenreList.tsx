@@ -17,14 +17,13 @@ const getUniqueGenres = (films: FilmProps[]) : string[] => {
 
 const GenreList: React.FC<GenreListProps> = ({films}) => {
 const activeGenre = useSelector(getActiveGenre);
-console.log(activeGenre)
 
 const uniqueGenres = getUniqueGenres(films);
 
   return (
     <UlGenreList>
-      <GenreItem genre={'All genres'} active />
-      {uniqueGenres && uniqueGenres.map(genre => <GenreItem key={genre} genre={genre} active={false}/>)}
+      <GenreItem genre={'All genres'} active={activeGenre === 'All genres'} />
+      {uniqueGenres && uniqueGenres.map(genre => <GenreItem key={genre} genre={genre} active={activeGenre === genre}/>)}
     </UlGenreList>
   )
 }
