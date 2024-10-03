@@ -6,7 +6,6 @@ import { getIsAuth } from './store/user/userSelectors';
 import useRoutes from './hooks/useRoutes';
 
 function App() {
-  // const films = Films;
   const films = useSelector(getFilmList);
   const isAuth = useSelector(getIsAuth);
   
