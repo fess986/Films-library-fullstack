@@ -9,14 +9,10 @@ type GenreItemProps = {
 }
 
 const GenreItem: React.FC<GenreItemProps> = ({ genre, active }) => {
-
   const dispatch = useDispatch<AppDispatch>()
   const setActive = () => {
     dispatch(setActiveGenre(genre))
-    console.log(genre)
-    console.log('надо добавить фильтрацию фильмов по жанру')
   }
-  // console.log(dispatch.toString())
 
   return (
     <LiGenresListItem>

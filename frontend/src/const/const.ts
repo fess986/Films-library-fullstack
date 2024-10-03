@@ -32,6 +32,8 @@ export enum AuthStatus {
 	UNKNOWN = "UNKNOWN",
 } 
 
+export const ALL_GENRES = 'All genres';
+
 export type PageList = (typeof PageList)[keyof typeof PageList];
 
 export const FilmMenuList = ["Overview", "Details", "Reviews"] as const;

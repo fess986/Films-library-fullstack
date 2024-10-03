@@ -1,17 +1,19 @@
-import { FilmProps } from "../../../types/types";
 import SmallFilmCard from "../../UI/SmallFilmCard/SmallFilmCard";
 import { DivFilmList } from "./styles";
 
-type FilmListProps = {
-  films: FilmProps[],
-}
+import { getFilteredFilmList } from "../../../store/films/filmsSelector";
+import { getFilmsShownCount } from "../../../store/app/appSelectors";
+import { useSelector } from "react-redux";
 
-const FilmList: React.FC<FilmListProps> = ({ films }) => {
+const FilmList: React.FC = () => {
+
+  const filteredFilmList = useSelector(getFilteredFilmList);  // получаем отфильтрованный по активному жанру список фильмов
+
+  const filmsShownCount = useSelector(getFilmsShownCount);  // получаем количество отображаемых фильмов
+
   return (
     <DivFilmList>
-      <SmallFilmCard film={films[3]} />
-
-      {films.slice(0, 7).map(film => <SmallFilmCard key={film.id} film={film} />)}
+      {filteredFilmList.slice(0, filmsShownCount).map(film => <SmallFilmCard key={film.id} film={film} />)}
     </DivFilmList>
   )
 }

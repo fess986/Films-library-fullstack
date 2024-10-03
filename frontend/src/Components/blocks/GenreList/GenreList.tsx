@@ -4,6 +4,7 @@ import { UlGenreList } from "./styles";
 
 import { useSelector } from "react-redux";
 import { getActiveGenre } from "../../../store/app/appSelectors";
+import {ALL_GENRES} from "../../../const/const";
 
 type GenreListProps = {
   films: FilmProps[]
@@ -22,7 +23,7 @@ const uniqueGenres = getUniqueGenres(films);
 
   return (
     <UlGenreList>
-      <GenreItem genre={'All genres'} active={activeGenre === 'All genres'} />
+      <GenreItem genre={ALL_GENRES} active={activeGenre === ALL_GENRES} />
       {uniqueGenres && uniqueGenres.map(genre => <GenreItem key={genre} genre={genre} active={activeGenre === genre}/>)}
     </UlGenreList>
   )
