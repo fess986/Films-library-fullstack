@@ -14,7 +14,7 @@ const Main: React.FC<MainProps> = ({ films }) => {
       <SectionCatalog>
         <H2Hidden as="h2">Catalog</H2Hidden>
         <GenreList films={films} />
-        <FilmList films={films} />
+        <FilmList />
         <MoreFilmsButton />
       </SectionCatalog>
     </DivCatalogContent>
