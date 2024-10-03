@@ -5,6 +5,9 @@ import { filmsSlice } from "./films/filmsSlice";
 import { reviewsSlice } from "./reviews/reviewsSlice";
 import { userSlice } from "./user/userSlice";
 
+import api from "../api/api";
+console.log(api);
+
 export const store = configureStore({
   reducer: {
     [StoreNames.App]: appSlice.reducer,
