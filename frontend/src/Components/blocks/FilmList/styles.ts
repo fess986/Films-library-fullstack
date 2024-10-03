@@ -8,5 +8,6 @@ export const DivFilmList = styled(Div)`
 
 	width: 100%;
 	width: 1050px;
+	min-height: 170px;
 `;
 
