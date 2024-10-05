@@ -1,14 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 import { StoreNames } from "../const/const";
 import { appSlice } from "./app/appSlice";
 import { filmsSlice } from "./films/filmsSlice";
 import { reviewsSlice } from "./reviews/reviewsSlice";
 import { userSlice } from "./user/userSlice";
-
-import api from "../api/api";
-console.log(api);
-
-
 
 export const store = configureStore({
   reducer: {
@@ -21,3 +17,5 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();

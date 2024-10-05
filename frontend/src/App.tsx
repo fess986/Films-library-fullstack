@@ -12,8 +12,13 @@ function App() {
 
   useEffect(() => {
     const fetchFunc = async () => {
-      const filmsF = await api.get('/films').then(() => Films)
-      console.log(filmsF);
+      try {
+        const filmsF = await api.get('/films').then(() => Films);
+        console.log(filmsF);
+      } catch (error) {
+        console.log('error......................');
+        console.log(error);
+      }
     }
 
     fetchFunc()

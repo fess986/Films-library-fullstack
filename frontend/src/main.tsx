@@ -9,14 +9,12 @@ import { setAuthStatus } from './store/user/userSlice.ts'
 import { setActiveFilm, setFilmList } from './store/films/filmsSlice.ts'
 
 import { AuthStatus } from './const/const.ts'
+import { Films } from './mock/films.ts'
+
 import { defaultTheme } from './Components/styled/theme/defaultTheme.ts'
 import GlobalStyles from './Components/styled/GlobalStyles/globalStyles.ts'
-import { Films } from './mock/films.ts'
-// import { getActiveGenre } from './store/app/appSelectors.ts'
-
 import './styles/styles.css'
 
-// console.log(getActiveGenre(store.getState()))  
 store.dispatch(setAuthStatus(AuthStatus.NO_AUTH))
 store.dispatch(setFilmList(Films));
 store.dispatch(setActiveFilm(Films[0]));
