@@ -4,12 +4,6 @@ import { useSelector } from 'react-redux';
 
 import { getFilmList } from './store/films/filmsSelector';
 import { getIsAuth } from './store/user/userSelectors';
-// import api from './api/api';
-import { Films } from './mock/films';
-import { store } from './store';
-import { setActiveFilm, setFilmList } from './store/films/filmsSlice';
-import { AuthStatus } from './const/const';
-import { setAuthStatus } from './store/user/userSlice';
 import { fetchFilms } from './store/api-actions';
 import { useAppDispatch } from './store';
 
@@ -22,6 +16,7 @@ function App() {
   // store.dispatch(setFilmList(Films));
   // store.dispatch(setActiveFilm(Films[0]));
 
+  // фетчим фильмы, по окончанию загрузки устанавливаем флаг isFilmsLoaded в true
   useEffect(() => {
     dispatch(fetchFilms());
   }, [dispatch]);
