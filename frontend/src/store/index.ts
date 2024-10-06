@@ -5,6 +5,7 @@ import { appSlice } from "./app/appSlice";
 import { filmsSlice } from "./films/filmsSlice";
 import { reviewsSlice } from "./reviews/reviewsSlice";
 import { userSlice } from "./user/userSlice";
+import api from "../api/api";
 
 export const store = configureStore({
   reducer: {
@@ -12,7 +13,9 @@ export const store = configureStore({
     [StoreNames.Films]: filmsSlice.reducer,
     [StoreNames.Reviews]: reviewsSlice.reducer,
     [StoreNames.User]: userSlice.reducer,
-  },
+  }, middleware: getDefaultMiddleware => getDefaultMiddleware(
+    {thunk: {extraArgument: api}}
+  ),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

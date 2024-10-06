@@ -32,6 +32,10 @@ export enum AuthStatus {
 	UNKNOWN = "UNKNOWN",
 } 
 
+export enum ApiActions {
+  FETCH_FILMS = 'films/fetchFilms'
+}
+
 export const ALL_GENRES = 'All genres';
 
 export type PageList = (typeof PageList)[keyof typeof PageList];
