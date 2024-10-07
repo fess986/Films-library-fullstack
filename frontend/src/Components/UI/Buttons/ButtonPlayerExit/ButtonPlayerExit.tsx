@@ -1,12 +1,19 @@
+import { useNavigate } from "react-router-dom";
+
+import {AppRoutes} from "../../../../const/const";
 import {ButtonExit} from "./styles";
+import { resetFilmsShownCount } from "../../../../store/app/appSlice";
+import { useAppDispatch } from "../../../../store";
 
-type ButtonPlayerExitProps = {
-  callback: () => void,
-}
 
-const ButtonPlayerExit: React.FC<ButtonPlayerExitProps> = ({callback}) => {
+const ButtonPlayerExit: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   return (
-    <ButtonExit onClick={callback}>Exit</ButtonExit>
+    <ButtonExit onClick={() => {dispatch(resetFilmsShownCount())
+    navigate(AppRoutes.ROOT)
+    }}>Exit</ButtonExit>
   )
 }
 
