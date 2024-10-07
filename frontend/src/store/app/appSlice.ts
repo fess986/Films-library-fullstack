@@ -14,8 +14,8 @@ type AppState = {
   error: string | null,
 }
 
-const initialAppState : AppState = {
-  filmsShownCount: 4,
+export const initialAppState : AppState = {
+  filmsShownCount: 5,
   activeGenre: 'All genres',
 
   isActiveFilmLoaded: false,
@@ -52,6 +52,9 @@ export const appSlice = createSlice({
     setIsPromoFilmLoaded: (state, action : PayloadAction<boolean>) => {
       state.isPromoFilmLoaded = action.payload;
     },
+    resetFilmsShownCount: (state) => {
+      state.filmsShownCount = initialAppState.filmsShownCount;
+    },
     setError: (state, action : PayloadAction<string | null>) => {
       state.error = action.payload;
     },
@@ -67,4 +70,5 @@ export const {
   setIsFavoriteFilmsLoaded,
   setIsPromoFilmLoaded,
   setError,
+  resetFilmsShownCount
 } = appSlice.actions;
