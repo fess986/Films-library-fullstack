@@ -15,7 +15,7 @@ type AppState = {
 }
 
 const initialAppState : AppState = {
-  filmsShownCount: 8,
+  filmsShownCount: 4,
   activeGenre: 'All genres',
 
   isActiveFilmLoaded: false,
