@@ -6,7 +6,7 @@ const HeaderSignIn: React.FC = ( ) => {
   return (
     <SectionHero>
       <H1Hidden>Films Library</H1Hidden>
-        <Header isDark={true} isAuth={false}/>
+        <Header isDark={true} />
     </SectionHero>
   )
 };

@@ -5,18 +5,15 @@ import { FilmProps } from "../../../../types/types";
 import { H1Hidden } from "../../../styled/Components/Title/H1Hidden";
 import { SectionHero } from "./styles";
 
-import { AuthStatus } from "../../../../const/const";
-
 type HeaderMainProps = {
-  isAuth: AuthStatus,
   currentFilm: FilmProps,
 }
-const HeaderMain: React.FC<HeaderMainProps> = ( { isAuth, currentFilm } ) => {
+const HeaderMain: React.FC<HeaderMainProps> = ( { currentFilm } ) => {
   return (
     <SectionHero>
       <HeroPicture />
       <H1Hidden>Films Library</H1Hidden>
-      <Header isAuth={isAuth}/>
+      <Header />
       <FilmInfo film={currentFilm} />
     </SectionHero>
   )

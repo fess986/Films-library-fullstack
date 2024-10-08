@@ -1,6 +1,5 @@
 import { FilmProps } from "../../../../types/types";
 import { PageList } from "../../../../const/const";
-import { AuthStatus } from "../../../../const/const";
 
 import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
 import { H1Hidden } from "../../../styled/Components";
@@ -9,16 +8,15 @@ import Header from "../../../blocks/Header/Header";
 import { H2FilmTitle, DivFilmInfo, DivFilmCard, SectionHero } from "./styles";
 
 export type HeaderReviewProps = {
-  isAuth?: AuthStatus,
   currentFilm: FilmProps,
 }
 
-const HeaderReview: React.FC<HeaderReviewProps> = ({ isAuth, currentFilm }) => {
+const HeaderReview: React.FC<HeaderReviewProps> = ({  currentFilm }) => {
   return (
     <SectionHero>
       <HeroPicture $page={PageList.ADD_REVIEW} />
       <H1Hidden>Add review</H1Hidden>
-      <Header isAuth={isAuth} breadcrumbs $page={PageList.ADD_REVIEW} isDark={false} />
+      <Header breadcrumbs $page={PageList.ADD_REVIEW} isDark={false} />
 
       <DivFilmCard>
         <DivFilmInfo>

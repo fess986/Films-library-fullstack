@@ -14,7 +14,7 @@ const Player: React.FC<PlayerProps> = ( { film } ) => {
     <DivPlayerContainer>
       <Video poster={film?.playerImage ? film?.playerImage : '/images/player-poster.jpg'} />
 
-      <ButtonPlayerExit callback={() => {console.log('нажата кнопка плеера')}} />
+      <ButtonPlayerExit />
 
       <PlayerControls />
 
