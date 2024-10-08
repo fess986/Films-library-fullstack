@@ -14,12 +14,12 @@ type HeaderProps = {
   isDark?: boolean
 }
 
-const Header: React.FC<HeaderProps> = ({ breadcrumbs, isAuth, $page = PageList.MAIN, isDark = false }) => {
+const Header: React.FC<HeaderProps> = ({ breadcrumbs, $page = PageList.MAIN, isDark = false }) => {
   return (
     <ColorProvider isDark={isDark}>
       <HeaderMain $page={$page}>
         <AppNavigation breadcrumbs={breadcrumbs} />
-        <UserNavigation isAuth={isAuth} />
+        <UserNavigation />
       </HeaderMain>
     </ColorProvider>
   )

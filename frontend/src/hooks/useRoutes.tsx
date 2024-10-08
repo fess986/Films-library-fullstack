@@ -2,7 +2,6 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { AppRoutes } from '../const/const'
 import { FilmProps } from '../types/types'
-import { AuthStatus } from '../const/const'
 
 import Layout from '../Components/Layout/Layout'
 
@@ -25,7 +24,7 @@ import HeaderMain from '../Components/Layout/Header/HeaderMain/HeaderMain'
 import Footer from '../Components/Layout/Footer/Footer'
 import FooterFilmCard from '../Components/Layout/Footer/FooterFilmCard'
 
-export default function useRoutes(isAuth: AuthStatus, films: FilmProps[]) {
+export default function useRoutes(films: FilmProps[]) {
 
   return (
     <Routes>
@@ -34,7 +33,7 @@ export default function useRoutes(isAuth: AuthStatus, films: FilmProps[]) {
         HeaderComponent={HeaderMain}
         FooterComponent={Footer}
         bodyProps={{}} 
-        headerProps={{isAuth: isAuth, currentFilm: films[0]}}
+        headerProps={{currentFilm: films[0]}}
         />}>
 
         <Route
@@ -54,7 +53,7 @@ export default function useRoutes(isAuth: AuthStatus, films: FilmProps[]) {
         HeaderComponent={HeaderFilmCard}
         FooterComponent={FooterFilmCard}
         bodyProps={{}} 
-        headerProps={{isAuth: isAuth, currentFilm: films[1]}}
+        headerProps={{currentFilm: films[1]}}
         />}>
 
         <Route
@@ -68,7 +67,7 @@ export default function useRoutes(isAuth: AuthStatus, films: FilmProps[]) {
         HeaderComponent={HeaderReview}
         FooterComponent={Footer}
         bodyProps={{}}
-        headerProps={{isAuth: isAuth, currentFilm: films[0]}}
+        headerProps={{currentFilm: films[0]}}
       />}>
         <Route
           path={AppRoutes.ADD_REVIEW}

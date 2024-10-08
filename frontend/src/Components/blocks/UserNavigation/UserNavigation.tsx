@@ -2,13 +2,13 @@ import UserAvatar from "../../UI/UserAvatar/UserAvatar";
 import SignIn from "../../UI/SignInButton/SignInButton";
 import { UserBlockItem, UserBlockText, UserBlockUl } from "./styles";
 import { useColorContext } from "../../../context/ColorContext/useColorContext";
-import { AuthStatus } from "../../../const/const";
-type AppNavigationProps = {
-  isAuth?: AuthStatus
-}
 
-const UserNavigation: React.FC<AppNavigationProps> = ({ isAuth }) => {
+import { useSelector } from "react-redux";
+import { getIsAuth } from "../../../store/user/userSelectors";
+
+const UserNavigation: React.FC = () => {
 const {isDark} = useColorContext()
+const isAuth = useSelector(getIsAuth)
 
   return (
   <nav>
