@@ -16,6 +16,7 @@ export const SectionCatalog = styled(Section)`
 	max-width: 1200px;
 
 	padding: 20px 75px;
+	margin-top: -200px;
 `
 export const SectionCatalogContainer = styled(Section)`
 width: 1200px;
