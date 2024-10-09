@@ -14,7 +14,6 @@ import useRoutes from './hooks/useRoutes';
 function App() {
   const dispatch = useAppDispatch();
 
-  store.dispatch(setAuthStatus(AuthStatus.AUTH))
   // store.dispatch(setFilmList(Films));
   // store.dispatch(setActiveFilm(Films[0]));
 
@@ -22,6 +21,10 @@ function App() {
   useEffect(() => {
     dispatch(fetchFilms());
   }, [dispatch]);
+
+  useEffect(() => {
+    store.dispatch(setAuthStatus(AuthStatus.AUTH))
+  }, []);
 
   const films = useSelector(getFilmList);
   const routes = useRoutes(films)

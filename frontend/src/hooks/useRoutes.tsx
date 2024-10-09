@@ -24,6 +24,8 @@ import HeaderMain from '../Components/Layout/Header/HeaderMain/HeaderMain'
 import Footer from '../Components/Layout/Footer/Footer'
 import FooterFilmCard from '../Components/Layout/Footer/FooterFilmCard'
 
+import { Films } from '../mock/films'
+
 export default function useRoutes(films: FilmProps[]) {
 
   return (
@@ -33,7 +35,7 @@ export default function useRoutes(films: FilmProps[]) {
         HeaderComponent={HeaderMain}
         FooterComponent={Footer}
         bodyProps={{}} 
-        headerProps={{currentFilm: films[0]}}
+        headerProps={{currentFilm: Films[0]}}
         />}>
 
         <Route
@@ -53,12 +55,12 @@ export default function useRoutes(films: FilmProps[]) {
         HeaderComponent={HeaderFilmCard}
         FooterComponent={FooterFilmCard}
         bodyProps={{}} 
-        headerProps={{currentFilm: films[1]}}
+        headerProps={{currentFilm: Films[1]}}
         />}>
 
         <Route
           path={AppRoutes.FILM_CARD}
-          element={<FilmCard film={films[6]} />}
+          element={<FilmCard film={Films[6]} />}
         />
       </Route>
 
@@ -67,11 +69,11 @@ export default function useRoutes(films: FilmProps[]) {
         HeaderComponent={HeaderReview}
         FooterComponent={Footer}
         bodyProps={{}}
-        headerProps={{currentFilm: films[0]}}
+        headerProps={{currentFilm: Films[0]}}
       />}>
         <Route
           path={AppRoutes.ADD_REVIEW}
-          element={<AddReview film={films[0]}/>
+          element={<AddReview film={Films[0]}/>
           }
         />
       </Route>
@@ -103,7 +105,7 @@ export default function useRoutes(films: FilmProps[]) {
 
         <Route
           path={AppRoutes.PLAYER}
-          element={<Player film={films[0]}/>}
+          element={<Player film={Films[0]}/>}
         />
       </Route>
 

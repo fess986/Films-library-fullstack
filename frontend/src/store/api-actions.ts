@@ -27,7 +27,7 @@ void,  // Возвращаемый тип данных
 
     dispatch(setIsFilmsLoaded(false));
     const response = await api.get('/films').then(() => Films as FilmProps[]);
-    console.log(response);
+    // console.log(response);
     dispatch(setFilmList(response));
     dispatch(setIsFilmsLoaded(true));
   }

@@ -9,15 +9,22 @@ import { FilmProps } from "../../../types/types";
 import { FilmMenuList } from "../../../const/const";
 import { Reviews } from "../../../mock/reviews";
 import  FilmList  from "../../blocks/FilmList/FilmList";
-import { Films } from "../../../mock/films";
 
 import { DivAdditionalFilmInfo, DivAdditionalFilmContainer, SectionMoreFilms, H2MoreFilmsTitle } from "./styles";
 import { H1Hidden } from "../../styled/Components";
+
+import { useSelector } from "react-redux";
+import { getIsFilmsLoaded } from "../../../store/app/appSelectors";
+import { getFilmList } from "../../../store/films/filmsSelector";
+
 type FilmCardProps = {
   film: FilmProps
 }
 
 const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
+  const isFilmsLoaded = useSelector(getIsFilmsLoaded);
+  const films = useSelector(getFilmList);
+
   return (
     <>
       <DivAdditionalFilmContainer>
@@ -40,7 +47,7 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
         <H1Hidden as={"h2"}>More films like this</H1Hidden>
         <H2MoreFilmsTitle>More films like this</H2MoreFilmsTitle>
 
-      <FilmList films={Films} />
+        {isFilmsLoaded ? <FilmList films={films} /> : <div>Loading...</div>}
       </SectionMoreFilms>
     </>
   )
