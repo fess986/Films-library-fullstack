@@ -4,14 +4,13 @@ import ButtonDetails from "../../UI/Buttons/ButtonDetails/ButtonDetails";
 import { DivFilmButtons } from "./styles";
 
 type FilmButtonsProps = {
-  callback: () => void,
   details?: boolean,
 }
-const FilmButtons: React.FC<FilmButtonsProps> = ( {callback, details} ) => {
+const FilmButtons: React.FC<FilmButtonsProps> = ( {details} ) => {
   return (
     <DivFilmButtons>
       <ButtonPlay id={1}/>
-      <ButtonAdd callback={callback} />
+      <ButtonAdd />
       {details && <ButtonDetails  />}
     </DivFilmButtons>
   )
