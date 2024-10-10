@@ -1,4 +1,5 @@
 import { FilmProps } from "../../../types/types";
+import { AppRoutes } from "../../../const/const";
 import { SmallFilmCardLink, SmallFilmCardTitle, SmallFilmCardImg, SmallFilmCardContainer, SmallFilmCardArticle } from "./styles";
 import { setActiveFilm } from "../../../store/films/filmsSlice";
 import { useAppDispatch } from "../../../store";
@@ -20,7 +21,7 @@ const dispatch = useAppDispatch();
         <SmallFilmCardImg src={ film.previewImage } alt={film.name} />
       </SmallFilmCardContainer>
       <SmallFilmCardTitle>
-        <SmallFilmCardLink onClick={handleClick} to={`/films/${film.id}`} >{film.name}</SmallFilmCardLink>
+        <SmallFilmCardLink onClick={handleClick} to={`${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(':id', String(film.id))}`} >{film.name}</SmallFilmCardLink>
       </SmallFilmCardTitle>
     </SmallFilmCardArticle>
   )
