@@ -10,6 +10,7 @@ import { AuthStatus } from './const/const';
 import { setAuthStatus } from './store/user/userSlice';
 
 import useRoutes from './hooks/useRoutes';
+import { setActiveFilm } from './store/films/filmsSlice';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -27,7 +28,12 @@ function App() {
   }, []);
 
   const films = useSelector(getFilmList);
+  const randomFilm = films[Math.floor(Math.random() * films.length)];
   const routes = useRoutes(films)
+
+  useEffect(() => {
+    dispatch(setActiveFilm(randomFilm));
+  }, [dispatch, randomFilm]);
 
   return (
     <>

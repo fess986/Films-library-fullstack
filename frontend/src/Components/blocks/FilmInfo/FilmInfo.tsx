@@ -8,13 +8,13 @@ import { DivFilmInfo, DivFilmCard } from "./styles";
 import { getIsFilmsLoaded } from "../../../store/app/appSelectors";
 
 type FilmInfoProps = {
-  film: FilmProps,
+  film: FilmProps | null,
 }
 
 const FilmInfo: React.FC<FilmInfoProps> = ({film}) => {
   const isFilmsLoaded = useSelector(getIsFilmsLoaded);
 
-  if (!isFilmsLoaded) {
+  if (!isFilmsLoaded || !film) {
     return (
       <div>Loading...</div>
     )
@@ -23,10 +23,9 @@ const FilmInfo: React.FC<FilmInfoProps> = ({film}) => {
   return (
     <DivFilmCard >
       <FilmCardPoster img={film.posterImage} title={film.name} />
-
       <DivFilmInfo>
         <FilmCardDescription film={film} />
-        <FilmButtons details callback={() => {console.log('callback1')}} />
+        <FilmButtons details  />
       </DivFilmInfo>
     </DivFilmCard>
   )
