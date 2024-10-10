@@ -9,6 +9,12 @@ import { setIsFilmsLoaded } from './app/appSlice';
 import { Films } from '../mock/films';
 import { ApiActions } from '../const/const';
 
+// type ThunkConfig = {
+//   dispatch: AppDispatch;
+//   state: RootState;
+//   extra: AxiosInstance;
+// }
+
 export const fetchFilms = createAsyncThunk<
 void,  // Возвращаемый тип данных
   void,    // Аргументы, передаваемые в thunk
@@ -32,3 +38,17 @@ void,  // Возвращаемый тип данных
     dispatch(setIsFilmsLoaded(true));
   }
 );
+
+// export const fetchActiveFilm = createAsyncThunk<
+//   FilmProps, // Возвращаемый тип данных
+//   string,    // Аргументы, передаваемые в thunk
+//   ThunkConfig  // Используем типизацию конфигурации
+// >(
+//   ApiActions.FETCH_ACTIVE_FILM,
+//   async (id, {dispatch, extra: api}) => {
+//     // console.log('фечим активный фильм')
+//     const response = await api.get(`/films/${id}`).then((response) => response.data);
+//     // console.log(response);
+//     return response;
+//   }
+// );

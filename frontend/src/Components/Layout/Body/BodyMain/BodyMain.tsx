@@ -9,7 +9,7 @@ export type BodyMainProps = {
 const BodyMain: React.FC<BodyMainProps> = ({ children }) => {
   return (
     <BodyMainStyled>
-      <InjectListSVG add play pause />
+      <InjectListSVG add play pause details />
 
       <DivMainContainer>
         {children}
