@@ -21,7 +21,7 @@ const dispatch = useAppDispatch();
         <SmallFilmCardImg src={ film.previewImage } alt={film.name} />
       </SmallFilmCardContainer>
       <SmallFilmCardTitle>
-        <SmallFilmCardLink onClick={handleClick} to={`${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(':id', String(film.id))}`} >{film.name}</SmallFilmCardLink>
+        <SmallFilmCardLink onClick={handleClick} to={`${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(':id/*', String(film.id))}`} >{film.name}</SmallFilmCardLink>
       </SmallFilmCardTitle>
     </SmallFilmCardArticle>
   )

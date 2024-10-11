@@ -55,7 +55,7 @@ export default function useRoutes(films: FilmProps[]) {
         HeaderComponent={HeaderFilmCard}
         FooterComponent={FooterFilmCard}
         bodyProps={{}} 
-        headerProps={{currentFilm: Films[1]}}
+        headerProps={{}}
         />}>
 
         <Route

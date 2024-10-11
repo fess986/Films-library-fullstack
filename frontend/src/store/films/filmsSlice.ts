@@ -4,10 +4,10 @@ import { FilmProps } from "../../types/types";
 
 type FilmsState = {
   activeFilm: FilmProps | null;
+  promoFilm: FilmProps | null;
   filmList: FilmProps[];
   similarFilmList: FilmProps[];
   myFilmList: FilmProps[];
-  promoFilm: FilmProps | null;
 };
 
 const initialFilmsState: FilmsState = {

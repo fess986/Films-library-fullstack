@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
-import { getFilmList } from './store/films/filmsSelector';
+import { getFilmList, getActiveFilm } from './store/films/filmsSelector';
 import { fetchFilms } from './store/api-actions';
 import { useAppDispatch } from './store';
 import { store } from './store/index';
@@ -29,11 +29,12 @@ function App() {
 
   const films = useSelector(getFilmList);
   const randomFilm = films[Math.floor(Math.random() * films.length)];
-  const routes = useRoutes(films)
-
+  
   useEffect(() => {
     dispatch(setActiveFilm(randomFilm));
   }, [dispatch, randomFilm]);
+
+  const routes = useRoutes(films)
 
   return (
     <>
