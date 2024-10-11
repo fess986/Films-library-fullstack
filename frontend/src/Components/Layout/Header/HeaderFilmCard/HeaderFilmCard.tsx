@@ -4,18 +4,19 @@ import { H1Hidden } from "../../../styled/Components";
 import Header from "../../../blocks/Header/Header";
 import FilmInfoCard from "../../../blocks/FilmInfoCard/FilmInfoCard";
 import { SectionHeroImage } from "./styles";
+import { getActiveFilm } from "../../../../store/films/filmsSelector";
+import { useSelector } from "react-redux";
 
-type HeaderFilmCardProps = {
-  currentFilm: FilmProps,
-}
+const HeaderFilmCard: React.FC = () => {
+  const currentFilm : FilmProps | null = useSelector(getActiveFilm);
+  console.log(currentFilm)
 
-const HeaderFilmCard: React.FC<HeaderFilmCardProps> = ({ currentFilm }) => {
   return (
     <SectionHeroImage>
       <HeroPicture />
-      <H1Hidden>{`${currentFilm.name} Page`}</H1Hidden>
+      {currentFilm && <H1Hidden>{`${currentFilm.name} Page`}</H1Hidden>}
       <Header />
-      <FilmInfoCard film={currentFilm} />
+      {currentFilm && <FilmInfoCard film={currentFilm} />}
     </SectionHeroImage>
   )
 };

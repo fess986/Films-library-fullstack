@@ -13,7 +13,7 @@ const ButtonDetails : React.FC = (  ) => {
   const currentFilm = useSelector(getActiveFilm);
 
   const handleClick = () => {
-    currentFilm && navigate(`${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(':id', String(currentFilm.id))}`)
+    currentFilm && navigate(`${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(':id/*', String(currentFilm.id))}`)
     dispatch(resetFilmsShownCount());
   }
 
