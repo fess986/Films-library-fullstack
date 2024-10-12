@@ -13,6 +13,7 @@ const dispatch = useAppDispatch();
 
   const handleClick = () => {
     dispatch(setActiveFilm(film))
+    console.log(film)
   }
 
   return (
