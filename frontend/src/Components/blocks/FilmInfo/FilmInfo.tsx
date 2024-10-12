@@ -13,6 +13,7 @@ type FilmInfoProps = {
 
 const FilmInfo: React.FC<FilmInfoProps> = ({film}) => {
   const isFilmsLoaded = useSelector(getIsFilmsLoaded);
+  console.log(film)
 
   if (!isFilmsLoaded || !film) {
     return (
