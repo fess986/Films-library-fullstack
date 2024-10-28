@@ -1,5 +1,6 @@
 import { ImgUserAvatar, DivUserAvatar } from "./styles";
-import { AuthStatus } from "../../../const/const";
+import { AppRoutes, AuthStatus } from "../../../const/const";
+import { useNavigate } from "react-router-dom";
 
 type UserAvatarProps = {
   isAuth?: AuthStatus
@@ -7,8 +8,13 @@ type UserAvatarProps = {
 
 // добавить вариант с isAuth=false
 const UserAvatar: React.FC<UserAvatarProps> = ({ isAuth }) => {
+  const navigate = useNavigate();
+  const clickHandler = () => {
+    isAuth === AuthStatus.AUTH ? navigate(AppRoutes.MY_LIST) : navigate(AppRoutes.SIGN_IN);
+  }
+
   return (
-    <DivUserAvatar>
+    <DivUserAvatar onClick={clickHandler}>
       <ImgUserAvatar src={isAuth ? "/images/avatar.png" : "/images/avatar.png"} />
     </DivUserAvatar>
   )

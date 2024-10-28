@@ -1,10 +1,26 @@
 import styled from "styled-components";
-import { P, Footer, Blockquote, Cite, Time, Div } from "../../styled/Components";
-import { fontMedium, textColorAdditional, fontBig } from "../../styled/Mixins/mixins";
+import {
+	P,
+	Footer,
+	Blockquote,
+	Cite,
+	Time,
+	Div,
+} from "../../styled/Components";
+import {
+	fontMedium,
+	textColorAdditional,
+	fontBig,
+} from "../../styled/Mixins/mixins";
 
 export const ReviewText = styled(P)`
+	initial-letter: 2;
 	${fontMedium}
 	${textColorAdditional}
+
+	&::first-letter {
+		initial-letter: 2;
+	}
 `;
 
 export const ReviewFooter = styled(Footer)`
@@ -26,17 +42,17 @@ export const ReviewDate = styled(Time)`
 	${fontMedium}
 	${textColorAdditional}
   font-weight: 700;
-  opacity: 0.6;
-`
+	opacity: 0.6;
+`;
 export const ReviewContainer = styled(Div)`
-  position: relative;
+	position: relative;
 
 	padding-bottom: 20px;
 	padding-right: 75px;
 	margin-bottom: 10px;
 
-  border-bottom: 2px solid ${({ theme }) => theme.textColorAdditional};
-`
+	border-bottom: 2px solid ${({ theme }) => theme.textColorAdditional};
+`;
 export const ReviewRating = styled(Div)`
 	position: absolute;
 	right: 0;
@@ -49,4 +65,4 @@ export const ReviewRating = styled(Div)`
 
 	background: rgba(0, 0, 0, 0.24);
 	border-radius: 8px;
-`
+`;
