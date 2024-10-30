@@ -17,11 +17,7 @@ import { useSelector } from "react-redux";
 import { getIsFilmsLoaded } from "../../../store/app/appSelectors";
 import { getFilmList, getActiveFilm } from "../../../store/films/filmsSelector";
 
-type FilmCardProps = {
-  film: FilmProps
-}
-
-const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
+const FilmCard: React.FC = () => {
   const isFilmsLoaded = useSelector(getIsFilmsLoaded);
   const films = useSelector(getFilmList);
 
@@ -38,8 +34,8 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
           <FilmMenu items={FilmMenuList} />
 
           <Routes>
-            <Route path="/" element={<FilmOverview film={film} />} />
-            <Route path={FilmMenuList[0].toLowerCase()} element={<FilmOverview film={film} />} />
+            <Route path="/" element={<FilmOverview film={activeFilm} />} />
+            <Route path={FilmMenuList[0].toLowerCase()} element={<FilmOverview film={activeFilm} />} />
             <Route path={FilmMenuList[1].toLowerCase()} element={<FilmDetails film={activeFilm} />} />
             <Route path={FilmMenuList[2].toLowerCase()} element={<FilmReviews reviews={Reviews}/>} />
           </Routes>
