@@ -60,7 +60,7 @@ export default function useRoutes(films: FilmProps[]) {
 
         <Route
           path={AppRoutes.FILM_CARD}
-          element={<FilmCard film={Films[6]} />}
+          element={<FilmCard />}
         />
       </Route>
 
