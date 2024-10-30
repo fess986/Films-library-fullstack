@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { StoreNames } from "../../const/const";
+import { Review } from "../../types/types";
 
 type ReviewsState = {
-  reviewsList: [],
+  reviewsList: Review[],
 
   isReviewsLoaded: boolean,
   isReviewSending: boolean,
@@ -20,16 +21,16 @@ export const reviewsSlice = createSlice({
   name: StoreNames.Reviews,
   initialState: initialReviewsState,
   reducers: {
-    setInReviewsLoaded: (state, action: PayloadAction<boolean>) => {
+    setIsReviewsLoaded: (state, action: PayloadAction<boolean>) => {
       state.isReviewsLoaded = action.payload;
     },
-    setInReviewSending: (state, action: PayloadAction<boolean>) => {
+    setIsReviewSending: (state, action: PayloadAction<boolean>) => {
       state.isReviewSending = action.payload;
     },
-    setReviewsList: (state, action: PayloadAction<[]>) => {
+    setReviewsList: (state, action: PayloadAction<Review[]>) => {
       state.reviewsList = action.payload;
     },
   },
 });
 
-export const { setInReviewsLoaded, setInReviewSending, setReviewsList } = reviewsSlice.actions;
+export const { setIsReviewsLoaded, setIsReviewSending, setReviewsList } = reviewsSlice.actions;

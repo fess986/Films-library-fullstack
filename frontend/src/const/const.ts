@@ -33,7 +33,13 @@ export enum AuthStatus {
 } 
 
 export enum ApiActions {
-  FETCH_FILMS = 'films/fetchFilms'
+  FETCH_FILMS = 'films/fetchFilms',
+	FETCH_REVIEWS = 'reviews/fetchReviews',
+}
+
+export enum ApiRoutes {
+	REVIEWS = '/reviews/', // get - /reviews/:film_id
+	FILMS = '/films',
 }
 
 export const ALL_GENRES = 'All genres';

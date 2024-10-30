@@ -3,11 +3,11 @@ import { StoreNames } from "../../const/const";
 import { FilmProps } from "../../types/types";
 
 type FilmsState = {
-  activeFilm: FilmProps | null;
-  promoFilm: FilmProps | null;
   filmList: FilmProps[];
-  similarFilmList: FilmProps[];
   myFilmList: FilmProps[];
+  similarFilmList: FilmProps[];
+
+  activeFilm: FilmProps | null;
 };
 
 const initialFilmsState: FilmsState = {
@@ -15,7 +15,6 @@ const initialFilmsState: FilmsState = {
   filmList: [],
   similarFilmList: [],
   myFilmList: [],
-  promoFilm: null,
 };
 
 
@@ -35,9 +34,6 @@ export const filmsSlice = createSlice({
     setMyFilmList: (state, action: PayloadAction<FilmProps[]>) => {
       state.myFilmList = action.payload;
     },
-    setPromoFilm: (state, action: PayloadAction<FilmProps | null>) => {
-      state.promoFilm = action.payload;
-    },
   },
 });
 
@@ -46,5 +42,4 @@ export const {
   setFilmList,
   setSimilarFilmList,
   setMyFilmList,
-  setPromoFilm
 } = filmsSlice.actions;

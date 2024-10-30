@@ -33,7 +33,6 @@ const HeaderFilmCard: React.FC = () => {
       <HeroPicture />
       {currentFilm && isFilmsLoaded && <H1Hidden>{`${currentFilm.name} Page`}</H1Hidden>}
       <Header />
-      {/* {currentFilm && isFilmsLoaded && <FilmInfoCard film={currentFilm} />} */}
       {currentFilm && <FilmInfoCard film={currentFilm} />}
     </SectionHeroImage>
   )
