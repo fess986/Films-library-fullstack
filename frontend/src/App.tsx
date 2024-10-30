@@ -21,13 +21,12 @@ function App() {
     dispatch(fetchFilms());
   }, [dispatch]);
 
+  // устанавливаем статус авторизации
   useEffect(() => {
     store.dispatch(setAuthStatus(AuthStatus.AUTH))
   }, []);
 
   const films = useSelector(getFilmList);
-
-
   const routes = useRoutes(films)
 
   return (
