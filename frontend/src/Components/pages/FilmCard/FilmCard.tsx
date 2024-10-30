@@ -15,7 +15,7 @@ import { H1Hidden } from "../../styled/Components";
 
 import { useSelector } from "react-redux";
 import { getIsFilmsLoaded } from "../../../store/app/appSelectors";
-import { getFilmList } from "../../../store/films/filmsSelector";
+import { getFilmList, getActiveFilm } from "../../../store/films/filmsSelector";
 
 type FilmCardProps = {
   film: FilmProps
@@ -25,10 +25,13 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
   const isFilmsLoaded = useSelector(getIsFilmsLoaded);
   const films = useSelector(getFilmList);
 
+  const activeFilm : FilmProps | null = useSelector(getActiveFilm);
+  console.log(activeFilm)
+
   return (
     <>
       <DivAdditionalFilmContainer>
-        <FilmCardPoster title={film.name} img={film.posterImage} />
+        <FilmCardPoster title={activeFilm?.name ? activeFilm.name : ""} img={activeFilm?.posterImage ? activeFilm.posterImage : ""} />
 
         <DivAdditionalFilmInfo>
 
@@ -37,7 +40,7 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
           <Routes>
             <Route path="/" element={<FilmOverview film={film} />} />
             <Route path={FilmMenuList[0].toLowerCase()} element={<FilmOverview film={film} />} />
-            <Route path={FilmMenuList[1].toLowerCase()} element={<FilmDetails film={film} />} />
+            <Route path={FilmMenuList[1].toLowerCase()} element={<FilmDetails film={activeFilm} />} />
             <Route path={FilmMenuList[2].toLowerCase()} element={<FilmReviews reviews={Reviews}/>} />
           </Routes>
         </DivAdditionalFilmInfo>

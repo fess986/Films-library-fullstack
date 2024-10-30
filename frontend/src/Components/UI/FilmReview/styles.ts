@@ -14,12 +14,13 @@ import {
 } from "../../styled/Mixins/mixins";
 
 export const ReviewText = styled(P)`
-	initial-letter: 2;
+	min-height: 50px;
 	${fontMedium}
 	${textColorAdditional}
 
 	&::first-letter {
 		initial-letter: 2;
+		text-transform: uppercase;
 	}
 `;
 
