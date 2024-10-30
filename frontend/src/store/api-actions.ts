@@ -1,19 +1,23 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { FilmProps } from "../types/types";
+import { Review } from '../types/types';
+
 import { RootState, AppDispatch } from '.'; 
 
 import { setFilmList } from './films/filmsSlice';
 import { setIsFilmsLoaded } from './app/appSlice';
+import { setIsReviewsLoaded, setReviewsList } from './reviews/reviewsSlice';
 
 import { Films } from '../mock/films';
-import { ApiActions } from '../const/const';
+import { Reviews } from "../mock/reviews";
+import { ApiActions, ApiRoutes } from '../const/const';
 
-// type ThunkConfig = {
-//   dispatch: AppDispatch;
-//   state: RootState;
-//   extra: AxiosInstance;
-// }
+type ThunkConfig = {
+  dispatch: AppDispatch;
+  state: RootState;
+  extra: AxiosInstance;
+}
 
 export const fetchFilms = createAsyncThunk<
 void,  // Возвращаемый тип данных
@@ -32,10 +36,29 @@ void,  // Возвращаемый тип данных
     // console.log('signal', signal);
 
     dispatch(setIsFilmsLoaded(false));
-    const response = await api.get('/films').then(() => Films as FilmProps[]);
+    const response = await api.get(ApiRoutes.FILMS).then(() => Films as FilmProps[]);
     // console.log(response);
     dispatch(setFilmList(response));
     dispatch(setIsFilmsLoaded(true));
+  }
+);
+
+// получаем отзывы по id фильма
+export const fetchReviews = createAsyncThunk<
+  void,  // Возвращаемый тип данных
+  number,    // Аргументы, передаваемые в thunk
+  ThunkConfig  // используем типизированную конфигурацию
+>(
+  ApiActions.FETCH_REVIEWS, 
+  async (id, {dispatch, extra: api }) => {
+
+    dispatch(setIsReviewsLoaded(false));
+
+    const reviews = await api.get(`${ApiRoutes.REVIEWS}${id}`).then(() => Reviews as Review[]);
+    console.log(reviews);
+
+    dispatch(setReviewsList(reviews));
+    dispatch(setIsReviewsLoaded(true));
   }
 );
 
