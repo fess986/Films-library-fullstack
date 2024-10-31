@@ -22,7 +22,6 @@ const FilmCard: React.FC = () => {
   const films = useSelector(getFilmList);
 
   const activeFilm : FilmProps | null = useSelector(getActiveFilm);
-  console.log(activeFilm)
 
   return (
     <>
