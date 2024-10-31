@@ -45,20 +45,21 @@ void,  // Возвращаемый тип данных
 
 // получаем отзывы по id фильма
 export const fetchReviews = createAsyncThunk<
-  void,  // Возвращаемый тип данных
+  string,  // Возвращаемый тип данных
   number,    // Аргументы, передаваемые в thunk
   ThunkConfig  // используем типизированную конфигурацию
 >(
   ApiActions.FETCH_REVIEWS, 
   async (id, {dispatch, extra: api }) => {
 
-    dispatch(setIsReviewsLoaded(false));
+    // dispatch(setIsReviewsLoaded(false)); // перенесено в extraReducers
 
     const reviews = await api.get(`${ApiRoutes.REVIEWS}${id}`).then(() => Reviews as Review[]);
-    console.log(reviews);
-
     dispatch(setReviewsList(reviews));
-    dispatch(setIsReviewsLoaded(true));
+    
+    // dispatch(setIsReviewsLoaded(true)); // перенесено в extraReducers
+
+    return 'some data';  // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
   }
 );
 
