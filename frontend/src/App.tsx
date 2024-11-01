@@ -8,7 +8,7 @@ import { store } from './store/index';
 
 import { getFilmList } from './store/films/filmsSelector';
 
-import { fetchFilms, fetchReviews } from './store/api-actions';
+import { fetchFilms } from './store/api-actions';
 import { setAuthStatus } from './store/user/userSlice';
 
 import useRoutes from './hooks/useRoutes';
@@ -19,10 +19,6 @@ function App() {
   // фетчим фильмы, по окончанию загрузки устанавливаем флаг isFilmsLoaded в true
   useEffect(() => {
     dispatch(fetchFilms());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchReviews(5));
   }, [dispatch]);
 
   // устанавливаем статус авторизации

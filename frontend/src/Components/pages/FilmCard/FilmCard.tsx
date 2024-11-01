@@ -1,4 +1,8 @@
 import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { fetchReviews } from "../../../store/api-actions";
+
+import { useAppDispatch } from "../../../store";
 
 import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
 import FilmMenu from "../../blocks/FilmMenu/FilmMenu";
@@ -18,6 +22,8 @@ import { getFilmList, getActiveFilm } from "../../../store/films/filmsSelector";
 import { getReviewsList, getIsReviewsLoaded } from "../../../store/reviews/reviewsSelector";
 
 const FilmCard: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   const isFilmsLoaded = useSelector(getIsFilmsLoaded);
   const films = useSelector(getFilmList);
 
@@ -25,6 +31,10 @@ const FilmCard: React.FC = () => {
 
   const isReviewsLoaded = useSelector(getIsReviewsLoaded);
   const reviews = useSelector(getReviewsList);
+
+  useEffect(() => {
+    dispatch(fetchReviews(activeFilm?.id || 0 ));
+  }, [dispatch, activeFilm?.id]);
 
   return (
     <>
