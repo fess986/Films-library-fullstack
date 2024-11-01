@@ -14,7 +14,7 @@ const FilmInfoCard: React.FC<FilmInfoProps> = ({ film }) => {
     <DivFilmCardContainer >
       <DivFilmInfoCard>
         <FilmCardDescription film={film} />
-        <FilmButtons />
+        <FilmButtons addReview={true}/>
       </DivFilmInfoCard>
     </DivFilmCardContainer>
   )
