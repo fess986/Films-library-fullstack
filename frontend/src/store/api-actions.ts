@@ -7,7 +7,7 @@ import { RootState, AppDispatch } from '.';
 
 import { setFilmList } from './films/filmsSlice';
 import { setIsFilmsLoaded } from './app/appSlice';
-import { setIsReviewsLoaded, setReviewsList } from './reviews/reviewsSlice';
+import { setReviewsList } from './reviews/reviewsSlice';
 
 import { Films } from '../mock/films';
 import { Reviews } from "../mock/reviews";
