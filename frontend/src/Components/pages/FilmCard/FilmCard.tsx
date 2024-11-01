@@ -7,7 +7,6 @@ import FilmOverview from "../../blocks/FilmCard/FilmOverview/FilmOverview";
 import FilmReviews from "../../blocks/FilmCard/FilmReviews/FilmReviews";
 import { FilmProps } from "../../../types/types";
 import { FilmMenuList } from "../../../const/const";
-import { Reviews } from "../../../mock/reviews";
 import  FilmList  from "../../blocks/FilmList/FilmList";
 
 import { DivAdditionalFilmInfo, DivAdditionalFilmContainer, SectionMoreFilms, H2MoreFilmsTitle } from "./styles";
@@ -16,12 +15,16 @@ import { H1Hidden } from "../../styled/Components";
 import { useSelector } from "react-redux";
 import { getIsFilmsLoaded } from "../../../store/app/appSelectors";
 import { getFilmList, getActiveFilm } from "../../../store/films/filmsSelector";
+import { getReviewsList, getIsReviewsLoaded } from "../../../store/reviews/reviewsSelector";
 
 const FilmCard: React.FC = () => {
   const isFilmsLoaded = useSelector(getIsFilmsLoaded);
   const films = useSelector(getFilmList);
 
   const activeFilm : FilmProps | null = useSelector(getActiveFilm);
+
+  const isReviewsLoaded = useSelector(getIsReviewsLoaded);
+  const reviews = useSelector(getReviewsList);
 
   return (
     <>
@@ -36,7 +39,7 @@ const FilmCard: React.FC = () => {
             <Route path="/" element={<FilmOverview film={activeFilm} />} />
             <Route path={FilmMenuList[0].toLowerCase()} element={<FilmOverview film={activeFilm} />} />
             <Route path={FilmMenuList[1].toLowerCase()} element={<FilmDetails film={activeFilm} />} />
-            <Route path={FilmMenuList[2].toLowerCase()} element={<FilmReviews reviews={Reviews}/>} />
+            <Route path={FilmMenuList[2].toLowerCase()} element={isReviewsLoaded ? <FilmReviews reviews={reviews} /> : <div>Loading...</div>} />
           </Routes>
         </DivAdditionalFilmInfo>
       </DivAdditionalFilmContainer>
