@@ -5,14 +5,14 @@ import { Review } from "../types/types";
 
 import { RootState, AppDispatch } from ".";
 
-import { setFilmList } from "./films/filmsSlice";
+import { setFilmList, setSimilarFilmList } from "./films/filmsSlice";
 import { setIsFilmsLoaded } from "./app/appSlice";
 import { setReviewsList } from "./reviews/reviewsSlice";
 
 import { Films } from "../mock/films";
 import { Reviews } from "../mock/reviews";
 import { ApiActions, ApiRoutes } from "../const/const";
-import { redirect } from "./actions";
+// import { redirect } from "./actions";
 
 type ThunkConfig = {
 	dispatch: AppDispatch;
@@ -64,16 +64,17 @@ export const fetchReviews = createAsyncThunk<
 	return "some data"; // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
 });
 
-// export const fetchActiveFilm = createAsyncThunk<
-//   FilmProps, // Возвращаемый тип данных
-//   string,    // Аргументы, передаваемые в thunk
-//   ThunkConfig  // Используем типизацию конфигурации
-// >(
-//   ApiActions.FETCH_ACTIVE_FILM,
-//   async (id, {dispatch, extra: api}) => {
-//     // console.log('фечим активный фильм')
-//     const response = await api.get(`/films/${id}`).then((response) => response.data);
-//     // console.log(response);
-//     return response;
-//   }
-// );
+export const fetchSimilarFilms = createAsyncThunk<
+	void, // Возвращаемый тип данных
+	void, // Аргументы, передаваемые в thunk
+	ThunkConfig
+>(
+	ApiActions.FETCH_SIMILAR_FILMS, // Имя thunkа
+	async (_arg, { dispatch, extra: api }) => {
+		const response = await api
+			.get(ApiRoutes.SIMILAR_FILMS)
+			.then(() => Films as FilmProps[]);
+			
+		dispatch(setSimilarFilmList(response));
+	}
+);
