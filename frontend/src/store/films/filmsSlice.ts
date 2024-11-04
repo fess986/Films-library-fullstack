@@ -40,7 +40,7 @@ export const filmsSlice = createSlice({
   extraReducers: (builder) => {
 		builder
 			.addCase(fetchFilms.rejected, () => {
-        console.log('fetchFilms.pending')
+        console.log('fetchFilms.rejected')
         browserHistory.push(`${AppRoutes.ROOT}${AppRoutes.SIGN_IN}`);
 			})
 	},
