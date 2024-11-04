@@ -6,7 +6,7 @@ const ButtonAdd : React.FC = (  ) => {
   const [added, setAdded] = useState(false);
 
   const handleClick = () => {
-    setAdded(!added);  // тут будет логика проверки есть ли фильм в списке любимых
+    setAdded(!added);  // тут будет логика проверки есть ли фильм в списке любимых TODO
     console.log('добавить логику добавления фильма в списоок любимых') 
   } 
 
