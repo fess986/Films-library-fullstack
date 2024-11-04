@@ -33,12 +33,12 @@ const FilmCard: React.FC = () => {
   const isSimilarFilmsLoaded = useSelector(getIsSimilarFilmsLoaded);
 
   useEffect(() => {
-    dispatch(fetchReviews(activeFilm?.id || 0 ));
+    dispatch(fetchReviews(activeFilm?.id || 0));
   }, [dispatch, activeFilm?.id]);
 
   useEffect(() => {
-    dispatch(fetchSimilarFilms());
-  }, [dispatch]);
+    dispatch(fetchSimilarFilms(activeFilm?.id || 0));
+  }, [dispatch, activeFilm?.id]);
 
   return (
     <>
@@ -62,7 +62,7 @@ const FilmCard: React.FC = () => {
         <H1Hidden as={"h2"}>More films like this</H1Hidden>
         <H2MoreFilmsTitle>More films like this</H2MoreFilmsTitle>
 
-        {isSimilarFilmsLoaded ? <FilmList films={similarFilms} /> : <div>Loading...</div>}
+        {isSimilarFilmsLoaded  ? <FilmList films={similarFilms} /> : <div>Loading...</div>}
       </SectionMoreFilms>
     </>
   )
