@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
 import { AuthStatus } from './const/const';
+// import { useDispatch } from 'react-redux';
 import { useAppDispatch } from './store';
 import { store } from './store/index';
 
