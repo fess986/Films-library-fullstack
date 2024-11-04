@@ -2,6 +2,7 @@
 import { Middleware } from "@reduxjs/toolkit";
 import { RootState } from "../index";
 import { AppActions } from "../actions";
+import browserHistory from "../../utils/browser-history";
 
 // type Reducer = ReturnType<typeof reducer>;
 
@@ -42,6 +43,7 @@ export const redirect: Middleware<RootState> = () => (next) => (action: any) => 
 		if (action.type === AppActions.REDIRECT) {
 			// window.location.href = action.payload;
 			console.log('redirect to', action.payload);
+			browserHistory.push(action.payload);
 		}
 
 		return next(action); // Передаём экшен дальше

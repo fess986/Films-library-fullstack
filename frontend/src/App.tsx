@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom'
+// import { BrowserRouter, Router } from 'react-router-dom'
+// import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
+import HistoryRouter from './Components/HistoryRouter/HistoryRouter'
 import { useSelector } from 'react-redux';
 
 import { AuthStatus } from './const/const';
@@ -12,10 +14,14 @@ import { getFilmList } from './store/films/filmsSelector';
 import { fetchFilms } from './store/api-actions';
 import { setAuthStatus } from './store/user/userSlice';
 
+import  BrowserHistory  from './utils/browser-history'
+
 import useRoutes from './hooks/useRoutes';
 
 function App() {
   const dispatch = useAppDispatch();
+
+  console.log(BrowserHistory)
 
   // фетчим фильмы, по окончанию загрузки устанавливаем флаг isFilmsLoaded в true
   useEffect(() => {
@@ -32,9 +38,9 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HistoryRouter history={BrowserHistory}>
         {routes}
-      </BrowserRouter >
+      </HistoryRouter >
     </>
   )
 }

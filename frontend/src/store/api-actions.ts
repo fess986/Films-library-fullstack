@@ -33,10 +33,8 @@ export const fetchFilms = createAsyncThunk<
 	ApiActions.FETCH_FILMS, // Имя thunka
 	// async (_arg, {dispatch, extra: api, requestId, signal }) => {  // доступные аргументы для опций функции, есть ещё
 	async (_arg, { dispatch, extra: api }) => {
-		// console.log('фечим фильмы')
-		// console.log('signal', signal);
 
-    dispatch(redirect('root'));
+    // dispatch(redirect('/mylist'));
 
 		dispatch(setIsFilmsLoaded(false));
 		const response = await api
