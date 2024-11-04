@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { StoreNames } from "../../const/const";
+import { StoreNames, AppRoutes } from "../../const/const";
 import { FilmProps } from "../../types/types";
+import { fetchFilms } from "../api-actions";
+import browserHistory from "../../utils/browser-history";
 
 type FilmsState = {
   filmList: FilmProps[];
@@ -35,6 +37,13 @@ export const filmsSlice = createSlice({
       state.myFilmList = action.payload;
     },
   },
+  extraReducers: (builder) => {
+		builder
+			.addCase(fetchFilms.rejected, () => {
+        console.log('fetchFilms.pending')
+        browserHistory.push(`${AppRoutes.ROOT}${AppRoutes.SIGN_IN}`);
+			})
+	},
 });
 
 export const {
