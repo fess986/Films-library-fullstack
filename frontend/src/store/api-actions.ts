@@ -66,13 +66,13 @@ export const fetchReviews = createAsyncThunk<
 
 export const fetchSimilarFilms = createAsyncThunk<
 	void, // Возвращаемый тип данных
-	void, // Аргументы, передаваемые в thunk
+	number, // Аргументы, передаваемые в thunk
 	ThunkConfig
 >(
 	ApiActions.FETCH_SIMILAR_FILMS, // Имя thunkа
-	async (_arg, { dispatch, extra: api }) => {
+	async (id, { dispatch, extra: api }) => {
 		const response = await api
-			.get(ApiRoutes.SIMILAR_FILMS)
+			.get(`${ApiRoutes.SIMILAR_FILMS}${id}`)
 			.then(() => Films as FilmProps[]);
 			
 		dispatch(setSimilarFilmList(response));
