@@ -1,6 +1,4 @@
 import { useEffect } from 'react';
-// import { BrowserRouter, Router } from 'react-router-dom'
-// import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
 import HistoryRouter from './Components/HistoryRouter/HistoryRouter'
 import { useSelector } from 'react-redux';
 
@@ -20,8 +18,6 @@ import useRoutes from './hooks/useRoutes';
 
 function App() {
   const dispatch = useAppDispatch();
-
-  console.log(BrowserHistory)
 
   // фетчим фильмы, по окончанию загрузки устанавливаем флаг isFilmsLoaded в true
   useEffect(() => {
