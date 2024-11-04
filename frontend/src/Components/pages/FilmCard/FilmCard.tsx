@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
-import { fetchReviews } from "../../../store/api-actions";
+import { fetchReviews, fetchSimilarFilms } from "../../../store/api-actions";
 
 import { useAppDispatch } from "../../../store";
 
@@ -17,24 +17,28 @@ import { DivAdditionalFilmInfo, DivAdditionalFilmContainer, SectionMoreFilms, H2
 import { H1Hidden } from "../../styled/Components";
 
 import { useSelector } from "react-redux";
-import { getIsFilmsLoaded } from "../../../store/app/appSelectors";
-import { getFilmList, getActiveFilm } from "../../../store/films/filmsSelector";
+import {  getIsSimilarFilmsLoaded } from "../../../store/app/appSelectors";
+import { getActiveFilm, getSimilarFilmList } from "../../../store/films/filmsSelector";
 import { getReviewsList, getIsReviewsLoaded } from "../../../store/reviews/reviewsSelector";
 
 const FilmCard: React.FC = () => {
   const dispatch = useAppDispatch();
-
-  const isFilmsLoaded = useSelector(getIsFilmsLoaded);
-  const films = useSelector(getFilmList);
 
   const activeFilm : FilmProps | null = useSelector(getActiveFilm);
 
   const isReviewsLoaded = useSelector(getIsReviewsLoaded);
   const reviews = useSelector(getReviewsList);
 
+  const similarFilms = useSelector(getSimilarFilmList)
+  const isSimilarFilmsLoaded = useSelector(getIsSimilarFilmsLoaded);
+
   useEffect(() => {
     dispatch(fetchReviews(activeFilm?.id || 0 ));
   }, [dispatch, activeFilm?.id]);
+
+  useEffect(() => {
+    dispatch(fetchSimilarFilms());
+  }, [dispatch]);
 
   return (
     <>
@@ -58,7 +62,7 @@ const FilmCard: React.FC = () => {
         <H1Hidden as={"h2"}>More films like this</H1Hidden>
         <H2MoreFilmsTitle>More films like this</H2MoreFilmsTitle>
 
-        {isFilmsLoaded ? <FilmList films={films} /> : <div>Loading...</div>}
+        {isSimilarFilmsLoaded ? <FilmList films={similarFilms} /> : <div>Loading...</div>}
       </SectionMoreFilms>
     </>
   )

@@ -34,12 +34,15 @@ export enum AuthStatus {
 
 export enum ApiActions {
   FETCH_FILMS = 'films/fetchFilms',
+	FETCH_SIMILAR_FILMS = 'films/fetchSimilarFilms',
+
 	FETCH_REVIEWS = 'reviews/fetchReviews',
 }
 
 export enum ApiRoutes {
 	REVIEWS = '/reviews/', // get - /reviews/:film_id
 	FILMS = '/films',
+	SIMILAR_FILMS = '/films/similar/:id',
 }
 
 export const ALL_GENRES = 'All genres';
