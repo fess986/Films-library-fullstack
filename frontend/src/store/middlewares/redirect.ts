@@ -1,6 +1,7 @@
 // import {Middleware, UnknownAction, Action} from 'redux';
 import { Middleware } from "@reduxjs/toolkit";
 import { RootState } from "../index";
+import { AppActions } from "../actions";
 
 // type Reducer = ReturnType<typeof reducer>;
 
@@ -37,6 +38,11 @@ import { RootState } from "../index";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const redirect: Middleware<RootState> = () => (next) => (action: any) => {
 		console.log("Dispatching action:", action.type); // Выводим название экшена в консоль
+
+		if (action.type === AppActions.REDIRECT) {
+			// window.location.href = action.payload;
+			console.log('redirect to', action.payload);
+		}
 
 		return next(action); // Передаём экшен дальше
 	};

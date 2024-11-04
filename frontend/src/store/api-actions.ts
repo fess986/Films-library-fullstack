@@ -12,6 +12,7 @@ import { setReviewsList } from "./reviews/reviewsSlice";
 import { Films } from "../mock/films";
 import { Reviews } from "../mock/reviews";
 import { ApiActions, ApiRoutes } from "../const/const";
+import { redirect } from "./actions";
 
 type ThunkConfig = {
 	dispatch: AppDispatch;
@@ -34,6 +35,8 @@ export const fetchFilms = createAsyncThunk<
 	async (_arg, { dispatch, extra: api }) => {
 		// console.log('фечим фильмы')
 		// console.log('signal', signal);
+
+    dispatch(redirect('root'));
 
 		dispatch(setIsFilmsLoaded(false));
 		const response = await api
