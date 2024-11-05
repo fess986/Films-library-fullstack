@@ -8,8 +8,9 @@ import { useAppDispatch } from './store';
 import { store } from './store/index';
 
 import { getFilmList } from './store/films/filmsSelector';
+import {getFavoriteFilms} from './store/user/userSelectors';
 
-import { fetchFilms } from './store/api-actions';
+import { fetchFilms, fetchFavoriteFilms } from './store/api-actions';
 import { setAuthStatus } from './store/user/userSlice';
 
 import  BrowserHistory  from './utils/browser-history'
@@ -28,6 +29,14 @@ function App() {
   useEffect(() => {
     store.dispatch(setAuthStatus(AuthStatus.AUTH))
   }, []);
+
+  // фетчим избранные фильмы
+  useEffect(() => {
+    dispatch(fetchFavoriteFilms(1));
+  }, [dispatch]);
+
+  const favoriteFilmListId = useSelector(getFavoriteFilms);
+  console.log('favoriteFilmListId', favoriteFilmListId)
 
   const films = useSelector(getFilmList);
   const routes = useRoutes(films)

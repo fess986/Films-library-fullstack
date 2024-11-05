@@ -36,13 +36,17 @@ export enum ApiActions {
   FETCH_FILMS = 'films/fetchFilms',
 	FETCH_SIMILAR_FILMS = 'films/fetchSimilarFilms',
 
+	FETCH_FAVORITE_FILMS = 'user/fetchFavoriteFilms',
+
 	FETCH_REVIEWS = 'reviews/fetchReviews',
 }
 
 export enum ApiRoutes {
-	REVIEWS = '/reviews/', // get - /reviews/:film_id
-	FILMS = '/films',
-	SIMILAR_FILMS = '/films/similar/:id',
+	REVIEWS = '/reviews/:id', // get - /reviews/:film_id
+	FILMS = '/films', // get
+	SIMILAR_FILMS = '/films/similar/:id',  // get - id фильма
+	FETCH_FAVORITE_FILMS = '/films/favorite/:id',  // get - id пользователя
+	
 }
 
 export const ALL_GENRES = 'All genres';
