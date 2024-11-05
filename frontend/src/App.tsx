@@ -8,9 +8,9 @@ import { useAppDispatch } from './store';
 import { store } from './store/index';
 
 import { getFilmList } from './store/films/filmsSelector';
-import {getFavoriteFilms} from './store/user/userSelectors';
+import {getFavoriteFilms, getUserId, getIsAuth} from './store/user/userSelectors';
 
-import { fetchFilms, fetchFavoriteFilms } from './store/api-actions';
+import { fetchFilms, fetchFavoriteFilms, loginAction } from './store/api-actions';
 import { setAuthStatus } from './store/user/userSlice';
 
 import  BrowserHistory  from './utils/browser-history'
@@ -26,9 +26,19 @@ function App() {
   }, [dispatch]);
 
   // устанавливаем статус авторизации
+  // useEffect(() => {
+  //   store.dispatch(setAuthStatus(AuthStatus.AUTH))
+  // }, []);
+
+  // устанавливаем статус авторизации и получаем userId 1 или null для дальнейшего использования для получения списка любимых фильмов
   useEffect(() => {
-    store.dispatch(setAuthStatus(AuthStatus.AUTH))
-  }, []);
+    dispatch(loginAction(AuthStatus.NO_AUTH));
+  }, [dispatch]);
+
+  const isAuth = useSelector(getIsAuth);
+  const userId = useSelector(getUserId);
+
+  console.log('isAuth', isAuth, 'userId', userId)
 
   // фетчим избранные фильмы
   useEffect(() => {
