@@ -3,6 +3,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { StoreNames } from "../../const/const";
 import { RootState } from "../index";
 import { getActiveGenre } from "../app/appSelectors";
+import { getFavoriteFilms } from "../user/userSelectors";
 import { ALL_GENRES } from "../../const/const";
 import { FilmProps } from "../../types/types";
 
@@ -25,6 +26,15 @@ export const getFilteredFilmList = createSelector(
 
 		return filmList.filter((film: FilmProps) =>
 			film.genre.includes(activeGenre)
+		);
+	}
+);
+
+export const getFavoriteFilmList = createSelector(
+	[getFavoriteFilms, getFilmList],
+	(favoriteFilms, filmList) => {
+		return filmList.filter((film: FilmProps) =>
+			favoriteFilms.includes(film.id)
 		);
 	}
 );

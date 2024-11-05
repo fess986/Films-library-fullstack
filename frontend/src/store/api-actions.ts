@@ -8,6 +8,7 @@ import { RootState, AppDispatch } from ".";
 import { setFilmList, setSimilarFilmList } from "./films/filmsSlice";
 import { setIsFilmsLoaded } from "./app/appSlice";
 import { setReviewsList } from "./reviews/reviewsSlice";
+import {setFavoriteFilms} from "./user/userSlice";
 
 import { Films } from "../mock/films";
 import { Reviews } from "../mock/reviews";
@@ -55,7 +56,7 @@ export const fetchReviews = createAsyncThunk<
 	// dispatch(setIsReviewsLoaded(false)); // перенесено в extraReducers
 
 	const reviews = await api
-		.get(`${ApiRoutes.REVIEWS}${id}`)
+		.get(ApiRoutes.REVIEWS.replace(':id', String(id)))
 		.then(() => Reviews as Review[]);
 	dispatch(setReviewsList(reviews));
 
@@ -72,9 +73,25 @@ export const fetchSimilarFilms = createAsyncThunk<
 	ApiActions.FETCH_SIMILAR_FILMS, // Имя thunkа
 	async (id, { dispatch, extra: api }) => {
 		const response = await api
-			.get(`${ApiRoutes.SIMILAR_FILMS}${id}`)
+			.get(ApiRoutes.SIMILAR_FILMS.replace(':id', String(id)))
 			.then(() => Films as FilmProps[]);
 			
 		dispatch(setSimilarFilmList(response));
+	}
+);
+
+export const fetchFavoriteFilms = createAsyncThunk<
+	void, // Возвращаемый тип данных
+	number, // Аргументы, передаваемые в thunk
+	ThunkConfig
+>(
+	ApiActions.FETCH_FAVORITE_FILMS, // Имя thunkа
+	async (userId, { dispatch, extra: api }) => {
+
+		const response = await api
+			.get(ApiRoutes.FETCH_FAVORITE_FILMS.replace(':id', String(userId)))
+			.then(() => [1, 3, 5]);
+
+		dispatch(setFavoriteFilms(response));
 	}
 );

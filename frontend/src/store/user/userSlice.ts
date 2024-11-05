@@ -3,10 +3,12 @@ import { StoreNames, AuthStatus } from "../../const/const";
 
 type UserState = {
   isAuth: AuthStatus;
+  favoriteFilms: number[];
 };
 
 const initialUserState: UserState = {
   isAuth: AuthStatus.UNKNOWN,
+  favoriteFilms: [],
 };
 
 export const userSlice = createSlice({
@@ -16,7 +18,10 @@ export const userSlice = createSlice({
     setAuthStatus: (state, action: PayloadAction<AuthStatus>) => {
       state.isAuth = action.payload;
     },
+    setFavoriteFilms: (state, action: PayloadAction<number[]>) => {
+      state.favoriteFilms = action.payload;
+    },
   },
 })
 
-export const { setAuthStatus } = userSlice.actions;
+export const { setAuthStatus, setFavoriteFilms } = userSlice.actions;
