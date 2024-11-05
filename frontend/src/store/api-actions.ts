@@ -8,11 +8,11 @@ import { RootState, AppDispatch } from ".";
 import { setFilmList, setSimilarFilmList } from "./films/filmsSlice";
 import { setIsFilmsLoaded } from "./app/appSlice";
 import { setReviewsList } from "./reviews/reviewsSlice";
-import {setFavoriteFilms} from "./user/userSlice";
+import {setFavoriteFilms, setUserId, setAuthStatus} from "./user/userSlice";
 
 import { Films } from "../mock/films";
 import { Reviews } from "../mock/reviews";
-import { ApiActions, ApiRoutes } from "../const/const";
+import { ApiActions, ApiRoutes, AuthStatus } from "../const/const";
 // import { redirect } from "./actions";
 
 type ThunkConfig = {
@@ -93,5 +93,30 @@ export const fetchFavoriteFilms = createAsyncThunk<
 			.then(() => [1, 3, 5]);
 
 		dispatch(setFavoriteFilms(response));
+	}
+);
+
+export const loginAction = createAsyncThunk<
+	void, // Возвращаемый тип данных
+	AuthStatus, // Аргументы, передаваемые в thunk
+	ThunkConfig
+>(
+	ApiActions.LOGIN, // Имя thunkа
+	async (loginInfo, { dispatch, extra: api }) => {
+		let response : AuthStatus;
+		let id : number | null;
+
+		if (loginInfo === AuthStatus.AUTH) {
+			response = AuthStatus.AUTH;
+			id = 1;
+		} else {
+			response = AuthStatus.NO_AUTH;
+			id = null;
+		}
+
+		// await api.post(`${ApiRoutes.LOGIN}/${loginInfo}`);
+
+		dispatch(setAuthStatus(response));
+		dispatch(setUserId(id));
 	}
 );
