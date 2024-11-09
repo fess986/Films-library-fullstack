@@ -121,7 +121,7 @@ export const loginAction = createAsyncThunk<
 
 		// await api.post(`${ApiRoutes.LOGIN}/${loginInfo}`);
 
-		dispatch(setAuthStatus(response));  // устанавливаем статус авторизации
+		dispatch(setAuthStatus(response));  // устанавливаем статус авторизации ..
 		dispatch(setUserId(id)); // устанавливаем userId
 	}
 );
