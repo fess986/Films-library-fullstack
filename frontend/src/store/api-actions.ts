@@ -21,6 +21,7 @@ type ThunkConfig = {
 	extra: AxiosInstance;
 };
 
+// получаем все фильмы
 export const fetchFilms = createAsyncThunk<
 	void, // Возвращаемый тип данных
 	void, // Аргументы, передаваемые в thunk
@@ -65,6 +66,7 @@ export const fetchReviews = createAsyncThunk<
 	return "some data"; // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
 });
 
+// получаем похожие фильмы
 export const fetchSimilarFilms = createAsyncThunk<
 	void, // Возвращаемый тип данных
 	number, // Аргументы, передаваемые в thunk
@@ -80,43 +82,46 @@ export const fetchSimilarFilms = createAsyncThunk<
 	}
 );
 
-export const fetchFavoriteFilms = createAsyncThunk<
-	void, // Возвращаемый тип данных
-	number, // Аргументы, передаваемые в thunk
-	ThunkConfig
->(
-	ApiActions.FETCH_FAVORITE_FILMS, // Имя thunkа
-	async (userId, { dispatch, extra: api }) => {
+// export const fetchFavoriteFilms = createAsyncThunk<
+// 	void, // Возвращаемый тип данных
+// 	number, // Аргументы, передаваемые в thunk
+// 	ThunkConfig
+// >(
+// 	ApiActions.FETCH_FAVORITE_FILMS, // Имя thunkа
+// 	async (userId, { dispatch, extra: api }) => {
 
-		const response = await api
-			.get(ApiRoutes.FETCH_FAVORITE_FILMS.replace(':id', String(userId)))
-			.then(() => [1, 3, 5]);
+// 		const response = await api
+// 			.get(ApiRoutes.FETCH_FAVORITE_FILMS.replace(':id', String(userId)))
+// 			.then(() => [1, 3, 5]);
 
-		dispatch(setFavoriteFilms(response));
-	}
-);
+// 		dispatch(setFavoriteFilms(response));
+// 	}
+// );
 
+// во время логина нам нужно получить на выходе сам статус авторизации, userId пользователя и список избранных фильмов
 export const loginAction = createAsyncThunk<
 	void, // Возвращаемый тип данных
 	AuthStatus, // Аргументы, передаваемые в thunk
 	ThunkConfig
 >(
 	ApiActions.LOGIN, // Имя thunkа
-	async (loginInfo, { dispatch, extra: api }) => {
+	async (loginInfo, { dispatch }) => {
 		let response : AuthStatus;
 		let id : number | null;
 
 		if (loginInfo === AuthStatus.AUTH) {
 			response = AuthStatus.AUTH;
 			id = 1;
+			dispatch(setFavoriteFilms([1, 3, 5]));  // устанавливаем список избранных фильмов
 		} else {
 			response = AuthStatus.NO_AUTH;
 			id = null;
+			dispatch(setFavoriteFilms([])); // сбрасываем список избранных фильмов
 		}
 
 		// await api.post(`${ApiRoutes.LOGIN}/${loginInfo}`);
 
-		dispatch(setAuthStatus(response));
-		dispatch(setUserId(id));
+		dispatch(setAuthStatus(response));  // устанавливаем статус авторизации
+		dispatch(setUserId(id)); // устанавливаем userId
 	}
 );

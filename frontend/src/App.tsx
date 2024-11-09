@@ -32,18 +32,13 @@ function App() {
 
   // устанавливаем статус авторизации и получаем userId 1 или null для дальнейшего использования для получения списка любимых фильмов
   useEffect(() => {
-    dispatch(loginAction(AuthStatus.NO_AUTH));
+    dispatch(loginAction(AuthStatus.AUTH));
   }, [dispatch]);
 
   const isAuth = useSelector(getIsAuth);
   const userId = useSelector(getUserId);
 
   console.log('isAuth', isAuth, 'userId', userId)
-
-  // фетчим избранные фильмы
-  useEffect(() => {
-    dispatch(fetchFavoriteFilms(1));
-  }, [dispatch]);
 
   const favoriteFilmListId = useSelector(getFavoriteFilms);
   console.log('favoriteFilmListId', favoriteFilmListId)
