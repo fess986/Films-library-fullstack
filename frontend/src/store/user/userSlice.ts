@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { StoreNames, AuthStatus } from "../../const/const";
+// import { addFavoriteFilm } from "../api-actions";
 
 type UserState = {
   isAuth: AuthStatus;
@@ -23,10 +24,13 @@ export const userSlice = createSlice({
     setFavoriteFilms: (state, action: PayloadAction<number[]>) => {
       state.favoriteFilms = action.payload;
     },
+    addToFavoriteFilm: (state, action: PayloadAction<number>) => {
+      state.favoriteFilms = [...state.favoriteFilms, action.payload];
+    },
     setUserId: (state, action: PayloadAction<number | null>) => {
       state.userId = action.payload;
     },
   },
 })
 
-export const { setAuthStatus, setFavoriteFilms, setUserId } = userSlice.actions;
+export const { setAuthStatus, setFavoriteFilms, setUserId, addToFavoriteFilm } = userSlice.actions;
