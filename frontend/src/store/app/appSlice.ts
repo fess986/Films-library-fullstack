@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { StoreNames } from "../../const/const";
-import { fetchSimilarFilms, fetchFavoriteFilms } from "../api-actions";
+import { fetchSimilarFilms } from "../api-actions";
 
 type AppState = {
 	filmsShownCount: number;
@@ -70,15 +70,6 @@ export const appSlice = createSlice({
 			})
 			.addCase(fetchSimilarFilms.rejected, (state) => {
 				state.isSimilarFilmsLoaded = false;
-			})
-			.addCase(fetchFavoriteFilms.pending, (state) => {
-				state.isFavoriteFilmsLoaded = false;
-			})
-			.addCase(fetchFavoriteFilms.fulfilled, (state) => {
-				state.isFavoriteFilmsLoaded = true;
-			})
-			.addCase(fetchFavoriteFilms.rejected, (state) => {
-				state.isFavoriteFilmsLoaded = false;
 			})
 	},
 });

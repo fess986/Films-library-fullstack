@@ -3,15 +3,12 @@ import HistoryRouter from './Components/HistoryRouter/HistoryRouter'
 import { useSelector } from 'react-redux';
 
 import { AuthStatus } from './const/const';
-// import { useDispatch } from 'react-redux';
 import { useAppDispatch } from './store';
-import { store } from './store/index';
 
 import { getFilmList } from './store/films/filmsSelector';
 import {getFavoriteFilms, getUserId, getIsAuth} from './store/user/userSelectors';
 
-import { fetchFilms, fetchFavoriteFilms, loginAction } from './store/api-actions';
-import { setAuthStatus } from './store/user/userSlice';
+import { fetchFilms, loginAction } from './store/api-actions';
 
 import  BrowserHistory  from './utils/browser-history'
 
