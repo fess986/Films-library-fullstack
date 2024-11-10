@@ -8,7 +8,7 @@ import { RootState, AppDispatch } from ".";
 import { setFilmList, setSimilarFilmList } from "./films/filmsSlice";
 import { setIsFilmsLoaded } from "./app/appSlice";
 import { setReviewsList } from "./reviews/reviewsSlice";
-import {setFavoriteFilms, setUserId, setAuthStatus, addToFavoriteFilm} from "./user/userSlice";
+import { setFavoriteFilms, setUserId, setAuthStatus, addToFavoriteFilm, removeFromFavoriteFilm } from "./user/userSlice";
 
 import { Films } from "../mock/films";
 import { Reviews } from "../mock/reviews";
@@ -141,3 +141,18 @@ export const addFavoriteFilm = createAsyncThunk<
 		dispatch(addToFavoriteFilm(response)); // получаем id добавленного фильма и добавляем его в список любимых
 	}
 );
+
+export const removeFavoriteFilm = createAsyncThunk<
+	void, 
+	{ userId: number; filmId: number;}, // передаём объект с данными пользователя и удаляемого фильма
+	ThunkConfig
+>(
+	ApiActions.REMOVE_FAVORITE_FILM, 
+	async (requestInfo, { dispatch, extra: api }) => {
+
+		// отправляем данные пользователя и удаляемого фильма на сервер
+		const response = await api.delete(ApiRoutes.REMOVE_FAVORITE_FILM, {data: requestInfo}).then(() => requestInfo.filmId); // получаем id удаляемого фильма
+
+		dispatch(removeFromFavoriteFilm(response)); // получаем id удаляемого фильма и удаляем его из списка любимых
+	
+})
