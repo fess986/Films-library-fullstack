@@ -8,7 +8,7 @@ import { RootState, AppDispatch } from ".";
 import { setFilmList, setSimilarFilmList } from "./films/filmsSlice";
 import { setIsFilmsLoaded } from "./app/appSlice";
 import { setReviewsList } from "./reviews/reviewsSlice";
-import {setFavoriteFilms, setUserId, setAuthStatus} from "./user/userSlice";
+import {setFavoriteFilms, setUserId, setAuthStatus, addToFavoriteFilm} from "./user/userSlice";
 
 import { Films } from "../mock/films";
 import { Reviews } from "../mock/reviews";
@@ -123,5 +123,21 @@ export const loginAction = createAsyncThunk<
 
 		dispatch(setAuthStatus(response));  // устанавливаем статус авторизации ..
 		dispatch(setUserId(id)); // устанавливаем userId
+	}
+);
+
+// добавляем фильм в список избранных
+export const addFavoriteFilm = createAsyncThunk<
+	void, 
+	{ userId: number; filmId: number;}, // передаём объект с данными пользователя и добавляемого фильма
+	ThunkConfig
+>(
+	ApiActions.ADD_FAVORITE_FILM, 
+	async (requestInfo, { dispatch, extra: api }) => {
+
+		// отправляем данные пользователя и любимого фильма на сервер
+		const response = await api.post(ApiRoutes.ADD_FAVORITE_FILM, requestInfo).then(() => requestInfo.filmId);
+
+		dispatch(addToFavoriteFilm(response)); // получаем id добавленного фильма и добавляем его в список любимых
 	}
 );
