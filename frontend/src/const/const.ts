@@ -33,20 +33,27 @@ export enum AuthStatus {
 } 
 
 export enum ApiActions {
-  FETCH_FILMS = 'films/fetchFilms',
-	FETCH_SIMILAR_FILMS = 'films/fetchSimilarFilms',
-	LOGIN = 'user/login',
+  FETCH_FILMS = 'films/fetchFilms',  // получить все фильмы
+	FETCH_SIMILAR_FILMS = 'films/fetchSimilarFilms', // получить похожие
+	LOGIN = 'user/login', // авторизация
 
-	FETCH_FAVORITE_FILMS = 'user/fetchFavoriteFilms',
+	FETCH_FAVORITE_FILMS = 'user/fetchFavoriteFilms', // получить избранные
+	ADD_FAVORITE_FILM = 'user/addFavoriteFilm', // добавить в избранное
+	REMOVE_FAVORITE_FILM = 'user/removeFavoriteFilm', // удалить из избранного
 
-	FETCH_REVIEWS = 'reviews/fetchReviews',
+	FETCH_REVIEWS = 'reviews/fetchReviews', // получить отзывы
 }
 
 export enum ApiRoutes {
 	REVIEWS = '/reviews/:id', // get - /reviews/:film_id
 	FILMS = '/films', // get
 	SIMILAR_FILMS = '/films/similar/:id',  // get - id фильма
+
 	FETCH_FAVORITE_FILMS = '/films/favorite/:id',  // get - id пользователя,
+	ADD_FAVORITE_FILM = '/films/add-favorite', // post - id пользователя, id фильма
+	REMOVE_FAVORITE_FILM = '/films/remove-favorite', // post - id пользователя, id фильма
+
+
 	LOGIN = '/login', // post - email, password
 	
 }

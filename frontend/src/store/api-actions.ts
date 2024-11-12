@@ -136,7 +136,10 @@ export const addFavoriteFilm = createAsyncThunk<
 	async (requestInfo, { dispatch, extra: api }) => {
 
 		// отправляем данные пользователя и любимого фильма на сервер
-		const response = await api.post(ApiRoutes.ADD_FAVORITE_FILM, requestInfo).then(() => requestInfo.filmId);
+		// const response = await api.post(ApiRoutes.ADD_FAVORITE_FILM, requestInfo).then(() => requestInfo.filmId);
+		// нужно будет заменить на post
+		const response = await api.get(ApiRoutes.ADD_FAVORITE_FILM).then(() => requestInfo.filmId);
+
 
 		dispatch(addToFavoriteFilm(response)); // получаем id добавленного фильма и добавляем его в список любимых
 	}
@@ -151,7 +154,9 @@ export const removeFavoriteFilm = createAsyncThunk<
 	async (requestInfo, { dispatch, extra: api }) => {
 
 		// отправляем данные пользователя и удаляемого фильма на сервер
-		const response = await api.delete(ApiRoutes.REMOVE_FAVORITE_FILM, {data: requestInfo}).then(() => requestInfo.filmId); // получаем id удаляемого фильма
+		// const response = await api.delete(ApiRoutes.REMOVE_FAVORITE_FILM, {data: requestInfo}).then(() => requestInfo.filmId); // получаем id удаляемого фильма
+		// нужно будет заменить на delete
+		const response = await api.get(ApiRoutes.REMOVE_FAVORITE_FILM,).then(() => requestInfo.filmId); // получаем id удаляемого фильма
 
 		dispatch(removeFromFavoriteFilm(response)); // получаем id удаляемого фильма и удаляем его из списка любимых
 	
