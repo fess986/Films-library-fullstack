@@ -6,7 +6,6 @@ import { AuthStatus } from './const/const';
 import { useAppDispatch } from './store';
 
 import { getFilmList } from './store/films/filmsSelector';
-import {getFavoriteFilms, getUserId, getIsAuth} from './store/user/userSelectors';
 
 import { fetchFilms, loginAction } from './store/api-actions';
 
@@ -32,13 +31,9 @@ function App() {
     dispatch(loginAction(AuthStatus.AUTH));
   }, [dispatch]);
 
-  const isAuth = useSelector(getIsAuth);
-  const userId = useSelector(getUserId);
-
-  console.log('isAuth', isAuth, 'userId', userId)
-
-  const favoriteFilmListId = useSelector(getFavoriteFilms);
-  console.log('favoriteFilmListId', favoriteFilmListId)
+  // const isAuth = useSelector(getIsAuth);
+  // const userId = useSelector(getUserId);
+  // const favoriteFilmListId = useSelector(getFavoriteFilms);
 
   const films = useSelector(getFilmList);
   const routes = useRoutes(films)

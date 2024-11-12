@@ -27,10 +27,13 @@ export const userSlice = createSlice({
     addToFavoriteFilm: (state, action: PayloadAction<number>) => {
       state.favoriteFilms = [...state.favoriteFilms, action.payload];
     },
+    removeFromFavoriteFilm: (state, action: PayloadAction<number>) => {
+      state.favoriteFilms = state.favoriteFilms.filter((id) => id !== action.payload);
+    },
     setUserId: (state, action: PayloadAction<number | null>) => {
       state.userId = action.payload;
     },
   },
 })
 
-export const { setAuthStatus, setFavoriteFilms, setUserId, addToFavoriteFilm } = userSlice.actions;
+export const { setAuthStatus, setFavoriteFilms, setUserId, addToFavoriteFilm, removeFromFavoriteFilm } = userSlice.actions;

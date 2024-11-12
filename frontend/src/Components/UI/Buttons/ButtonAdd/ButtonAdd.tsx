@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { getIsAuth, getFavoriteFilms } from "../../../../store/user/userSelectors";
+import { getIsAuth, getFavoriteFilms, getUserId } from "../../../../store/user/userSelectors";
 import { getActiveFilm } from "../../../../store/films/filmsSelector";
 import { AuthStatus, AppRoutes } from "../../../../const/const";
+import { addFavoriteFilm, removeFavoriteFilm } from "../../../../store/api-actions";
+import { useAppDispatch } from "../../../../store";
 
 import { StyledButton } from "../styles";
 
@@ -12,14 +14,12 @@ const ButtonAdd : React.FC = (  ) => {
   const [added, setAdded] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const isAuth = useSelector(getIsAuth);
-  console.log('isAuth', isAuth)
   const favoriteFilmListId = useSelector(getFavoriteFilms);
-  console.log('favoriteFilmListId', favoriteFilmListId)
-
+  const userId = useSelector(getUserId);
   const activeFilm = useSelector(getActiveFilm);
-  console.log('activeFilm', activeFilm)
 
   useEffect(() => {
     if (isAuth === AuthStatus.NO_AUTH || isAuth === AuthStatus.UNKNOWN) {
@@ -42,21 +42,29 @@ const ButtonAdd : React.FC = (  ) => {
   }, [isAuth, activeFilm, favoriteFilmListId]);
 
   const handleClick = () => {
+    // если пользователь не авторизован, то перенаправляем его на страницу авторизации
     if (isAuth === AuthStatus.NO_AUTH || isAuth === AuthStatus.UNKNOWN) {
       navigate(AppRoutes.SIGN_IN);
       return;
     }
 
-    setAdded(!added);  // тут будет логика проверки есть ли фильм в списке любимых TODO
-    console.log('добавить логику добавления фильма в списоок любимых') 
+    // если фильм не выбран, то ничего не делаем
+    if (activeFilm === null) {
+      return;
+    }
+
+    // если фильм уже в списке любимых, то удаляем его, если нет, то добавляем
+    if (added) {
+      dispatch(removeFavoriteFilm({userId: userId || 666, filmId: activeFilm.id}));
+    } else {
+      dispatch(addFavoriteFilm({userId: userId || 666, filmId: activeFilm.id}));
+    }
   } 
 
   return (
     <StyledButton onClick={handleClick} >
       <svg viewBox="0 0 19 20" width={19} height={20}>
         <use xlinkHref={added ? "#in-list" : "#add"} />
-        {/* <use xlinkHref="#in-list" /> */}
-        {/* <use xlinkHref="#add" /> */}
       </svg>
       <span>My list</span>
     </StyledButton>
