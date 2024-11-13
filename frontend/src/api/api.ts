@@ -4,7 +4,7 @@ const baseURL = `${window.location.protocol}//${window.location.hostname}:${wind
 
 const api = axios.create({
 	baseURL,
-	timeout: 1000,
+	timeout: 5000,
 	headers: {
 		"Content-Type": "application/json",
 	},
@@ -18,7 +18,7 @@ api.interceptors.response.use(
 		return new Promise((resolve) => {
 			setTimeout(() => {
 				resolve(response);
-			}, 1000);
+			}, 500);
 		});
 	},
 	(error) => {
