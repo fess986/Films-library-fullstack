@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FilmProps } from "../../../types/types";
 import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
 import RatingStars from "../../blocks/RatingStars/RatingStars";
@@ -9,12 +10,15 @@ type Props = {
 }
 
 const AddReview: React.FC<Props> = ({film}) => {
+  const [reviewText, setReviewText] = useState<string>("");
+  const [reviewRating, setReviewRating] = useState<number>(6);
+
   return (
     <SectionAddReview>
       <FilmCardPoster img={film.posterImage} title={film.name} center={true}/>
       <FormAddReview action="#" >
-        <RatingStars currentRating={7}/>
-        <ReviewText text={""} />
+        <RatingStars currentRating={reviewRating}/>
+        <ReviewText changeHandler={setReviewText} text={reviewText} />
       </FormAddReview>
     </SectionAddReview>
   )
