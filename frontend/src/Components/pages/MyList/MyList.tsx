@@ -21,8 +21,6 @@ const MyList: React.FC = ( ) => {
 
         {isFilmsLoaded ? <FilmList films={favoriteFilms} /> : <div>Loading...</div>}
 
-        <MoreFilmsButton />
-
       </SectionCatalog>
     </SectionCatalogContainer>
 
