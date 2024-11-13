@@ -1,14 +1,17 @@
+import { Dispatch, SetStateAction } from "react";
 import ReviewPostButton from "./ReviewPostButton/ReviewPostButton";
 import {DivReviewTextContainer, TextareaReviewText, DivReviewText} from "./styles";
 
 type ReviewTextProps = {
-  text: string
+  text: string,
+  changeHandler: Dispatch<SetStateAction<string>>
 }
 
-const ReviewText: React.FC<ReviewTextProps> = ({ text }) => {
+const ReviewText: React.FC<ReviewTextProps> = ({ text, changeHandler }) => {
+
   return (
     <DivReviewText>
-      <TextareaReviewText name="review-text" id="review-text" placeholder="Review text" defaultValue={text} />
+      <TextareaReviewText onChange={(evt) => changeHandler(evt.target.value)} name="review-text" id="review-text" placeholder="Review text" defaultValue={text} />
       <DivReviewTextContainer>
         <ReviewPostButton onClick={() => {}} />
       </DivReviewTextContainer>
