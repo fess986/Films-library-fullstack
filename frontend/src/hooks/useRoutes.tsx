@@ -93,7 +93,7 @@ export default function useRoutes(films: FilmProps[]) {
 
         <Route
           path={AppRoutes.MY_LIST}
-          element={<MyList films={films}/>}
+          element={<MyList />}
         />
       </Route>
 
