@@ -21,11 +21,6 @@ function App() {
     dispatch(fetchFilms());
   }, [dispatch]);
 
-  // устанавливаем статус авторизации
-  // useEffect(() => {
-  //   store.dispatch(setAuthStatus(AuthStatus.AUTH))
-  // }, []);
-
   // устанавливаем статус авторизации и получаем userId 1 или null для дальнейшего использования для получения списка любимых фильмов
   useEffect(() => {
     dispatch(loginAction(AuthStatus.AUTH));
