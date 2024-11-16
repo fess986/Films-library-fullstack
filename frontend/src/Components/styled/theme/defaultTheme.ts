@@ -9,7 +9,8 @@ export const defaultTheme = {
   textColorAdditional: "#000",
 
   bgColorAddReview: "#f2dba8",
-  bgColorAddReviewPostButton: "#866866",
+  // bgColorAddReviewPostButton: "#866866",
+  bgColorAddReviewPostButton: "#000",
 
   textSizeSmall: "17px",
   textLineHeightSmall: "20px",
