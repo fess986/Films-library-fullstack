@@ -2,7 +2,11 @@ import styled from "styled-components";
 import { Button } from "../../../styled/Components";
 import { fontSmall } from "../../../styled/Mixins/mixins";
 
-export const ButtonReviewPost = styled(Button)`
+type ReviewPostButtonProps = {
+	disabled: boolean;
+};
+
+export const ButtonReviewPost = styled(Button)<ReviewPostButtonProps>`
 	display: block;
 	padding: 0;
 
@@ -15,13 +19,25 @@ export const ButtonReviewPost = styled(Button)`
 	line-height: 27px;
 	font-weight: 700;
 
-	transition: opacity 0.5s;
-	transition: 0.5s transform, 0.5s;
+	${({ disabled }) => {
+		if (!disabled) {
+			return `
+					transition: opacity 0.5s;
+					transition: 0.5s transform, 0.5s;
 
-	cursor: pointer;
+					cursor: pointer;
 
-	&:hover {
-		opacity: 0.5;
-		transform: scale(1.2);
+						&:hover {
+						opacity: 0.5;
+						transform: scale(1.2);
 	}
+			`;
+		}
+
+		if (disabled) {
+			return `
+					color: gray;
+			`;
+		}
+	}}
 `;

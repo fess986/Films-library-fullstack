@@ -1,12 +1,13 @@
 import { ButtonReviewPost } from "./styles";
 
 type ReviewPostButtonProps = {
-  onClick: () => void
+  onClick: () => void,
+  isDisabled: boolean
 }
 
-const ReviewPostButton: React.FC<ReviewPostButtonProps> = ({ onClick }) => {
+const ReviewPostButton: React.FC<ReviewPostButtonProps> = ({ onClick, isDisabled }) => {
   return (
-    <ButtonReviewPost type="submit" onClick={onClick}>Post</ButtonReviewPost>
+    <ButtonReviewPost disabled={isDisabled} type="submit" onClick={onClick}>Post</ButtonReviewPost>
   )
 }
 

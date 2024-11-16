@@ -1,5 +1,8 @@
 export default {};
 
+export const MINIMUM_REVIEW_LENGTH = 10;
+export const MAXIMUM_REVIEW_LENGTH = 150;
+
 export const AppRoutes = {
 	ROOT: "/",
 	MAIN: "main",
