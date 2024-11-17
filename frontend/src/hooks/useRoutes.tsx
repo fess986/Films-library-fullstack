@@ -73,8 +73,8 @@ export default function useRoutes(films: FilmProps[]) {
       />}>
         <Route
           path={AppRoutes.ADD_REVIEW}
-          element={<AddReview film={Films[0]}/>
-          }
+          element={<AddReview />
+          } 
         />
       </Route>
 

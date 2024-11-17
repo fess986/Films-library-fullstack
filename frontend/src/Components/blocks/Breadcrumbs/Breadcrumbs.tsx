@@ -1,22 +1,17 @@
-import { Films } from "../../../mock/films";
-import { useParams } from "react-router-dom";
 import { BreadcrumbLink, BreadcrumbLi, BreadcrumbsList, NavBreadcrumbs } from "./styles";
-import { useSelector } from "react-redux";
-import { getFilmList } from "../../../store/films/filmsSelector";
+import useActiveFilm from "../../../hooks/useActiveFilm";
 
 const Breadcrumbs: React.FC = () => {
-  const { id } = useParams();
-  const films = useSelector(getFilmList);
-  const activeFilm = films.find((film) => film.id === Number(id)) || null;
+  const {id, currentFilm, isActiveFilmLoaded} = useActiveFilm();
 
   return (
-    !activeFilm ? null :
+    !isActiveFilmLoaded || !currentFilm ? null :
 
     <>
       <NavBreadcrumbs>
           <BreadcrumbsList>
             <BreadcrumbLi>
-              <BreadcrumbLink to={`films/${id}`} $isActive={false}>{activeFilm.name}  </BreadcrumbLink>
+              <BreadcrumbLink to={`films/${id}`} $isActive={false}>{currentFilm.name}  </BreadcrumbLink>
             </BreadcrumbLi>
             <BreadcrumbLi>
               <BreadcrumbLink to={`films/${id}/review`} $isActive={true}>Add review</BreadcrumbLink>
