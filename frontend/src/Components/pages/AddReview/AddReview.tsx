@@ -14,6 +14,8 @@ const AddReview: React.FC = () => {
   const [reviewRating, setReviewRating] = useState<number>(6); // количество поставленных звёзд
   const [isReviewDisabled, setIsReviewDisabled] = useState<boolean>(true);  // проверка на длину текста отзыва
 
+  console.log(reviewRating)
+
   const {currentFilm, isActiveFilmLoaded} = useActiveFilm();
 
   const handleReviewTextChange = (text: string) => {
@@ -28,7 +30,7 @@ const AddReview: React.FC = () => {
     <SectionAddReview>
       <FilmCardPoster img={currentFilm.posterImage} title={currentFilm.name} center={true}/>
       <FormAddReview action="#" >
-        <RatingStars currentRating={reviewRating}/>
+        <RatingStars changeHandler={setReviewRating} currentRating={reviewRating}/>
         <ReviewText changeHandler={handleReviewTextChange} text={reviewText} isReviewDisabled={isReviewDisabled} />
       </FormAddReview>
     </SectionAddReview>
