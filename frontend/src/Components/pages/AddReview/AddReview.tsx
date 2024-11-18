@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 import { MINIMUM_REVIEW_LENGTH, MAXIMUM_REVIEW_LENGTH } from "../../../const/const";
+import { getUserId } from "../../../store/user/userSelectors";
+
+
 import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
 import RatingStars from "../../blocks/RatingStars/RatingStars";
 import ReviewText from "../../blocks/ReviewText/ReviewText";
@@ -14,9 +17,16 @@ const AddReview: React.FC = () => {
   const [reviewRating, setReviewRating] = useState<number>(6); // количество поставленных звёзд
   const [isReviewDisabled, setIsReviewDisabled] = useState<boolean>(true);  // проверка на длину текста отзыва
 
-  console.log(reviewRating)
+  const {currentFilm, isActiveFilmLoaded, id} = useActiveFilm();
+  const userId = useSelector(getUserId);
 
-  const {currentFilm, isActiveFilmLoaded} = useActiveFilm();
+  const comment = {
+    text: reviewText,
+    rating: reviewRating,
+    filmId: Number(id),
+    userId: userId || 1,
+  };
+  console.log(comment);
 
   const handleReviewTextChange = (text: string) => {
     setIsReviewDisabled(text.length < MINIMUM_REVIEW_LENGTH || text.length > MAXIMUM_REVIEW_LENGTH);
