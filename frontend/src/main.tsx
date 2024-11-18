@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from 'styled-components'
 import { Provider as ReduxProvider } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import App from './App.tsx'
 import { store } from './store/index.ts'
@@ -15,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ReduxProvider store={store}>
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyles />
+        <ToastContainer />
         <App />
         <GlobalStyles />
       </ThemeProvider >

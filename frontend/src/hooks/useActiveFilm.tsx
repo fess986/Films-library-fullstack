@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { useAppDispatch } from "../store";
 
@@ -30,7 +31,7 @@ const useActiveFilm = () : UseActiveFilm => {
     const activeFilmFromParams = films.find((film) => film.id === Number(id)) || null;
 
     if ((films.length !== 0) && (!activeFilmFromParams)) {
-      console.log('нет активного фильма');
+      toast.error('Фильм с таким id не найден', {closeOnClick: true});
       dispatch(setIsActiveFilmLoaded(false));
     }
 
