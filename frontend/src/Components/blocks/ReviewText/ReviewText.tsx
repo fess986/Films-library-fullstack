@@ -5,16 +5,17 @@ import { MINIMUM_REVIEW_LENGTH, MAXIMUM_REVIEW_LENGTH } from "../../../const/con
 type ReviewTextProps = {
   text: string,
   changeHandler: (text: string) => void,
-  isReviewDisabled: boolean
+  isReviewDisabled: boolean,
+  isBlocked: boolean
 }
 
-const ReviewText: React.FC<ReviewTextProps> = ({ text, changeHandler, isReviewDisabled }) => {
+const ReviewText: React.FC<ReviewTextProps> = ({ text, changeHandler, isReviewDisabled, isBlocked }) => {
 
   return (
     <DivReviewText>
-      <TextareaReviewText onChange={(evt) => changeHandler(evt.target.value)} name="review-text" id="review-text" placeholder={`Write your review ${MINIMUM_REVIEW_LENGTH} - ${MAXIMUM_REVIEW_LENGTH} symbols`} defaultValue={text} />
+      <TextareaReviewText onChange={(evt) => changeHandler(evt.target.value)} name="review-text" id="review-text" placeholder={`Write your review ${MINIMUM_REVIEW_LENGTH} - ${MAXIMUM_REVIEW_LENGTH} symbols`} defaultValue={text} disabled={isBlocked} />
       <DivReviewTextContainer>
-        <ReviewPostButton isDisabled={isReviewDisabled} onClick={() => {}}  />
+        <ReviewPostButton isDisabled={isReviewDisabled || isBlocked} onClick={() => {}}  />
       </DivReviewTextContainer>
     </DivReviewText>
   )
