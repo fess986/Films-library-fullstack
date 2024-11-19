@@ -12,9 +12,10 @@ import { setFavoriteFilms, setUserId, setAuthStatus, addToFavoriteFilm, removeFr
 
 import { Films } from "../mock/films";
 import { Reviews } from "../mock/reviews";
-import { ApiActions, ApiRoutes, AuthStatus } from "../const/const";
+import { ApiActions, ApiRoutes, AppRoutes, AuthStatus } from "../const/const";
 import { commentProps } from "../types/types";
-// import { redirect } from "./actions";
+import { toast } from "react-toastify";
+import { redirect } from "./actions";
 
 type ThunkConfig = {
 	dispatch: AppDispatch;
@@ -170,15 +171,15 @@ ThunkConfig
 	ApiActions.SEND_REVIEW,
 	async (commentInfo, { dispatch, extra: api }) => {
 		// await api.post(ApiRoutes.SEND_REVIEW, commentInfo);
-
-		console.log(commentInfo)
+		toast.info('Отправка отзыва');
 
 		// нужно будет заменить на post, отправляем данные пользователя и комментария на сервер и получаем назад актуальные отзывы на фильм
 		const response = await api.get(ApiRoutes.SEND_REVIEW)
 		.then(() => Reviews as Review[]);
 
 		dispatch(setReviewsList(response));
+		dispatch(redirect(`${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(':id/*', String(commentInfo.filmId))}`));
 
-		console.log(response);
+		toast.success('Отзыв отправлен');
 	}
 )
