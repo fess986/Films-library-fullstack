@@ -170,7 +170,8 @@ ThunkConfig
 >(
 	ApiActions.SEND_REVIEW,
 	async (commentInfo, { dispatch, extra: api }) => {
-		// await api.post(ApiRoutes.SEND_REVIEW, commentInfo);
+		try {
+					// await api.post(ApiRoutes.SEND_REVIEW, commentInfo);
 		toast.info('Отправка отзыва');
 
 		// нужно будет заменить на post, отправляем данные пользователя и комментария на сервер и получаем назад актуальные отзывы на фильм
@@ -181,5 +182,10 @@ ThunkConfig
 		dispatch(redirect(`${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(':id/*', String(commentInfo.filmId))}`));
 
 		toast.success('Отзыв отправлен');
+		} catch (error) {
+			console.log(error);
+			toast.error('Ошибка отправки отзыва');
+		}
+
 	}
 )
