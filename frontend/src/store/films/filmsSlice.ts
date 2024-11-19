@@ -3,6 +3,7 @@ import { StoreNames, AppRoutes } from "../../const/const";
 import { FilmProps } from "../../types/types";
 import { fetchFilms } from "../api-actions";
 import browserHistory from "../../utils/browser-history";
+import { toast } from "react-toastify";
 
 type FilmsState = {
   filmList: FilmProps[];
@@ -18,7 +19,6 @@ const initialFilmsState: FilmsState = {
   similarFilmList: [],
   myFilmList: [],
 };
-
 
 export const filmsSlice = createSlice({
   name: StoreNames.Films,
@@ -40,7 +40,7 @@ export const filmsSlice = createSlice({
   extraReducers: (builder) => {
 		builder
 			.addCase(fetchFilms.rejected, () => {
-        console.log('fetchFilms.rejected')
+        toast.error('Не удалось загрузить фильмы');
         browserHistory.push(`${AppRoutes.ROOT}${AppRoutes.SIGN_IN}`);
 			})
 	},

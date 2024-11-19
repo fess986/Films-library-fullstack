@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { StoreNames } from "../../const/const";
 import { fetchSimilarFilms } from "../api-actions";
+import { toast } from "react-toastify";
 
 type AppState = {
 	filmsShownCount: number;
@@ -70,6 +71,7 @@ export const appSlice = createSlice({
 			})
 			.addCase(fetchSimilarFilms.rejected, (state) => {
 				state.isSimilarFilmsLoaded = false;
+				toast.error('Не удалось загрузить похожие фильмы');
 			})
 	},
 });
