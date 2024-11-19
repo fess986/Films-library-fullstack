@@ -13,6 +13,7 @@ import { setFavoriteFilms, setUserId, setAuthStatus, addToFavoriteFilm, removeFr
 import { Films } from "../mock/films";
 import { Reviews } from "../mock/reviews";
 import { ApiActions, ApiRoutes, AuthStatus } from "../const/const";
+import { commentProps } from "../types/types";
 // import { redirect } from "./actions";
 
 type ThunkConfig = {
@@ -57,7 +58,7 @@ export const fetchReviews = createAsyncThunk<
 	// dispatch(setIsReviewsLoaded(false)); // перенесено в extraReducers
 
 	const reviews = await api
-		.get(ApiRoutes.REVIEWS.replace(':id', String(id)))
+		.get(ApiRoutes.FETCH_REVIEWS.replace(':id', String(id)))
 		.then(() => Reviews as Review[]);
 	dispatch(setReviewsList(reviews));
 
@@ -159,5 +160,25 @@ export const removeFavoriteFilm = createAsyncThunk<
 		const response = await api.get(ApiRoutes.REMOVE_FAVORITE_FILM,).then(() => requestInfo.filmId); // получаем id удаляемого фильма
 
 		dispatch(removeFromFavoriteFilm(response)); // получаем id удаляемого фильма и удаляем его из списка любимых
-	
 })
+
+export const sendReview = createAsyncThunk<
+void,
+commentProps,
+ThunkConfig
+>(
+	ApiActions.SEND_REVIEW,
+	async (commentInfo, { dispatch, extra: api }) => {
+		// await api.post(ApiRoutes.SEND_REVIEW, commentInfo);
+
+		console.log(commentInfo)
+
+		// нужно будет заменить на post, отправляем данные пользователя и комментария на сервер и получаем назад актуальные отзывы на фильм
+		const response = await api.get(ApiRoutes.SEND_REVIEW)
+		.then(() => Reviews as Review[]);
+
+		dispatch(setReviewsList(response));
+
+		console.log(response);
+	}
+)

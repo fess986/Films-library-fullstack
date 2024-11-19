@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import { StoreNames } from "../../const/const";
 import { Review } from "../../types/types";
-import { fetchReviews } from "../../store/api-actions";
+import { fetchReviews, sendReview } from "../../store/api-actions";
 
 type ReviewsState = {
 	reviewsList: Review[];
@@ -41,10 +42,20 @@ export const reviewsSlice = createSlice({
         // console.log(action.payload);
 				state.isReviewsLoaded = true;
 			})
-
 			.addCase(fetchReviews.rejected, (state) => {
 				state.isReviewsLoaded = false;
-        console.log('fetchReviews.rejected')
+				toast.error('Не удалось загрузить отзывы');
+			})
+
+			.addCase(sendReview.pending, (state) => {
+				state.isReviewSending = true;
+			})
+			.addCase(sendReview.fulfilled, (state) => {
+				state.isReviewSending = false;
+			})
+			.addCase(sendReview.rejected, (state) => {
+				state.isReviewSending = false;
+				toast.error('Не удалось отправить отзыв');
 			});
 	},
 });
