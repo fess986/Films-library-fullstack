@@ -186,6 +186,5 @@ ThunkConfig
 			console.log(error);
 			toast.error('Ошибка отправки отзыва');
 		}
-
 	}
 )
