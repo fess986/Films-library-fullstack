@@ -28,3 +28,10 @@ export type Review = {
   comment: string,
   date: string,
 }
+
+export type commentProps = {
+  text: string,
+  rating: number,
+  filmId: number,
+  userId: number
+};
