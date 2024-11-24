@@ -25,7 +25,7 @@ const FilmInfo: React.FC<FilmInfoProps> = ({film}) => {
       <FilmCardPoster img={film.posterImage} title={film.name} />
       <DivFilmInfo>
         <FilmCardDescription film={film} />
-        <FilmButtons details  />
+        <FilmButtons details id={film.id}/>
       </DivFilmInfo>
     </DivFilmCard>
   )

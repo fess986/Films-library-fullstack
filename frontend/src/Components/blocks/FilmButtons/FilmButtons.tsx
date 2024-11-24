@@ -6,12 +6,13 @@ import { DivFilmButtons } from "./styles";
 
 type FilmButtonsProps = {
   details?: boolean,
-  addReview?: boolean
+  addReview?: boolean,
+  id: number
 }
-const FilmButtons: React.FC<FilmButtonsProps> = ( {details, addReview} ) => {
+const FilmButtons: React.FC<FilmButtonsProps> = ( {details, addReview, id} ) => {
   return (
     <DivFilmButtons>
-      <ButtonPlay id={1}/>
+      <ButtonPlay id={id}/>
       <ButtonAdd />
       {details && <ButtonDetails  />}
       {addReview && <ButtonAddReview />}

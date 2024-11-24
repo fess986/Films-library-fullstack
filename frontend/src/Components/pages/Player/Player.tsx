@@ -23,9 +23,9 @@ const Player: React.FC<PlayerProps> = () => {
   const [playRowPosition, setPlayRowPosition] = useState(0);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  // console.log(videoRef)
 
   const { currentFilm, isActiveFilmLoaded, id } = useActiveFilm();
+  // console.log(currentFilm)
 
 // обновляем текущее время видео
   const handlerCurrentTimePlaying = () => {
