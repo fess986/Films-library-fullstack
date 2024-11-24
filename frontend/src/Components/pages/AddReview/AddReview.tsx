@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../store";
 import { MINIMUM_REVIEW_LENGTH, MAXIMUM_REVIEW_LENGTH } from "../../../const/const";
 import { getUserId } from "../../../store/user/userSelectors";
-import {getIsReviewsSending} from "../../../store/reviews/reviewsSelector";
+import { getIsReviewsSending } from "../../../store/reviews/reviewsSelector";
 import { commentProps } from "../../../types/types";
 import useActiveFilm from "../../../hooks/useActiveFilm";
 import { sendReview } from "../../../store/api-actions";
