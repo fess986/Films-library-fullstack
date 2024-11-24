@@ -1,19 +1,30 @@
-import {SyntheticEvent} from "react";
+import {SyntheticEvent, forwardRef} from "react";
 
 import {VideoPlayer} from "./styles";
 
 type VideoProps = {
   poster: string,
   src?: string,
+  ref?: React.Ref<HTMLVideoElement>,
   onTimeUpdate?: (evt : SyntheticEvent<HTMLVideoElement>) => void,
   onClick?: () => void
 }
 
-const Video: React.FC<VideoProps> = ({ poster, src, onTimeUpdate, onClick }) => {
-  console.log(src)
+// так выглядело до forwardRef
+// const Video: React.FC<VideoProps> = ({ poster, src, onTimeUpdate, onClick, ref }) => {
+
+const Video = forwardRef<HTMLVideoElement, VideoProps>(({ poster, src, onTimeUpdate, onClick }, ref) => {
   return (
-      <VideoPlayer src={src ? src : '#'} poster={poster} onTimeUpdate={onTimeUpdate} onClick={onClick} />
-  )
-}
+    <VideoPlayer
+      ref={ref}
+      src={src ? src : '#'}
+      poster={poster}
+      onTimeUpdate={onTimeUpdate}
+      onClick={onClick}
+    />
+  );
+});
+
+Video.displayName = 'Video';  // для удобства отладки
 
 export default Video;
