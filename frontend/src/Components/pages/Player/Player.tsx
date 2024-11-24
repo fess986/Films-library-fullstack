@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { toast } from "react-toastify";
 
 import Video from "../../UI/Video/Video";
 import ButtonPlayerExit from "../../UI/Buttons/ButtonPlayerExit/ButtonPlayerExit";
@@ -36,8 +37,12 @@ const Player: React.FC<PlayerProps> = () => {
 
   // переключение воспроизведения
   const playButtonClick = () => {
-    console.log('нажата кнопка воспроизведения')
     if (videoRef.current === null) {
+      return;
+    }
+
+    if (isLoading) {
+      toast.error('Фильм ещё не загружен', {closeOnClick: true});
       return;
     }
 
@@ -85,7 +90,7 @@ const Player: React.FC<PlayerProps> = () => {
         src={currentFilm?.videoLink}
         // onTimeUpdate={(evt) => { console.log(evt) }}
         onTimeUpdate={handlerCurrentTimePlaying}
-        onClick={() => { console.log('нажата кнопка плеера') }}
+        onClick={playButtonClick}
       />
 
       <ButtonPlayerExit />
