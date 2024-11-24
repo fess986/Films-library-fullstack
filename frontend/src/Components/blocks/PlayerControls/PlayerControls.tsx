@@ -5,10 +5,11 @@ import ProgressBar from "../../UI/ProgressBar/ProgressBar";
 import {DivConrolRow, DivControlsTime, DivControlsName, DivControlsContainer} from "./styles";
 
 type PlayerControlsProps = {
-  isPlaying: boolean
+  isPlaying: boolean,
+  onPlayButtonClick: () => void
 }
 
-const PlayerControls: React.FC<PlayerControlsProps> = ({isPlaying}) => {
+const PlayerControls: React.FC<PlayerControlsProps> = ({isPlaying, onPlayButtonClick}) => {
   return (
     <DivControlsContainer>
       <DivConrolRow>
@@ -17,7 +18,7 @@ const PlayerControls: React.FC<PlayerControlsProps> = ({isPlaying}) => {
       </DivConrolRow>
 
       <DivConrolRow>
-        <ButtonPlayerPlay state={isPlaying ? 'pause' : 'play'} callback={() => { console.log('нажата кнопка плеера') }} /> 
+        <ButtonPlayerPlay state={isPlaying ? 'pause' : 'play'} onClick={onPlayButtonClick} /> 
         <DivControlsName>Transpotting</DivControlsName>
         <ButtonFullScreen callback={() => { console.log('нажата кнопка фуллскрина') }} />  
       </DivConrolRow>

@@ -18,6 +18,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(({ poster, src, onTimeUpd
     <VideoPlayer
       ref={ref}
       src={src ? src : '#'}
+      // src='https://assets.mixkit.co/videos/4078/4078-720.mp4'
       poster={poster}
       onTimeUpdate={onTimeUpdate}
       onClick={onClick}

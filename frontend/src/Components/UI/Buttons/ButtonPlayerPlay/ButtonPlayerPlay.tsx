@@ -1,13 +1,13 @@
 import {ButtonPlayer, SvgIcon} from './styles.ts'
 
 type ButtonPlayerPlayProps = {
-  callback: () => void,
+  onClick: () => void,
   state: 'pause' | 'play',
 }
 
-const ButtonPlayerPlay: React.FC<ButtonPlayerPlayProps> = ({ callback, state = 'pause' }) => {
+const ButtonPlayerPlay: React.FC<ButtonPlayerPlayProps> = ({ onClick, state = 'pause' }) => {
   return (
-    <ButtonPlayer onClick={callback} >
+    <ButtonPlayer onClick={onClick} >
 
         {state === 'play' && <SvgIcon viewBox="0 0 19 19" width={19} height={19}>
           <use xlinkHref="#play-s" />

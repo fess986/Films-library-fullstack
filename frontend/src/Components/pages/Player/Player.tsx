@@ -8,7 +8,7 @@ import useActiveFilm from "../../../hooks/useActiveFilm";
 
 import { FilmProps } from "../../../types/types";
 import { DivPlayerContainer } from "./styles";
-import { current } from "@reduxjs/toolkit";
+// import { current } from "@reduxjs/toolkit";
 
 type PlayerProps = {
   film: FilmProps
@@ -33,6 +33,22 @@ const Player: React.FC<PlayerProps> = () => {
       console.log(currentTimePlaying);
     }
   }
+
+  // переключение воспроизведения
+  const playButtonClick = () => {
+    console.log('нажата кнопка воспроизведения')
+    if (videoRef.current === null) {
+      return;
+    }
+
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaing((value : boolean) : boolean => !value);
+    } else {
+      videoRef.current.pause();
+      setIsPlaing((value : boolean) : boolean => !value);
+    }
+  };
 
   // получаем длинну видео
   useEffect(() => {
@@ -74,7 +90,7 @@ const Player: React.FC<PlayerProps> = () => {
 
       <ButtonPlayerExit />
 
-      <PlayerControls isPlaying={isPlaying}/>
+      <PlayerControls onPlayButtonClick={playButtonClick} isPlaying={isPlaying}/>
 
     </DivPlayerContainer>
   )
