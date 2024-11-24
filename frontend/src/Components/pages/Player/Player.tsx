@@ -74,7 +74,7 @@ const Player: React.FC<PlayerProps> = () => {
 
       <ButtonPlayerExit />
 
-      <PlayerControls />
+      <PlayerControls isPlaying={isPlaying}/>
 
     </DivPlayerContainer>
   )
