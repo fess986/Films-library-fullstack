@@ -93,7 +93,7 @@ const Player: React.FC<PlayerProps> = () => {
 
       <ButtonPlayerExit />
 
-      <PlayerControls onPlayButtonClick={playButtonClick} isPlaying={isPlaying} progress={playRowPosition || 0} duration={Math.floor(filmDuration)}/>
+      <PlayerControls onPlayButtonClick={playButtonClick} isPlaying={isPlaying} progress={playRowPosition || 0} remainingTime={Math.floor(filmDuration - currentTimePlaying)}/>
 
     </DivPlayerContainer>
   )

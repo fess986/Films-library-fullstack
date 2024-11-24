@@ -1,22 +1,23 @@
 import ButtonPlayerPlay from "../../UI/Buttons/ButtonPlayerPlay/ButtonPlayerPlay";
 import ButtonFullScreen from "../../UI/Buttons/ButtonFullScreen/ButtonFullScreen";
 import ProgressBar from "../../UI/ProgressBar/ProgressBar";
+import { parseMinutes } from "../../../utils/utils";
 
 import {DivConrolRow, DivControlsTime, DivControlsName, DivControlsContainer} from "./styles";
 
 type PlayerControlsProps = {
   isPlaying: boolean,
   progress?: number,
-  duration?: number,
+  remainingTime?: number,
   onPlayButtonClick: () => void
 }
 
-const PlayerControls: React.FC<PlayerControlsProps> = ({isPlaying, progress = 0, duration = 0, onPlayButtonClick}) => {
+const PlayerControls: React.FC<PlayerControlsProps> = ({isPlaying, progress = 0, remainingTime = 0, onPlayButtonClick}) => {
   return (
     <DivControlsContainer>
       <DivConrolRow>
         <ProgressBar value={progress} max={100} name="Toggler" />  
-        <DivControlsTime>{duration}</DivControlsTime>
+        <DivControlsTime>{parseMinutes(remainingTime)}</DivControlsTime>
       </DivConrolRow>
 
       <DivConrolRow>
