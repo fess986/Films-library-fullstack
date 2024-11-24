@@ -63,7 +63,6 @@ const Player: React.FC<PlayerProps> = () => {
 
     videoRef.current.addEventListener('loadeddata', () => {
       setIsloading(false) ;
-      console.log('прогрузилось');
       setfilmDuration((current) => {
         if (videoRef.current) {
           // console.log(videoRef.current)
@@ -77,7 +76,7 @@ const Player: React.FC<PlayerProps> = () => {
 
   // устанавливаем позицию прогресс бара
   useEffect(() => {
-    setPlayRowPosition(currentTimePlaying / filmDuration * 100);
+    setPlayRowPosition(Math.floor(currentTimePlaying / filmDuration * 100));
     console.log('playRowPosition - ', playRowPosition);
   }, [currentTimePlaying, filmDuration, playRowPosition]);
 
@@ -88,14 +87,13 @@ const Player: React.FC<PlayerProps> = () => {
         ref={videoRef}
         poster={currentFilm?.playerImage ? currentFilm?.playerImage : '/images/player-poster.jpg'}
         src={currentFilm?.videoLink}
-        // onTimeUpdate={(evt) => { console.log(evt) }}
         onTimeUpdate={handlerCurrentTimePlaying}
         onClick={playButtonClick}
       />
 
       <ButtonPlayerExit />
 
-      <PlayerControls onPlayButtonClick={playButtonClick} isPlaying={isPlaying}/>
+      <PlayerControls onPlayButtonClick={playButtonClick} isPlaying={isPlaying} progress={playRowPosition || 0} duration={Math.floor(filmDuration)}/>
 
     </DivPlayerContainer>
   )

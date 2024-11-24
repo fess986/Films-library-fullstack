@@ -6,15 +6,17 @@ import {DivConrolRow, DivControlsTime, DivControlsName, DivControlsContainer} fr
 
 type PlayerControlsProps = {
   isPlaying: boolean,
+  progress?: number,
+  duration?: number,
   onPlayButtonClick: () => void
 }
 
-const PlayerControls: React.FC<PlayerControlsProps> = ({isPlaying, onPlayButtonClick}) => {
+const PlayerControls: React.FC<PlayerControlsProps> = ({isPlaying, progress = 0, duration = 0, onPlayButtonClick}) => {
   return (
     <DivControlsContainer>
       <DivConrolRow>
-        <ProgressBar value={30} max={100} name="Toggler" />  
-        <DivControlsTime>1:30:29</DivControlsTime>
+        <ProgressBar value={progress} max={100} name="Toggler" />  
+        <DivControlsTime>{duration}</DivControlsTime>
       </DivConrolRow>
 
       <DivConrolRow>

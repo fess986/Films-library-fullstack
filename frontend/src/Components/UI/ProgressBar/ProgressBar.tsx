@@ -10,7 +10,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({value, max, name = 'Toggler'})
   return (
     <DivPorogressContainer>
     <ProgressLine value={value} max={max} />
-    <DivProgressToggler style={{ left: '30%' }}>{name}</DivProgressToggler>
+    <DivProgressToggler style={{ left: `${value}%` }}>{name}</DivProgressToggler>
   </DivPorogressContainer>
   )
 }
