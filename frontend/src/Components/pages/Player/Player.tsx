@@ -35,6 +35,38 @@ const Player: React.FC<PlayerProps> = () => {
     }
   }
 
+  const handlerToggleFullScreen = () => {
+    /* eslint-disable */
+    const document:any = window.document;
+    /* eslint-enable */
+    const elem = document.documentElement;
+
+    if (!document.fullscreenElement && !document.mozFullScreenElement &&
+      !document.webkitFullscreenElement && !document.msFullscreenElement) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        /* eslint-disable */
+        elem.webkitRequestFullscreen((Element as any).ALLOW_KEYBOARD_INPUT);
+        /* eslint-enable */
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  };
+
   // переключение воспроизведения
   const playButtonClick = () => {
     if (videoRef.current === null) {
@@ -93,7 +125,7 @@ const Player: React.FC<PlayerProps> = () => {
 
       <ButtonPlayerExit />
 
-      <PlayerControls onPlayButtonClick={playButtonClick} isPlaying={isPlaying} progress={playRowPosition || 0} remainingTime={Math.floor(filmDuration - currentTimePlaying)}/>
+      <PlayerControls onPlayButtonClick={playButtonClick} handlerToggleFullScreen={handlerToggleFullScreen} isPlaying={isPlaying} progress={playRowPosition || 0} remainingTime={Math.floor(filmDuration - currentTimePlaying)}/>
 
     </DivPlayerContainer>
   )

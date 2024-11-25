@@ -9,10 +9,11 @@ type PlayerControlsProps = {
   isPlaying: boolean,
   progress?: number,
   remainingTime?: number,
-  onPlayButtonClick: () => void
+  onPlayButtonClick: () => void,
+  handlerToggleFullScreen: () => void
 }
 
-const PlayerControls: React.FC<PlayerControlsProps> = ({isPlaying, progress = 0, remainingTime = 0, onPlayButtonClick}) => {
+const PlayerControls: React.FC<PlayerControlsProps> = ({isPlaying, progress = 0, remainingTime = 0, onPlayButtonClick, handlerToggleFullScreen}) => {
   return (
     <DivControlsContainer>
       <DivConrolRow>
@@ -23,7 +24,7 @@ const PlayerControls: React.FC<PlayerControlsProps> = ({isPlaying, progress = 0,
       <DivConrolRow>
         <ButtonPlayerPlay state={isPlaying ? 'pause' : 'play'} onClick={onPlayButtonClick} /> 
         <DivControlsName>Transpotting</DivControlsName>
-        <ButtonFullScreen callback={() => { console.log('нажата кнопка фуллскрина') }} />  
+        <ButtonFullScreen callback={handlerToggleFullScreen} />  
       </DivConrolRow>
     </DivControlsContainer>
   )
