@@ -1,4 +1,5 @@
 {
   "ENV" : "dev",
-  "PORT" : 5000
+  "PORT" : 6000,
+  "mongoUri": "mongodb+srv://fess986:QS5wXhqGH7aMNLpI@cluster0.uq7t8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 }
