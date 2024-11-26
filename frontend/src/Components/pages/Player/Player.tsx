@@ -24,20 +24,19 @@ const Player: React.FC<PlayerProps> = () => {
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const { currentFilm, isActiveFilmLoaded, id } = useActiveFilm();
-  // console.log(currentFilm)
+  const { currentFilm } = useActiveFilm();
 
-// обновляем текущее время видео
+  // обновляем текущее время видео
   const handlerCurrentTimePlaying = () => {
     if (videoRef.current) {
       setCurrentTimePlaying(videoRef.current.currentTime);
-      console.log(currentTimePlaying);
     }
   }
 
+  // переключение полноэкранного режима
   const handlerToggleFullScreen = () => {
     /* eslint-disable */
-    const document:any = window.document;
+    const document: any = window.document;
     /* eslint-enable */
     const elem = document.documentElement;
 
@@ -67,6 +66,15 @@ const Player: React.FC<PlayerProps> = () => {
     }
   };
 
+  // обновляем полосу прогресса при нажатии на неё
+  const handleProgressBarClick = (newValue: number) => {
+    const newTime = (newValue / 100) * filmDuration; // Переводим процент в секунды
+    if (videoRef.current) {
+      videoRef.current.currentTime = newTime; // Устанавливаем новое время
+      setCurrentTimePlaying(newTime); // Обновляем состояние
+    }
+  };
+
   // переключение воспроизведения
   const playButtonClick = () => {
     if (videoRef.current === null) {
@@ -74,16 +82,16 @@ const Player: React.FC<PlayerProps> = () => {
     }
 
     if (isLoading) {
-      toast.error('Фильм ещё не загружен', {closeOnClick: true});
+      toast.error('Фильм ещё не загружен', { closeOnClick: true });
       return;
     }
 
     if (videoRef.current.paused) {
       videoRef.current.play();
-      setIsPlaing((value : boolean) : boolean => !value);
+      setIsPlaing((value: boolean): boolean => !value);
     } else {
       videoRef.current.pause();
-      setIsPlaing((value : boolean) : boolean => !value);
+      setIsPlaing((value: boolean): boolean => !value);
     }
   };
 
@@ -94,12 +102,11 @@ const Player: React.FC<PlayerProps> = () => {
     }
 
     videoRef.current.addEventListener('loadeddata', () => {
-      setIsloading(false) ;
+      setIsloading(false);
       setfilmDuration((current) => {
         if (videoRef.current) {
           // console.log(videoRef.current)
           current = videoRef.current.duration;
-          console.log('продолжительность - ', current);
         }
         return current;
       });
@@ -109,7 +116,6 @@ const Player: React.FC<PlayerProps> = () => {
   // устанавливаем позицию прогресс бара
   useEffect(() => {
     setPlayRowPosition(Math.floor(currentTimePlaying / filmDuration * 100));
-    console.log('playRowPosition - ', playRowPosition);
   }, [currentTimePlaying, filmDuration, playRowPosition]);
 
 
@@ -125,7 +131,10 @@ const Player: React.FC<PlayerProps> = () => {
 
       <ButtonPlayerExit />
 
-      <PlayerControls onPlayButtonClick={playButtonClick} handlerToggleFullScreen={handlerToggleFullScreen} isPlaying={isPlaying} progress={playRowPosition || 0} remainingTime={Math.floor(filmDuration - currentTimePlaying)}/>
+      <PlayerControls
+        onProgressBarClick={handleProgressBarClick} onPlayButtonClick={playButtonClick} handlerToggleFullScreen={handlerToggleFullScreen} isPlaying={isPlaying}
+        progress={playRowPosition || 0}
+        remainingTime={Math.floor(filmDuration - currentTimePlaying)} />
 
     </DivPlayerContainer>
   )
