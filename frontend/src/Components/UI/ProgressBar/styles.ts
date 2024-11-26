@@ -17,7 +17,9 @@ export const ProgressLine = styled(Progress)`
 	border-radius: 1px;
 	border: none;
 
-	height: 4px; // высота полосы прогресса
+	cursor: pointer;
+
+	height: 10px; // высота полосы прогресса
 `
 
 export const DivProgressToggler = styled(Div)`
@@ -27,8 +29,8 @@ export const DivProgressToggler = styled(Div)`
 	left: 0;
 	top: 50%;
 
-	width: 17px;
-	height: 17px;
+	width: 27px;
+	height: 27px;
 	border-radius: 50%;
 	background: #d9cd8d;
 

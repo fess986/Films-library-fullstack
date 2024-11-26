@@ -10,14 +10,15 @@ type PlayerControlsProps = {
   progress?: number,
   remainingTime?: number,
   onPlayButtonClick: () => void,
-  handlerToggleFullScreen: () => void
+  handlerToggleFullScreen: () => void,
+  onProgressBarClick: (value: number) => void
 }
 
-const PlayerControls: React.FC<PlayerControlsProps> = ({isPlaying, progress = 0, remainingTime = 0, onPlayButtonClick, handlerToggleFullScreen}) => {
+const PlayerControls: React.FC<PlayerControlsProps> = ({isPlaying, progress = 0, remainingTime = 0, onPlayButtonClick, handlerToggleFullScreen, onProgressBarClick}) => {
   return (
     <DivControlsContainer>
       <DivConrolRow>
-        <ProgressBar value={progress} max={100} name="Toggler" />  
+        <ProgressBar onClick={onProgressBarClick} value={progress} max={100} name="Toggler" />  
         <DivControlsTime>{parseMinutes(remainingTime)}</DivControlsTime>
       </DivConrolRow>
 
