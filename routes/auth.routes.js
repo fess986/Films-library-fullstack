@@ -1,6 +1,7 @@
 import {Router} from 'express';
 const router = Router();
 import { User } from '../models/User';
+import bcrypt from 'bcryptjs';
 
 // данный запрос будет конкатенироваться с /api/auth и получится /api/auth/register
 router.post('/register', async (req, res) => {
@@ -12,6 +13,17 @@ router.post('/register', async (req, res) => {
     if (candidate) {
       return res.status(400).json({message: 'Пользователь с таким email уже существует'});  // return в начале используем для того чтобы скрипт остановился. 
     }
+
+    const hashedPassword = await bcrypt.hash(password, 12); // хэшируем пароль, 12 - так называемый salt, нужный для добавления сложности хэшированию. Операция асинхронная.
+
+    const user = new User({
+      email,
+      password: hashedPassword,
+    });
+
+    await user.save();
+    // 201 - статус для случаев, когда что то создаётся
+    res.status(201).json({message: 'Пользователь успешно зарегистрирован'});
 
 
   } catch (error) {
