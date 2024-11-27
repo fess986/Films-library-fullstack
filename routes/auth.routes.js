@@ -49,7 +49,39 @@ router.post(
 
 });
 
-router.post('/login', (req, res) => {
+router.post('/login',
+  [
+    check('email', 'Введите корректный email').normalizeEmail().isEmail(),  // нормализация email 
+    check('password', 'Введите пароль').exists()  // проверка на существование
+  ],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req);  
+  
+      if (!errors.isEmpty()) {  
+        return res.status(400).json({  
+          errors: errors.array(),  
+          message: 'Некорректные данные при авторизации'  
+        })
+      }
+  
+      const {email, password} = req.body;
+
+      const user = await User.findOne({email});  // ищем пользователя в базе по email
+  
+      if (!user) {  // если нет такого email - выходим
+        return res.status(400).json({message: 'Пользователь с таким email не найден'});
+      }
+  
+      const isMatch =  bcrypt.compare(password, user.password);
+  
+      if (!isMatch) {
+        return res.status(400).json({message: 'Неверный пароль для данного пользователя'});
+      }
+  
+    } catch (error) {
+      res.status(500).json({message: 'Авторизация пользователя не удалась'})
+    }
 
 });
 
