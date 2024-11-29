@@ -1,8 +1,11 @@
 import {Router} from 'express';
 const router = Router();
-import { User } from '../models/User';
 import bcrypt from 'bcryptjs';
+import config from 'config';
+import jwt from 'jsonwebtoken';
 import { check, validationResult } from 'express-validator';
+
+import { User } from '../models/User.js';
 
 // данный запрос будет конкатенироваться с /api/auth и получится /api/auth/register
 // между названием роута /register - и функцией - мы можем вставить мидлвары
@@ -78,6 +81,10 @@ router.post('/login',
       if (!isMatch) {
         return res.status(400).json({message: 'Неверный пароль для данного пользователя'});
       }
+
+      const token = jwt.sign({userId: user.id}, config.get('jwtToken'), {expiresIn: '1h'});  // создаем токен
+  
+      res.json({token, userId: user.id});  // отправляем токен на клиент
   
     } catch (error) {
       res.status(500).json({message: 'Авторизация пользователя не удалась'})
