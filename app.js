@@ -17,6 +17,7 @@ app.listen(port, () => console.log(`Server started on port ${port}`));
     
   } catch (e) {
     console.log(e.message);
+    // eslint-disable-next-line no-undef
     process.exit(1);
   }
 };

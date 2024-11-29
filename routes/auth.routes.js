@@ -47,6 +47,7 @@ router.post(
 
 
   } catch (error) {
+    console.log(error);
     res.status(500).json({message: 'Регистрация пользователя не удалась'})
   }
 
@@ -87,6 +88,7 @@ router.post('/login',
       res.json({token, userId: user.id});  // отправляем токен на клиент
   
     } catch (error) {
+      console.log(error);
       res.status(500).json({message: 'Авторизация пользователя не удалась'})
     }
 
