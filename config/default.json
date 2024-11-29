@@ -1,5 +1,6 @@
 {
   "ENV" : "dev",
   "PORT" : 6000,
+  "jwtToken": "my super secret key",
   "mongoUri": "mongodb+srv://fess986:QS5wXhqGH7aMNLpI@cluster0.uq7t8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 }
