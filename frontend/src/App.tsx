@@ -23,7 +23,7 @@ function App() {
 
   // устанавливаем статус авторизации и получаем userId 1 или null для дальнейшего использования для получения списка любимых фильмов
   useEffect(() => {
-    dispatch(loginAction(AuthStatus.AUTH));
+    dispatch(loginAction(AuthStatus.NO_AUTH));
   }, [dispatch]);
 
   // const isAuth = useSelector(getIsAuth);

@@ -4,6 +4,11 @@ import SignInButton from "./SignInButton/SignInButton";
 import { FormSignIn, DivFormContainerTop, DivFormContainerBottom, SectionFormContainer } from "./styles";
 
 const SignInForm: React.FC = () => {
+
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e)
+  }
+
   return (
     <SectionFormContainer>
       <DivFormContainerBottom>
@@ -14,7 +19,7 @@ const SignInForm: React.FC = () => {
               Please sign in if you have an account or sign up if you don’t
             </SignInMessage>
 
-            <SignInFields />
+            <SignInFields onChange={onChangeHandler} />
 
             <SignInButton />
 
