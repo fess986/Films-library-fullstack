@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import SignInMessage from "./SignInMessage/SignInMessage";
 import SignInFields from "./SignInFields/SignInFields";
 import SignInButton from "./SignInButton/SignInButton";
@@ -5,8 +7,14 @@ import { FormSignIn, DivFormContainerTop, DivFormContainerBottom, SectionFormCon
 
 const SignInForm: React.FC = () => {
 
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  })
+
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e)
+    setForm({...form, [e.target.name]: e.target.value})
+    // console.log(form)
   }
 
   return (

@@ -9,7 +9,7 @@ const SignInFields: React.FC<SignInFieldsProps> = ( {onChange} ) => {
     <DivSignInFields>
       <DivSignInField>
         <DivSignInInputEmail
-          name="user-email"
+          name="email"
           id="user-email"
           onChange={(e) => onChange(e)}
           >
@@ -19,7 +19,7 @@ const SignInFields: React.FC<SignInFieldsProps> = ( {onChange} ) => {
 
       <DivSignInField>
         <DivSignInInputPass
-          name="user-password"
+          name="password"
           id="user-password" 
           onChange={(e) => onChange(e)}
           />
