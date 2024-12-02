@@ -1,11 +1,15 @@
 import { useState } from "react";
 
+import { useHttp } from "../../../hooks/useHttp";
+
 import SignInMessage from "./SignInMessage/SignInMessage";
 import SignInFields from "./SignInFields/SignInFields";
 import SignInButton from "./SignInButton/SignInButton";
 import { FormSignIn, DivFormContainerTop, DivFormContainerBottom, SectionFormContainer } from "./styles";
 
 const SignInForm: React.FC = () => {
+
+  const { sendRequest, error, isLoading } = useHttp();
 
   const [form, setForm] = useState({
     email: "",
@@ -14,7 +18,15 @@ const SignInForm: React.FC = () => {
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({...form, [e.target.name]: e.target.value})
-    // console.log(form)
+  }
+
+  const registerHandler = async () => {
+    try {
+      const data = await sendRequest("/api/auth/register", "POST", {...form});
+      console.log('Data - ',data);
+    } catch (err: any) {
+      console.log(err);
+    }
   }
 
   return (
@@ -28,6 +40,8 @@ const SignInForm: React.FC = () => {
             </SignInMessage>
 
             <SignInFields onChange={onChangeHandler} />
+
+            <SignInButton />
 
             <SignInButton />
 
