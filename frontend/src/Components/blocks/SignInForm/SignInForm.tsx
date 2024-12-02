@@ -5,6 +5,7 @@ import { useHttp } from "../../../hooks/useHttp";
 import SignInMessage from "./SignInMessage/SignInMessage";
 import SignInFields from "./SignInFields/SignInFields";
 import SignInButton from "./SignInButton/SignInButton";
+import RegisterButton from "./RegisterButton/RegisterButton";
 import { FormSignIn, DivFormContainerTop, DivFormContainerBottom, SectionFormContainer } from "./styles";
 
 const SignInForm: React.FC = () => {
@@ -43,7 +44,7 @@ const SignInForm: React.FC = () => {
 
             <SignInButton />
 
-            <SignInButton />
+            <RegisterButton />
 
           </FormSignIn>
         </DivFormContainerTop>
