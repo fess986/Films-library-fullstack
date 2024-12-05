@@ -17,6 +17,8 @@ router.post(
   ],
   async (req, res) => {
   try {
+    console.log('register');
+    console.log('req.body', req.body);
     const errors = validationResult(req);  // таким образом мы подключаем валидацию
 
     if (!errors.isEmpty()) {  // проверяем ли есть что в массиве ошибок
