@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 import { useHttp } from "../../../hooks/useHttp";
 
@@ -10,7 +11,7 @@ import { FormSignIn, DivFormContainerTop, DivFormContainerBottom, SectionFormCon
 
 const SignInForm: React.FC = () => {
 
-  const { sendRequest, error, isLoading } = useHttp();
+  const { sendRequest, error, isLoading, clearError } = useHttp();
 
   const [form, setForm] = useState({
     email: "",
@@ -20,6 +21,14 @@ const SignInForm: React.FC = () => {
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({...form, [e.target.name]: e.target.value})
   }
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error, { autoClose: 3000, closeOnClick: true });
+      console.log(error);
+    }
+    clearError();
+  }, [error, clearError])
 
   const registerHandler = async () => {
     try {
