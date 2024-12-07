@@ -1,10 +1,20 @@
 import express from 'express';
 import config from 'config';
 import mongoose from 'mongoose';
+import cors from 'cors';
+// const cors = require('cors');
 
 const app = express();
 const port = config.get('PORT') || 4000;
 console.log(config.get('ENV'));
+
+
+// Настройка CORS
+app.use(cors({
+  origin: "http://localhost:5173", // Укажите адрес вашего фронтенда
+  methods: ["GET", "POST", "PUT", "DELETE"], // Укажите допустимые методы
+  allowedHeaders: ["Content-Type", "Authorization"], // Укажите заголовки, которые вы хотите поддерживать
+}));
 
 app.use(express.json({ extended: true }));
 
