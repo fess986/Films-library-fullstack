@@ -1,8 +1,13 @@
 import { ButtonSignIn } from "./styles";
 
-const SignInButton: React.FC = () => {
+type SignInButtonProps = {
+  loginHandler: () => void;
+  isDisabled: boolean;
+}
+
+const SignInButton: React.FC<SignInButtonProps> = ( { loginHandler, isDisabled } ) => {
   return (
-    <ButtonSignIn > Sign in </ButtonSignIn>
+    <ButtonSignIn onClick={loginHandler} disabled={isDisabled}> Sign in </ButtonSignIn>
   )
 }
 

@@ -20,12 +20,11 @@ router.post(
     console.log('register');
     console.log('req.body', req.body);
     const errors = validationResult(req);  // таким образом мы подключаем валидацию
-    console.log('errors', errors);
 
     if (!errors.isEmpty()) {  // проверяем ли есть что в массиве ошибок
       return res.status(400).json({  // возвращаем статус 400 - ошибка
         errors: errors.array(),  // массив ошибок
-        message1: 'Некорректные данные при регистрации'  // сообщение об ошибке
+        message: 'Некорректные данные при регистрации'  // сообщение об ошибке
       })
     }
 
@@ -80,7 +79,7 @@ router.post('/login',
         return res.status(400).json({message: 'Пользователь с таким email не найден'});
       }
   
-      const isMatch =  bcrypt.compare(password, user.password);
+      const isMatch =  await bcrypt.compare(password, user.password);
   
       if (!isMatch) {
         return res.status(400).json({message: 'Неверный пароль для данного пользователя'});

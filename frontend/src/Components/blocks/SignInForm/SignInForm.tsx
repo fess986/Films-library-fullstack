@@ -36,8 +36,21 @@ const SignInForm: React.FC = () => {
       const data = await sendRequest("http://localhost:4000/api/auth/register", "POST", {...form});
       // const data = await sendRequest("/api/auth/register", "POST", {...form});
       console.log('Data - ',data);
-    } catch (err: any) {
-      console.log(err);
+      toast.success('Регистрация прошла успешно', { autoClose: 3000, closeOnClick: true });
+    } catch (err) {
+      // ошибка уже обработана в useHttp
+    }
+  }
+
+  const loginHandler = async () => {
+    try {
+      console.log('отправляем запрос');
+      const data = await sendRequest("http://localhost:4000/api/auth/login", "POST", {...form});
+      // const data = await sendRequest("/api/auth/register", "POST", {...form});
+      console.log('Data - ',data);
+      toast.success('Вы успешно залогинились', { autoClose: 3000, closeOnClick: true });
+    } catch (err) {
+      // ошибка уже обработана в useHttp
     }
   }
 
@@ -53,7 +66,7 @@ const SignInForm: React.FC = () => {
 
             <SignInFields onChange={onChangeHandler} />
 
-            <SignInButton />
+            <SignInButton loginHandler={loginHandler} isDisabled={isLoading} />
 
             <RegisterButton registerHandler={registerHandler} isDisabled={isLoading} />
 
