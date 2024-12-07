@@ -24,7 +24,7 @@ const SignInForm: React.FC = () => {
   const registerHandler = async () => {
     try {
       console.log('отправляем запрос');
-      const data = await sendRequest("http://localhost:5000/api/auth/register", "POST", {...form});
+      const data = await sendRequest("http://localhost:4000/api/auth/register", "POST", {...form});
       // const data = await sendRequest("/api/auth/register", "POST", {...form});
       console.log('Data - ',data);
     } catch (err: any) {
