@@ -20,11 +20,12 @@ router.post(
     console.log('register');
     console.log('req.body', req.body);
     const errors = validationResult(req);  // таким образом мы подключаем валидацию
+    console.log('errors', errors);
 
     if (!errors.isEmpty()) {  // проверяем ли есть что в массиве ошибок
       return res.status(400).json({  // возвращаем статус 400 - ошибка
         errors: errors.array(),  // массив ошибок
-        message: 'Некорректные данные при регистрации'  // сообщение об ошибке
+        message1: 'Некорректные данные при регистрации'  // сообщение об ошибке
       })
     }
 
