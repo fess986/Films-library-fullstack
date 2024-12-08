@@ -1,20 +1,19 @@
-import { useState, useCallback, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useCallback } from "react";
+// import { useSelector } from "react-redux";
 
 import { AuthStatus } from "../const/const";
 import { useAppDispatch } from "../store";
-import { setToken } from "../store/user/userSlice";
-import { getToken } from "../store/user/userSelectors";
+import { setToken, setUserId } from "../store/user/userSlice";
+// import { getToken } from "../store/user/userSelectors";
 
 const storageName = "userData";
 export const useAuth = () => {
   const dispatch = useAppDispatch();
-  const [userId, setUserId] = useState<number | null>(null);
+  // const [userId, setUserId] = useState<number | null>(null);
 
   const login = useCallback((jwtToken: string, id: number) => {
-    setUserId(id);
-
     dispatch(setToken(jwtToken));
+    dispatch(setUserId(id));
 
     localStorage.setItem(storageName, JSON.stringify({
       userId: id,
@@ -25,7 +24,7 @@ export const useAuth = () => {
 
   const logout = useCallback(() => {
     dispatch(setToken(null));
-    setUserId(null);
+    dispatch(setUserId(null));
 
     localStorage.removeItem(storageName);
   }, []);
@@ -47,5 +46,5 @@ export const useAuth = () => {
   // }, [login]);
 
 
-  return {login, logout, userId, checkAuth};
+  return {login, logout, checkAuth};
 };
