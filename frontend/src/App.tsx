@@ -9,9 +9,10 @@ import { getFilmList } from './store/films/filmsSelector';
 
 import { fetchFilms, loginAction } from './store/api-actions';
 
-import  BrowserHistory  from './utils/browser-history'
+import BrowserHistory from './utils/browser-history'
 
 import useRoutes from './hooks/useRoutes';
+import { useAuth } from './hooks/useAuth';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -26,9 +27,11 @@ function App() {
     dispatch(loginAction(AuthStatus.NO_AUTH));
   }, [dispatch]);
 
-  // const isAuth = useSelector(getIsAuth);
-  // const userId = useSelector(getUserId);
-  // const favoriteFilmListId = useSelector(getFavoriteFilms);
+  const { token, userId } = useAuth();
+
+  console.log('token', token);
+  console.log('userId', userId);
+
 
   const films = useSelector(getFilmList);
   const routes = useRoutes(films)

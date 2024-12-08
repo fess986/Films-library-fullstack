@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-import { useHttp } from "../../../hooks/useHttp";
+// import { useHttp } from "../../../hooks/useHttp";
+import { useApi } from "../../../hooks/useApi";
+import { useAuth } from "../../../hooks/useAuth";
 
 import SignInMessage from "./SignInMessage/SignInMessage";
 import SignInFields from "./SignInFields/SignInFields";
@@ -11,12 +13,14 @@ import { FormSignIn, DivFormContainerTop, DivFormContainerBottom, SectionFormCon
 
 const SignInForm: React.FC = () => {
 
-  const { sendRequest, error, isLoading, clearError } = useHttp();
+  const { sendRequest, error, isLoading, clearError } = useApi();
 
   const [form, setForm] = useState({
     email: "",
     password: "",
   })
+
+  const { login } = useAuth();
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({...form, [e.target.name]: e.target.value})
@@ -48,6 +52,9 @@ const SignInForm: React.FC = () => {
       const data = await sendRequest("http://localhost:4000/api/auth/login", "POST", {...form});
       // const data = await sendRequest("/api/auth/register", "POST", {...form});
       console.log('Data - ',data);
+
+      login(data.token, data.userId);
+
       toast.success('Вы успешно залогинились', { autoClose: 3000, closeOnClick: true });
     } catch (err) {
       // ошибка уже обработана в useHttp
