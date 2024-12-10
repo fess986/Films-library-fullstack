@@ -2,12 +2,11 @@ import express from 'express';
 import config from 'config';
 import mongoose from 'mongoose';
 import cors from 'cors';
-// const cors = require('cors');
+import { ApiRoutes } from './const/const.js';
 
 const app = express();
 const port = config.get('PORT') || 4000;
 console.log(config.get('ENV'));
-
 
 // Настройка CORS
 app.use(cors({
@@ -19,7 +18,7 @@ app.use(cors({
 app.use(express.json({ extended: true }));
 
 // app.use('/api/link', require('./routes/link.routes')) так можно импортировать только когда работаем не с ES5
-app.use('/api/auth', (await import('./routes/auth.routes.js')).default);  // динамический импорт
+app.use(ApiRoutes.AUTH, (await import('./routes/auth.routes.js')).default);  // динамический импорт
 
 const start = async () => {
   try {

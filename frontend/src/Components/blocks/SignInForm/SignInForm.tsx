@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 // import { useHttp } from "../../../hooks/useHttp";
 import { useApi } from "../../../hooks/useApi";
 import { useAuth } from "../../../hooks/useAuth";
+import { ApiRoutes } from "../../../../../const/const.js";
+console.log(ApiRoutes);
 
 import SignInMessage from "./SignInMessage/SignInMessage";
 import SignInFields from "./SignInFields/SignInFields";
@@ -37,8 +39,7 @@ const SignInForm: React.FC = () => {
   const registerHandler = async () => {
     try {
       console.log('отправляем запрос');
-      const data = await sendRequest("http://localhost:4000/api/auth/register", "POST", {...form});
-      // const data = await sendRequest("/api/auth/register", "POST", {...form});
+      const data = await sendRequest(`http://localhost:4000${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`, "POST", {...form});
       console.log('Data - ',data);
       toast.success('Регистрация прошла успешно', { autoClose: 3000, closeOnClick: true });
     } catch (err) {
@@ -49,8 +50,7 @@ const SignInForm: React.FC = () => {
   const loginHandler = async () => {
     try {
       console.log('отправляем запрос');
-      const data = await sendRequest("http://localhost:4000/api/auth/login", "POST", {...form});
-      // const data = await sendRequest("/api/auth/register", "POST", {...form});
+      const data = await sendRequest(`http://localhost:4000${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, "POST", {...form});
       console.log('Data - ',data);
 
       login(data.token, data.userId);

@@ -13,19 +13,22 @@ import BrowserHistory from './utils/browser-history'
 import useRoutes from './hooks/useRoutes';
 import { useAuth } from './hooks/useAuth';
 
+const baseURL = import.meta.env.VITE_BASE_URL;
+console.log(baseURL);
+
 function App() {
   const dispatch = useAppDispatch();
-    const { checkAuth } = useAuth();
+  const { checkAuth } = useAuth();
 
   // фетчим фильмы, по окончанию загрузки устанавливаем флаг isFilmsLoaded в true
   useEffect(() => {
     dispatch(fetchFilms());
   }, [dispatch]);
 
-  // устанавливаем статус авторизации и получаем userId 1 или null для дальнейшего использования для получения списка любимых фильмов
+  // получаем состояние авторизации из локального хранилища, и выполняем соответствующие действия
   useEffect(() => {
     dispatch(loginAction(checkAuth()));
-  }, [dispatch]);
+  }, [dispatch, checkAuth]);
 
   const films = useSelector(getFilmList);
   const routes = useRoutes(films)
