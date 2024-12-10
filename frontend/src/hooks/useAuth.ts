@@ -1,15 +1,12 @@
-import { useCallback } from "react";
-// import { useSelector } from "react-redux";
+import { useCallback, useEffect } from "react";
 
 import { AuthStatus } from "../const/const";
 import { useAppDispatch } from "../store";
 import { setToken, setUserId } from "../store/user/userSlice";
-// import { getToken } from "../store/user/userSelectors";
 
 const storageName = "userData";
 export const useAuth = () => {
   const dispatch = useAppDispatch();
-  // const [userId, setUserId] = useState<number | null>(null);
 
   const login = useCallback((jwtToken: string, id: number) => {
     dispatch(setToken(jwtToken));
@@ -38,12 +35,13 @@ export const useAuth = () => {
     return AuthStatus.NO_AUTH;
   }, []);
 
-  // useEffect(() => {
-  //   const data = JSON.parse(localStorage.getItem(storageName) || '{}');
-  //   if (data && data.token) {
-  //     login(data.token, data.userId);
-  //   }
-  // }, [login]);
+  // для обновления состояния приложения
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem(storageName) || '{}');
+    if (data && data.token) {
+      login(data.token, data.userId);
+    }
+  }, [login]);
 
 
   return {login, logout, checkAuth};

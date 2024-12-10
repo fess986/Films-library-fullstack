@@ -4,13 +4,14 @@ import bcrypt from 'bcryptjs';
 import config from 'config';
 import jwt from 'jsonwebtoken';
 import { check, validationResult } from 'express-validator';
+import { ApiRoutes } from '../const/const.js';
 
 import { User } from '../models/User.js';
 
 // данный запрос будет конкатенироваться с /api/auth и получится /api/auth/register
 // между названием роута /register - и функцией - мы можем вставить мидлвары
 router.post(
-  '/register',
+  ApiRoutes.REGISTER,
   [
     check('email', 'Некорректный email').isEmail(),  // isEmail - это встроенный метод валидатора, который защищает от ввода некорректных данных почты
     check('password', 'Минимальная длина пароля 6 символов').isLength({min: 6}),  // isLength - проверка длины
@@ -55,7 +56,7 @@ router.post(
 
 });
 
-router.post('/login',
+router.post(ApiRoutes.LOGIN,
   [
     check('email', 'Введите корректный email').normalizeEmail().isEmail(),  // нормализация email 
     check('password', 'Введите пароль').exists()  // проверка на существование

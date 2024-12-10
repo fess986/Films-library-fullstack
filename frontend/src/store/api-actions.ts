@@ -123,6 +123,7 @@ export const loginAction = createAsyncThunk<
 
 		// await api.post(`${ApiRoutes.LOGIN}/${loginInfo}`);
 
+		// надо добавить любимые фильмы
 		dispatch(setAuthStatus(response));  // устанавливаем статус авторизации ..
 		dispatch(setUserId(id)); // устанавливаем userId
 	}
