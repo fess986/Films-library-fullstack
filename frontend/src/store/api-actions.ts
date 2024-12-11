@@ -23,6 +23,9 @@ type ThunkConfig = {
 	extra: AxiosInstance;
 };
 
+const baseMockUrl = "http://localhost:5173";
+const baseURL = import.meta.env.VITE_BASE_URL;
+
 // получаем все фильмы
 export const fetchFilms = createAsyncThunk<
 	void, // Возвращаемый тип данных
@@ -42,7 +45,7 @@ export const fetchFilms = createAsyncThunk<
 
 		dispatch(setIsFilmsLoaded(false));
 		const response = await api
-			.get(ApiRoutes.FILMS)
+			.get(baseMockUrl + ApiRoutes.FILMS)
 			.then(() => Films as FilmProps[]);
 		// console.log(response);
 		dispatch(setFilmList(response));
@@ -59,7 +62,7 @@ export const fetchReviews = createAsyncThunk<
 	// dispatch(setIsReviewsLoaded(false)); // перенесено в extraReducers
 
 	const reviews = await api
-		.get(ApiRoutes.FETCH_REVIEWS.replace(':id', String(id)))
+		.get(baseMockUrl + ApiRoutes.FETCH_REVIEWS.replace(':id', String(id)))
 		.then(() => Reviews as Review[]);
 	dispatch(setReviewsList(reviews));
 
@@ -77,7 +80,7 @@ export const fetchSimilarFilms = createAsyncThunk<
 	ApiActions.FETCH_SIMILAR_FILMS, // Имя thunkа
 	async (id, { dispatch, extra: api }) => {
 		const response = await api
-			.get(ApiRoutes.SIMILAR_FILMS.replace(':id', String(id)))
+			.get(baseMockUrl + ApiRoutes.SIMILAR_FILMS.replace(':id', String(id)))
 			.then(() => Films as FilmProps[]);
 			
 		dispatch(setSimilarFilmList(response));
@@ -141,7 +144,7 @@ export const addFavoriteFilm = createAsyncThunk<
 		// отправляем данные пользователя и любимого фильма на сервер
 		// const response = await api.post(ApiRoutes.ADD_FAVORITE_FILM, requestInfo).then(() => requestInfo.filmId);
 		// нужно будет заменить на post
-		const response = await api.get(ApiRoutes.ADD_FAVORITE_FILM).then(() => requestInfo.filmId);
+		const response = await api.get(baseMockUrl + ApiRoutes.ADD_FAVORITE_FILM).then(() => requestInfo.filmId);
 
 
 		dispatch(addToFavoriteFilm(response)); // получаем id добавленного фильма и добавляем его в список любимых
@@ -159,7 +162,7 @@ export const removeFavoriteFilm = createAsyncThunk<
 		// отправляем данные пользователя и удаляемого фильма на сервер
 		// const response = await api.delete(ApiRoutes.REMOVE_FAVORITE_FILM, {data: requestInfo}).then(() => requestInfo.filmId); // получаем id удаляемого фильма
 		// нужно будет заменить на delete
-		const response = await api.get(ApiRoutes.REMOVE_FAVORITE_FILM,).then(() => requestInfo.filmId); // получаем id удаляемого фильма
+		const response = await api.get(baseMockUrl + ApiRoutes.REMOVE_FAVORITE_FILM,).then(() => requestInfo.filmId); // получаем id удаляемого фильма
 
 		dispatch(removeFromFavoriteFilm(response)); // получаем id удаляемого фильма и удаляем его из списка любимых
 })
@@ -176,7 +179,7 @@ ThunkConfig
 		toast.info('Отправка отзыва');
 
 		// нужно будет заменить на post, отправляем данные пользователя и комментария на сервер и получаем назад актуальные отзывы на фильм
-		const response = await api.get(ApiRoutes.SEND_REVIEW)
+		const response = await api.get(baseMockUrl + ApiRoutes.SEND_REVIEW)
 		.then(() => Reviews as Review[]);
 
 		dispatch(setReviewsList(response));
