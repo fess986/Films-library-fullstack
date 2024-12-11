@@ -1,116 +1,62 @@
-import axios from "axios";
+import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
-const baseURL = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`; // используем по умолчанию localhost с текущим портом на котором запущен сервер
-
+// Создаем экземпляр Axios
 const api = axios.create({
-	baseURL,
-	timeout: 5000,
-	headers: {
-		"Content-Type": "application/json",
-	},
+  headers: {
+    "Content-Type": "application/json", // Стандартные заголовки
+  },
+  timeout: 5000, // Таймаут запроса (в миллисекундах)
 });
 
-// Имитация загрузки фильмов через инстанс axios
-api.interceptors.response.use(
-	(response) => {
-		// console.log(response);
-		// Имитация задержки в 500 мс
-		return new Promise((resolve) => {
-			setTimeout(() => {
-				resolve(response);
-			}, 500);
-		});
-	},
-	(error) => {
-		// Здесь можно обработать ошибки глобально
-		console.error("Axios error:", error);
-		return Promise.reject(error); // если не возвращаем ошибку, то скрипт дальше не идёт
-	}
+// Типизация для запросов
+interface ApiError {
+  message: string;
+  errors?: { msg: string }[];
+}
+
+// Настраиваем перехватчик запросов (если нужно добавить токен или другие заголовки)
+api.interceptors.request.use(
+  (config: InternalAxiosRequestConfig) => {
+    // Пример: добавление токена авторизации
+    const token = localStorage.getItem("token");
+    if (token) {
+      if (config.headers) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
+    return config;
+  },
+  (error: AxiosError) => {
+    return Promise.reject(error);
+  }
 );
 
-// api.interceptors.response.use(
-//   (response) => {
-// 		console.log('мы тууууууууууууууууут1111111111111')
-//     // Проверяем метод и URL запроса
-//     if (response.config.method === "post" && response.config.url === ApiRoutes.ADD_FAVORITE_FILM) {
-// 			console.log('мы тууууууууууууууууут222222222222222222')
-//       // Возвращаем заглушку данных для POST-запроса на /films/add-favorite
-//       return new Promise((resolve) => {
-//         setTimeout(() => {
-//           resolve({
-//             ...response,
-//             data: { success: true, filmId: response.config.data.filmId }, // Указываем заглушку данных
-//           });
-//         }, 1000);
-//       });
-//     }
+// Настраиваем перехватчик ответов (для обработки ошибок)
+api.interceptors.response.use(
+  (response: AxiosResponse) => response,
+  (error: AxiosError<ApiError>) => {
+    let errorMessage = "Произошла ошибка при запросе";
 
-//     // Обработка остальных запросов с задержкой
-//     return new Promise((resolve) => {
-//       setTimeout(() => {
-//         resolve(response);
-//       }, 1000);
-//     });
-//   },
-//   (error) => {
-//     console.error("Axios error:", error);
-//     return Promise.reject(error);
-//   }
-// );
+    if (error.response) {
+      // Сервер вернул ответ с ошибкой
+      const { data } = error.response;
 
-// Перехватываем запросы с имитацией возврата данных. Проблема в том что тут нужно прописывать полностью сигнатуру ответа
-// api.interceptors.request.use(async (config) => {
-// 	console.log('ловим запрос')
-// 	// if (config.url === "/films" && config.method === "get" )  {
-// 	// if (config.url === "/films" && config.method === "get"  )  {
-// 	// 	// console.log('запрос перехвачен')
-// 	// 	// console.log(config)
-// 	// 	// console.log('запрос перехвачен')
-// 	// 	// return new Promise((resolve) => {
-// 	// 	//   console.log('запрос перехвачен 2 раз')
-// 	// 	//   setTimeout(() => {
-// 	// 	//     resolve({
-// 	// 	//       data: 'films',
-// 	// 	//       status: 200,
-// 	// 	//       statusText: 'OK',
-// 	// 	//       headers: new AxiosHeaders(), // Здесь можно указать заголовки, если нужно
-// 	// 	//       config, // Возвращаем оригинальную конфигурацию
-// 	// 	//       request: {}, // Можно оставить пустым или указать объект запроса
-// 	// 	//     });
-// 	// 	//   }, 1000); // Имитация задержки
-// 	// 	// });
-// 	// 	return config;
-// 	// }
+      if (data && data.errors && Array.isArray(data.errors)) {
+        errorMessage = data.errors.map((err) => err.msg).join(", ");
+      } else if (data && data.message) {
+        errorMessage = data.message;
+      }
+    } else if (error.request) {
+      // Запрос был отправлен, но ответа не получено
+      errorMessage = "Сервер не отвечает. Проверьте подключение к сети.";
+    } else {
+      // Что-то пошло не так при настройке запроса
+      errorMessage = error.message;
+    }
 
-// 	if (config.method === "post" && config.url === '/api') {
-// 		console.log('мы тууууууууууууууууу4444444444')
-// 		// Создаем объект заглушки ответа
-// 		const fakeResponse = {
-// 			status: 200,
-// 			statusText: "OK",
-// 			headers: new AxiosHeaders(),
-// 			// data: { success: true, filmId: config.data.filmId }, // Возвращаем `filmId`, как при успешном запросе
-// 			data: { success: true }, // Возвращаем `filmId`, как при успешном запросе
-// 			config,
-// 		};
-
-// 		// Возвращаем Promise.resolve(fakeResponse) для имитации успешного выполнения
-// 		return Promise.resolve(fakeResponse);
-// 	}
-
-
-// 	return config; // Возвращаем оригинальный запрос, если не совпадает
-// });
-
-
-// Обработка ошибок
-// api.interceptors.response.use(
-//   response => response,
-//   error => {
-//     // Здесь можно обработать ошибки глобально
-//     console.error('Axios error:', error);
-//     return Promise.reject(error);  // если не возвращаем ошибку, то скрипт дальше не идёт
-//   }
-// );
+    console.error("API Error:", errorMessage);
+    return Promise.reject(new Error(errorMessage));
+  }
+);
 
 export default api;
