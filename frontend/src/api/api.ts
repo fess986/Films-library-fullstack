@@ -9,7 +9,7 @@ const api = axios.create({
 });
 
 // Типизация для запросов
-interface ApiError {
+export interface ApiError {
   message: string;
   errors?: { msg: string }[];
 }
@@ -18,12 +18,12 @@ interface ApiError {
 api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     // Пример: добавление токена авторизации
-    const token = localStorage.getItem("token");
-    if (token) {
-      if (config.headers) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-    }
+    // const token = localStorage.getItem("token");
+    // if (token) {
+    //   if (config.headers) {
+    //     config.headers.Authorization = `Bearer ${token}`;
+    //   }
+    // }
     return config;
   },
   (error: AxiosError) => {
@@ -36,13 +36,16 @@ api.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error: AxiosError<ApiError>) => {
     let errorMessage = "Произошла ошибка при запросе";
+    console.log(error);
 
     if (error.response) {
+      console.log(error.response);
       // Сервер вернул ответ с ошибкой
       const { data } = error.response;
 
       if (data && data.errors && Array.isArray(data.errors)) {
         errorMessage = data.errors.map((err) => err.msg).join(", ");
+        console.log(errorMessage);
       } else if (data && data.message) {
         errorMessage = data.message;
       }

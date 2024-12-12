@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
+import { AxiosError } from "axios";
+import { useError } from "../../../hooks/useError.js";
 
 // import { useHttp } from "../../../hooks/useHttp";
 import { useApi } from "../../../hooks/useApi";
@@ -17,7 +19,7 @@ const baseURL = import.meta.env.VITE_BASE_URL;
 
 const SignInForm: React.FC = () => {
 
-  const { sendRequest, error, isLoading, clearError } = useApi();
+  const { isLoading } = useApi();
 
   const [form, setForm] = useState({
     email: "",
@@ -30,13 +32,13 @@ const SignInForm: React.FC = () => {
     setForm({...form, [e.target.name]: e.target.value})
   }
 
-  useEffect(() => {
-    if (error) {
-      toast.error(error, { autoClose: 3000, closeOnClick: true });
-      console.log(error);
-    }
-    clearError();
-  }, [error, clearError])
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error(error, { autoClose: 3000, closeOnClick: true });
+  //     console.log(error);
+  //   }
+  //   clearError();
+  // }, [error, clearError])
 
   const registerHandler = async () => {
     try {
@@ -46,7 +48,7 @@ const SignInForm: React.FC = () => {
       console.log('Data - ',data);
       toast.success('Регистрация прошла успешно', { autoClose: 3000, closeOnClick: true });
     } catch (err) {
-      // ошибка уже обработана в useHttp
+      useError(err as AxiosError | Error);
     }
   }
 
@@ -61,7 +63,7 @@ const SignInForm: React.FC = () => {
 
       toast.success('Вы успешно залогинились', { autoClose: 3000, closeOnClick: true });
     } catch (err) {
-      // ошибка уже обработана в useHttp
+      useError(err as AxiosError | Error);
     }
   }
 
