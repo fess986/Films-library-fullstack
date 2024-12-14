@@ -19,7 +19,9 @@ const baseURL = import.meta.env.VITE_BASE_URL;
 
 const SignInForm: React.FC = () => {
 
-  const { isLoading } = useApi();
+  // const { isLoading } = useApi();
+  const isLoading = false;
+
 
   const [form, setForm] = useState({
     email: "",
@@ -71,7 +73,7 @@ const SignInForm: React.FC = () => {
     <SectionFormContainer>
       <DivFormContainerBottom>
         <DivFormContainerTop>
-          <FormSignIn action="#">
+          <FormSignIn onSubmit={(e) => e.preventDefault()}>
             
             <SignInMessage isError={false}>
               Please sign in if you have an account or sign up if you don’t

@@ -35,3 +35,8 @@ export type commentProps = {
   filmId: number,
   userId: number
 };
+
+export type UserInfo = {
+  email: string
+  password: string,
+}
