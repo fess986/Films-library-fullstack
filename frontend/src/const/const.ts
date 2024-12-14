@@ -48,7 +48,7 @@ export enum ApiActions {
 	SEND_REVIEW = 'reviews/sendReview', // отправить отзыв
 }
 
-export enum ApiRoutes {
+export enum ApiRoutesMock {
 	FILMS = '/films', // get
 	SIMILAR_FILMS = '/films/similar/:id',  // get - id фильма
 	FETCH_FAVORITE_FILMS = '/films/favorite/:id',  // get - id пользователя,
