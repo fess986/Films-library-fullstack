@@ -13,9 +13,6 @@ import BrowserHistory from './utils/browser-history'
 import useRoutes from './hooks/useRoutes';
 import { useAuth } from './hooks/useAuth';
 
-const baseURL = import.meta.env.VITE_BASE_URL;
-console.log(baseURL);
-
 function App() {
   const dispatch = useAppDispatch();
   const { checkAuth } = useAuth();

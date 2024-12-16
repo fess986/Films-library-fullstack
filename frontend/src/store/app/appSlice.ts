@@ -12,6 +12,7 @@ type AppState = {
 	isSimilarFilmsLoaded: boolean;
 	isFavoriteFilmsLoaded: boolean;
 	isPromoFilmLoaded: boolean;
+	isDataLoading: boolean;
 
 	error: string | null;
 };
@@ -25,6 +26,7 @@ export const initialAppState: AppState = {
 	isSimilarFilmsLoaded: false,
 	isFavoriteFilmsLoaded: false,
 	isPromoFilmLoaded: false,
+	isDataLoading: false,
 
 	error: null,
 };
@@ -53,6 +55,9 @@ export const appSlice = createSlice({
 		},
 		setIsPromoFilmLoaded: (state, action: PayloadAction<boolean>) => {
 			state.isPromoFilmLoaded = action.payload;
+		},
+		setIsDataLoading: (state, action: PayloadAction<boolean>) => {
+			state.isDataLoading = action.payload;
 		},
 		resetFilmsShownCount: (state) => {
 			state.filmsShownCount = initialAppState.filmsShownCount;
@@ -86,4 +91,5 @@ export const {
 	setIsPromoFilmLoaded,
 	setError,
 	resetFilmsShownCount,
+	setIsDataLoading
 } = appSlice.actions;

@@ -46,8 +46,12 @@ router.post(
     });
 
     await user.save();
+
+    const token = jwt.sign({userId: user.id}, config.get('jwtToken'), {expiresIn: '1h'});  // создаем токен
+  
+      res.status(201).json({token, userId: user.id});  // отправляем токен на клиент
     // 201 - статус для случаев, когда что то создаётся
-    res.status(201).json({message: 'Пользователь успешно зарегистрирован'});
+    // res.status(201).json({message: 'Пользователь успешно зарегистрирован'});
 
 
   } catch (error) {

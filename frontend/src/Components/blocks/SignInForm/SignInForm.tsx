@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
 import { useError } from "../../../hooks/useError.js";
@@ -10,6 +11,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import { ApiRoutes } from "../../../../../const/const.js";
 import api from "../../../api/api.js";
 import { registerAction } from "../../../store/api-actions.js";
+import { getIsDataLoading } from "../../../store/app/appSelectors.js";
 
 import SignInMessage from "./SignInMessage/SignInMessage";
 import SignInFields from "./SignInFields/SignInFields";
@@ -23,8 +25,8 @@ const SignInForm: React.FC = () => {
   const dispatch = useAppDispatch();
 
   // const { isLoading } = useApi();
-  const isLoading = false;
-
+  const isLoading = useSelector(getIsDataLoading);
+  console.log(isLoading)
 
   const [form, setForm] = useState({
     email: "",
@@ -58,10 +60,8 @@ const SignInForm: React.FC = () => {
   const registerHandler = async () => {
     try {
       dispatch(registerAction({...form}));
-      console.log('до сюда не должно дойти!!')
     } catch (err) {
-      console.log('почему мы не тут?')
-      useError(err as AxiosError | Error);
+      // useError(err as AxiosError | Error);
     }
   }
 

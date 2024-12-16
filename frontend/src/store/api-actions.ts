@@ -1,23 +1,25 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosInstance } from "axios";
 import { FilmProps } from "../types/types";
-import { Review } from "../types/types";
+import { toast } from "react-toastify";
+import { AxiosError } from "axios";
 
 import { RootState, AppDispatch } from ".";
 
 import { setFilmList, setSimilarFilmList } from "./films/filmsSlice";
-import { setIsFilmsLoaded } from "./app/appSlice";
+import { setIsFilmsLoaded, setIsDataLoading } from "./app/appSlice";
 import { setReviewsList } from "./reviews/reviewsSlice";
-import { setFavoriteFilms, setUserId, setAuthStatus, addToFavoriteFilm, removeFromFavoriteFilm } from "./user/userSlice";
+import { setFavoriteFilms, setUserId, setAuthStatus, addToFavoriteFilm, removeFromFavoriteFilm, setToken } from "./user/userSlice";
 
 import { Films } from "../mock/films";
 import { Reviews } from "../mock/reviews";
 import { ApiActions, ApiRoutesMock, AppRoutes, AuthStatus } from "../const/const";
 import { ApiRoutes } from "../../../const/const";
 
-import { commentProps, UserInfo } from "../types/types";
-import { toast } from "react-toastify";
+import { commentProps, UserInfo, Review } from "../types/types";
 import { redirect } from "./actions";
+import { useError } from "../hooks/useError";
+
 
 type ThunkConfig = {
 	dispatch: AppDispatch;
@@ -114,11 +116,11 @@ export const loginAction = createAsyncThunk<
 	ApiActions.LOGIN, // Имя thunkа
 	async (loginInfo, { dispatch }) => {
 		let response : AuthStatus;
-		let id : number | null;
+		let id : string | null;
 
 		if (loginInfo === AuthStatus.AUTH) {
 			response = AuthStatus.AUTH;
-			id = 1;
+			id = '1';
 			dispatch(setFavoriteFilms([1, 3, 5]));  // устанавливаем список избранных фильмов
 		} else {
 			response = AuthStatus.NO_AUTH;
@@ -140,11 +142,20 @@ export const registerAction = createAsyncThunk<
 	ThunkConfig
 >(
 	ApiActions.REGISTER, // Имя thunkа
-	async (registerInfo, { extra: api }) => {
+	async (registerInfo, {dispatch, extra: api }) => {
 		try {
-			await api.post(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`, registerInfo);
+			dispatch(setIsDataLoading(true))
+			const data = await api.post(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`, registerInfo);
+			dispatch(setIsDataLoading(false))
+			dispatch(setUserId(data.data.userId))
+			dispatch(setToken(data.data.token))
+			dispatch(setAuthStatus(AuthStatus.AUTH))
+			dispatch(redirect(`${AppRoutes.ROOT}`))
+			toast.success(`Регистрация прошла успешно! Добро пожаловать, ${registerInfo.email}`, { autoClose: 3000, closeOnClick: true });
 	} catch (err) {
-		throw new Error('до сюда доходит');
+		dispatch(setAuthStatus(AuthStatus.NO_AUTH))
+		dispatch(setIsDataLoading(false))
+		useError(err as AxiosError | Error)
 	}}
 )
 
