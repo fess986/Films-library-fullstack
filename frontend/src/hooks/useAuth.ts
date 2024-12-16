@@ -1,9 +1,8 @@
 import { useCallback, useEffect } from "react";
 
-import { AuthStatus, storageName } from "../const/const";
+import {  storageName } from "../const/const";
 import { useAppDispatch } from "../store";
-import { setToken, setUserId } from "../store/user/userSlice";
-import { loginUtil } from "../utils/authUtils";
+import { loginUtil, logoutUtil, checkAuthUtil } from "../utils/authUtils";
 
 export const useAuth = () => {
   const dispatch = useAppDispatch();
@@ -13,25 +12,19 @@ export const useAuth = () => {
   }, [dispatch]);
 
   const logout = useCallback(() => {
-    dispatch(setToken(null));
-    dispatch(setUserId(null));
-
-    localStorage.removeItem(storageName);
-  }, []);
+    logoutUtil(dispatch)
+  }, [dispatch]);
 
   const checkAuth = useCallback(() => {
-    const data = JSON.parse(localStorage.getItem(storageName) || '{}');
-    if (data && data.token) {
-      login(data.token, data.userId);
-      return AuthStatus.AUTH;
-    }
-    return AuthStatus.NO_AUTH;
+    return checkAuthUtil(dispatch)
   }, []);
 
   // для обновления состояния приложения
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem(storageName) || '{}');
     if (data && data.token) {
+      console.log(data.token)
+      console.log(data.userId)
       login(data.token, data.userId);
     }
   }, [login]);

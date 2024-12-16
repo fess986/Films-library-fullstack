@@ -2,22 +2,15 @@ import { AppRoutes } from "../../../const/const"
 import { LinkSignIn } from "./styles"
 import { AuthStatus } from "../../../const/const"
 
-import { useAppDispatch } from "../../../store"
-import {setAuthStatus} from "../../../store/user/userSlice"
-import { resetFilmsShownCount } from "../../../store/app/appSlice"
+import { useAuth } from "../../../hooks/useAuth"
 
 type SignInButtonProps = {
   isAuth?: AuthStatus
 }
 
 const SignIn: React.FC<SignInButtonProps> = ({ isAuth }) => {
-
-const dispatch = useAppDispatch();
-
-  const handleClick = () => {
-    dispatch(setAuthStatus(AuthStatus.NO_AUTH));
-    dispatch(resetFilmsShownCount());
-  }
+const { logout } = useAuth()
+const handleClick = () => logout()
 
   return (
     <>

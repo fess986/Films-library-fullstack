@@ -22,10 +22,9 @@ function App() {
     dispatch(fetchFilms());
   }, [dispatch]);
 
-  // получаем состояние авторизации из локального хранилища, и выполняем соответствующие действия
   useEffect(() => {
-    dispatch(loginAction(checkAuth()));
-  }, [dispatch, checkAuth]);
+    checkAuth()
+  }, [checkAuth])
 
   const films = useSelector(getFilmList);
   const routes = useRoutes(films)

@@ -39,7 +39,7 @@ const SignInForm: React.FC = () => {
 
   const registerHandler = async () => {
     try {
-      const data = await dispatch(registerAction({...form}));
+      dispatch(registerAction({...form}));
     } catch (err) {
       // useError(err as AxiosError | Error);
     }
