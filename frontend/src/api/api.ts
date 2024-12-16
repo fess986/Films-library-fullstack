@@ -36,7 +36,6 @@ api.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error: AxiosError<ApiError>) => {
     let errorMessage = "Произошла ошибка при запросе";
-    console.log(error);
 
     if (error.response) {
       console.log(error.response);
@@ -57,7 +56,6 @@ api.interceptors.response.use(
       errorMessage = error.message;
     }
 
-    console.error("API Error:", errorMessage);
     return Promise.reject(new Error(errorMessage));
   }
 );

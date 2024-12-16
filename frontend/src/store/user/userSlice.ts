@@ -5,7 +5,7 @@ import { StoreNames, AuthStatus } from "../../const/const";
 type UserState = {
   isAuth: AuthStatus;
   favoriteFilms: number[];
-  userId: number | null;
+  userId: string | null;
   token: string | null;
 };
 
@@ -32,7 +32,7 @@ export const userSlice = createSlice({
     removeFromFavoriteFilm: (state, action: PayloadAction<number>) => {
       state.favoriteFilms = state.favoriteFilms.filter((id) => id !== action.payload);
     },
-    setUserId: (state, action: PayloadAction<number | null>) => {
+    setUserId: (state, action: PayloadAction<string | null>) => {
       state.userId = action.payload;
     },
     setToken: (state, action: PayloadAction<string | null>) => {

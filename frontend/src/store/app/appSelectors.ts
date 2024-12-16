@@ -8,4 +8,6 @@ export const getIsFilmsLoaded = (state: RootState) => state[StoreNames.App].isFi
 export const getIsSimilarFilmsLoaded = (state: RootState) => state[StoreNames.App].isSimilarFilmsLoaded;
 export const getIsFavoriteFilmsLoaded = (state: RootState) => state[StoreNames.App].isFavoriteFilmsLoaded;
 export const getIsPromoFilmLoaded = (state: RootState) => state[StoreNames.App].isPromoFilmLoaded;
+export const getIsDataLoading = (state: RootState) => state[StoreNames.App].isDataLoading;
+
 export const getError = (state: RootState) => state[StoreNames.App].error;
