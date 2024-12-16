@@ -15,11 +15,11 @@ import { Films } from "../mock/films";
 import { Reviews } from "../mock/reviews";
 import { ApiActions, ApiRoutesMock, AppRoutes, AuthStatus } from "../const/const";
 import { ApiRoutes } from "../../../const/const";
+import { loginUtil } from "../utils/authUtils";
 
 import { commentProps, UserInfo, Review } from "../types/types";
 import { redirect } from "./actions";
 import { useError } from "../hooks/useError";
-
 
 type ThunkConfig = {
 	dispatch: AppDispatch;
@@ -147,11 +147,12 @@ export const registerAction = createAsyncThunk<
 			dispatch(setIsDataLoading(true))
 			const data = await api.post(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`, registerInfo);
 			dispatch(setIsDataLoading(false))
-			dispatch(setUserId(data.data.userId))
-			dispatch(setToken(data.data.token))
-			dispatch(setAuthStatus(AuthStatus.AUTH))
+
+			loginUtil(dispatch, data.data.token, data.data.userId)
+
 			dispatch(redirect(`${AppRoutes.ROOT}`))
 			toast.success(`Регистрация прошла успешно! Добро пожаловать, ${registerInfo.email}`, { autoClose: 3000, closeOnClick: true });
+			return data.data
 	} catch (err) {
 		dispatch(setAuthStatus(AuthStatus.NO_AUTH))
 		dispatch(setIsDataLoading(false))

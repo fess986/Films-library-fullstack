@@ -1,23 +1,16 @@
 import { useCallback, useEffect } from "react";
 
-import { AuthStatus } from "../const/const";
+import { AuthStatus, storageName } from "../const/const";
 import { useAppDispatch } from "../store";
 import { setToken, setUserId } from "../store/user/userSlice";
+import { loginUtil } from "../utils/authUtils";
 
-const storageName = "userData";
 export const useAuth = () => {
   const dispatch = useAppDispatch();
 
-  const login = useCallback((jwtToken: string, id: number) => {
-    dispatch(setToken(jwtToken));
-    dispatch(setUserId(id));
-
-    localStorage.setItem(storageName, JSON.stringify({
-      userId: id,
-      token: jwtToken,
-    }));
-    console.log('login');
-  }, []);
+  const login = useCallback((jwtToken: string, id: string) => {
+    loginUtil(dispatch, jwtToken, id)
+  }, [dispatch]);
 
   const logout = useCallback(() => {
     dispatch(setToken(null));
