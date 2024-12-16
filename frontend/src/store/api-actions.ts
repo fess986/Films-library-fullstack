@@ -26,7 +26,7 @@ type ThunkConfig = {
 };
 
 const baseMockUrl = "http://localhost:5173";
-// const baseURL = import.meta.env.VITE_BASE_URL;
+const baseURL = import.meta.env.VITE_BASE_URL;
 
 // получаем все фильмы
 export const fetchFilms = createAsyncThunk<
@@ -133,6 +133,20 @@ export const loginAction = createAsyncThunk<
 		dispatch(setUserId(id)); // устанавливаем userId
 	}
 );
+
+export const registerAction = createAsyncThunk<
+	void, // Возвращаемый тип данных
+	UserInfo, // Аргументы, передаваемые в thunk
+	ThunkConfig
+>(
+	ApiActions.REGISTER, // Имя thunkа
+	async (registerInfo, { extra: api }) => {
+		try {
+			await api.post(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`, registerInfo);
+	} catch (err) {
+		throw new Error('до сюда доходит');
+	}}
+)
 
 // добавляем фильм в список избранных
 export const addFavoriteFilm = createAsyncThunk<

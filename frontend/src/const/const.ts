@@ -38,7 +38,9 @@ export enum AuthStatus {
 export enum ApiActions {
   FETCH_FILMS = 'films/fetchFilms',  // получить все фильмы
 	FETCH_SIMILAR_FILMS = 'films/fetchSimilarFilms', // получить похожие
+
 	LOGIN = 'user/login', // авторизация
+	REGISTER = 'user/register', // регистрация пользователя
 
 	FETCH_FAVORITE_FILMS = 'user/fetchFavoriteFilms', // получить избранные
 	ADD_FAVORITE_FILM = 'user/addFavoriteFilm', // добавить в избранное
