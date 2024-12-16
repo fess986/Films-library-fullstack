@@ -32,6 +32,7 @@ router.post(
     const {email, password} = req.body;
 
     const candidate = await User.findOne({email: email}); // проверяем есть ли пользователь с таким email в базе данных
+    console.log('candidate', candidate);
 
     if (candidate) {
       return res.status(400).json({message: 'Пользователь с таким email уже существует'});  // return в начале используем для того чтобы скрипт остановился. 
