@@ -24,9 +24,7 @@ const baseURL = import.meta.env.VITE_BASE_URL;
 const SignInForm: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  // const { isLoading } = useApi();
   const isLoading = useSelector(getIsDataLoading);
-  console.log(isLoading)
 
   const [form, setForm] = useState({
     email: "",
@@ -39,41 +37,39 @@ const SignInForm: React.FC = () => {
     setForm({...form, [e.target.name]: e.target.value})
   }
 
-  // useEffect(() => {
-  //   if (error) {
-  //     toast.error(error, { autoClose: 3000, closeOnClick: true });
-  //     console.log(error);
-  //   }
-  //   clearError();
-  // }, [error, clearError])
-
-  // const registerHandler = async () => {
-  //   try {
-  //     // const data = await sendRequest(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`, "POST", {...form});
-  //     const data = await api.post(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`, {...form});  // отправляем запрос через axios
-  //     toast.success('Регистрация прошла успешно', { autoClose: 3000, closeOnClick: true });
-  //   } catch (err) {
-  //     useError(err as AxiosError | Error);
-  //   }
-  // }
-
   const registerHandler = async () => {
     try {
-      dispatch(registerAction({...form}));
+      const data = await dispatch(registerAction({...form}));
     } catch (err) {
       // useError(err as AxiosError | Error);
     }
   }
 
+  // const loginHandler = async () => {
+  //   try {
+  //     console.log('отправляем запрос');
+  //     // const data = await sendRequest(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, "POST", {...form});
+  //     dispatch(registerAction({...form}));
+
+  //     const data : {token: string, userId: number}  = await api.post(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, {...form});
+  //     console.log('Data - ',data);
+
+
+  //     login(data.token, data.userId);
+
+  //     toast.success('Вы успешно залогинились', { autoClose: 3000, closeOnClick: true });
+  //   } catch (err) {
+  //     useError(err as AxiosError | Error);
+  //   }
+  // }
+
   const loginHandler = async () => {
     try {
       console.log('отправляем запрос');
       // const data = await sendRequest(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, "POST", {...form});
-      dispatch(registerAction({...form}));
 
-      const data : {token: string, userId: number}  = await api.post(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, {...form});
+      const data : {token: string, userId: string}  = await api.post(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, {...form});
       console.log('Data - ',data);
-
 
       login(data.token, data.userId);
 
