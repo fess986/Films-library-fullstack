@@ -14,7 +14,11 @@
 // }
 
 export const ApiRoutes = {
-	AUTH: '/api/auth',
+	AUTH: '/api/auth',  // общий для рработы с пользователями
 	LOGIN: '/login', // post - email, password
 	REGISTER: '/register',
+
+	FILMS: '/api/films', // общий для фильмов
+	GET_FILMS: '/get-films', // get
+	SET_FILMS: '/set-films', // post
 }
