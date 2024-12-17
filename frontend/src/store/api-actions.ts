@@ -129,6 +129,11 @@ export const loginAction = createAsyncThunk<
 		try {
 			dispatch(setIsDataLoading(true));  // загрузка
 			// обращаемся к нашему серверу который при успехе вернет нам токен и userId
+
+			// await api.post(`${baseURL}/api/films/post`)			
+			// await api.post(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.SET_FILMS}`)			
+			// await api.get(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.GET_FILMS}`)	
+
 			const data = await api.post(
 				`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`,
 				loginInfo

@@ -12,6 +12,7 @@ const SignInFields: React.FC<SignInFieldsProps> = ( {onChange} ) => {
           name="email"
           id="user-email"
           onChange={(e) => onChange(e)}
+          autoFocus
           >
         </DivSignInInputEmail>
         <DivHidden as={"label"} htmlFor="user-email">Email address</DivHidden>
