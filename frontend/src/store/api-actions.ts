@@ -9,11 +9,23 @@ import { RootState, AppDispatch } from ".";
 import { setFilmList, setSimilarFilmList } from "./films/filmsSlice";
 import { setIsFilmsLoaded, setIsDataLoading } from "./app/appSlice";
 import { setReviewsList } from "./reviews/reviewsSlice";
-import { setFavoriteFilms, setUserId, setAuthStatus, addToFavoriteFilm, removeFromFavoriteFilm, setToken } from "./user/userSlice";
+import {
+	setFavoriteFilms,
+	setUserId,
+	setAuthStatus,
+	addToFavoriteFilm,
+	removeFromFavoriteFilm,
+	setToken,
+} from "./user/userSlice";
 
 import { Films } from "../mock/films";
 import { Reviews } from "../mock/reviews";
-import { ApiActions, ApiRoutesMock, AppRoutes, AuthStatus } from "../const/const";
+import {
+	ApiActions,
+	ApiRoutesMock,
+	AppRoutes,
+	AuthStatus,
+} from "../const/const";
 import { ApiRoutes } from "../../../const/const";
 import { loginUtil } from "../utils/authUtils";
 
@@ -44,8 +56,7 @@ export const fetchFilms = createAsyncThunk<
 	ApiActions.FETCH_FILMS, // Имя thunka
 	// async (_arg, {dispatch, extra: api, requestId, signal }) => {  // доступные аргументы для опций функции, есть ещё
 	async (_arg, { dispatch, extra: api }) => {
-
-    // dispatch(redirect('/mylist'));
+		// dispatch(redirect('/mylist'));
 
 		dispatch(setIsFilmsLoaded(false));
 		const response = await api
@@ -66,7 +77,7 @@ export const fetchReviews = createAsyncThunk<
 	// dispatch(setIsReviewsLoaded(false)); // перенесено в extraReducers
 
 	const reviews = await api
-		.get(baseMockUrl + ApiRoutesMock.FETCH_REVIEWS.replace(':id', String(id)))
+		.get(baseMockUrl + ApiRoutesMock.FETCH_REVIEWS.replace(":id", String(id)))
 		.then(() => Reviews as Review[]);
 	dispatch(setReviewsList(reviews));
 
@@ -84,9 +95,9 @@ export const fetchSimilarFilms = createAsyncThunk<
 	ApiActions.FETCH_SIMILAR_FILMS, // Имя thunkа
 	async (id, { dispatch, extra: api }) => {
 		const response = await api
-			.get(baseMockUrl + ApiRoutesMock.SIMILAR_FILMS.replace(':id', String(id)))
+			.get(baseMockUrl + ApiRoutesMock.SIMILAR_FILMS.replace(":id", String(id)))
 			.then(() => Films as FilmProps[]);
-			
+
 		dispatch(setSimilarFilmList(response));
 	}
 );
@@ -110,29 +121,35 @@ export const fetchSimilarFilms = createAsyncThunk<
 // во время логина нам нужно получить на выходе сам статус авторизации, userId пользователя и список избранных фильмов
 export const loginAction = createAsyncThunk<
 	void, // Возвращаемый тип данных
-	AuthStatus, // Аргументы, передаваемые в thunk
+	UserInfo, // Аргументы, передаваемые в thunk
 	ThunkConfig
 >(
 	ApiActions.LOGIN, // Имя thunkа
-	async (loginInfo, { dispatch }) => {
-		let response : AuthStatus;
-		let id : string | null;
+	async (loginInfo, { dispatch, extra: api }) => {
+		try {
+			dispatch(setIsDataLoading(true));  // загрузка
+			// обращаемся к нашему серверу который при успехе вернет нам токен и userId
+			const data = await api.post(
+				`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`,
+				loginInfo
+			);
+			dispatch(setIsDataLoading(false));  // конец загрузки
 
-		if (loginInfo === AuthStatus.AUTH) {
-			response = AuthStatus.AUTH;
-			id = '1';
-			dispatch(setFavoriteFilms([1, 3, 5]));  // устанавливаем список избранных фильмов
-		} else {
-			response = AuthStatus.NO_AUTH;
-			id = null;
-			dispatch(setFavoriteFilms([])); // сбрасываем список избранных фильмов
+			// регистрируем пользователя с полученными данными и записываем данные в redux и localStorage
+			loginUtil(dispatch, data.data.token, data.data.userId);
+
+			// редирект в мэйн
+			dispatch(redirect(`${AppRoutes.ROOT}`))
+			toast.success(
+				`Регистрация прошла успешно! Добро пожаловать, ${loginInfo.email}`,
+				{ autoClose: 3000, closeOnClick: true }
+			);
+		} catch (err) {
+			// при ошибке отклоняем авторизацию и показываем сообщение
+			dispatch(setAuthStatus(AuthStatus.NO_AUTH));
+			dispatch(setIsDataLoading(false));
+			useError(err as AxiosError | Error);
 		}
-
-		// await api.post(`${ApiRoutesMock.LOGIN}/${loginInfo}`);
-
-		// надо добавить любимые фильмы
-		dispatch(setAuthStatus(response));  // устанавливаем статус авторизации ..
-		dispatch(setUserId(id)); // устанавливаем userId
 	}
 );
 
@@ -142,81 +159,94 @@ export const registerAction = createAsyncThunk<
 	ThunkConfig
 >(
 	ApiActions.REGISTER, // Имя thunkа
-	async (registerInfo, {dispatch, extra: api }) => {
+	async (registerInfo, { dispatch, extra: api }) => {
 		try {
-			dispatch(setIsDataLoading(true))
-			const data = await api.post(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`, registerInfo);
-			dispatch(setIsDataLoading(false))
+			dispatch(setIsDataLoading(true));
+			const data = await api.post(
+				`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`,
+				registerInfo
+			);
+			dispatch(setIsDataLoading(false));
 
-			loginUtil(dispatch, data.data.token, data.data.userId)
+			loginUtil(dispatch, data.data.token, data.data.userId);
 
-			dispatch(redirect(`${AppRoutes.ROOT}`))
-			toast.success(`Регистрация прошла успешно! Добро пожаловать, ${registerInfo.email}`, { autoClose: 3000, closeOnClick: true });
-			return data.data
-	} catch (err) {
-		dispatch(setAuthStatus(AuthStatus.NO_AUTH))
-		dispatch(setIsDataLoading(false))
-		useError(err as AxiosError | Error)
-	}}
-)
+			dispatch(redirect(`${AppRoutes.ROOT}`));
+			toast.success(
+				`Регистрация прошла успешно! Добро пожаловать, ${registerInfo.email}`,
+				{ autoClose: 3000, closeOnClick: true }
+			);
+			// return data.data
+		} catch (err) {
+			dispatch(setAuthStatus(AuthStatus.NO_AUTH));
+			dispatch(setIsDataLoading(false));
+			useError(err as AxiosError | Error);
+		}
+	}
+);
 
 // добавляем фильм в список избранных
 export const addFavoriteFilm = createAsyncThunk<
-	void, 
-	{ userId: number; filmId: number;}, // передаём объект с данными пользователя и добавляемого фильма
+	void,
+	{ userId: number; filmId: number }, // передаём объект с данными пользователя и добавляемого фильма
 	ThunkConfig
 >(
-	ApiActions.ADD_FAVORITE_FILM, 
+	ApiActions.ADD_FAVORITE_FILM,
 	async (requestInfo, { dispatch, extra: api }) => {
-
 		// отправляем данные пользователя и любимого фильма на сервер
 		// const response = await api.post(ApiRoutesMock.ADD_FAVORITE_FILM, requestInfo).then(() => requestInfo.filmId);
 		// нужно будет заменить на post
-		const response = await api.get(baseMockUrl + ApiRoutesMock.ADD_FAVORITE_FILM).then(() => requestInfo.filmId);
-
+		const response = await api
+			.get(baseMockUrl + ApiRoutesMock.ADD_FAVORITE_FILM)
+			.then(() => requestInfo.filmId);
 
 		dispatch(addToFavoriteFilm(response)); // получаем id добавленного фильма и добавляем его в список любимых
 	}
 );
 
 export const removeFavoriteFilm = createAsyncThunk<
-	void, 
-	{ userId: number; filmId: number;}, // передаём объект с данными пользователя и удаляемого фильма
+	void,
+	{ userId: number; filmId: number }, // передаём объект с данными пользователя и удаляемого фильма
 	ThunkConfig
 >(
-	ApiActions.REMOVE_FAVORITE_FILM, 
+	ApiActions.REMOVE_FAVORITE_FILM,
 	async (requestInfo, { dispatch, extra: api }) => {
-
 		// отправляем данные пользователя и удаляемого фильма на сервер
 		// const response = await api.delete(ApiRoutesMock.REMOVE_FAVORITE_FILM, {data: requestInfo}).then(() => requestInfo.filmId); // получаем id удаляемого фильма
 		// нужно будет заменить на delete
-		const response = await api.get(baseMockUrl + ApiRoutesMock.REMOVE_FAVORITE_FILM,).then(() => requestInfo.filmId); // получаем id удаляемого фильма
+		const response = await api
+			.get(baseMockUrl + ApiRoutesMock.REMOVE_FAVORITE_FILM)
+			.then(() => requestInfo.filmId); // получаем id удаляемого фильма
 
 		dispatch(removeFromFavoriteFilm(response)); // получаем id удаляемого фильма и удаляем его из списка любимых
-})
+	}
+);
 
-export const sendReview = createAsyncThunk<
-void,
-commentProps,
-ThunkConfig
->(
+export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
 	ApiActions.SEND_REVIEW,
 	async (commentInfo, { dispatch, extra: api }) => {
 		try {
-					// await api.post(ApiRoutesMock.SEND_REVIEW, commentInfo);
-		toast.info('Отправка отзыва');
+			// await api.post(ApiRoutesMock.SEND_REVIEW, commentInfo);
+			toast.info("Отправка отзыва");
 
-		// нужно будет заменить на post, отправляем данные пользователя и комментария на сервер и получаем назад актуальные отзывы на фильм
-		const response = await api.get(baseMockUrl + ApiRoutesMock.SEND_REVIEW)
-		.then(() => Reviews as Review[]);
+			// нужно будет заменить на post, отправляем данные пользователя и комментария на сервер и получаем назад актуальные отзывы на фильм
+			const response = await api
+				.get(baseMockUrl + ApiRoutesMock.SEND_REVIEW)
+				.then(() => Reviews as Review[]);
 
-		dispatch(setReviewsList(response));
-		dispatch(redirect(`${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(':id/*', String(commentInfo.filmId))}`));
+			dispatch(setReviewsList(response));
+			dispatch(
+				redirect(
+					`${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(
+						":id/*",
+						String(commentInfo.filmId)
+					)}`
+				)
+			);
 
-		toast.success('Отзыв отправлен');
+			toast.success("Отзыв отправлен");
 		} catch (error) {
 			console.log(error);
-			toast.error('Ошибка отправки отзыва');
+			toast.error("Ошибка отправки отзыва");
 		}
 	}
-)
+);

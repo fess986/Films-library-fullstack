@@ -1,16 +1,8 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { AxiosError } from "axios";
-import { useError } from "../../../hooks/useError.js";
 import { useAppDispatch } from "../../../store/index.js";
 
-// import { useHttp } from "../../../hooks/useHttp";
-// import { useApi } from "../../../hooks/useApi";
-import { useAuth } from "../../../hooks/useAuth";
-import { ApiRoutes } from "../../../../../const/const.js";
-import api from "../../../api/api.js";
-import { registerAction } from "../../../store/api-actions.js";
+import { registerAction, loginAction } from "../../../store/api-actions.js";
 import { getIsDataLoading } from "../../../store/app/appSelectors.js";
 
 import SignInMessage from "./SignInMessage/SignInMessage";
@@ -18,8 +10,6 @@ import SignInFields from "./SignInFields/SignInFields";
 import SignInButton from "./SignInButton/SignInButton";
 import RegisterButton from "./RegisterButton/RegisterButton";
 import { FormSignIn, DivFormContainerTop, DivFormContainerBottom, SectionFormContainer } from "./styles";
-
-const baseURL = import.meta.env.VITE_BASE_URL;
 
 const SignInForm: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -31,53 +21,22 @@ const SignInForm: React.FC = () => {
     password: "",
   })
 
-  const { login } = useAuth();
-
+  // меняем состояние стейта формы при изменении
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({...form, [e.target.name]: e.target.value})
   }
 
+  // регистрация нового пользователя
   const registerHandler = async () => {
     try {
       dispatch(registerAction({...form}));
     } catch (err) {
-      // useError(err as AxiosError | Error);
+      // уже обработаны 
     }
   }
 
-  // const loginHandler = async () => {
-  //   try {
-  //     console.log('отправляем запрос');
-  //     // const data = await sendRequest(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, "POST", {...form});
-  //     dispatch(registerAction({...form}));
-
-  //     const data : {token: string, userId: number}  = await api.post(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, {...form});
-  //     console.log('Data - ',data);
-
-
-  //     login(data.token, data.userId);
-
-  //     toast.success('Вы успешно залогинились', { autoClose: 3000, closeOnClick: true });
-  //   } catch (err) {
-  //     useError(err as AxiosError | Error);
-  //   }
-  // }
-
-  const loginHandler = async () => {
-    try {
-      console.log('отправляем запрос');
-      // const data = await sendRequest(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, "POST", {...form});
-
-      const data : {token: string, userId: string}  = await api.post(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, {...form});
-      console.log('Data - ',data);
-
-      login(data.token, data.userId);
-
-      toast.success('Вы успешно залогинились', { autoClose: 3000, closeOnClick: true });
-    } catch (err) {
-      useError(err as AxiosError | Error);
-    }
-  }
+  // вход в аккаунт существующего пользователя
+  const loginHandler = async () => dispatch(loginAction({...form}));
 
   return (
     <SectionFormContainer>

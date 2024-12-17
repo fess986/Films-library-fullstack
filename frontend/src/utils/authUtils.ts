@@ -9,7 +9,6 @@ export const loginUtil = (
   id: string
 ): void => {
   // Диспатчим действия в Redux
-  console.log('asghdrshtehredg')
   dispatch(setToken(jwtToken));
   dispatch(setUserId(id));
   dispatch(setAuthStatus(AuthStatus.AUTH));

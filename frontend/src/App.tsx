@@ -6,7 +6,7 @@ import { useAppDispatch } from './store';
 
 import { getFilmList } from './store/films/filmsSelector';
 
-import { fetchFilms, loginAction } from './store/api-actions';
+import { fetchFilms } from './store/api-actions';
 
 import BrowserHistory from './utils/browser-history'
 
