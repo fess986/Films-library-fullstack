@@ -20,7 +20,7 @@ app.use(express.json({ extended: true }));
 // app.use('/api/link', require('./routes/link.routes')) так можно импортировать только когда работаем не с ES5
 app.use(ApiRoutes.AUTH, (await import('./routes/auth.routes.js')).default);  // динамический импорт
 // app.use(ApiRoutes.FILMS, (await import('./routes/films.routes.js')).default);  // динамический импорт
-app.use('/api/films', (await import('./routes/films.routes.js')).default);  // динамический импорт
+app.use(ApiRoutes.FILMS, (await import('./routes/films.routes.js')).default);  // динамический импорт
 
 const start = async () => {
   try {
