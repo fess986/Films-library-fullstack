@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import { storageName } from "../const/const";
 
 // Создаем экземпляр Axios
 const api = axios.create({
@@ -17,13 +18,13 @@ export interface ApiError {
 // Настраиваем перехватчик запросов (если нужно добавить токен или другие заголовки)
 api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    // Пример: добавление токена авторизации
-    // const token = localStorage.getItem("token");
-    // if (token) {
-    //   if (config.headers) {
-    //     config.headers.Authorization = `Bearer ${token}`;
-    //   }
-    // }
+    // добавление токена авторизации если он есть в локальном хранилище
+    const token = localStorage.getItem(storageName);
+    if (token) {
+      if (config.headers) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
     return config;
   },
   (error: AxiosError) => {
