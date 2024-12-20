@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "../../../store/index.js";
 
+
+import RegisterButton from "./RegisterButton/RegisterButton";
+import SignInButton from "./SignInButton/SignInButton";
+import SignInFields from "./SignInFields/SignInFields";
+import SignInMessage from "./SignInMessage/SignInMessage";
+import { FormSignIn, DivFormContainerTop, DivFormContainerBottom, SectionFormContainer } from "./styles";
 import { registerAction, loginAction } from "../../../store/api-actions.js";
 import { getIsDataLoading } from "../../../store/app/appSelectors.js";
-
-import SignInMessage from "./SignInMessage/SignInMessage";
-import SignInFields from "./SignInFields/SignInFields";
-import SignInButton from "./SignInButton/SignInButton";
-import RegisterButton from "./RegisterButton/RegisterButton";
-import { FormSignIn, DivFormContainerTop, DivFormContainerBottom, SectionFormContainer } from "./styles";
+import { useAppDispatch } from "../../../store/index.js";
 
 const SignInForm: React.FC = () => {
   const dispatch = useAppDispatch();

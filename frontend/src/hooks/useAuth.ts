@@ -17,7 +17,7 @@ export const useAuth = () => {
 
   const checkAuth = useCallback(() => {
     return checkAuthUtil(dispatch)
-  }, []);
+  }, [dispatch]);
 
   // для обновления состояния приложения
   useEffect(() => {
