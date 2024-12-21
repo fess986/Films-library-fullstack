@@ -5,9 +5,6 @@ import { getIsFilmsLoaded } from "../../../store/app/appSelectors";
 import { getFavoriteFilmList } from "../../../store/films/filmsSelector";
 import { FilmProps } from "../../../types/types";
 import FilmList from "../../blocks/FilmList/FilmList";
-import MoreFilmsButton from "../../UI/Buttons/MoreFilmsButton/MoreFilmsButton";
-
-
 
 const MyList: React.FC = ( ) => {
   const isFilmsLoaded = useSelector(getIsFilmsLoaded);

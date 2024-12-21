@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { useAppDispatch } from "../store";
-
 import {  } from "../store/app/appSelectors";
 import { setIsActiveFilmLoaded } from "../store/app/appSlice";
 import { getFilmList } from "../store/films/filmsSelector";

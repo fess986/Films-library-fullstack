@@ -1,4 +1,5 @@
-import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosError } from "axios";
+import type { AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
 import { storageName } from "../const/const";
 
