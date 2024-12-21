@@ -1,5 +1,5 @@
-import { Review } from "../../../types/types";
 import { ReviewText, ReviewFooter, ReviewQuote, ReviewAuthor, ReviewDate, ReviewContainer, ReviewRating } from "./styles";
+import { Review } from "../../../types/types";
 import { parseCommentDate, formatDate } from "../../../utils/utils";
 
 type FilmReviewProps = {

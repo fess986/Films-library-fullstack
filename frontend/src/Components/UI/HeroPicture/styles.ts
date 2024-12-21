@@ -1,7 +1,8 @@
 import styled from "styled-components";
+
+import { PageList } from "../../../const/const";
 import { Img } from "../../styled/Components";
 import { zIndexBack } from "../../styled/Mixins/mixins";
-import { PageList } from "../../../const/const";
 
 export const PictureHero = styled.picture`
 	position: absolute;

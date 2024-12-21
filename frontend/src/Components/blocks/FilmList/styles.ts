@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Div } from "../../styled/Components";
 
 export const DivFilmList = styled(Div)`

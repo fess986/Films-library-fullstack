@@ -1,17 +1,13 @@
 import { useEffect } from 'react';
-import HistoryRouter from './Components/HistoryRouter/HistoryRouter'
 import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from './store';
-
-import { getFilmList } from './store/films/filmsSelector';
-
-import { fetchFilms } from './store/api-actions';
-
-import BrowserHistory from './utils/browser-history'
-
-import useRoutes from './hooks/useRoutes';
+import HistoryRouter from './Components/HistoryRouter/HistoryRouter'
 import { useAuth } from './hooks/useAuth';
+import useRoutes from './hooks/useRoutes';
+import { useAppDispatch } from './store';
+import { fetchFilms } from './store/api-actions';
+import { getFilmList } from './store/films/filmsSelector';
+import BrowserHistory from './utils/browser-history'
 
 function App() {
   const dispatch = useAppDispatch();

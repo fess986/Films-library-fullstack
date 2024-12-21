@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { H1Hidden, Section, Div } from "../../styled/Components";
 
 export const H2Hidden = styled(H1Hidden)`

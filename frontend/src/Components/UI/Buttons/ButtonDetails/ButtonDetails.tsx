@@ -1,11 +1,12 @@
 import React from "react";
-import { StyledButton } from "../styles";
-import { getActiveFilm } from "../../../../store/films/filmsSelector";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import { AppRoutes } from "../../../../const/const";
-import { resetFilmsShownCount } from "../../../../store/app/appSlice";
 import { useAppDispatch } from "../../../../store";
+import { resetFilmsShownCount } from "../../../../store/app/appSlice";
+import { getActiveFilm } from "../../../../store/films/filmsSelector";
+import { StyledButton } from "../styles";
 
 const ButtonDetails : React.FC = (  ) => {
   const navigate = useNavigate();

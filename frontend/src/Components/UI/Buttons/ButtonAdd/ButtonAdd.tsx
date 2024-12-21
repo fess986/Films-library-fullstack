@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { getIsAuth, getFavoriteFilms, getUserId } from "../../../../store/user/userSelectors";
-import { getActiveFilm } from "../../../../store/films/filmsSelector";
 import { AuthStatus, AppRoutes } from "../../../../const/const";
-import { addFavoriteFilm, removeFavoriteFilm } from "../../../../store/api-actions";
 import { useAppDispatch } from "../../../../store";
-
+import { addFavoriteFilm, removeFavoriteFilm } from "../../../../store/api-actions";
+import { getActiveFilm } from "../../../../store/films/filmsSelector";
+import { getIsAuth, getFavoriteFilms, getUserId } from "../../../../store/user/userSelectors";
 import { StyledButton } from "../styles";
 
 const ButtonAdd : React.FC = (  ) => {

@@ -1,6 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 import { ImgUserAvatar, DivUserAvatar } from "./styles";
 import { AppRoutes, AuthStatus } from "../../../const/const";
-import { useNavigate } from "react-router-dom";
 
 type UserAvatarProps = {
   isAuth?: AuthStatus

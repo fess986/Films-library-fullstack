@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Video } from "../../styled/Components";
 
 export const VideoPlayer = styled(Video)`

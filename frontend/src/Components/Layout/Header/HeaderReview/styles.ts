@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { H2, Div, Section } from "../../../styled/Components";
 import {
 	textColorMain,

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { H2 } from "../../styled/Components";
 import {
 	fontH2,

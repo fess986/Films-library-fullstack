@@ -1,5 +1,5 @@
-import { FilmProps } from "../../../../types/types";
 import { DivDetailsContainer, DivItem, SpanDetailsItemTitle, SpanDetailsItemValue } from "./styles";
+import { FilmProps } from "../../../../types/types";
 import { getDuration } from "../../../../utils/utils";
 
 type FilmDetailsProps = {

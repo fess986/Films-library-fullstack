@@ -1,37 +1,32 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { AxiosInstance } from "axios";
-import { FilmProps } from "../types/types";
+import {  AxiosError } from "axios";
+import type { AxiosInstance } from 'axios'; // Импортируем тип AxiosInstance
 import { toast } from "react-toastify";
-import { AxiosError } from "axios";
 
-import { RootState, AppDispatch } from ".";
 
-import { setFilmList, setSimilarFilmList } from "./films/filmsSlice";
+import { redirect } from "./actions";
 import { setIsFilmsLoaded, setIsDataLoading } from "./app/appSlice";
+import { setFilmList, setSimilarFilmList } from "./films/filmsSlice";
 import { setReviewsList } from "./reviews/reviewsSlice";
 import {
-	setFavoriteFilms,
-	setUserId,
 	setAuthStatus,
 	addToFavoriteFilm,
 	removeFromFavoriteFilm,
-	setToken,
 } from "./user/userSlice";
-
-import { Films } from "../mock/films";
-import { Reviews } from "../mock/reviews";
+import { ApiRoutes } from "../../../const/const";
 import {
 	ApiActions,
 	ApiRoutesMock,
 	AppRoutes,
 	AuthStatus,
 } from "../const/const";
-import { ApiRoutes } from "../../../const/const";
+import { useError } from "../hooks/useError";
+import { Films } from "../mock/films";
+import { Reviews } from "../mock/reviews";
+import { commentProps, UserInfo, Review , FilmProps } from "../types/types";
 import { loginUtil } from "../utils/authUtils";
 
-import { commentProps, UserInfo, Review } from "../types/types";
-import { redirect } from "./actions";
-import { useError } from "../hooks/useError";
+import { RootState, AppDispatch } from ".";
 
 type ThunkConfig = {
 	dispatch: AppDispatch;

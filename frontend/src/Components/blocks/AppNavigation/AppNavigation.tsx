@@ -1,6 +1,6 @@
-import Logo from "../../UI/Logo.tsx/Logo"
-import { PageList } from "../../../const/const"
 import { NavApp } from "./styles"
+import { PageList } from "../../../const/const"
+import Logo from "../../UI/Logo.tsx/Logo"
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs"
 
 type AppNavigationProps = {

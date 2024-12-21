@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { H3, Article, Img, Div, StyledLink } from "../../styled/Components";
 import {
 	zIndexMiddle,

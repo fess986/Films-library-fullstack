@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Footer } from "../../styled/Components";
+
+import { Footer , Div } from "../../styled/Components";
 import { fontMedium, textColorAdditional } from "../../styled/Mixins/mixins";
 
-import { Div } from "../../styled/Components";
 
 export const DivCopyright = styled(Div)`
 	${fontMedium}

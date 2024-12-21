@@ -1,11 +1,9 @@
-import { FilmProps } from "../../../../types/types";
-import { PageList } from "../../../../const/const";
-
-import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
-import { H1Hidden } from "../../../styled/Components";
-import Header from "../../../blocks/Header/Header";
-
 import { H2FilmTitle, DivFilmInfo, DivFilmCard, SectionHero } from "./styles";
+import { PageList } from "../../../../const/const";
+import { FilmProps } from "../../../../types/types";
+import Header from "../../../blocks/Header/Header";
+import { H1Hidden } from "../../../styled/Components";
+import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
 
 export type HeaderReviewProps = {
   currentFilm: FilmProps,

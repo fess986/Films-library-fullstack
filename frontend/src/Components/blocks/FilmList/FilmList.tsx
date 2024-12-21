@@ -1,7 +1,6 @@
-import SmallFilmCard from "../../UI/SmallFilmCard/SmallFilmCard";
 import { DivFilmList } from "./styles";
-
 import { FilmProps } from "../../../types/types";
+import SmallFilmCard from "../../UI/SmallFilmCard/SmallFilmCard";
 
 
 type FilmListProps = {

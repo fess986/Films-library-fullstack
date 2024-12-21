@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
-import InjectListSVG from '../../../UI/injectListSVG/injectListSVG';
+
 import { DivMainContainer, BodyMainStyled } from './styles';
+import InjectListSVG from '../../../UI/injectListSVG/injectListSVG';
 
 export type BodyMainProps = {
   children?: ReactNode,

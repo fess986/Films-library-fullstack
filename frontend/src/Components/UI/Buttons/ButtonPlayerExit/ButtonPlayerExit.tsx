@@ -1,7 +1,7 @@
-import { AppRoutes } from "../../../../const/const";
 import { ButtonExit } from "./styles";
-import { resetFilmsShownCount } from "../../../../store/app/appSlice";
+import { AppRoutes } from "../../../../const/const";
 import { useAppDispatch } from "../../../../store";
+import { resetFilmsShownCount } from "../../../../store/app/appSlice";
 import browserHistory from "../../../../utils/browser-history";
 
 

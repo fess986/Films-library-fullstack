@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
+
 import {AppRoutes} from "../../../../const/const";
-import { resetFilmsShownCount } from "../../../../store/app/appSlice";
-
 import { useAppDispatch } from "../../../../store";
-
+import { resetFilmsShownCount } from "../../../../store/app/appSlice";
 import { StyledButton } from "../styles";
 
 type ButtonPlayProps = {

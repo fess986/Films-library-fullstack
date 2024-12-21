@@ -1,6 +1,7 @@
 import React from 'react';
-import Logo from '../../UI/Logo.tsx/Logo';
+
 import { DivCopyright, FooterMain } from './styles';
+import Logo from '../../UI/Logo.tsx/Logo';
 
 const Footer: React.FC = () => {
   return (

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Button } from "../../styled/Components";
 import { fontMedium, textColorMain } from "../../styled/Mixins/mixins";
 

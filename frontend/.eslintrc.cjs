@@ -21,11 +21,11 @@ module.exports = {
       {
         groups: [
           'builtin', // встроенные модули
-          'external', // внешние библиотеки
+          ['external'], // внешние библиотеки
           'internal', // внутренние модули
           ['sibling', 'parent'], // соседние и родительские модули
-          'index', // индексные файлы
-          'object', // объекты
+          ['index', // индексные файлы
+          'object'], // объекты
         ],
         'newlines-between': 'always', // требовать пустую строку между группами
         alphabetize: { order: 'asc', caseInsensitive: true }, // сортировка по алфавиту
@@ -41,6 +41,7 @@ module.exports = {
   },
 }
 
+// начальные установки
 // module.exports = {
 //   root: true,
 //   env: { browser: true, es2020: true },

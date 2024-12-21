@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Img, Div } from "../../styled/Components";
 
 type DivFilmCardPosterContainerProps = {

@@ -1,5 +1,5 @@
-import Header from "../../../blocks/Header/Header";
 import { SectionHero } from "./styles";
+import Header from "../../../blocks/Header/Header";
 import { H1Hidden } from "../../../styled/Components";
 
 const HeaderSignIn: React.FC = ( ) => {

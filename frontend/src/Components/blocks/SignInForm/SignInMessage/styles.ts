@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { P } from "../../../styled/Components";
 import { fontMedium } from "../../../styled/Mixins/mixins";
 

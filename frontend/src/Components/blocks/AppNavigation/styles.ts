@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { Nav } from "../../styled/Components/Nav/Nav";
+
 import { PageList } from "../../../const/const";
+import { Nav } from "../../styled/Components/Nav/Nav";
 
 type AppNavigationProps = {
 	$page?: PageList;

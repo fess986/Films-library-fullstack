@@ -1,5 +1,5 @@
-import { FilmProps } from "../../../../types/types";
 import { SpanRatingValue, SpanRatingTextValue, SpanRatingCount, DivOverviewParagraph, PDescriptionText, SpanDirectorTitle, SpanDirectorName, SpanStarringTitle, SpanStarringNames, DivOverviewContainer } from "./style";
+import { FilmProps } from "../../../../types/types";
 
 type FilmOverviewProps = {
   film: FilmProps | null

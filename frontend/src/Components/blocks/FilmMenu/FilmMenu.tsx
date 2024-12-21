@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+
+import { UlFilmMenu } from "./styles";
 import { FilmMenuItemProps } from "../../../const/const";
 import FilmMenuItem from "../../UI/FilmMenuItem/FilmMenuItem";
-import { UlFilmMenu } from "./styles";
-import { useParams } from "react-router-dom";
 
 type FilmMenuProps = {
   items: readonly FilmMenuItemProps[],

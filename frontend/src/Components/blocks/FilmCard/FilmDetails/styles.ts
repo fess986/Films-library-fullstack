@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Div, Span } from "../../../styled/Components";
 import { textColorAdditional, fontMedium } from "../../../styled/Mixins/mixins";
 

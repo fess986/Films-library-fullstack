@@ -1,5 +1,5 @@
-import { AppRoutes } from "../../../const/const"
 import { LinkFilmMenuItem, LiFilmMenuItem } from "./styles"
+import { AppRoutes } from "../../../const/const"
 
 type FilmMenuItemProps = {
   itemName: string,
