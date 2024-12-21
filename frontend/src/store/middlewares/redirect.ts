@@ -1,5 +1,5 @@
 // import {Middleware, UnknownAction, Action} from 'redux';
-import { Middleware } from "@reduxjs/toolkit";
+import type { Middleware } from "@reduxjs/toolkit";
 
 import { ApiActions, AppRoutes } from "../../const/const";
 import browserHistory from "../../utils/browser-history";

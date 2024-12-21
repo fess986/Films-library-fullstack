@@ -1,14 +1,8 @@
 import { useEffect } from "react";
-
-
-
-import  FilmList  from "../../blocks/FilmList/FilmList";
-
-import { DivAdditionalFilmInfo, DivAdditionalFilmContainer, SectionMoreFilms, H2MoreFilmsTitle } from "./styles";
-import { H1Hidden } from "../../styled/Components";
-
 import { useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
+
+import { DivAdditionalFilmInfo, DivAdditionalFilmContainer, SectionMoreFilms, H2MoreFilmsTitle } from "./styles";
 import { FilmMenuList } from "../../../const/const";
 import { useAppDispatch } from "../../../store";
 import { fetchReviews, fetchSimilarFilms } from "../../../store/api-actions";
@@ -19,7 +13,9 @@ import { FilmProps } from "../../../types/types";
 import FilmDetails from "../../blocks/FilmCard/FilmDetails/FilmDetails";
 import FilmOverview from "../../blocks/FilmCard/FilmOverview/FilmOverview";
 import FilmReviews from "../../blocks/FilmCard/FilmReviews/FilmReviews";
+import  FilmList  from "../../blocks/FilmList/FilmList";
 import FilmMenu from "../../blocks/FilmMenu/FilmMenu";
+import { H1Hidden } from "../../styled/Components";
 import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
 
 const FilmCard: React.FC = () => {

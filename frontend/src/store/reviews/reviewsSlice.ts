@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
 import { StoreNames } from "../../const/const";
@@ -40,12 +41,12 @@ export const reviewsSlice = createSlice({
 			})
 			.addCase(fetchReviews.fulfilled, (state) => {
 				// state.reviewsList = action.payload;  // сюда попадает то что возвращается из thunk
-        // console.log(action.payload);
+				// console.log(action.payload);
 				state.isReviewsLoaded = true;
 			})
 			.addCase(fetchReviews.rejected, (state) => {
 				state.isReviewsLoaded = false;
-				toast.error('Не удалось загрузить отзывы');
+				toast.error("Не удалось загрузить отзывы");
 			})
 
 			.addCase(sendReview.pending, (state) => {
@@ -56,7 +57,7 @@ export const reviewsSlice = createSlice({
 			})
 			.addCase(sendReview.rejected, (state) => {
 				state.isReviewSending = false;
-				toast.error('Не удалось отправить отзыв');
+				toast.error("Не удалось отправить отзыв");
 			});
 	},
 });

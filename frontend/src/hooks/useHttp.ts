@@ -1,52 +1,54 @@
-import { useCallback, useState } from "react";
+// // старший вариант fetch-запросов по сети. Оставляю для наглядности для сравнения с новым вариантом api axios
 
-export const useHttp = () => {
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState(null);
+// import { useCallback, useState } from "react";
 
-	const sendRequest = useCallback( async ( url : string, method = "GET", body : any = null, headers : any = {}) => {
-		setIsLoading(true);
-		setError(null);
-		try {
-      if (body) {
-        body = JSON.stringify(body);
-        headers["Content-Type"] = "application/json";
-      }
+// export const useHttp = () => {
+// 	const [isLoading, setIsLoading] = useState(false);
+// 	const [error, setError] = useState(null);
 
-      const response = await fetch(url, {
-        method, body, headers,
-      });
+// 	const sendRequest = useCallback( async ( url : string, method = "GET", body : any = null, headers : any = {}) => {
+// 		setIsLoading(true);
+// 		setError(null);
+// 		try {
+//       if (body) {
+//         body = JSON.stringify(body);
+//         headers["Content-Type"] = "application/json";
+//       }
 
-      const data = await response.json();
+//       const response = await fetch(url, {
+//         method, body, headers,
+//       });
 
-      if (!response.ok) {
-        // throw new Error(data.message || "Что то пошло не так при запросе");  // текст ошибки или строка или то что прислано в поле message, пришедшее с бека
+//       const data = await response.json();
 
-        const errorMessage = data.errors && Array.isArray(data.errors) && data.errors.length
-        ? data.errors.map((err: { msg: string }) => err.msg).join(", ")
-        : data.message || "Что-то пошло не так при запросе";
+//       if (!response.ok) {
+//         // throw new Error(data.message || "Что то пошло не так при запросе");  // текст ошибки или строка или то что прислано в поле message, пришедшее с бека
 
-      throw new Error(errorMessage);
+//         const errorMessage = data.errors && Array.isArray(data.errors) && data.errors.length
+//         ? data.errors.map((err: { msg: string }) => err.msg).join(", ")
+//         : data.message || "Что-то пошло не так при запросе";
+
+//       throw new Error(errorMessage);
 
 
-      } else {
-        setIsLoading(false);
-        return data;
-      }
+//       } else {
+//         setIsLoading(false);
+//         return data;
+//       }
 
-		} catch (err: any) {
-      console.log(err);
-      // console.log(err.errors);
+// 		} catch (err: any) {
+//       console.log(err);
+//       // console.log(err.errors);
       
-			setIsLoading(false);
-			setError(err.message || "Something went wrong");
-      throw err;
-		}
-	}, []);
+// 			setIsLoading(false);
+// 			setError(err.message || "Something went wrong");
+//       throw err;
+// 		}
+// 	}, []);
 
-  const clearError = useCallback(() => {
-    setError(null);
-  }, []);
+//   const clearError = useCallback(() => {
+//     setError(null);
+//   }, []);
 
-	return { isLoading, error, sendRequest, clearError };
-};
+// 	return { isLoading, error, sendRequest, clearError };
+// };
