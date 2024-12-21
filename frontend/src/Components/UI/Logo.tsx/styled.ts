@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { zIndexTop } from "../../styled/Mixins/mixins";
+
 import { Img, StyledLink } from "../../styled/Components";
+import { zIndexTop } from "../../styled/Mixins/mixins";
 type LogoProps = {
 	$footer?: boolean;
 };

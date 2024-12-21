@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Button, Svg } from "../../../styled/Components";
 
 export const ButtonFullScreenStyle = styled(Button).attrs(() => ({

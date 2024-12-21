@@ -1,8 +1,8 @@
+import { DivFilmInfoCard, DivFilmCardContainer } from "./styles";
 import { FilmProps } from "../../../types/types";
 import FilmButtons from "../FilmButtons/FilmButtons";
 import FilmCardDescription from "../FilmCardDescription/FilmCardDescription";
 
-import { DivFilmInfoCard, DivFilmCardContainer } from "./styles";
 
 type FilmInfoProps = {
   film: FilmProps,

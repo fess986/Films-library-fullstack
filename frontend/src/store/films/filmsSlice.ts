@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+
 import { StoreNames, AppRoutes } from "../../const/const";
 import { FilmProps } from "../../types/types";
-import { fetchFilms } from "../api-actions";
 import browserHistory from "../../utils/browser-history";
-import { toast } from "react-toastify";
+import { fetchFilms } from "../api-actions";
 
 type FilmsState = {
   filmList: FilmProps[];

@@ -1,30 +1,29 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 
-import { AppRoutes } from '../const/const'
-import { FilmProps } from '../types/types'
 
-import Layout from '../Components/Layout/Layout'
 
-import Main from '../Components/pages/Main/Main'
-import FilmCard from '../Components/pages/FilmCard/FilmCard'
-import AddReview from '../Components/pages/AddReview/AddReview'
-import SignIn from '../Components/pages/SignIn/SignIn'
-import MyList from '../Components/pages/MyList/MyList'
-import Player from '../Components/pages/Player/Player'
 
-import BodySignIn from '../Components/Layout/Body/BodySignIn/BodySignIn'
 import BodyMain from '../Components/Layout/Body/BodyMain/BodyMain'
 import BodyPlayer from '../Components/Layout/Body/BodyPlayer/BodyPlayer'
+import BodySignIn from '../Components/Layout/Body/BodySignIn/BodySignIn'
 
-import HeaderReview from '../Components/Layout/Header/HeaderReview/HeaderReview'
 import HeaderSignIn from '../Components/Layout/Header/HeaderSignIn/HeaderSignIn'
 import HeaderFilmCard from '../Components/Layout/Header/HeaderFilmCard/HeaderFilmCard'
 import HeaderMain from '../Components/Layout/Header/HeaderMain/HeaderMain'
 
 import Footer from '../Components/Layout/Footer/Footer'
 import FooterFilmCard from '../Components/Layout/Footer/FooterFilmCard'
-
+import HeaderReview from '../Components/Layout/Header/HeaderReview/HeaderReview'
+import Layout from '../Components/Layout/Layout'
+import AddReview from '../Components/pages/AddReview/AddReview'
+import FilmCard from '../Components/pages/FilmCard/FilmCard'
+import Main from '../Components/pages/Main/Main'
+import MyList from '../Components/pages/MyList/MyList'
+import Player from '../Components/pages/Player/Player'
+import SignIn from '../Components/pages/SignIn/SignIn'
+import { AppRoutes } from '../const/const'
 import { Films } from '../mock/films'
+import { FilmProps } from '../types/types'
 
 export default function useRoutes(films: FilmProps[]) {
 

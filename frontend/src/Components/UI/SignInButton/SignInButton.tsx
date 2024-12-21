@@ -1,7 +1,5 @@
-import { AppRoutes } from "../../../const/const"
 import { LinkSignIn } from "./styles"
-import { AuthStatus } from "../../../const/const"
-
+import { AppRoutes , AuthStatus } from "../../../const/const"
 import { useAuth } from "../../../hooks/useAuth"
 
 type SignInButtonProps = {

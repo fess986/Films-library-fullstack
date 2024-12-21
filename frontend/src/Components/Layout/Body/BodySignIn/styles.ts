@@ -1,6 +1,9 @@
 import styled from "styled-components"
+
 import { Div } from "../../../styled/Components"
+
 import imgFont from '/images/content-fone.jpg'
+
 import { mainFontFamily, fontMedium } from "../../../styled/Mixins/mixins"
 
 

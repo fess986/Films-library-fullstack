@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+
 import { StoreNames } from "../../const/const";
 import { fetchSimilarFilms } from "../api-actions";
-import { toast } from "react-toastify";
 
 type AppState = {
 	filmsShownCount: number;

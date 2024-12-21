@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Span, Div, P } from "../../../styled/Components";
 import { fontBig, fontMedium, textColorAdditional } from "../../../styled/Mixins/mixins";
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { H1Hidden, H2, Section } from "../../styled/Components";
 import { fontH2 } from "../../styled/Mixins/mixins";
 

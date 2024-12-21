@@ -1,7 +1,7 @@
-import { AppRoutes } from "../../../const/const";
 import { LinkLogo, ImgLogo } from "./styled";
-import { resetFilmsShownCount } from "../../../store/app/appSlice";
+import { AppRoutes } from "../../../const/const";
 import { useAppDispatch } from "../../../store";
+import { resetFilmsShownCount } from "../../../store/app/appSlice";
 
 type LogoProps = {
   footer?: boolean,

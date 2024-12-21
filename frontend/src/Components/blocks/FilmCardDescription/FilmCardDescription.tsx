@@ -1,5 +1,5 @@
-import { FilmProps } from "../../../types/types";
 import { H2FilmName, SpanGenre, SpanYear, PMeta, SpanRating, DivDescription } from "./styles";
+import { FilmProps } from "../../../types/types";
 
 type FilmCardDescriptionProps = {
   film: FilmProps,

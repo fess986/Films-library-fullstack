@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Div, Progress } from "../../styled/Components";
 
 export const DivPorogressContainer = styled(Div)`

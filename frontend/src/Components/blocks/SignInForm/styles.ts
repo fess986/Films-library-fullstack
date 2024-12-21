@@ -1,6 +1,9 @@
 import styled from "styled-components";
+
 import { Form, Div, Section } from "../../styled/Components";
+
 import ImgScriptBottom from "/images/script-bottom-without-bg.png";
+
 import { zIndexMiddle } from "../../styled/Mixins/mixins";
 
 export const FormSignIn = styled(Form)`

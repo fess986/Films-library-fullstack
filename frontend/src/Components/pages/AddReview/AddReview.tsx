@@ -1,19 +1,17 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import { useAppDispatch } from "../../../store";
+import { FormAddReview, SectionAddReview } from "./styles";
 import { MINIMUM_REVIEW_LENGTH, MAXIMUM_REVIEW_LENGTH } from "../../../const/const";
-import { getUserId } from "../../../store/user/userSelectors";
-import { getIsReviewsSending } from "../../../store/reviews/reviewsSelector";
-import { commentProps } from "../../../types/types";
 import useActiveFilm from "../../../hooks/useActiveFilm";
+import { useAppDispatch } from "../../../store";
 import { sendReview } from "../../../store/api-actions";
-
-import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
+import { getIsReviewsSending } from "../../../store/reviews/reviewsSelector";
+import { getUserId } from "../../../store/user/userSelectors";
+import { commentProps } from "../../../types/types";
 import RatingStars from "../../blocks/RatingStars/RatingStars";
 import ReviewText from "../../blocks/ReviewText/ReviewText";
-
-import { FormAddReview, SectionAddReview } from "./styles";
+import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
 
 const AddReview: React.FC = () => {
   const [reviewText, setReviewText] = useState<string>(""); // текст отзыва

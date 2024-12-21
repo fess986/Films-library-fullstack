@@ -1,8 +1,8 @@
 // тут мы создаем обертку над Router, где опишем необходимые параметры для него через объект истории, созданный из библиотеки 'history'.
 
+import type {BrowserHistory} from 'history';
 import React, {useState, useLayoutEffect} from 'react';
 import { Router } from 'react-router-dom';
-import type {BrowserHistory} from 'history';
 
 export interface HistoryRouterProps {
   history: BrowserHistory // объект истории из пакета 'history'

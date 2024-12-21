@@ -1,11 +1,10 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-import { StoreNames } from "../../const/const";
-import { RootState } from "../index";
-import { getActiveGenre } from "../app/appSelectors";
-import { getFavoriteFilms } from "../user/userSelectors";
-import { ALL_GENRES } from "../../const/const";
+import { StoreNames , ALL_GENRES } from "../../const/const";
 import { FilmProps } from "../../types/types";
+import { getActiveGenre } from "../app/appSelectors";
+import { RootState } from "../index";
+import { getFavoriteFilms } from "../user/userSelectors";
 
 export const getFilmList = (state: RootState) =>
 	state[StoreNames.Films].filmList;

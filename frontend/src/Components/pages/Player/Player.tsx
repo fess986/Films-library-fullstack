@@ -1,14 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { toast } from "react-toastify";
 
-import Video from "../../UI/Video/Video";
-import ButtonPlayerExit from "../../UI/Buttons/ButtonPlayerExit/ButtonPlayerExit";
-import PlayerControls from "../../blocks/PlayerControls/PlayerControls";
-
-import useActiveFilm from "../../../hooks/useActiveFilm";
-
-import { FilmProps } from "../../../types/types";
 import { DivPlayerContainer } from "./styles";
+import useActiveFilm from "../../../hooks/useActiveFilm";
+import { FilmProps } from "../../../types/types";
+import PlayerControls from "../../blocks/PlayerControls/PlayerControls";
+import ButtonPlayerExit from "../../UI/Buttons/ButtonPlayerExit/ButtonPlayerExit";
+import Video from "../../UI/Video/Video";
 // import { current } from "@reduxjs/toolkit";
 
 type PlayerProps = {

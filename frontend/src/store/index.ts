@@ -1,11 +1,12 @@
 import { configureStore, combineReducers, ThunkDispatch, Action } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
+
 import { StoreNames } from "../const/const";
 import { appSlice } from "./app/appSlice";
 import { filmsSlice } from "./films/filmsSlice";
+import { redirect } from "./middlewares/redirect.ts";
 import { reviewsSlice } from "./reviews/reviewsSlice";
 import { userSlice } from "./user/userSlice";
-import { redirect } from "./middlewares/redirect.ts";
 import api from "../api/api";
 
 const rootReducer = combineReducers({

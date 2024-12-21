@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react';
-import InjectListSVG from '../../../UI/injectListSVG/injectListSVG';
 
 import { DivPlayer } from './styles';
+import InjectListSVG from '../../../UI/injectListSVG/injectListSVG';
+
 
 interface BodyPlayerProps {
   children?: ReactNode

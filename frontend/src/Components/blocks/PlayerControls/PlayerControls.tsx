@@ -1,9 +1,8 @@
-import ButtonPlayerPlay from "../../UI/Buttons/ButtonPlayerPlay/ButtonPlayerPlay";
-import ButtonFullScreen from "../../UI/Buttons/ButtonFullScreen/ButtonFullScreen";
-import ProgressBar from "../../UI/ProgressBar/ProgressBar";
-import { parseMinutes } from "../../../utils/utils";
-
 import {DivConrolRow, DivControlsTime, DivControlsName, DivControlsContainer} from "./styles";
+import { parseMinutes } from "../../../utils/utils";
+import ButtonFullScreen from "../../UI/Buttons/ButtonFullScreen/ButtonFullScreen";
+import ButtonPlayerPlay from "../../UI/Buttons/ButtonPlayerPlay/ButtonPlayerPlay";
+import ProgressBar from "../../UI/ProgressBar/ProgressBar";
 
 type PlayerControlsProps = {
   isPlaying: boolean,

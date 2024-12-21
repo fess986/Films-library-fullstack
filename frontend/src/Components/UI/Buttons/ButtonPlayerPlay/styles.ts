@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Button, Svg } from "../../../styled/Components";
 
 export const ButtonPlayer = styled(Button).attrs(() => ({

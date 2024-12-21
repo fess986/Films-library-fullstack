@@ -1,8 +1,8 @@
-import { FilmProps } from "../../../types/types";
-import { AppRoutes } from "../../../const/const";
 import { SmallFilmCardLink, SmallFilmCardTitle, SmallFilmCardImg, SmallFilmCardContainer, SmallFilmCardArticle } from "./styles";
-import { setActiveFilm } from "../../../store/films/filmsSlice";
+import { AppRoutes } from "../../../const/const";
 import { useAppDispatch } from "../../../store";
+import { setActiveFilm } from "../../../store/films/filmsSlice";
+import { FilmProps } from "../../../types/types";
 
 type SmallFilmCardProps = {
   film: FilmProps,

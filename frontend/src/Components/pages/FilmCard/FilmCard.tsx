@@ -1,25 +1,26 @@
-import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
-import { fetchReviews, fetchSimilarFilms } from "../../../store/api-actions";
 
-import { useAppDispatch } from "../../../store";
 
-import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
-import FilmMenu from "../../blocks/FilmMenu/FilmMenu";
-import FilmDetails from "../../blocks/FilmCard/FilmDetails/FilmDetails";
-import FilmOverview from "../../blocks/FilmCard/FilmOverview/FilmOverview";
-import FilmReviews from "../../blocks/FilmCard/FilmReviews/FilmReviews";
-import { FilmProps } from "../../../types/types";
-import { FilmMenuList } from "../../../const/const";
+
 import  FilmList  from "../../blocks/FilmList/FilmList";
 
 import { DivAdditionalFilmInfo, DivAdditionalFilmContainer, SectionMoreFilms, H2MoreFilmsTitle } from "./styles";
 import { H1Hidden } from "../../styled/Components";
 
 import { useSelector } from "react-redux";
+import { Routes, Route } from "react-router-dom";
+import { FilmMenuList } from "../../../const/const";
+import { useAppDispatch } from "../../../store";
+import { fetchReviews, fetchSimilarFilms } from "../../../store/api-actions";
 import {  getIsSimilarFilmsLoaded } from "../../../store/app/appSelectors";
 import { getActiveFilm, getSimilarFilmList } from "../../../store/films/filmsSelector";
 import { getReviewsList, getIsReviewsLoaded } from "../../../store/reviews/reviewsSelector";
+import { FilmProps } from "../../../types/types";
+import FilmDetails from "../../blocks/FilmCard/FilmDetails/FilmDetails";
+import FilmOverview from "../../blocks/FilmCard/FilmOverview/FilmOverview";
+import FilmReviews from "../../blocks/FilmCard/FilmReviews/FilmReviews";
+import FilmMenu from "../../blocks/FilmMenu/FilmMenu";
+import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
 
 const FilmCard: React.FC = () => {
   const dispatch = useAppDispatch();

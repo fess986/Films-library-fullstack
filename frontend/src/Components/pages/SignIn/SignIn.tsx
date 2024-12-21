@@ -1,5 +1,5 @@
-import SignInForm from "../../blocks/SignInForm/SignInForm";
 import { H2SignIn } from "./styles";
+import SignInForm from "../../blocks/SignInForm/SignInForm";
 
 const SignIn: React.FC = () => {
   return (

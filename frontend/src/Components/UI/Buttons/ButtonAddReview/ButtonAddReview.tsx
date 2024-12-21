@@ -1,12 +1,11 @@
 import React from "react";
-import { StyledButton } from "../styles";
-import { useNavigate } from "react-router-dom";
-import { AppRoutes } from "../../../../const/const";
 import { useSelector } from "react-redux";
-import { getIsAuth } from "../../../../store/user/userSelectors";
-import { getActiveFilm } from "../../../../store/films/filmsSelector";
+import { useNavigate } from "react-router-dom";
 
-import { AuthStatus } from "../../../../const/const";
+import { AppRoutes , AuthStatus } from "../../../../const/const";
+import { getActiveFilm } from "../../../../store/films/filmsSelector";
+import { getIsAuth } from "../../../../store/user/userSelectors";
+import { StyledButton } from "../styles";
 
 
 const ButtonAddReview: React.FC = () => {

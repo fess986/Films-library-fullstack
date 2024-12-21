@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
+
 import { StoreNames } from "../../const/const";
-import { Review } from "../../types/types";
 import { fetchReviews, sendReview } from "../../store/api-actions";
+import { Review } from "../../types/types";
 
 type ReviewsState = {
 	reviewsList: Review[];

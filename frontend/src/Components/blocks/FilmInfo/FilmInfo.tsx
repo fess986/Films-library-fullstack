@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 
+import { DivFilmInfo, DivFilmCard } from "./styles";
+import { getIsFilmsLoaded } from "../../../store/app/appSelectors";
 import { FilmProps } from "../../../types/types";
 import FilmCardPoster from "../../UI/FilmCardPoster/FilmCardPoster";
 import FilmButtons from "../FilmButtons/FilmButtons";
 import FilmCardDescription from "../FilmCardDescription/FilmCardDescription";
-import { DivFilmInfo, DivFilmCard } from "./styles";
-import { getIsFilmsLoaded } from "../../../store/app/appSelectors";
 
 type FilmInfoProps = {
   film: FilmProps | null,

@@ -1,7 +1,8 @@
 import styled from "styled-components";
+
+import { PageList } from "../../../const/const";
 import { Header } from "../../styled/Components";
 import { zIndexMiddle } from "../../styled/Mixins/mixins";
-import { PageList } from "../../../const/const";
 const StyledHeader = styled(Header)`
   display: flex;
 	max-width: 1300px;

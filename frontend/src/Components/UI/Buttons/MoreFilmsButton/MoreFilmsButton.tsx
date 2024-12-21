@@ -1,8 +1,9 @@
-import {ButtonMoreFilms} from "./styles";
 import {useSelector} from "react-redux";
+
+import {ButtonMoreFilms} from "./styles";
 import { useAppDispatch } from "../../../../store";
-import { setFilmsShownCount } from "../../../../store/app/appSlice";
 import { getFilmsShownCount } from "../../../../store/app/appSelectors";
+import { setFilmsShownCount } from "../../../../store/app/appSlice";
 
 const MoreFilmsButton: React.FC = () => {
 

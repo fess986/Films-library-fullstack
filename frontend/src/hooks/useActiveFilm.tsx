@@ -6,11 +6,9 @@ import { toast } from "react-toastify";
 import { useAppDispatch } from "../store";
 
 import {  } from "../store/app/appSelectors";
-import { getFilmList } from "../store/films/filmsSelector";
-
-import { setActiveFilm } from "../store/films/filmsSlice";
 import { setIsActiveFilmLoaded } from "../store/app/appSlice";
-
+import { getFilmList } from "../store/films/filmsSelector";
+import { setActiveFilm } from "../store/films/filmsSlice";
 import { FilmProps } from "../types/types";
 
 type UseActiveFilm = {

@@ -1,11 +1,9 @@
-import AppNavigation from "../AppNavigation/AppNavigation"
-import UserNavigation from "../UserNavigation/UserNavigation"
 
 import { HeaderMain } from "./styles"
-
-import { PageList } from "../../../const/const"
+import { PageList , AuthStatus } from "../../../const/const"
 import ColorProvider from "../../../context/ColorContext/colorContext"
-import { AuthStatus } from "../../../const/const"
+import AppNavigation from "../AppNavigation/AppNavigation"
+import UserNavigation from "../UserNavigation/UserNavigation"
 
 type HeaderProps = {
   breadcrumbs?: boolean,

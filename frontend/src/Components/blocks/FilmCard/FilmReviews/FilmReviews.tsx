@@ -1,6 +1,6 @@
+import {DivReviewsCol, DivReviewsContainer} from "./styles";
 import { Review } from "../../../../types/types";
 import FilmReview from "../../../UI/FilmReview/FilmReview";
-import {DivReviewsCol, DivReviewsContainer} from "./styles";
 
 type FilmReviewsProps = {
   reviews: Review[]

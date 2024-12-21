@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { H2 } from "./H2";
 import { blackTextStroke } from "../../Mixins/mixins";
 

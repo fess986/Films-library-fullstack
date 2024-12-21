@@ -1,8 +1,9 @@
 // import {Middleware, UnknownAction, Action} from 'redux';
 import { Middleware } from "@reduxjs/toolkit";
-import { AppActions } from "../actions";
+
 import { ApiActions, AppRoutes } from "../../const/const";
 import browserHistory from "../../utils/browser-history";
+import { AppActions } from "../actions";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const redirect: Middleware = () => (next) => (action: any) => {

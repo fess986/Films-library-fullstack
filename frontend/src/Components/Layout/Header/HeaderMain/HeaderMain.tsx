@@ -1,21 +1,17 @@
-import { useMemo } from "react";
+import { useMemo , useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 
-import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
-import Header from "../../../blocks/Header/Header";
-import FilmInfo from "../../../blocks/FilmInfo/FilmInfo";
-import { H1Hidden } from "../../../styled/Components/Title/H1Hidden";
 import { SectionHero } from "./styles";
-
-import { getActiveFilm } from "../../../../store/films/filmsSelector";
-import { getFilmList } from "../../../../store/films/filmsSelector";
-import { getIsActiveFilmLoaded } from "../../../../store/app/appSelectors";
-
 import { useAppDispatch } from "../../../../store";
-import {setActiveFilm} from "../../../../store/films/filmsSlice";
+import { getIsActiveFilmLoaded } from "../../../../store/app/appSelectors";
 import { setIsActiveFilmLoaded } from "../../../../store/app/appSlice";
+import { getActiveFilm , getFilmList } from "../../../../store/films/filmsSelector";
+import {setActiveFilm} from "../../../../store/films/filmsSlice";
+import FilmInfo from "../../../blocks/FilmInfo/FilmInfo";
+import Header from "../../../blocks/Header/Header";
+import { H1Hidden } from "../../../styled/Components/Title/H1Hidden";
+import HeroPicture from "../../../UI/HeroPicture/HeroPicture";
 
 
 const HeaderMain: React.FC = () => {

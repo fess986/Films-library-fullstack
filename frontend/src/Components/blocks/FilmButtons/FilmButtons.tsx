@@ -1,8 +1,8 @@
-import ButtonAdd from "../../UI/Buttons/ButtonAdd/ButtonAdd";
-import ButtonPlay from "../../UI/Buttons/ButtonPlay/ButtonPlay";
-import ButtonDetails from "../../UI/Buttons/ButtonDetails/ButtonDetails";
-import ButtonAddReview from "../../UI/Buttons/ButtonAddReview/ButtonAddReview";
 import { DivFilmButtons } from "./styles";
+import ButtonAdd from "../../UI/Buttons/ButtonAdd/ButtonAdd";
+import ButtonAddReview from "../../UI/Buttons/ButtonAddReview/ButtonAddReview";
+import ButtonDetails from "../../UI/Buttons/ButtonDetails/ButtonDetails";
+import ButtonPlay from "../../UI/Buttons/ButtonPlay/ButtonPlay";
 
 type FilmButtonsProps = {
   details?: boolean,

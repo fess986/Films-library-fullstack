@@ -1,14 +1,12 @@
 import { useSelector } from "react-redux";
 
-import { getIsFilmsLoaded } from "../../../store/app/appSelectors";
+import { H2Hidden, SectionCatalog, DivCatalogContent } from "./styles";
+import { getIsFilmsLoaded , getFilmsShownCount } from "../../../store/app/appSelectors";
 import { getFilteredFilmList } from "../../../store/films/filmsSelector";
-
 import { FilmProps } from "../../../types/types";
-import MoreFilmsButton from "../../UI/Buttons/MoreFilmsButton/MoreFilmsButton";
 import FilmList from "../../blocks/FilmList/FilmList";
 import GenreList from "../../blocks/GenreList/GenreList";
-import { H2Hidden, SectionCatalog, DivCatalogContent } from "./styles";
-import { getFilmsShownCount } from "../../../store/app/appSelectors";
+import MoreFilmsButton from "../../UI/Buttons/MoreFilmsButton/MoreFilmsButton";
 
 type MainProps = {
   films: FilmProps[];

@@ -1,10 +1,12 @@
+import { useSelector } from "react-redux";
+
+import { UlGenreList } from "./styles";
+import {ALL_GENRES} from "../../../const/const";
+import { getActiveGenre } from "../../../store/app/appSelectors";
 import { FilmProps } from "../../../types/types";
 import GenreItem from "../../UI/GenreItem/GenreItem";
-import { UlGenreList } from "./styles";
 
-import { useSelector } from "react-redux";
-import { getActiveGenre } from "../../../store/app/appSelectors";
-import {ALL_GENRES} from "../../../const/const";
+
 
 type GenreListProps = {
   films: FilmProps[]
