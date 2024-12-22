@@ -27,7 +27,7 @@ const AddReview: React.FC = () => {
     text: reviewText,
     rating: reviewRating,
     filmId: Number(id),
-    userId: userId || 1,
+    userId: userId || '1',
   };
 
   const handleReviewTextChange = (text: string) => {
