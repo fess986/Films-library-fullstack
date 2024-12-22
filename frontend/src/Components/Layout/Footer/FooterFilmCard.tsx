@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { DivCopyright, FooterSignIn } from './styles';
-import Logo from '../../UI/Logo.tsx/Logo';
+import { DivCopyright, FooterSignIn } from './styles'
+import Logo from '../../UI/Logo.tsx/Logo'
 
 const FooterFilmCard: React.FC = () => {
   return (
@@ -10,6 +10,6 @@ const FooterFilmCard: React.FC = () => {
       <DivCopyright>Fess inc@</DivCopyright>
     </FooterSignIn>
   )
-};
+}
 
-export default FooterFilmCard;
+export default FooterFilmCard

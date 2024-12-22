@@ -1,15 +1,21 @@
-import { SmallFilmCardLink, SmallFilmCardTitle, SmallFilmCardImg, SmallFilmCardContainer, SmallFilmCardArticle } from "./styles";
-import { AppRoutes } from "../../../const/const";
-import { useAppDispatch } from "../../../store";
-import { setActiveFilm } from "../../../store/films/filmsSlice";
-import { FilmProps } from "../../../types/types";
+import {
+  SmallFilmCardLink,
+  SmallFilmCardTitle,
+  SmallFilmCardImg,
+  SmallFilmCardContainer,
+  SmallFilmCardArticle,
+} from './styles'
+import { AppRoutes } from '../../../const/const'
+import { useAppDispatch } from '../../../store'
+import { setActiveFilm } from '../../../store/films/filmsSlice'
+import { FilmProps } from '../../../types/types'
 
 type SmallFilmCardProps = {
-  film: FilmProps,
+  film: FilmProps
 }
 
 const SmallFilmCard: React.FC<SmallFilmCardProps> = ({ film }) => {
-const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
   const handleClick = () => {
     dispatch(setActiveFilm(film))
@@ -18,13 +24,18 @@ const dispatch = useAppDispatch();
   return (
     <SmallFilmCardArticle>
       <SmallFilmCardContainer onClick={handleClick}>
-        <SmallFilmCardImg src={ film.previewImage } alt={film.name} />
+        <SmallFilmCardImg src={film.previewImage} alt={film.name} />
       </SmallFilmCardContainer>
       <SmallFilmCardTitle>
-        <SmallFilmCardLink onClick={handleClick} to={`${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(':id/*', String(film.id))}`} >{film.name}</SmallFilmCardLink>
+        <SmallFilmCardLink
+          onClick={handleClick}
+          to={`${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(':id/*', String(film.id))}`}
+        >
+          {film.name}
+        </SmallFilmCardLink>
       </SmallFilmCardTitle>
     </SmallFilmCardArticle>
   )
 }
 
-export default SmallFilmCard;
+export default SmallFilmCard

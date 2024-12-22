@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Label = styled.label`
   margin: 0;
@@ -6,4 +6,4 @@ export const Label = styled.label`
   border: 0;
   font-size: 100%;
   font: inherit;
-`;
+`

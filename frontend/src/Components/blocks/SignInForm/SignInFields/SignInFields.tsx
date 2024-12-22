@@ -1,10 +1,15 @@
-import { DivSignInFields, DivSignInField, DivSignInInputEmail, DivSignInInputPass } from "./styles";
-import { DivHidden } from "../../../styled/Components";
+import {
+  DivSignInFields,
+  DivSignInField,
+  DivSignInInputEmail,
+  DivSignInInputPass,
+} from './styles'
+import { DivHidden } from '../../../styled/Components'
 
 type SignInFieldsProps = {
-  onChange: (e : React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
-const SignInFields: React.FC<SignInFieldsProps> = ( {onChange} ) => {
+const SignInFields: React.FC<SignInFieldsProps> = ({ onChange }) => {
   return (
     <DivSignInFields>
       <DivSignInField>
@@ -13,22 +18,24 @@ const SignInFields: React.FC<SignInFieldsProps> = ( {onChange} ) => {
           id="user-email"
           onChange={(e) => onChange(e)}
           autoFocus
-          >
-        </DivSignInInputEmail>
-        <DivHidden as={"label"} htmlFor="user-email">Email address</DivHidden>
+        ></DivSignInInputEmail>
+        <DivHidden as={'label'} htmlFor="user-email">
+          Email address
+        </DivHidden>
       </DivSignInField>
 
       <DivSignInField>
         <DivSignInInputPass
           name="password"
-          id="user-password" 
+          id="user-password"
           onChange={(e) => onChange(e)}
-          />
-        <DivHidden as={"label"} htmlFor="user-password">Password</DivHidden>
+        />
+        <DivHidden as={'label'} htmlFor="user-password">
+          Password
+        </DivHidden>
       </DivSignInField>
     </DivSignInFields>
-
   )
 }
 
-export default SignInFields;
+export default SignInFields

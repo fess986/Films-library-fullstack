@@ -1,14 +1,20 @@
-import { ButtonRegister } from "./styles";
+import { ButtonRegister } from './styles'
 
 type RegisterButtonProps = {
-  registerHandler: () => void,
+  registerHandler: () => void
   isDisabled: boolean
 }
 
-const RegisterButton: React.FC<RegisterButtonProps> = ( {registerHandler, isDisabled} ) => {
+const RegisterButton: React.FC<RegisterButtonProps> = ({
+  registerHandler,
+  isDisabled,
+}) => {
   return (
-    <ButtonRegister onClick={registerHandler} disabled={isDisabled}> Register </ButtonRegister>
+    <ButtonRegister onClick={registerHandler} disabled={isDisabled}>
+      {' '}
+      Register{' '}
+    </ButtonRegister>
   )
 }
 
-export default RegisterButton;
+export default RegisterButton

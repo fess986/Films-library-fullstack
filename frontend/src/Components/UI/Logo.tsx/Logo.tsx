@@ -1,14 +1,14 @@
-import { LinkLogo, ImgLogo } from "./styled";
-import { AppRoutes } from "../../../const/const";
-import { useAppDispatch } from "../../../store";
-import { resetFilmsShownCount } from "../../../store/app/appSlice";
+import { LinkLogo, ImgLogo } from './styled'
+import { AppRoutes } from '../../../const/const'
+import { useAppDispatch } from '../../../store'
+import { resetFilmsShownCount } from '../../../store/app/appSlice'
 
 type LogoProps = {
-  footer?: boolean,
+  footer?: boolean
 }
 
 const Logo: React.FC<LogoProps> = ({ footer }) => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
   const handleClick = () => {
     dispatch(resetFilmsShownCount())
@@ -21,4 +21,4 @@ const Logo: React.FC<LogoProps> = ({ footer }) => {
   )
 }
 
-export default Logo;
+export default Logo

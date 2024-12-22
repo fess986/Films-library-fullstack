@@ -1,16 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import { Div } from "../../../styled/Components";
+import { Div } from '../../../styled/Components'
 
 export const DivReviewsCol = styled(Div)`
-	width: calc((100% - 60px) / 2);
-	margin-right: 60px;
-	max-width: 365px;
+  width: calc((100% - 60px) / 2);
+  margin-right: 60px;
+  max-width: 365px;
 
-	&:nth-last-child(1) {
-		margin-right: 0;
-	}
-`;
+  &:nth-last-child(1) {
+    margin-right: 0;
+  }
+`
 
 export const DivReviewsContainer = styled(Div)`
   display: flex;
@@ -18,6 +18,4 @@ export const DivReviewsContainer = styled(Div)`
   align-items: flex-start;
 
   max-width: 792px;
-`;
-
-
+`

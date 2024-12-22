@@ -1,21 +1,29 @@
-import { ReviewText, ReviewFooter, ReviewQuote, ReviewAuthor, ReviewDate, ReviewContainer, ReviewRating } from "./styles";
-import { Review } from "../../../types/types";
-import { parseCommentDate, formatDate } from "../../../utils/utils";
+import {
+  ReviewText,
+  ReviewFooter,
+  ReviewQuote,
+  ReviewAuthor,
+  ReviewDate,
+  ReviewContainer,
+  ReviewRating,
+} from './styles'
+import { Review } from '../../../types/types'
+import { parseCommentDate, formatDate } from '../../../utils/utils'
 
 type FilmReviewProps = {
-  review: Review,
+  review: Review
 }
 
 const FilmReview: React.FC<FilmReviewProps> = ({ review }) => {
   return (
     <ReviewContainer>
       <ReviewQuote>
-        <ReviewText>
-          {review.comment}
-        </ReviewText>
+        <ReviewText>{review.comment}</ReviewText>
         <ReviewFooter>
           <ReviewAuthor>{review.user.name}</ReviewAuthor>
-          <ReviewDate dateTime={formatDate(review.date)}>{parseCommentDate(review.date)}</ReviewDate>
+          <ReviewDate dateTime={formatDate(review.date)}>
+            {parseCommentDate(review.date)}
+          </ReviewDate>
         </ReviewFooter>
       </ReviewQuote>
       <ReviewRating>{review.rating.toFixed(1)}</ReviewRating>
@@ -23,4 +31,4 @@ const FilmReview: React.FC<FilmReviewProps> = ({ review }) => {
   )
 }
 
-export default FilmReview;
+export default FilmReview

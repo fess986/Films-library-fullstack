@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { DivCopyright, FooterMain } from './styles';
-import Logo from '../../UI/Logo.tsx/Logo';
+import { DivCopyright, FooterMain } from './styles'
+import Logo from '../../UI/Logo.tsx/Logo'
 
 const Footer: React.FC = () => {
   return (
@@ -10,6 +10,6 @@ const Footer: React.FC = () => {
       <DivCopyright>Fess inc@</DivCopyright>
     </FooterMain>
   )
-};
+}
 
-export default Footer;
+export default Footer

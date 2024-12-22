@@ -4,7 +4,7 @@
 // 	// FETCH_FAVORITE_FILMS = '/films/favorite/:id',  // get - id пользователя,
 // 	// ADD_FAVORITE_FILM = '/films/add-favorite', // post - id пользователя, id фильма
 // 	// REMOVE_FAVORITE_FILM = '/films/remove-favorite', // post - id пользователя, id фильма
-	
+
 // 	// FETCH_REVIEWS = '/reviews/:id', // get - /reviews/:film_id
 // 	// SEND_REVIEW = '/reviews/add-review', // post, {commentProps}
 
@@ -14,11 +14,11 @@
 // }
 
 export const ApiRoutes = {
-	AUTH: '/api/auth',  // общий для рработы с пользователями
-	LOGIN: '/login', // post - email, password
-	REGISTER: '/register',
+  AUTH: '/api/auth', // общий для рработы с пользователями
+  LOGIN: '/login', // post - email, password
+  REGISTER: '/register',
 
-	FILMS: '/api/films', // общий для фильмов
-	GET_FILMS: '/get-films', // get
-	SET_FILMS: '/set-films', // post
+  FILMS: '/api/films', // общий для фильмов
+  GET_FILMS: '/get-films', // get
+  SET_FILMS: '/set-films', // post
 }

@@ -1,23 +1,27 @@
-import { DivFilmButtons } from "./styles";
-import ButtonAdd from "../../UI/Buttons/ButtonAdd/ButtonAdd";
-import ButtonAddReview from "../../UI/Buttons/ButtonAddReview/ButtonAddReview";
-import ButtonDetails from "../../UI/Buttons/ButtonDetails/ButtonDetails";
-import ButtonPlay from "../../UI/Buttons/ButtonPlay/ButtonPlay";
+import { DivFilmButtons } from './styles'
+import ButtonAdd from '../../UI/Buttons/ButtonAdd/ButtonAdd'
+import ButtonAddReview from '../../UI/Buttons/ButtonAddReview/ButtonAddReview'
+import ButtonDetails from '../../UI/Buttons/ButtonDetails/ButtonDetails'
+import ButtonPlay from '../../UI/Buttons/ButtonPlay/ButtonPlay'
 
 type FilmButtonsProps = {
-  details?: boolean,
-  addReview?: boolean,
+  details?: boolean
+  addReview?: boolean
   id: number
 }
-const FilmButtons: React.FC<FilmButtonsProps> = ( {details, addReview, id} ) => {
+const FilmButtons: React.FC<FilmButtonsProps> = ({
+  details,
+  addReview,
+  id,
+}) => {
   return (
     <DivFilmButtons>
-      <ButtonPlay id={id}/>
+      <ButtonPlay id={id} />
       <ButtonAdd />
-      {details && <ButtonDetails  />}
+      {details && <ButtonDetails />}
       {addReview && <ButtonAddReview />}
     </DivFilmButtons>
   )
 }
 
-export default FilmButtons;
+export default FilmButtons

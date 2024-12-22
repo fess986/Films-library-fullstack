@@ -1,17 +1,15 @@
-import {PSignInMessage} from "./styles";
+import { PSignInMessage } from './styles'
 
 type SignInMessageProps = {
   children: React.ReactNode
-  isError?: boolean,
+  isError?: boolean
 }
 
-const SignInMessage: React.FC<SignInMessageProps> = ({children, isError = false }) => {
-
-  return (
-    <PSignInMessage $isError={isError}>
-      {children}
-    </PSignInMessage>
-  )
+const SignInMessage: React.FC<SignInMessageProps> = ({
+  children,
+  isError = false,
+}) => {
+  return <PSignInMessage $isError={isError}>{children}</PSignInMessage>
 }
 
-export default SignInMessage;
+export default SignInMessage

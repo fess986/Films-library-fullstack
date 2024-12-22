@@ -1,9 +1,6 @@
-export { default as Add } from "./add";
-export { default as FullScreen } from "./fullScreen";
-export { default as InList } from "./inList";
-export { default as Play } from "./play";
-export { default as Pause } from "./pause";
-export { default as Details } from "./details";
-
-
-
+export { default as Add } from './add'
+export { default as FullScreen } from './fullScreen'
+export { default as InList } from './inList'
+export { default as Play } from './play'
+export { default as Pause } from './pause'
+export { default as Details } from './details'

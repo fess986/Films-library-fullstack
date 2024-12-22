@@ -1,5 +1,5 @@
-import { H2SignIn } from "./styles";
-import SignInForm from "../../blocks/SignInForm/SignInForm";
+import { H2SignIn } from './styles'
+import SignInForm from '../../blocks/SignInForm/SignInForm'
 
 const SignIn: React.FC = () => {
   return (
@@ -8,6 +8,6 @@ const SignIn: React.FC = () => {
       <SignInForm />
     </>
   )
-};
+}
 
-export default SignIn;
+export default SignIn

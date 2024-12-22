@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <ToastContainer />
         <App />
         <GlobalStyles />
-      </ThemeProvider >
+      </ThemeProvider>
     </ReduxProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

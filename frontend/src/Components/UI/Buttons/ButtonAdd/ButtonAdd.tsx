@@ -1,73 +1,89 @@
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import { AuthStatus, AppRoutes } from "../../../../const/const";
-import { useAppDispatch } from "../../../../store";
-import { addFavoriteFilm, removeFavoriteFilm } from "../../../../store/api-actions";
-import { getActiveFilm } from "../../../../store/films/filmsSelector";
-import { getIsAuth, getFavoriteFilms, getUserId } from "../../../../store/user/userSelectors";
-import { StyledButton } from "../styles";
+import { AuthStatus, AppRoutes } from '../../../../const/const'
+import { useAppDispatch } from '../../../../store'
+import {
+  addFavoriteFilm,
+  removeFavoriteFilm,
+} from '../../../../store/api-actions'
+import { getActiveFilm } from '../../../../store/films/filmsSelector'
+import {
+  getIsAuth,
+  getFavoriteFilms,
+  getUserId,
+} from '../../../../store/user/userSelectors'
+import { StyledButton } from '../styles'
 
-const ButtonAdd : React.FC = (  ) => {
-  const [added, setAdded] = useState(false);
+const ButtonAdd: React.FC = () => {
+  const [added, setAdded] = useState(false)
 
-     const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
-  const isAuth = useSelector(getIsAuth);
-  const favoriteFilmListId = useSelector(getFavoriteFilms);
-  const userId = useSelector(getUserId);
-  const activeFilm = useSelector(getActiveFilm);
+  const isAuth = useSelector(getIsAuth)
+  const favoriteFilmListId = useSelector(getFavoriteFilms)
+  const userId = useSelector(getUserId)
+  const activeFilm = useSelector(getActiveFilm)
 
   useEffect(() => {
     if (isAuth === AuthStatus.NO_AUTH || isAuth === AuthStatus.UNKNOWN) {
-      setAdded(false);
+      setAdded(false)
     }
 
     if (isAuth === AuthStatus.AUTH) {
       if (activeFilm === null) {
-        setAdded(false);
+        setAdded(false)
         return
       }
 
       if (favoriteFilmListId.includes(activeFilm.id)) {
-        setAdded(true);
+        setAdded(true)
       } else {
-        setAdded(false);
+        setAdded(false)
       }
     }
-
-  }, [isAuth, activeFilm, favoriteFilmListId]);
+  }, [isAuth, activeFilm, favoriteFilmListId])
 
   const handleClick = () => {
     // если пользователь не авторизован, то перенаправляем его на страницу авторизации
     if (isAuth === AuthStatus.NO_AUTH || isAuth === AuthStatus.UNKNOWN) {
-      navigate(AppRoutes.SIGN_IN);
-      return;
+      navigate(AppRoutes.SIGN_IN)
+      return
     }
 
     // если фильм не выбран, то ничего не делаем
     if (activeFilm === null) {
-      return;
+      return
     }
 
     // если фильм уже в списке любимых, то удаляем его, если нет, то добавляем
     if (added) {
-      dispatch(removeFavoriteFilm({userId: userId || '666', filmId: activeFilm.id}));
+      dispatch(
+        removeFavoriteFilm({
+          userId: userId || '666',
+          filmId: activeFilm.id,
+        })
+      )
     } else {
-      dispatch(addFavoriteFilm({userId: userId || '666', filmId: activeFilm.id}));
+      dispatch(
+        addFavoriteFilm({
+          userId: userId || '666',
+          filmId: activeFilm.id,
+        })
+      )
     }
-  } 
+  }
 
   return (
-    <StyledButton onClick={handleClick} >
+    <StyledButton onClick={handleClick}>
       <svg viewBox="0 0 19 20" width={19} height={20}>
-        <use xlinkHref={added ? "#in-list" : "#add"} />
+        <use xlinkHref={added ? '#in-list' : '#add'} />
       </svg>
       <span>My list</span>
     </StyledButton>
   )
 }
 
-export default ButtonAdd;
+export default ButtonAdd

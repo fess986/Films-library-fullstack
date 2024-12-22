@@ -1,7 +1,7 @@
-import { createAction } from "@reduxjs/toolkit";
+import { createAction } from '@reduxjs/toolkit'
 
 export enum AppActions {
-  REDIRECT = "app/redirect",  // перенаправление по указанному пути
+  REDIRECT = 'app/redirect', // перенаправление по указанному пути
 }
 
 // 2 способа создания одного и того же экшена
