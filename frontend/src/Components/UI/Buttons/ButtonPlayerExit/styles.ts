@@ -1,37 +1,37 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import { Button } from "../../../styled/Components";
+import { Button } from '../../../styled/Components'
 import {
-	zIndexMiddle,
-	fontSmall,
-	textColorMain,
-} from "../../../styled/Mixins/mixins";
+  zIndexMiddle,
+  fontSmall,
+  textColorMain,
+} from '../../../styled/Mixins/mixins'
 
 export const ButtonExit = styled(Button).attrs(() => ({
-  type: "button",
+  type: 'button',
 }))`
-	position: absolute;
-	top: 37px;
-	right: 32px;
+  position: absolute;
+  top: 37px;
+  right: 32px;
 
-	display: block;
-	${zIndexMiddle}
-	${fontSmall}
+  display: block;
+  ${zIndexMiddle}
+  ${fontSmall}
   ${textColorMain}
 
   background: 0 0;
 
-	border: none;
-	border-radius: 8px;
+  border: none;
+  border-radius: 8px;
 
-	padding: 10px 20px;
-	width: 93px;
+  padding: 10px 20px;
+  width: 93px;
 
-	cursor: pointer;
+  cursor: pointer;
 
-	transition: transform 0.3s linear;
+  transition: transform 0.3s linear;
 
-	&:hover {
-		transform: scale(1.1);
-	}
-`;
+  &:hover {
+    transform: scale(1.1);
+  }
+`

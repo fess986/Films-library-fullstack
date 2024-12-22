@@ -1,25 +1,31 @@
-import {ButtonPlayer, SvgIcon} from './styles.ts'
+import { ButtonPlayer, SvgIcon } from './styles.ts'
 
 type ButtonPlayerPlayProps = {
-  onClick: () => void,
-  state: 'pause' | 'play',
+  onClick: () => void
+  state: 'pause' | 'play'
 }
 
-const ButtonPlayerPlay: React.FC<ButtonPlayerPlayProps> = ({ onClick, state = 'pause' }) => {
+const ButtonPlayerPlay: React.FC<ButtonPlayerPlayProps> = ({
+  onClick,
+  state = 'pause',
+}) => {
   return (
-    <ButtonPlayer onClick={onClick} >
-
-        {state === 'play' && <SvgIcon viewBox="0 0 19 19" width={19} height={19}>
+    <ButtonPlayer onClick={onClick}>
+      {state === 'play' && (
+        <SvgIcon viewBox="0 0 19 19" width={19} height={19}>
           <use xlinkHref="#play-s" />
-        </SvgIcon>}
+        </SvgIcon>
+      )}
 
-        {state === 'pause' && <SvgIcon viewBox="0 0 14 21" width={14} height={21}>
+      {state === 'pause' && (
+        <SvgIcon viewBox="0 0 14 21" width={14} height={21}>
           <use xlinkHref="#pause" />
-        </SvgIcon>}
+        </SvgIcon>
+      )}
 
       <span>Play</span>
     </ButtonPlayer>
   )
 }
 
-export default ButtonPlayerPlay;
+export default ButtonPlayerPlay

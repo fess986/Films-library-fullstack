@@ -1,32 +1,32 @@
-import axios from "axios";
+import axios from 'axios'
 
-const baseURL = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`; // используем по умолчанию localhost с текущим портом на котором запущен сервер
+const baseURL = `${window.location.protocol}//${window.location.hostname}:${window.location.port}` // используем по умолчанию localhost с текущим портом на котором запущен сервер
 
 const api = axios.create({
-	baseURL,
-	timeout: 5000,
-	headers: {
-		"Content-Type": "application/json",
-	},
-});
+  baseURL,
+  timeout: 5000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
 
 // Имитация загрузки фильмов через инстанс axios
 api.interceptors.response.use(
-	(response) => {
-		// console.log(response);
-		// Имитация задержки в 500 мс
-		return new Promise((resolve) => {
-			setTimeout(() => {
-				resolve(response);
-			}, 500);
-		});
-	},
-	(error) => {
-		// Здесь можно обработать ошибки глобально
-		console.error("Axios error:", error);
-		return Promise.reject(error); // если не возвращаем ошибку, то скрипт дальше не идёт
-	}
-);
+  (response) => {
+    // console.log(response);
+    // Имитация задержки в 500 мс
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(response)
+      }, 500)
+    })
+  },
+  (error) => {
+    // Здесь можно обработать ошибки глобально
+    console.error('Axios error:', error)
+    return Promise.reject(error) // если не возвращаем ошибку, то скрипт дальше не идёт
+  }
+)
 
 // api.interceptors.response.use(
 //   (response) => {
@@ -98,10 +98,8 @@ api.interceptors.response.use(
 // 		return Promise.resolve(fakeResponse);
 // 	}
 
-
 // 	return config; // Возвращаем оригинальный запрос, если не совпадает
 // });
-
 
 // Обработка ошибок
 // api.interceptors.response.use(
@@ -113,4 +111,4 @@ api.interceptors.response.use(
 //   }
 // );
 
-export default api;
+export default api

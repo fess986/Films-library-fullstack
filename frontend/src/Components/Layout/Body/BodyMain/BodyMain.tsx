@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from 'react'
 
-import { DivMainContainer, BodyMainStyled } from './styles';
-import InjectListSVG from '../../../UI/injectListSVG/injectListSVG';
+import { DivMainContainer, BodyMainStyled } from './styles'
+import InjectListSVG from '../../../UI/injectListSVG/injectListSVG'
 
 export type BodyMainProps = {
-  children?: ReactNode,
+  children?: ReactNode
 }
 
 const BodyMain: React.FC<BodyMainProps> = ({ children }) => {
@@ -12,13 +12,9 @@ const BodyMain: React.FC<BodyMainProps> = ({ children }) => {
     <BodyMainStyled>
       <InjectListSVG add play pause details inList />
 
-      <DivMainContainer>
-        {children}
-      </DivMainContainer>
-
+      <DivMainContainer>{children}</DivMainContainer>
     </BodyMainStyled>
-
   )
-};
+}
 
-export default BodyMain;
+export default BodyMain

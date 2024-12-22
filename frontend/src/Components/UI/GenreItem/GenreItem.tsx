@@ -1,9 +1,9 @@
-import { LiGenresListItem, LinkGenresListItem } from "./styles";
-import { useAppDispatch } from "../../../store";
-import { setActiveGenre } from "../../../store/app/appSlice";
+import { LiGenresListItem, LinkGenresListItem } from './styles'
+import { useAppDispatch } from '../../../store'
+import { setActiveGenre } from '../../../store/app/appSlice'
 
 type GenreItemProps = {
-  genre: string,
+  genre: string
   active?: boolean
 }
 
@@ -16,7 +16,9 @@ const GenreItem: React.FC<GenreItemProps> = ({ genre, active }) => {
 
   return (
     <LiGenresListItem>
-      <LinkGenresListItem to={'#'} onClick={setActive} $active={active}>{genre}</LinkGenresListItem>
+      <LinkGenresListItem to={'#'} onClick={setActive} $active={active}>
+        {genre}
+      </LinkGenresListItem>
     </LiGenresListItem>
   )
 }

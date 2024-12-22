@@ -1,8 +1,15 @@
-import { H2FilmName, SpanGenre, SpanYear, PMeta, SpanRating, DivDescription } from "./styles";
-import { FilmProps } from "../../../types/types";
+import {
+  H2FilmName,
+  SpanGenre,
+  SpanYear,
+  PMeta,
+  SpanRating,
+  DivDescription,
+} from './styles'
+import { FilmProps } from '../../../types/types'
 
 type FilmCardDescriptionProps = {
-  film: FilmProps,
+  film: FilmProps
 }
 
 const FilmCardDescription: React.FC<FilmCardDescriptionProps> = ({ film }) => {
@@ -20,4 +27,4 @@ const FilmCardDescription: React.FC<FilmCardDescriptionProps> = ({ film }) => {
   )
 }
 
-export default FilmCardDescription;
+export default FilmCardDescription

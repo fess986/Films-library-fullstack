@@ -1,15 +1,17 @@
-import { NavApp } from "./styles"
-import { PageList } from "../../../const/const"
-import Logo from "../../UI/Logo.tsx/Logo"
-import Breadcrumbs from "../Breadcrumbs/Breadcrumbs"
+import { NavApp } from './styles'
+import { PageList } from '../../../const/const'
+import Logo from '../../UI/Logo.tsx/Logo'
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
 
 type AppNavigationProps = {
-  breadcrumbs?: boolean,
+  breadcrumbs?: boolean
   $page?: PageList
 }
 
-const AppNavigation: React.FC<AppNavigationProps> = ({ breadcrumbs, $page = PageList.MAIN }) => {
-
+const AppNavigation: React.FC<AppNavigationProps> = ({
+  breadcrumbs,
+  $page = PageList.MAIN,
+}) => {
   return (
     <NavApp $page={$page}>
       <Logo />

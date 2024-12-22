@@ -10,7 +10,7 @@
     "client": "npm run dev --prefix frontend",
     "lint": "npm run lint --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "pretify": "npx prettier --write . --config ./.prettierrc.json"
+    "prettify": "npx prettier --cache --write 'src/**/*.{js,jsx,ts,tsx,json,sccc,yml,css}' '**/*.{js,jsx,ts,tsx}' '!**/node_modules/**' '!**/dist/**'"
   },
   "keywords": [
     "mern",

@@ -1,17 +1,27 @@
-import { LinkFilmMenuItem, LiFilmMenuItem } from "./styles"
+import { LinkFilmMenuItem, LiFilmMenuItem } from './styles'
 
 type FilmMenuItemProps = {
-  itemName: string,
-  isActive: boolean,
+  itemName: string
+  isActive: boolean
   onclick: () => void
 }
 
-const FilmMenuItem: React.FC<FilmMenuItemProps> = ({ itemName, isActive, onclick }) => {
+const FilmMenuItem: React.FC<FilmMenuItemProps> = ({
+  itemName,
+  isActive,
+  onclick,
+}) => {
   return (
     <LiFilmMenuItem>
-      <LinkFilmMenuItem to={itemName.toLowerCase()} $active={isActive} onClick={onclick}>{itemName}</LinkFilmMenuItem>
+      <LinkFilmMenuItem
+        to={itemName.toLowerCase()}
+        $active={isActive}
+        onClick={onclick}
+      >
+        {itemName}
+      </LinkFilmMenuItem>
     </LiFilmMenuItem>
   )
 }
 
-export default FilmMenuItem;
+export default FilmMenuItem

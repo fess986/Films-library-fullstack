@@ -1,6 +1,6 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from 'react'
 
-import { DivMainContainer, BodyMainStyled } from './styles';
+import { DivMainContainer, BodyMainStyled } from './styles'
 
 interface BodySignInProps {
   children?: ReactNode
@@ -9,14 +9,9 @@ interface BodySignInProps {
 const BodySignIn: React.FC<BodySignInProps> = ({ children }) => {
   return (
     <BodyMainStyled>
-
-      <DivMainContainer>
-        {children}
-      </DivMainContainer>
-
+      <DivMainContainer>{children}</DivMainContainer>
     </BodyMainStyled>
-
   )
-};
+}
 
-export default BodySignIn;
+export default BodySignIn

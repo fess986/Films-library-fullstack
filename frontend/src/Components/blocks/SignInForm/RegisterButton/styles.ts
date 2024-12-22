@@ -1,31 +1,31 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import { Button } from "../../../styled/Components";
-import { textColorAdditional } from "../../../styled/Mixins/mixins";
+import { Button } from '../../../styled/Components'
+import { textColorAdditional } from '../../../styled/Mixins/mixins'
 
 export const ButtonRegister = styled(Button).attrs(() => ({
-  type: "submit",
+  type: 'submit',
 }))`
-	display: block;
+  display: block;
 
-	text-align: center;
-	width: 100%;
-	padding: 29px 40px;
+  text-align: center;
+  width: 100%;
+  padding: 29px 40px;
   margin-bottom: 30px;
-  
-	background: none;
-	border: 1px solid rgba(44, 43, 39, 0.2);
-	border-radius: 8px;
 
-	transition: border-color 0.5s;
+  background: none;
+  border: 1px solid rgba(44, 43, 39, 0.2);
+  border-radius: 8px;
 
-	font-size: 22px;
-	line-height: 26px;
+  transition: border-color 0.5s;
+
+  font-size: 22px;
+  line-height: 26px;
   ${textColorAdditional};
 
   cursor: pointer;
 
   &:hover {
-    border-color: ${({ theme }) => theme.textColorAdditional}; }
-
-`;
+    border-color: ${({ theme }) => theme.textColorAdditional};
+  }
+`

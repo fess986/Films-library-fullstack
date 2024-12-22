@@ -30,7 +30,6 @@
 
 //       throw new Error(errorMessage);
 
-
 //       } else {
 //         setIsLoading(false);
 //         return data;
@@ -39,7 +38,7 @@
 // 		} catch (err: any) {
 //       console.log(err);
 //       // console.log(err.errors);
-      
+
 // 			setIsLoading(false);
 // 			setError(err.message || "Something went wrong");
 //       throw err;

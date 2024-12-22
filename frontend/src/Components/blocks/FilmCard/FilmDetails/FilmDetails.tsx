@@ -1,6 +1,11 @@
-import { DivDetailsContainer, DivItem, SpanDetailsItemTitle, SpanDetailsItemValue } from "./styles";
-import { FilmProps } from "../../../../types/types";
-import { getDuration } from "../../../../utils/utils";
+import {
+  DivDetailsContainer,
+  DivItem,
+  SpanDetailsItemTitle,
+  SpanDetailsItemValue,
+} from './styles'
+import { FilmProps } from '../../../../types/types'
+import { getDuration } from '../../../../utils/utils'
 
 type FilmDetailsProps = {
   film: FilmProps | null
@@ -8,12 +13,10 @@ type FilmDetailsProps = {
 
 const FilmDetails: React.FC<FilmDetailsProps> = ({ film }) => {
   return (
-
     <DivDetailsContainer>
-
       {!film && <div>Loading...</div>}
-      
-      {film &&
+
+      {film && (
         <>
           <DivItem>
             <SpanDetailsItemTitle>Director:</SpanDetailsItemTitle>
@@ -22,17 +25,21 @@ const FilmDetails: React.FC<FilmDetailsProps> = ({ film }) => {
 
           <DivItem>
             <SpanDetailsItemTitle>Starring:</SpanDetailsItemTitle>
-            <SpanDetailsItemValue>{film.starring.join(", ")}</SpanDetailsItemValue>
+            <SpanDetailsItemValue>
+              {film.starring.join(', ')}
+            </SpanDetailsItemValue>
           </DivItem>
 
           <DivItem>
             <SpanDetailsItemTitle>Run Time:</SpanDetailsItemTitle>
-            <SpanDetailsItemValue>{getDuration(film.runTime)}</SpanDetailsItemValue>
+            <SpanDetailsItemValue>
+              {getDuration(film.runTime)}
+            </SpanDetailsItemValue>
           </DivItem>
 
           <DivItem>
             <SpanDetailsItemTitle>Genre:</SpanDetailsItemTitle>
-            <SpanDetailsItemValue>{film.genre.join(", ")}</SpanDetailsItemValue>
+            <SpanDetailsItemValue>{film.genre.join(', ')}</SpanDetailsItemValue>
           </DivItem>
 
           <DivItem>
@@ -40,10 +47,9 @@ const FilmDetails: React.FC<FilmDetailsProps> = ({ film }) => {
             <SpanDetailsItemValue>{film.released}</SpanDetailsItemValue>
           </DivItem>
         </>
-
-      }
+      )}
     </DivDetailsContainer>
   )
 }
 
-export default FilmDetails;
+export default FilmDetails

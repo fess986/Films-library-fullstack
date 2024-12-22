@@ -1,32 +1,34 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect } from 'react'
 
-import {  storageName } from "../const/const";
-import { useAppDispatch } from "../store";
-import { loginUtil, logoutUtil, checkAuthUtil } from "../utils/authUtils";
+import { storageName } from '../const/const'
+import { useAppDispatch } from '../store'
+import { loginUtil, logoutUtil, checkAuthUtil } from '../utils/authUtils'
 
 export const useAuth = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
-  const login = useCallback((jwtToken: string, id: string) => {
-    loginUtil(dispatch, jwtToken, id)
-  }, [dispatch]);
+  const login = useCallback(
+    (jwtToken: string, id: string) => {
+      loginUtil(dispatch, jwtToken, id)
+    },
+    [dispatch]
+  )
 
   const logout = useCallback(() => {
     logoutUtil(dispatch)
-  }, [dispatch]);
+  }, [dispatch])
 
   const checkAuth = useCallback(() => {
     return checkAuthUtil(dispatch)
-  }, [dispatch]);
+  }, [dispatch])
 
   // для обновления состояния приложения
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem(storageName) || '{}');
+    const data = JSON.parse(localStorage.getItem(storageName) || '{}')
     if (data && data.token) {
-      login(data.token, data.userId);
+      login(data.token, data.userId)
     }
-  }, [login]);
+  }, [login])
 
-
-  return {login, logout, checkAuth};
-};
+  return { login, logout, checkAuth }
+}

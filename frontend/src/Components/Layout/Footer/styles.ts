@@ -1,28 +1,27 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import { Footer , Div } from "../../styled/Components";
-import { fontMedium, textColorAdditional } from "../../styled/Mixins/mixins";
-
+import { Footer, Div } from '../../styled/Components'
+import { fontMedium, textColorAdditional } from '../../styled/Mixins/mixins'
 
 export const DivCopyright = styled(Div)`
-	${fontMedium}
-	${textColorAdditional}
-`;
+  ${fontMedium}
+  ${textColorAdditional}
+`
 
 export const FooterPage = styled(Footer)`
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
-	max-width: 1400px;
-`;
+  max-width: 1400px;
+`
 
 export const FooterMain = styled(FooterPage)`
-	margin-top: 100px;
-	margin-bottom: 20px;
-`;
+  margin-top: 100px;
+  margin-bottom: 20px;
+`
 
 export const FooterSignIn = styled(FooterPage)`
-	margin-bottom: 20px;
-`;
+  margin-bottom: 20px;
+`

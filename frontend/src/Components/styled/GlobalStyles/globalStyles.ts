@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
 html {
@@ -46,6 +46,6 @@ a, ul, li {
   list-style: none;
   text-decoration: none;
 }
-`;
+`
 
-export default GlobalStyles;
+export default GlobalStyles

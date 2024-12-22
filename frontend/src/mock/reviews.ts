@@ -1,4 +1,4 @@
-import { Review } from "../types/types";
+import { Review } from '../types/types'
 
 export const Reviews: Review[] = [
   {
@@ -19,7 +19,8 @@ export const Reviews: Review[] = [
       name: 'Kate Muir',
     },
     rating: 8.9,
-    comment: 'Discerning travellers and Wes Anderson fans will luxuriate              in the glorious Mittel-European kitsch of one of the directors funniest and most exquisitely designed films in              years.',
+    comment:
+      'Discerning travellers and Wes Anderson fans will luxuriate              in the glorious Mittel-European kitsch of one of the directors funniest and most exquisitely designed films in              years.',
     date: '2024-03-08T14:13:52.569Z',
   },
 
@@ -45,7 +46,8 @@ export const Reviews: Review[] = [
       name: 'Piter Parker',
     },
     rating: 7.0,
-    comment: 'didnt find it amusing, and while I can appreciate the   creativity, its an hour and 40 minutes I wish I could take     back',
+    comment:
+      'didnt find it amusing, and while I can appreciate the   creativity, its an hour and 40 minutes I wish I could take     back',
     date: '2023-05-08T14:13:52.569Z',
   },
 
@@ -61,4 +63,4 @@ export const Reviews: Review[] = [
               heartbreaking`,
     date: '2023-11-08T14:13:52.569Z',
   },
-];
+]
