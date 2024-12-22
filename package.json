@@ -10,7 +10,8 @@
     "client": "npm run dev --prefix frontend",
     "lint": "npm run lint --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "prettify": "npx prettier --cache --write 'src/**/*.{js,jsx,ts,tsx,json,sccc,yml,css}' '**/*.{js,jsx,ts,tsx}' '!**/node_modules/**' '!**/dist/**'"
+    "prettify": "npx prettier --cache --write 'src/**/*.{js,jsx,ts,tsx,json,sccc,yml,css}' '**/*.{js,jsx,ts,tsx}' '!**/node_modules/**' '!**/dist/**'",
+    "types": "npm run types --prefix frontend"
   },
   "keywords": [
     "mern",
@@ -30,6 +31,7 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "express-validator": "^7.2.0",
+    "husky": "^9.1.7",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.1",
     "react-toastify": "^10.0.6"
