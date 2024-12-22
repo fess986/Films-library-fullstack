@@ -12,7 +12,7 @@ import { StyledButton } from "../styles";
 const ButtonAdd : React.FC = (  ) => {
   const [added, setAdded] = useState(false);
 
-  const navigate = useNavigate();
+     const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const isAuth = useSelector(getIsAuth);
@@ -54,9 +54,9 @@ const ButtonAdd : React.FC = (  ) => {
 
     // если фильм уже в списке любимых, то удаляем его, если нет, то добавляем
     if (added) {
-      dispatch(removeFavoriteFilm({userId: userId || 666, filmId: activeFilm.id}));
+      dispatch(removeFavoriteFilm({userId: userId || '666', filmId: activeFilm.id}));
     } else {
-      dispatch(addFavoriteFilm({userId: userId || 666, filmId: activeFilm.id}));
+      dispatch(addFavoriteFilm({userId: userId || '666', filmId: activeFilm.id}));
     }
   } 
 

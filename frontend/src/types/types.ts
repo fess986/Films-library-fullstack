@@ -33,7 +33,7 @@ export type commentProps = {
   text: string,
   rating: number,
   filmId: number,
-  userId: number
+  userId: string
 };
 
 export type UserInfo = {

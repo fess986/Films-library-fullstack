@@ -186,7 +186,7 @@ export const registerAction = createAsyncThunk<
 // добавляем фильм в список избранных
 export const addFavoriteFilm = createAsyncThunk<
 	void,
-	{ userId: number; filmId: number }, // передаём объект с данными пользователя и добавляемого фильма
+	{ userId: string; filmId: number }, // передаём объект с данными пользователя и добавляемого фильма
 	ThunkConfig
 >(
 	ApiActions.ADD_FAVORITE_FILM,
@@ -204,7 +204,7 @@ export const addFavoriteFilm = createAsyncThunk<
 
 export const removeFavoriteFilm = createAsyncThunk<
 	void,
-	{ userId: number; filmId: number }, // передаём объект с данными пользователя и удаляемого фильма
+	{ userId: string; filmId: number }, // передаём объект с данными пользователя и удаляемого фильма
 	ThunkConfig
 >(
 	ApiActions.REMOVE_FAVORITE_FILM,
