@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+
 import { useNavigate } from 'react-router-dom'
 
 import { AuthStatus, AppRoutes } from '../../../../const/const'
@@ -16,11 +17,13 @@ import {
 } from '../../../../store/user/userSelectors'
 import { StyledButton } from '../styles'
 
-const ButtonAdd: React.FC = () => {
-  const [added, setAdded] = useState(false)
+// "prettify": "npx prettier --cache --write 'src/**/*.{js,jsx,ts,tsx}' '**/*.{js,jsx,ts,tsx}' '!**/node_modules/**' '!**/dist/**'"
 
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch()
+const ButtonAdd: React.FC = () => {
+      const [added, setAdded] = useState(false)
+
+  const navigate: number = useNavigate()
+  const dispatch : any = useAppDispatch()
 
   const isAuth = useSelector(getIsAuth)
   const favoriteFilmListId = useSelector(getFavoriteFilms)
