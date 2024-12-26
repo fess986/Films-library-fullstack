@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useFormik } from 'formik'
 import { useSelector } from 'react-redux'
 
 import RegisterButton from './RegisterButton/RegisterButton'
@@ -20,27 +20,36 @@ const SignInForm: React.FC = () => {
 
   const isLoading = useSelector(getIsDataLoading)
 
-  const [form, setForm] = useState({
-    email: '',
-    password: '',
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    onSubmit: (values) => {
+      console.log(values)
+    },
   })
+
+  console.log(formik)
 
   // меняем состояние стейта формы при изменении
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
+    formik.setFieldValue(e.target.name, e.target.value)
   }
 
   // регистрация нового пользователя
   const registerHandler = async () => {
     try {
-      dispatch(registerAction({ ...form }))
+      dispatch(registerAction({ ...formik.values }))
     } catch (err) {
       // уже обработаны
     }
   }
 
   // вход в аккаунт существующего пользователя
-  const loginHandler = async () => dispatch(loginAction({ ...form }))
+  const loginHandler = async () => {
+    dispatch(loginAction({ ...formik.values }))
+  }
 
   return (
     <SectionFormContainer>
