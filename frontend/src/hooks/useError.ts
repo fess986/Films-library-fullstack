@@ -1,17 +1,16 @@
 import { AxiosError } from 'axios'
-import { toast } from 'react-toastify'
 
+import useToast from './useToast'
 export const useError = (err: AxiosError | Error) => {
+  const toast = useToast()
+
   if (err instanceof AxiosError) {
     const serverMessage =
       err.response?.data?.message || 'Ошибка на стороне сервера'
-    toast.error(serverMessage, { autoClose: 3000, closeOnClick: true })
+    toast.error(serverMessage)
   } else if (err instanceof Error) {
-    toast.error(err.message, { autoClose: 3000, closeOnClick: true })
+    toast.error(err.message)
   } else {
-    toast.error('Неизвестная ошибка', {
-      autoClose: 3000,
-      closeOnClick: true,
-    })
+    toast.error('Неизвестная ошибка')
   }
 }
