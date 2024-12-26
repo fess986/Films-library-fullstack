@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
 import type { AxiosInstance } from 'axios' // Импортируем тип AxiosInstance
-import { toast } from 'react-toastify'
 
 import { redirect } from './actions'
+import useToast from '../hooks/useToast'
 import { setIsFilmsLoaded, setIsDataLoading } from './app/appSlice'
 import { setFilmList, setSimilarFilmList } from './films/filmsSlice'
 import { setReviewsList } from './reviews/reviewsSlice'
@@ -121,6 +121,7 @@ export const loginAction = createAsyncThunk<
   ApiActions.LOGIN, // Имя thunkа
   async (loginInfo, { dispatch, extra: api }) => {
     try {
+      const toast = useToast()
       dispatch(setIsDataLoading(true)) // загрузка
 
       // await api.post(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.SET_FILMS}`)
@@ -139,8 +140,7 @@ export const loginAction = createAsyncThunk<
       // редирект в мэйн
       dispatch(redirect(`${AppRoutes.ROOT}`))
       toast.success(
-        `Регистрация прошла успешно! Добро пожаловать, ${loginInfo.email}`,
-        { autoClose: 3000, closeOnClick: true }
+        `Регистрация прошла успешно! Добро пожаловать, ${loginInfo.email}`
       )
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
@@ -159,6 +159,7 @@ export const registerAction = createAsyncThunk<
   ApiActions.REGISTER, // Имя thunkа
   async (registerInfo, { dispatch, extra: api }) => {
     try {
+      const toast = useToast()
       dispatch(setIsDataLoading(true))
       const data = await api.post(
         `${baseURL}${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`,
@@ -170,8 +171,7 @@ export const registerAction = createAsyncThunk<
 
       dispatch(redirect(`${AppRoutes.ROOT}`))
       toast.success(
-        `Регистрация прошла успешно! Добро пожаловать, ${registerInfo.email}`,
-        { autoClose: 3000, closeOnClick: true }
+        `Регистрация прошла успешно! Добро пожаловать, ${registerInfo.email}`
       )
       // return data.data
     } catch (err) {
@@ -223,6 +223,7 @@ export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
   ApiActions.SEND_REVIEW,
   async (commentInfo, { dispatch, extra: api }) => {
     try {
+      const toast = useToast()
       // await api.post(ApiRoutesMock.SEND_REVIEW, commentInfo);
       toast.info('Отправка отзыва')
 
@@ -243,6 +244,7 @@ export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
 
       toast.success('Отзыв отправлен')
     } catch (error) {
+      const toast = useToast()
       console.log(error)
       toast.error('Ошибка отправки отзыва')
     }

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { toast } from 'react-toastify'
 
+import useToast from './useToast'
 import { useAppDispatch } from '../store'
-import {} from '../store/app/appSelectors'
+import { } from '../store/app/appSelectors'
 import { setIsActiveFilmLoaded } from '../store/app/appSlice'
 import { getFilmList } from '../store/films/filmsSelector'
 import { setActiveFilm } from '../store/films/filmsSlice'
@@ -24,13 +24,14 @@ const useActiveFilm = (): UseActiveFilm => {
   const [currentFilm, setCurrentFilm] = useState<FilmProps | null>(null)
   const [isActiveFilmLoaded, setIsActiveFilmLoadedState] =
     useState<boolean>(false)
+  const toast = useToast()
 
   useEffect(() => {
     const activeFilmFromParams =
       films.find((film) => film.id === Number(id)) || null
 
     if (films.length !== 0 && !activeFilmFromParams) {
-      toast.error('Фильм с таким id не найден', { closeOnClick: true })
+      toast.error('Фильм с таким id не найден')
       dispatch(setIsActiveFilmLoaded(false))
     }
 
@@ -43,7 +44,7 @@ const useActiveFilm = (): UseActiveFilm => {
       setIsActiveFilmLoadedState(false)
       dispatch(setIsActiveFilmLoaded(false))
     }
-  }, [id, films, dispatch])
+  }, [id, films, dispatch, toast])
 
   return { id, currentFilm, isActiveFilmLoaded }
 }

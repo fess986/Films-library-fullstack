@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { toast } from 'react-toastify'
 
 import { DivPlayerContainer } from './styles'
 import useActiveFilm from '../../../hooks/useActiveFilm'
+import useToast from '../../../hooks/useToast'
 import { FilmProps } from '../../../types/types'
 import PlayerControls from '../../blocks/PlayerControls/PlayerControls'
 import ButtonPlayerExit from '../../UI/Buttons/ButtonPlayerExit/ButtonPlayerExit'
@@ -21,8 +21,8 @@ const Player: React.FC<PlayerProps> = () => {
   const [playRowPosition, setPlayRowPosition] = useState(0)
 
   const videoRef = useRef<HTMLVideoElement | null>(null)
-
   const { currentFilm } = useActiveFilm()
+  const toast = useToast()
 
   // обновляем текущее время видео
   const handlerCurrentTimePlaying = () => {
@@ -84,7 +84,7 @@ const Player: React.FC<PlayerProps> = () => {
     }
 
     if (isLoading) {
-      toast.error('Фильм ещё не загружен', { closeOnClick: true })
+      toast.error('Фильм ещё не загружен')
       return
     }
 

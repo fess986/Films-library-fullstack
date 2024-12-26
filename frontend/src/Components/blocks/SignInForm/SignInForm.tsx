@@ -1,6 +1,6 @@
 import { useFormik } from 'formik'
 import { useSelector } from 'react-redux'
-// import { toast } from 'react-toastify'
+
 
 import RegisterButton from './RegisterButton/RegisterButton'
 import SignInButton from './SignInButton/SignInButton'
@@ -12,12 +12,14 @@ import {
   DivFormContainerBottom,
   SectionFormContainer,
 } from './styles'
+import useToast from '../../../hooks/useToast.js'
 import { registerAction, loginAction } from '../../../store/api-actions.js'
 import { getIsDataLoading } from '../../../store/app/appSelectors.js'
 import { useAppDispatch } from '../../../store/index.js'
 
 const SignInForm: React.FC = () => {
   const dispatch = useAppDispatch()
+  const toast = useToast()
 
   const isLoading = useSelector(getIsDataLoading)
 
@@ -35,6 +37,7 @@ const SignInForm: React.FC = () => {
       ) {
         errors.email = 'не верный формат email'
         // toast.error('не верный формат email', { autoClose: 3000, closeOnClick: true })
+        toast.error('не верный формат email')
       }
 
       if (!values.password) {
