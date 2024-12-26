@@ -25,7 +25,9 @@ const SignInForm: React.FC = () => {
       email: '',
       password: '',
     },
-    onSubmit: (values) => {console.log(values) },
+    onSubmit: (values) => {
+      console.log(values)
+    },
   })
 
   console.log(formik)
@@ -34,7 +36,6 @@ const SignInForm: React.FC = () => {
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     formik.setFieldValue(e.target.name, e.target.value)
   }
-
 
   // регистрация нового пользователя
   const registerHandler = async () => {
