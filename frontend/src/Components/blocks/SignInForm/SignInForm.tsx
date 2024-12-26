@@ -60,13 +60,12 @@ const SignInForm: React.FC = () => {
 
     formik.setFieldTouched(fieldName, true) // устанавливаем значение "тронутости поля при потере фокуса"
 
-    const errorMessage = formik.errors[fieldName]  // получаем строку ошибки
+    const errorMessage = formik.errors[fieldName] // получаем строку ошибки
 
     // если форма невалидна и есть сообщение об ошибке пишем сообщение пользователю
     if (!formik.isValid && errorMessage) {
       toast.error(errorMessage) // Передаем только строку
     }
-
   }
 
   // регистрация нового пользователя
