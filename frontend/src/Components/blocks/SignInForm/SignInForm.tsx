@@ -1,7 +1,6 @@
 import { useFormik } from 'formik'
 import { useSelector } from 'react-redux'
 
-
 import RegisterButton from './RegisterButton/RegisterButton'
 import SignInButton from './SignInButton/SignInButton'
 import SignInFields from './SignInFields/SignInFields'
