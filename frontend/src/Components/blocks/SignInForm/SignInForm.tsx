@@ -1,6 +1,6 @@
 import { useFormik } from 'formik'
 import { useSelector } from 'react-redux'
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
 
 import RegisterButton from './RegisterButton/RegisterButton'
 import SignInButton from './SignInButton/SignInButton'
@@ -30,17 +30,18 @@ const SignInForm: React.FC = () => {
       const errors: Partial<typeof values> = {}
       if (!values.email) {
         errors.email = 'введите email'
-      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'не верный формат email';
+      } else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+      ) {
+        errors.email = 'не верный формат email'
         // toast.error('не верный формат email', { autoClose: 3000, closeOnClick: true })
       }
 
       if (!values.password) {
         errors.password = 'введите пароль'
-      } 
+      }
 
       return errors
-
     },
     onSubmit: (values) => {
       console.log(values)
