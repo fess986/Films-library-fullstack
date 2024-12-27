@@ -48,8 +48,6 @@ const SignInForm: React.FC = () => {
     },
   })
 
-  // console.log(formik)
-
   // меняем состояние стейта формы при изменении
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     formik.setFieldValue(e.target.name, e.target.value) // устанавливаем поле в соответствии со значением из инпута
