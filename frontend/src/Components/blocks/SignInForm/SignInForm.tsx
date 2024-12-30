@@ -38,9 +38,10 @@ const SignInForm: React.FC = () => {
             message: 'не верный формат email',
           })
           .min(1, { message: 'введите email' }),
-        password: z.string().min(1),
+        password: z.string().min(1, { message: 'введите пароль' }),
       })
     ),
+    // нативная валидация без использования пакета zod
     // validate: (values) => {
     //   const errors: Partial<typeof values> = {}
     //   if (!values.email) {
@@ -99,15 +100,13 @@ const SignInForm: React.FC = () => {
       <DivFormContainerBottom>
         <DivFormContainerTop>
           <FormSignIn onSubmit={(e) => e.preventDefault()}>
-            <SignInMessage isError={false}>
+            <SignInMessage isError={!formik.isValid}>
               Please sign in if you have an account or sign up if you don’t
             </SignInMessage>
 
             <SignInFields onChange={onChangeHandler} onBlur={onBlurHandler} />
 
             <SignInButton loginHandler={loginHandler} isDisabled={isLoading} />
-
-            {!formik.isValid && <div>form is not valid</div>}
 
             <RegisterButton
               registerHandler={registerHandler}
