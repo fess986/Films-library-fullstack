@@ -35,6 +35,15 @@ export const DivSignInInput = styled(Input)`
   &:focus {
     border-color: ${({ theme }) => theme.textColorInputHover};
   }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: ${({ theme }) =>
+      theme.textColorAdditional} !important;
+  }
 `
 
 export const DivSignInInputEmail = styled(DivSignInInput).attrs(() => ({
