@@ -41,7 +41,8 @@ export const DivSignInInput = styled(Input)`
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
-    -webkit-text-fill-color: ${({ theme }) => theme.textColorAdditional} !important;
+    -webkit-text-fill-color: ${({ theme }) =>
+      theme.textColorAdditional} !important;
   }
 `
 

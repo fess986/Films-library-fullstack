@@ -85,7 +85,7 @@ const SignInForm: React.FC = () => {
   const registerHandler = async () => {
     try {
       dispatch(registerAction({ ...formik.values }))
-      formik.resetForm()  // сброс формы
+      formik.resetForm() // сброс формы
     } catch (err) {
       // уже обработаны
     }
