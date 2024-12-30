@@ -1,5 +1,7 @@
 import { useFormik } from 'formik'
+import { withZodSchema } from 'formik-validator-zod'
 import { useSelector } from 'react-redux'
+import { z } from 'zod'
 
 import RegisterButton from './RegisterButton/RegisterButton'
 import SignInButton from './SignInButton/SignInButton'
@@ -27,22 +29,34 @@ const SignInForm: React.FC = () => {
       email: '',
       password: '',
     },
-    validate: (values) => {
-      const errors: Partial<typeof values> = {}
-      if (!values.email) {
-        errors.email = 'введите email'
-      } else if (
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-      ) {
-        errors.email = 'не верный формат email'
-      }
+    validate: withZodSchema(
+      z.object({
+        email: z
+          .string()
+          .email()
+          .regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, {
+            message: 'не верный формат email',
+          })
+          .min(1, { message: 'введите email' }),
+        password: z.string().min(1),
+      })
+    ),
+    // validate: (values) => {
+    //   const errors: Partial<typeof values> = {}
+    //   if (!values.email) {
+    //     errors.email = 'введите email'
+    //   } else if (
+    //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    //   ) {
+    //     errors.email = 'не верный формат email'
+    //   }
 
-      if (!values.password) {
-        errors.password = 'введите пароль'
-      }
+    //   if (!values.password) {
+    //     errors.password = 'введите пароль'
+    //   }
 
-      return errors
-    },
+    //   return errors
+    // },
     onSubmit: (values) => {
       console.log(values) // не используется нативный onSubmit
     },
