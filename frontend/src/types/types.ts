@@ -15,7 +15,8 @@ export type FilmProps = {
   released: number
   isFavorite: boolean
   playerImage?: string
-  similarFilms?: number[]
+  similarFilms?: number[],
+  likedByUsers?: string[]
 }
 
 export type Review = {

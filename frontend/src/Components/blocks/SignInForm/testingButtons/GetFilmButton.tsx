@@ -1,10 +1,10 @@
 import { ButtonTest } from './styles'
 
-type RegisterButtonProps = {
+type ButtonProps = {
   clickHandler: () => void
 }
 
-const GetFilmsButton: React.FC<RegisterButtonProps> = ({ clickHandler }) => {
+const GetFilmsButton: React.FC<ButtonProps> = ({ clickHandler }) => {
   return <ButtonTest onClick={clickHandler}> Get Films from DB </ButtonTest>
 }
 

@@ -89,6 +89,33 @@ export const fetchFilmsDB = createAsyncThunk<
   }
 )
 
+// записываем в базу фильмы все фильмы
+export const setFilmsDB = createAsyncThunk<
+  void, // Возвращаемый тип данных
+  void, // Аргументы, передаваемые в thunk
+  {
+    dispatch: AppDispatch // Типизация dispatch для опций функции
+    state: RootState
+    extra: AxiosInstance // Типизация extra аргумента
+  }
+>(
+  ApiActions.SET_FILMS_DB, // Имя thunka
+  async (_arg, { dispatch, extra: api }) => {
+    try {
+      const toast = useToast()
+      dispatch(setIsDataLoading(true))
+      await api.post(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.SET_FILMS}`)
+      // await api.get(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.GET_FILMS}`)
+      toast.success('Данные загружены')
+    } catch (err) {
+      // при ошибке отклоняем авторизацию и показываем сообщение
+      dispatch(setAuthStatus(AuthStatus.NO_AUTH))
+      dispatch(setIsDataLoading(false))
+      useError(err as AxiosError | Error)
+    }
+  }
+)
+
 // получаем отзывы по id фильма
 export const fetchReviews = createAsyncThunk<
   string, // Возвращаемый тип данных
