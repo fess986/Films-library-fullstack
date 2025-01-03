@@ -15,7 +15,11 @@ import {
 } from './styles'
 import GetFilmsButton from './testingButtons/GetFilmButton.js'
 import useToast from '../../../hooks/useToast.js'
-import { registerAction, loginAction, fetchFilmsDB } from '../../../store/api-actions.js'
+import {
+  registerAction,
+  loginAction,
+  fetchFilmsDB,
+} from '../../../store/api-actions.js'
 import { getIsDataLoading } from '../../../store/app/appSelectors.js'
 import { useAppDispatch } from '../../../store/index.js'
 
@@ -101,7 +105,6 @@ const SignInForm: React.FC = () => {
     dispatch(fetchFilmsDB())
   }
 
-
   return (
     <SectionFormContainer>
       <DivFormContainerBottom>
@@ -120,9 +123,7 @@ const SignInForm: React.FC = () => {
               isDisabled={isLoading}
             />
 
-            <GetFilmsButton
-              clickHandler={getFilmsHandler}
-            />
+            <GetFilmsButton clickHandler={getFilmsHandler} />
           </FormSignIn>
         </DivFormContainerTop>
       </DivFormContainerBottom>

@@ -25,9 +25,13 @@ export default (req, res, next) => {
   } catch (e) {
     console.log(e)
 
-
     if (e.name === 'TokenExpiredError') {
-      return res.status(401).json({ message: 'Срок действия токена истёк. Пожалуйста, авторизуйтесь заново.' });
+      return res
+        .status(401)
+        .json({
+          message:
+            'Срок действия токена истёк. Пожалуйста, авторизуйтесь заново.',
+        })
     }
 
     return res.status(401).json({ message: 'ошибка авторизации пользователя' })
