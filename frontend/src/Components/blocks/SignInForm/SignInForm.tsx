@@ -13,12 +13,14 @@ import {
   DivFormContainerBottom,
   SectionFormContainer,
 } from './styles'
-import GetFilmsButton from './testingButtons/GetFilmButton.js'
+import GetFilmsButton from './testingButtons/GetFilmButton'
+import SetFilmsButton from './testingButtons/SetFilmsButton'
 import useToast from '../../../hooks/useToast.js'
 import {
   registerAction,
   loginAction,
   fetchFilmsDB,
+  setFilmsDB,
 } from '../../../store/api-actions.js'
 import { getIsDataLoading } from '../../../store/app/appSelectors.js'
 import { useAppDispatch } from '../../../store/index.js'
@@ -105,6 +107,11 @@ const SignInForm: React.FC = () => {
     dispatch(fetchFilmsDB())
   }
 
+  const setFilmsHandler = async () => {
+    console.log('Set Films to DB...')
+    dispatch(setFilmsDB())
+  }
+
   return (
     <SectionFormContainer>
       <DivFormContainerBottom>
@@ -124,6 +131,7 @@ const SignInForm: React.FC = () => {
             />
 
             <GetFilmsButton clickHandler={getFilmsHandler} />
+            <SetFilmsButton clickHandler={setFilmsHandler} />
           </FormSignIn>
         </DivFormContainerTop>
       </DivFormContainerBottom>

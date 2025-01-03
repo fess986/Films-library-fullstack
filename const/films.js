@@ -1,6 +1,6 @@
-import { FilmProps } from '../types/types'
+import mongoose from 'mongoose'
 
-export const Films: FilmProps[] = [
+export const Films = [
   {
     id: 0,
     name: 'The Grand Budapest Hotel',
@@ -23,10 +23,11 @@ export const Films: FilmProps[] = [
     ],
     runTime: 99,
     genre: ['Comedy', 'Criminal'],
-    similarFilms: [2, 5],
+    similarFilms: [],
     released: 2014,
     isFavorite: false,
     likedByUsers: [],
+    similarMockFilms: ['Moonrise Kingdom'],
   },
 
   {
@@ -45,9 +46,10 @@ export const Films: FilmProps[] = [
     starring: ['Jared Gilman', 'Kara Hayward', 'Bruce Willis'],
     runTime: 94,
     genre: ['Comedy'],
-    similarFilms: [2, 1],
+    similarFilms: [],
     released: 2012,
     isFavorite: false,
+    similarMockFilms: ['Pulp Fiction'],
   },
 
   {
@@ -73,9 +75,10 @@ export const Films: FilmProps[] = [
     ],
     runTime: 154,
     genre: ['Drama'],
-    similarFilms: [0, 6, 3],
+    similarFilms: [],
     released: 1994,
     isFavorite: true,
+    similarMockFilms: ['The Grand Budapest Hotel', 'Moonrise Kingdom'],
   },
 
   {
@@ -99,7 +102,7 @@ export const Films: FilmProps[] = [
     ],
     runTime: 91,
     genre: ['Adventure'],
-    similarFilms: [5],
+    similarFilms: [],
     released: 2007,
     isFavorite: true,
   },
@@ -125,7 +128,7 @@ export const Films: FilmProps[] = [
     ],
     runTime: 170,
     genre: ['Drama'],
-    similarFilms: [4],
+    similarFilms: [],
     released: 2004,
     isFavorite: false,
   },
@@ -151,7 +154,7 @@ export const Films: FilmProps[] = [
     ],
     runTime: 156,
     genre: ['Action'],
-    similarFilms: [3, 4],
+    similarFilms: [],
     released: 2015,
     isFavorite: false,
   },
@@ -172,7 +175,7 @@ export const Films: FilmProps[] = [
     starring: ['Kevin Eldon', 'Emma Thompson', 'Adam James', 'Rowan Atkinson'],
     runTime: 89,
     genre: ['Comedy'],
-    similarFilms: [2, 5, 3],
+    similarFilms: [],
     released: 2003,
     isFavorite: true,
   },
@@ -193,7 +196,7 @@ export const Films: FilmProps[] = [
     starring: ['Rami Malek', 'Lucy Boynton', 'Gwilym Lee', 'Ben Hardy'],
     runTime: 134,
     genre: ['Biography'],
-    similarFilms: [1],
+    similarFilms: [],
     released: 2018,
     isFavorite: false,
   },
