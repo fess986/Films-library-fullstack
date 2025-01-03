@@ -20,7 +20,7 @@ import {
   registerAction,
   loginAction,
   fetchFilmsDB,
-  setFilmsDB
+  setFilmsDB,
 } from '../../../store/api-actions.js'
 import { getIsDataLoading } from '../../../store/app/appSelectors.js'
 import { useAppDispatch } from '../../../store/index.js'

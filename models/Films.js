@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import { Schema, model, Types } from 'mongoose'
 
 const filmSchema = new Schema({
   name: {
@@ -68,6 +68,6 @@ const filmSchema = new Schema({
       ref: 'User', // Связь с таблицей пользователей
     },
   ],
-});
+})
 
-export const Film = model('Film', filmSchema);
+export const Film = model('Film', filmSchema)

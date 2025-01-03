@@ -34,26 +34,26 @@ router.post(ApiRoutes.SET_FILMS, isAuth, async (req, res) => {
     //   await film.save();
     // }
 
-      // Добавляем фильмы в базу данных
-  const savedFilms = await Film.insertMany(Films);
+    // Добавляем фильмы в базу данных
+    const savedFilms = await Film.insertMany(Films)
 
-  // Создаем мапу { name: _id }, чтобы найти фильм по имени
-  const filmIdMap = savedFilms.reduce((map, film) => {
-    map[film.name] = film._id;
-    return map;
-  }, {});
+    // Создаем мапу { name: _id }, чтобы найти фильм по имени
+    const filmIdMap = savedFilms.reduce((map, film) => {
+      map[film.name] = film._id
+      return map
+    }, {})
 
-  console.log('filmIdMap - ', filmIdMap)
+    console.log('filmIdMap - ', filmIdMap)
 
-  // Обновляем поле similarFilms на основе similarMockFilms
-  for (const film of savedFilms) {
-    const similarFilmIds = film.similarMockFilms
-      .map((name) => filmIdMap[name]) // Находим _id по имени
-      .filter((id) => id); // Фильтруем, чтобы убрать undefined (если фильм не найден)
+    // Обновляем поле similarFilms на основе similarMockFilms
+    for (const film of savedFilms) {
+      const similarFilmIds = film.similarMockFilms
+        .map((name) => filmIdMap[name]) // Находим _id по имени
+        .filter((id) => id) // Фильтруем, чтобы убрать undefined (если фильм не найден)
 
-    film.similarFilms = similarFilmIds; // Устанавливаем реальные _id
-    await film.save(); // Сохраняем изменения
-  }
+      film.similarFilms = similarFilmIds // Устанавливаем реальные _id
+      await film.save() // Сохраняем изменения
+    }
 
     res.status(200).json({ message: 'Фильмы загружены' })
   } catch (error) {
