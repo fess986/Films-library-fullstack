@@ -26,7 +26,7 @@ export const Films: FilmProps[] = [
     similarFilms: [2, 5],
     released: 2014,
     isFavorite: false,
-    likedByUsers: []
+    likedByUsers: [],
   },
 
   {
