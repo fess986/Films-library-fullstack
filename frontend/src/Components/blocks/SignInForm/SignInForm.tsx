@@ -13,8 +13,9 @@ import {
   DivFormContainerBottom,
   SectionFormContainer,
 } from './styles'
+import GetFilmsButton from './testingButtons/GetFilmButton.js'
 import useToast from '../../../hooks/useToast.js'
-import { registerAction, loginAction } from '../../../store/api-actions.js'
+import { registerAction, loginAction, fetchFilmsDB } from '../../../store/api-actions.js'
 import { getIsDataLoading } from '../../../store/app/appSelectors.js'
 import { useAppDispatch } from '../../../store/index.js'
 
@@ -85,7 +86,6 @@ const SignInForm: React.FC = () => {
   const registerHandler = async () => {
     try {
       dispatch(registerAction({ ...formik.values }))
-      formik.resetForm() // сброс формы
     } catch (err) {
       // уже обработаны
     }
@@ -94,8 +94,13 @@ const SignInForm: React.FC = () => {
   // вход в аккаунт существующего пользователя
   const loginHandler = async () => {
     dispatch(loginAction({ ...formik.values }))
-    formik.resetForm()
   }
+
+  const getFilmsHandler = async () => {
+    console.log('Get Films From DB...')
+    dispatch(fetchFilmsDB())
+  }
+
 
   return (
     <SectionFormContainer>
@@ -113,6 +118,10 @@ const SignInForm: React.FC = () => {
             <RegisterButton
               registerHandler={registerHandler}
               isDisabled={isLoading}
+            />
+
+            <GetFilmsButton
+              clickHandler={getFilmsHandler}
             />
           </FormSignIn>
         </DivFormContainerTop>
