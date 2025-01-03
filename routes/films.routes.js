@@ -9,7 +9,8 @@ const router = Router()
 router.get(ApiRoutes.GET_FILMS, isAuth, async (req, res) => {
   try {
     console.log('стучимся в ApiRoutes.GET_FILMS')
-    console.log(req.user)
+    // console.log(req.user)
+    console.log('req user - ', req.user)
   } catch (error) {
     console.log(error)
     res.status(500).json({
@@ -19,9 +20,10 @@ router.get(ApiRoutes.GET_FILMS, isAuth, async (req, res) => {
   }
 })
 
-router.post(ApiRoutes.SET_FILMS, isAuth, async (req, res) => {
+router.post(ApiRoutes.SET_FILMS, async (req, res) => {
   try {
     console.log('стучимся в ApiRoutes.SET_FILMS')
+    console.log(req.user)
   } catch (error) {
     console.log(error)
     res.status(500).json({

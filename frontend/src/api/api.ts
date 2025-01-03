@@ -21,7 +21,10 @@ export interface ApiError {
 api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     // добавление токена авторизации если он есть в локальном хранилище
-    const token = localStorage.getItem(storageName)
+    const tokenString = localStorage.getItem(storageName)
+    const token = tokenString ? JSON.parse(tokenString).token : null
+    console.log('token - ', token)
+    // console.log(token)
     if (token) {
       if (config.headers) {
         config.headers.Authorization = `Bearer ${token}`

@@ -106,7 +106,7 @@ router.post(
       }
 
       const token = jwt.sign({ userId: user.id }, config.get('jwtToken'), {
-        expiresIn: '1h',
+        expiresIn: '1d',
       }) // создаем токен
 
       res.json({ token, userId: user.id }) // отправляем токен на клиент
