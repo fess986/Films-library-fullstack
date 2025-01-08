@@ -37,32 +37,32 @@ const baseMockUrl = 'http://localhost:5173'
 const baseURL = import.meta.env.VITE_BASE_URL
 
 // получаем все фильмы
-export const fetchFilms = createAsyncThunk<
-  void, // Возвращаемый тип данных
-  void, // Аргументы, передаваемые в thunk
-  {
-    dispatch: AppDispatch // Типизация dispatch для опций функции
-    state: RootState
-    extra: AxiosInstance // Типизация extra аргумента
-  }
->(
-  // 'films/fetchFilms', // Имя thunka
-  ApiActions.FETCH_FILMS, // Имя thunka
-  // async (_arg, {dispatch, extra: api, requestId, signal }) => {  // доступные аргументы для опций функции, есть ещё
-  async (_arg, { dispatch, extra: api }) => {
-    // dispatch(redirect('/mylist'));
+// export const fetchFilms = createAsyncThunk<
+//   void, // Возвращаемый тип данных
+//   void, // Аргументы, передаваемые в thunk
+//   {
+//     dispatch: AppDispatch // Типизация dispatch для опций функции
+//     state: RootState
+//     extra: AxiosInstance // Типизация extra аргумента
+//   }
+// >(
+//   // 'films/fetchFilms', // Имя thunka
+//   ApiActions.FETCH_FILMS, // Имя thunka
+//   // async (_arg, {dispatch, extra: api, requestId, signal }) => {  // доступные аргументы для опций функции, есть ещё
+//   async (_arg, { dispatch, extra: api }) => {
+//     // dispatch(redirect('/mylist'));
 
-    dispatch(setIsFilmsLoaded(false))
-    const response = await api
-      .get(baseMockUrl + ApiRoutesMock.FILMS)
-      .then(() => Films as FilmProps[])
-    // console.log(response);
-    dispatch(setFilmList(response))
-    dispatch(setIsFilmsLoaded(true))
-  }
-)
+//     dispatch(setIsFilmsLoaded(false))
+//     const response = await api
+//       .get(baseMockUrl + ApiRoutesMock.FILMS)
+//       .then(() => Films as FilmProps[])
+//     // console.log(response);
+//     dispatch(setFilmList(response))
+//     dispatch(setIsFilmsLoaded(true))
+//   }
+// )
 
-// получаем все фильмы
+// получаем все фильмы из базы данных
 export const fetchFilmsDB = createAsyncThunk<
   void, // Возвращаемый тип данных
   void, // Аргументы, передаваемые в thunk
@@ -77,6 +77,7 @@ export const fetchFilmsDB = createAsyncThunk<
     try {
       const toast = useToast()
       dispatch(setIsDataLoading(true))
+      dispatch(setIsFilmsLoaded(true))
       const films = await api.get(
         `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.GET_FILMS}`
       )
@@ -87,6 +88,7 @@ export const fetchFilmsDB = createAsyncThunk<
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
       dispatch(setIsDataLoading(false))
+      dispatch(setIsFilmsLoaded(false))
       useError(err as AxiosError | Error)
     }
   }
