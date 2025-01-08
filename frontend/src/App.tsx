@@ -5,7 +5,7 @@ import HistoryRouter from './Components/HistoryRouter/HistoryRouter'
 import { useAuth } from './hooks/useAuth'
 import useRoutes from './hooks/useRoutes'
 import { useAppDispatch } from './store'
-import { fetchFilms } from './store/api-actions'
+import { fetchFilmsDB } from './store/api-actions'
 import { getFilmList } from './store/films/filmsSelector'
 import BrowserHistory from './utils/browser-history'
 
@@ -15,7 +15,7 @@ function App() {
 
   // фетчим фильмы, по окончанию загрузки устанавливаем флаг isFilmsLoaded в true
   useEffect(() => {
-    dispatch(fetchFilms())
+    dispatch(fetchFilmsDB())
   }, [dispatch])
 
   useEffect(() => {

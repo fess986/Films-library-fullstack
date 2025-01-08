@@ -103,7 +103,6 @@ const SignInForm: React.FC = () => {
   }
 
   const getFilmsHandler = async () => {
-    console.log('Get Films From DB...')
     dispatch(fetchFilmsDB())
   }
 

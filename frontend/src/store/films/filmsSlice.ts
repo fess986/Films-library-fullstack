@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 import { StoreNames, AppRoutes } from '../../const/const'
 import { FilmProps } from '../../types/types'
 import browserHistory from '../../utils/browser-history'
-import { fetchFilms } from '../api-actions'
+import { fetchFilmsDB } from '../api-actions'
 
 type FilmsState = {
   filmList: FilmProps[]
@@ -40,7 +40,7 @@ export const filmsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchFilms.rejected, () => {
+    builder.addCase(fetchFilmsDB.rejected, () => {
       toast.error('Не удалось загрузить фильмы')
       browserHistory.push(`${AppRoutes.ROOT}${AppRoutes.SIGN_IN}`)
     })
