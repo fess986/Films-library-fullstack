@@ -124,7 +124,7 @@ export const setFilmsDB = createAsyncThunk<
 // получаем отзывы по id фильма
 export const fetchReviews = createAsyncThunk<
   string, // Возвращаемый тип данных
-  number, // Аргументы, передаваемые в thunk
+  string, // Аргументы, передаваемые в thunk
   ThunkConfig // используем типизированную конфигурацию
 >(ApiActions.FETCH_REVIEWS, async (id, { dispatch, extra: api }) => {
   // dispatch(setIsReviewsLoaded(false)); // перенесено в extraReducers
@@ -142,7 +142,7 @@ export const fetchReviews = createAsyncThunk<
 // получаем похожие фильмы
 export const fetchSimilarFilms = createAsyncThunk<
   void, // Возвращаемый тип данных
-  number, // Аргументы, передаваемые в thunk
+  string, // Аргументы, передаваемые в thunk
   ThunkConfig
 >(
   ApiActions.FETCH_SIMILAR_FILMS, // Имя thunkа
@@ -243,7 +243,7 @@ export const registerAction = createAsyncThunk<
 // добавляем фильм в список избранных
 export const addFavoriteFilm = createAsyncThunk<
   void,
-  { userId: string; filmId: number }, // передаём объект с данными пользователя и добавляемого фильма
+  { userId: string; filmId: string }, // передаём объект с данными пользователя и добавляемого фильма
   ThunkConfig
 >(
   ApiActions.ADD_FAVORITE_FILM,
@@ -261,7 +261,7 @@ export const addFavoriteFilm = createAsyncThunk<
 
 export const removeFavoriteFilm = createAsyncThunk<
   void,
-  { userId: string; filmId: number }, // передаём объект с данными пользователя и удаляемого фильма
+  { userId: string; filmId: string }, // передаём объект с данными пользователя и удаляемого фильма
   ThunkConfig
 >(
   ApiActions.REMOVE_FAVORITE_FILM,

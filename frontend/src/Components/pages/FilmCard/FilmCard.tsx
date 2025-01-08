@@ -41,11 +41,11 @@ const FilmCard: React.FC = () => {
   const isSimilarFilmsLoaded = useSelector(getIsSimilarFilmsLoaded)
 
   useEffect(() => {
-    dispatch(fetchReviews(activeFilm?.id || 0))
+    dispatch(fetchReviews(activeFilm?.id || '0'))
   }, [dispatch, activeFilm?.id])
 
   useEffect(() => {
-    dispatch(fetchSimilarFilms(activeFilm?.id || 0))
+    dispatch(fetchSimilarFilms(activeFilm?.id || '0'))
   }, [dispatch, activeFilm?.id])
 
   return (

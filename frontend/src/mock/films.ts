@@ -2,7 +2,7 @@ import { FilmProps } from '../types/types'
 
 export const Films: FilmProps[] = [
   {
-    id: 0,
+    id: '0',
     name: 'The Grand Budapest Hotel',
     posterImage: '/images/posters/The grand budapest hotel poster.jpg',
     previewImage: '/images/the-grand-budapest-hotel-poster.jpg',
@@ -30,7 +30,7 @@ export const Films: FilmProps[] = [
   },
 
   {
-    id: 1,
+    id: '1',
     name: 'Moonrise Kingdom',
     posterImage: '/images/posters/Moonrise Kingdom.jpg',
     previewImage: '/images/moonrise-kingdom.jpg',
@@ -51,7 +51,7 @@ export const Films: FilmProps[] = [
   },
 
   {
-    id: 2,
+    id: '2',
     name: 'Pulp Fiction',
     posterImage: '/images/posters/Pulp Fiction.jpg',
     previewImage: '/images/pulp-fiction.jpg',
@@ -79,7 +79,7 @@ export const Films: FilmProps[] = [
   },
 
   {
-    id: 3,
+    id: '3',
     name: 'The Darjeeling Limited',
     posterImage: '/images/posters/The Darjeeling Limited.jpg',
     previewImage: '/images/dardjeeling-limited.jpg',
@@ -105,7 +105,7 @@ export const Films: FilmProps[] = [
   },
 
   {
-    id: 4,
+    id: '4',
     name: 'The Aviator',
     posterImage: '/images/posters/The Aviator.jpg',
     previewImage: '/images/aviator.jpg',
@@ -131,7 +131,7 @@ export const Films: FilmProps[] = [
   },
 
   {
-    id: 5,
+    id: '5',
     name: 'The Revenant',
     posterImage: '/images/posters/The Revenant.jpg',
     previewImage: '/images/revenant.jpg',
@@ -157,7 +157,7 @@ export const Films: FilmProps[] = [
   },
 
   {
-    id: 6,
+    id: '6',
     name: 'Johnny English',
     posterImage: '/images/posters/Johnny English.jpg',
     previewImage: '/images/johnny-english.jpg',
@@ -178,7 +178,7 @@ export const Films: FilmProps[] = [
   },
 
   {
-    id: 7,
+    id: '7',
     name: 'Bohemian Rhapsody',
     posterImage: '/images/posters/Bohemian Rhapsody.jpg',
     previewImage: '/images/bohemian-rhapsody.jpg',

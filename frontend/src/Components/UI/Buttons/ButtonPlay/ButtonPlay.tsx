@@ -6,7 +6,7 @@ import { resetFilmsShownCount } from '../../../../store/app/appSlice'
 import { StyledButton } from '../styles'
 
 type ButtonPlayProps = {
-  id: number
+  id: string
 }
 const ButtonPlay: React.FC<ButtonPlayProps> = ({ id }) => {
   const navigate = useNavigate()
