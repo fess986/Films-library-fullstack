@@ -77,12 +77,13 @@ export const fetchFilmsDB = createAsyncThunk<
     try {
       const toast = useToast()
       dispatch(setIsDataLoading(true))
-      // await api.post(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.SET_FILMS}`)
-      await api.get(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.GET_FILMS}`)
-      toast.success('Данные загружены')
+      const films = await api.get(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.GET_FILMS}`)
+      console.log('films - ', films)
+      dispatch(setFilmList(films.data))
+      dispatch(setIsDataLoading(false))
+      toast.success('Фильмы загружены')
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
-      dispatch(setAuthStatus(AuthStatus.NO_AUTH))
       dispatch(setIsDataLoading(false))
       useError(err as AxiosError | Error)
     }

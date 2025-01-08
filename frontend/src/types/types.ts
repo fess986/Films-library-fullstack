@@ -1,5 +1,5 @@
 export type FilmProps = {
-  id: number
+  id: number  // _id из базы
   name: string
   posterImage: string
   previewImage: string
@@ -13,10 +13,10 @@ export type FilmProps = {
   runTime: number
   genre: string[]
   released: number
-  isFavorite: boolean
+  isFavorite: boolean | undefined
   playerImage?: string
-  similarFilms?: number[]
-  likedByUsers?: string[]
+  similarFilms?: string[] // id-шники похожих фильмов
+  likedByUsers?: string[] // id-шники пользователей, которые лайкнули фильм
 }
 
 export type Review = {
