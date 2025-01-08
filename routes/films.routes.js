@@ -8,18 +8,42 @@ import { ApiRoutes } from '../const/const.js'
 
 const router = Router()
 
-router.get(ApiRoutes.GET_FILMS, isAuth, async (req, res) => {
+router.get(ApiRoutes.GET_FILMS, async (req, res) => {
   try {
     console.log('стучимся в ApiRoutes.GET_FILMS')
-    // console.log(req.user)
-    console.log('req user - ', req.user)
-    res.status(200).json({ message: 'Фильмы получены' })
+
+    const films = await Film.find({}, { similarMockFilms: 0 }).lean() // находим все фильмы, кроме similarMockFilms, и преобразуем в массив с объектами
+
+    // преобразуем данные с базы данных к нужному формату
+    const result = films.map((film) => ({
+      id: film._id.toString(), // Преобразуем _id из ObjectId в строку
+      name: film.name,
+      posterImage: film.posterImage,
+      previewImage: film.previewImage,
+      videoLink: film.videoLink,
+      previewVideoLink: film.previewVideoLink,
+      description: film.description,
+      rating: film.rating,
+      scoresCount: film.scoresCount,
+      director: film.director,
+      starring: film.starring,
+      runTime: film.runTime,
+      genre: film.genre,
+      released: film.released,
+      isFavorite: film.isFavorite,
+      playerImage: film.playerImage || null,
+      similarFilms: film.similarFilms.map((id) => id.toString()), // Преобразуем ObjectId в строку
+      likedByUsers: film.likedByUsers.map((id) => id.toString()), // Преобразуем ObjectId в строку
+    }))
+
+    // console.log('result - ', result)
+    // res.status(200).json({ message: 'Фильмы получены' })
+
+    res.status(200).json(result) // передаём данные на клиента
   } catch (error) {
-    console.log(error)
     res.status(500).json({
       message: 'Что-то пошло не так при получении фильмов с сервера',
     })
-    // console.log(error);
   }
 })
 

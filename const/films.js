@@ -1,5 +1,3 @@
-import mongoose from 'mongoose'
-
 export const Films = [
   {
     id: 0,
@@ -105,6 +103,7 @@ export const Films = [
     similarFilms: [],
     released: 2007,
     isFavorite: true,
+    similarMockFilms: ['The Aviator'],
   },
 
   {
@@ -131,6 +130,7 @@ export const Films = [
     similarFilms: [],
     released: 2004,
     isFavorite: false,
+    similarMockFilms: ['The Aviator'],
   },
 
   {
@@ -157,6 +157,7 @@ export const Films = [
     similarFilms: [],
     released: 2015,
     isFavorite: false,
+    similarMockFilms: ['The Aviator'],
   },
 
   {
@@ -178,6 +179,7 @@ export const Films = [
     similarFilms: [],
     released: 2003,
     isFavorite: true,
+    similarMockFilms: ['The Aviator'],
   },
 
   {
@@ -199,5 +201,6 @@ export const Films = [
     similarFilms: [],
     released: 2018,
     isFavorite: false,
+    similarMockFilms: ['The Aviator'],
   },
 ]
