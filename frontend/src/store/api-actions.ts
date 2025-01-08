@@ -77,7 +77,9 @@ export const fetchFilmsDB = createAsyncThunk<
     try {
       const toast = useToast()
       dispatch(setIsDataLoading(true))
-      const films = await api.get(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.GET_FILMS}`)
+      const films = await api.get(
+        `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.GET_FILMS}`
+      )
       console.log('films - ', films)
       dispatch(setFilmList(films.data))
       dispatch(setIsDataLoading(false))

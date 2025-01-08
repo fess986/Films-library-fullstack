@@ -12,7 +12,7 @@ router.get(ApiRoutes.GET_FILMS, async (req, res) => {
   try {
     console.log('стучимся в ApiRoutes.GET_FILMS')
 
-    const films = await Film.find({}, { similarMockFilms: 0 }).lean();  // находим все фильмы, кроме similarMockFilms, и преобразуем в массив с объектами
+    const films = await Film.find({}, { similarMockFilms: 0 }).lean() // находим все фильмы, кроме similarMockFilms, и преобразуем в массив с объектами
 
     // преобразуем данные с базы данных к нужному формату
     const result = films.map((film) => ({
@@ -34,13 +34,12 @@ router.get(ApiRoutes.GET_FILMS, async (req, res) => {
       playerImage: film.playerImage || null,
       similarFilms: film.similarFilms.map((id) => id.toString()), // Преобразуем ObjectId в строку
       likedByUsers: film.likedByUsers.map((id) => id.toString()), // Преобразуем ObjectId в строку
-    }));
+    }))
 
     // console.log('result - ', result)
     // res.status(200).json({ message: 'Фильмы получены' })
 
-    res.status(200).json(result)  // передаём данные на клиента
-
+    res.status(200).json(result) // передаём данные на клиента
   } catch (error) {
     res.status(500).json({
       message: 'Что-то пошло не так при получении фильмов с сервера',
