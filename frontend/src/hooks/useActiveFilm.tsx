@@ -26,8 +26,7 @@ const useActiveFilm = (): UseActiveFilm => {
   const toast = useToast()
 
   useEffect(() => {
-    const activeFilmFromParams =
-      films.find((film) => film.id === Number(id)) || null
+    const activeFilmFromParams = films.find((film) => film.id === id) || null
 
     if (films.length !== 0 && !activeFilmFromParams) {
       toast.error('Фильм с таким id не найден')

@@ -7,7 +7,7 @@ import ButtonPlay from '../../UI/Buttons/ButtonPlay/ButtonPlay'
 type FilmButtonsProps = {
   details?: boolean
   addReview?: boolean
-  id: number
+  id: string
 }
 const FilmButtons: React.FC<FilmButtonsProps> = ({
   details,

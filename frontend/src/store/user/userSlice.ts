@@ -6,7 +6,7 @@ import { StoreNames, AuthStatus } from '../../const/const'
 
 type UserState = {
   isAuth: AuthStatus
-  favoriteFilms: number[]
+  favoriteFilms: string[]
   userId: string | null
   token: string | null
 }
@@ -25,13 +25,13 @@ export const userSlice = createSlice({
     setAuthStatus: (state, action: PayloadAction<AuthStatus>) => {
       state.isAuth = action.payload
     },
-    setFavoriteFilms: (state, action: PayloadAction<number[]>) => {
+    setFavoriteFilms: (state, action: PayloadAction<string[]>) => {
       state.favoriteFilms = action.payload
     },
-    addToFavoriteFilm: (state, action: PayloadAction<number>) => {
+    addToFavoriteFilm: (state, action: PayloadAction<string>) => {
       state.favoriteFilms = [...state.favoriteFilms, action.payload]
     },
-    removeFromFavoriteFilm: (state, action: PayloadAction<number>) => {
+    removeFromFavoriteFilm: (state, action: PayloadAction<string>) => {
       state.favoriteFilms = state.favoriteFilms.filter(
         (id) => id !== action.payload
       )

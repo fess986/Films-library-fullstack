@@ -10,8 +10,6 @@ const router = Router()
 
 router.get(ApiRoutes.GET_FILMS, async (req, res) => {
   try {
-    console.log('стучимся в ApiRoutes.GET_FILMS')
-
     const films = await Film.find({}, { similarMockFilms: 0 }).lean() // находим все фильмы, кроме similarMockFilms, и преобразуем в массив с объектами
 
     // преобразуем данные с базы данных к нужному формату
@@ -36,9 +34,6 @@ router.get(ApiRoutes.GET_FILMS, async (req, res) => {
       likedByUsers: film.likedByUsers.map((id) => id.toString()), // Преобразуем ObjectId в строку
     }))
 
-    // console.log('result - ', result)
-    // res.status(200).json({ message: 'Фильмы получены' })
-
     res.status(200).json(result) // передаём данные на клиента
   } catch (error) {
     res.status(500).json({
@@ -49,8 +44,6 @@ router.get(ApiRoutes.GET_FILMS, async (req, res) => {
 
 router.post(ApiRoutes.SET_FILMS, isAuth, async (req, res) => {
   try {
-    console.log('стучимся в ApiRoutes.SET_FILMS')
-    // console.log('req user - ', req.user)  // данные пользователя
     console.log(Films)
 
     // for (const filmData of Films) {
