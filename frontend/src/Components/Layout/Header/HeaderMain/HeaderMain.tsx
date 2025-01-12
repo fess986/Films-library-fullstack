@@ -9,7 +9,7 @@ import {
   getActiveFilm,
   getFilmList,
 } from '../../../../store/films/filmsSelector'
-import { setActiveFilm } from '../../../../store/films/filmsSlice'
+import { setActiveFilm, setSimilarFilmList } from '../../../../store/films/filmsSlice'
 import FilmInfo from '../../../blocks/FilmInfo/FilmInfo'
 import Header from '../../../blocks/Header/Header'
 import { H1Hidden } from '../../../styled/Components/Title/H1Hidden'
@@ -31,8 +31,18 @@ const HeaderMain: React.FC = () => {
     if (!isActiveFilmLoaded && randomFilm) {
       dispatch(setActiveFilm(randomFilm))
       dispatch(setIsActiveFilmLoaded(true))
+
+      const similarFilmsId = randomFilm?.similarFilms
+      if (similarFilmsId && similarFilmsId.length !== 0) {
+        const similarFilms = films.filter((film) =>
+          similarFilmsId.includes(film.id)
+        )
+        dispatch(setSimilarFilmList(similarFilms))
+      } else {
+        dispatch(setSimilarFilmList([]))
+      }
     }
-  }, [dispatch, randomFilm, isActiveFilmLoaded])
+  }, [dispatch, randomFilm, isActiveFilmLoaded, films])
 
   const currentFilm = useSelector(getActiveFilm)
 
