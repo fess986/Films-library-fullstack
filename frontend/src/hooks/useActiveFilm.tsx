@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import useToast from './useToast'
 import { useAppDispatch } from '../store'
+import { getIsActiveFilmLoaded } from '../store/app/appSelectors'
 import {
   setIsActiveFilmLoaded,
   setIsSimilarFilmsLoaded,
@@ -24,25 +25,14 @@ const useActiveFilm = (): UseActiveFilm => {
   const films = useSelector(getFilmList)
 
   const [currentFilm, setCurrentFilm] = useState<FilmProps | null>(null)
-  const [isActiveFilmLoaded, setIsActiveFilmLoadedState] =
-    useState<boolean>(false)
+  const isActiveFilmLoaded = useSelector(getIsActiveFilmLoaded)
   const toast = useToast()
 
-  useEffect(() => {
-    const activeFilmFromParams = films.find((film) => film.id === id) || null
-
-    if (films.length !== 0 && !activeFilmFromParams) {
-      toast.error('Фильм с таким id не найден')
-      dispatch(setIsActiveFilmLoaded(false))
-    }
-
-    if (activeFilmFromParams) {
-      setCurrentFilm(activeFilmFromParams)
-      setIsActiveFilmLoadedState(true)
-
-      const similarFilmsId = activeFilmFromParams?.similarFilms
+  const setSimilarFilms = useCallback(
+    (allFilms: FilmProps[], activeFilm: FilmProps | null) => {
+      const similarFilmsId = activeFilm?.similarFilms
       if (similarFilmsId && similarFilmsId.length !== 0) {
-        const similarFilms = films.filter((film) =>
+        const similarFilms = allFilms.filter((film) =>
           similarFilmsId.includes(film.id)
         )
         dispatch(setSimilarFilmList(similarFilms))
@@ -51,14 +41,25 @@ const useActiveFilm = (): UseActiveFilm => {
         dispatch(setSimilarFilmList([]))
         dispatch(setIsSimilarFilmsLoaded(true))
       }
+    },
+    [dispatch]
+  )
 
-      dispatch(setActiveFilm(activeFilmFromParams))
-    } else {
-      setCurrentFilm(null)
-      setIsActiveFilmLoadedState(false)
+  useEffect(() => {
+    const activeFilmFromParams = films.find((film) => film.id === id) || null
+
+    if (films.length !== 0 && !activeFilmFromParams) {
+      toast.error('Фильм с таким id не найден')
       dispatch(setIsActiveFilmLoaded(false))
+      dispatch(setActiveFilm(null))
+      setCurrentFilm(null)
+      return
     }
-  }, [id, films, dispatch, toast])
+
+    setCurrentFilm(activeFilmFromParams)
+    dispatch(setActiveFilm(activeFilmFromParams))
+    setSimilarFilms(films, activeFilmFromParams)
+  }, [id, films, dispatch, toast, setSimilarFilms])
 
   return { id, currentFilm, isActiveFilmLoaded }
 }
