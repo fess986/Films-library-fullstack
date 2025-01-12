@@ -7,6 +7,7 @@ type FilmListProps = {
 }
 
 const FilmList: React.FC<FilmListProps> = ({ films }) => {
+  console.log(films)
   return (
     <DivFilmList>
       {films &&

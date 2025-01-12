@@ -18,6 +18,7 @@ const SmallFilmCard: React.FC<SmallFilmCardProps> = ({ film }) => {
   const dispatch = useAppDispatch()
 
   const handleClick = () => {
+    console.log(film)
     dispatch(setActiveFilm(film))
   }
 
