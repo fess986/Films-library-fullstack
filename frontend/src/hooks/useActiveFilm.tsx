@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import useToast from './useToast'
 import { useAppDispatch } from '../store'
+import { getIsActiveFilmLoaded } from '../store/app/appSelectors'
 import {
   setIsActiveFilmLoaded,
   setIsSimilarFilmsLoaded,
@@ -24,9 +25,22 @@ const useActiveFilm = (): UseActiveFilm => {
   const films = useSelector(getFilmList)
 
   const [currentFilm, setCurrentFilm] = useState<FilmProps | null>(null)
-  const [isActiveFilmLoaded, setIsActiveFilmLoadedState] =
-    useState<boolean>(false)
+  const isActiveFilmLoaded = useSelector(getIsActiveFilmLoaded)
   const toast = useToast()
+
+  const setSimilarFilms = useCallback((allFilms: FilmProps[], activeFilm: FilmProps | null) => {
+    const similarFilmsId = activeFilm?.similarFilms
+    if (similarFilmsId && similarFilmsId.length !== 0) {
+      const similarFilms = allFilms.filter((film) =>
+        similarFilmsId.includes(film.id)
+      )
+      dispatch(setSimilarFilmList(similarFilms))
+      dispatch(setIsSimilarFilmsLoaded(true))
+    } else {
+      dispatch(setSimilarFilmList([]))
+      dispatch(setIsSimilarFilmsLoaded(true))
+    }
+  }, [dispatch])
 
   useEffect(() => {
     const activeFilmFromParams = films.find((film) => film.id === id) || null
@@ -34,31 +48,16 @@ const useActiveFilm = (): UseActiveFilm => {
     if (films.length !== 0 && !activeFilmFromParams) {
       toast.error('Фильм с таким id не найден')
       dispatch(setIsActiveFilmLoaded(false))
-    }
-
-    if (activeFilmFromParams) {
-      setCurrentFilm(activeFilmFromParams)
-      setIsActiveFilmLoadedState(true)
-
-      const similarFilmsId = activeFilmFromParams?.similarFilms
-      if (similarFilmsId && similarFilmsId.length !== 0) {
-        const similarFilms = films.filter((film) =>
-          similarFilmsId.includes(film.id)
-        )
-        dispatch(setSimilarFilmList(similarFilms))
-        dispatch(setIsSimilarFilmsLoaded(true))
-      } else {
-        dispatch(setSimilarFilmList([]))
-        dispatch(setIsSimilarFilmsLoaded(true))
-      }
-
-      dispatch(setActiveFilm(activeFilmFromParams))
-    } else {
+      dispatch(setActiveFilm(null))
       setCurrentFilm(null)
-      setIsActiveFilmLoadedState(false)
-      dispatch(setIsActiveFilmLoaded(false))
+      return
     }
-  }, [id, films, dispatch, toast])
+
+    setCurrentFilm(activeFilmFromParams)
+    dispatch(setActiveFilm(activeFilmFromParams))
+    setSimilarFilms(films, activeFilmFromParams)
+
+  }, [id, films, dispatch, toast, setSimilarFilms])
 
   return { id, currentFilm, isActiveFilmLoaded }
 }
