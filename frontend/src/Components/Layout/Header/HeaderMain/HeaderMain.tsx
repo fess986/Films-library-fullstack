@@ -9,7 +9,10 @@ import {
   getActiveFilm,
   getFilmList,
 } from '../../../../store/films/filmsSelector'
-import { setActiveFilm, setSimilarFilmList } from '../../../../store/films/filmsSlice'
+import {
+  setActiveFilm,
+  setSimilarFilmList,
+} from '../../../../store/films/filmsSlice'
 import FilmInfo from '../../../blocks/FilmInfo/FilmInfo'
 import Header from '../../../blocks/Header/Header'
 import { H1Hidden } from '../../../styled/Components/Title/H1Hidden'

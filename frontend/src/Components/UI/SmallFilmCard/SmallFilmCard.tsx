@@ -11,7 +11,10 @@ import { AppRoutes } from '../../../const/const'
 import { useAppDispatch } from '../../../store'
 import { setIsSimilarFilmsLoaded } from '../../../store/app/appSlice'
 import { getFilmList } from '../../../store/films/filmsSelector'
-import { setActiveFilm, setSimilarFilmList } from '../../../store/films/filmsSlice'
+import {
+  setActiveFilm,
+  setSimilarFilmList,
+} from '../../../store/films/filmsSlice'
 import { FilmProps } from '../../../types/types'
 
 type SmallFilmCardProps = {
@@ -24,7 +27,9 @@ const SmallFilmCard: React.FC<SmallFilmCardProps> = ({ film }) => {
   const films = useSelector(getFilmList)
 
   const handleClick = () => {
-    console.log('click...............................................................')
+    console.log(
+      'click...............................................................'
+    )
     console.log(film)
     dispatch(setIsSimilarFilmsLoaded(false))
     dispatch(setActiveFilm(film))

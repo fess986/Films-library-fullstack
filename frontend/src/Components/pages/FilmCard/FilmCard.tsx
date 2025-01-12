@@ -44,7 +44,6 @@ const FilmCard: React.FC = () => {
     dispatch(fetchReviews(activeFilm?.id || '0'))
   }, [dispatch, activeFilm?.id])
 
-
   return (
     <>
       <DivAdditionalFilmContainer>

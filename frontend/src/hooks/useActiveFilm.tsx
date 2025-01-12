@@ -4,7 +4,10 @@ import { useParams } from 'react-router-dom'
 
 import useToast from './useToast'
 import { useAppDispatch } from '../store'
-import { setIsActiveFilmLoaded, setIsSimilarFilmsLoaded } from '../store/app/appSlice'
+import {
+  setIsActiveFilmLoaded,
+  setIsSimilarFilmsLoaded,
+} from '../store/app/appSlice'
 import { getFilmList } from '../store/films/filmsSelector'
 import { setActiveFilm, setSimilarFilmList } from '../store/films/filmsSlice'
 import { FilmProps } from '../types/types'
