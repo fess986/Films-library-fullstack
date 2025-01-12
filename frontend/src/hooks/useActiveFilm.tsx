@@ -28,19 +28,22 @@ const useActiveFilm = (): UseActiveFilm => {
   const isActiveFilmLoaded = useSelector(getIsActiveFilmLoaded)
   const toast = useToast()
 
-  const setSimilarFilms = useCallback((allFilms: FilmProps[], activeFilm: FilmProps | null) => {
-    const similarFilmsId = activeFilm?.similarFilms
-    if (similarFilmsId && similarFilmsId.length !== 0) {
-      const similarFilms = allFilms.filter((film) =>
-        similarFilmsId.includes(film.id)
-      )
-      dispatch(setSimilarFilmList(similarFilms))
-      dispatch(setIsSimilarFilmsLoaded(true))
-    } else {
-      dispatch(setSimilarFilmList([]))
-      dispatch(setIsSimilarFilmsLoaded(true))
-    }
-  }, [dispatch])
+  const setSimilarFilms = useCallback(
+    (allFilms: FilmProps[], activeFilm: FilmProps | null) => {
+      const similarFilmsId = activeFilm?.similarFilms
+      if (similarFilmsId && similarFilmsId.length !== 0) {
+        const similarFilms = allFilms.filter((film) =>
+          similarFilmsId.includes(film.id)
+        )
+        dispatch(setSimilarFilmList(similarFilms))
+        dispatch(setIsSimilarFilmsLoaded(true))
+      } else {
+        dispatch(setSimilarFilmList([]))
+        dispatch(setIsSimilarFilmsLoaded(true))
+      }
+    },
+    [dispatch]
+  )
 
   useEffect(() => {
     const activeFilmFromParams = films.find((film) => film.id === id) || null
@@ -56,7 +59,6 @@ const useActiveFilm = (): UseActiveFilm => {
     setCurrentFilm(activeFilmFromParams)
     dispatch(setActiveFilm(activeFilmFromParams))
     setSimilarFilms(films, activeFilmFromParams)
-
   }, [id, films, dispatch, toast, setSimilarFilms])
 
   return { id, currentFilm, isActiveFilmLoaded }
