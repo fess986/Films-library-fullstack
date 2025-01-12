@@ -23,7 +23,7 @@ api.interceptors.request.use(
     // добавление токена авторизации если он есть в локальном хранилище
     const tokenString = localStorage.getItem(storageName)
     const token = tokenString ? JSON.parse(tokenString).token : null
-    console.log('token - ', token)
+    // console.log('token - ', token)
     // console.log(token)
     if (token) {
       if (config.headers) {

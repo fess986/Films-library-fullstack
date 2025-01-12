@@ -47,7 +47,7 @@ export const Films = [
     similarFilms: [],
     released: 2012,
     isFavorite: false,
-    similarMockFilms: ['Pulp Fiction'],
+    similarMockFilms: ['Pulp Fiction', 'Moonrise Kingdom'],
   },
 
   {
@@ -103,7 +103,7 @@ export const Films = [
     similarFilms: [],
     released: 2007,
     isFavorite: true,
-    similarMockFilms: ['The Aviator'],
+    similarMockFilms: [],
   },
 
   {
