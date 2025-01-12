@@ -6,7 +6,7 @@ import useToast from './useToast'
 import { useAppDispatch } from '../store'
 import { setIsActiveFilmLoaded } from '../store/app/appSlice'
 import { getFilmList } from '../store/films/filmsSelector'
-import { setActiveFilm } from '../store/films/filmsSlice'
+import { setActiveFilm, setSimilarFilmList } from '../store/films/filmsSlice'
 import { FilmProps } from '../types/types'
 
 type UseActiveFilm = {
@@ -36,6 +36,17 @@ const useActiveFilm = (): UseActiveFilm => {
     if (activeFilmFromParams) {
       setCurrentFilm(activeFilmFromParams)
       setIsActiveFilmLoadedState(true)
+
+      const similarFilmsId = activeFilmFromParams?.similarFilms
+      if (similarFilmsId && similarFilmsId.length !== 0) {
+        const similarFilms = films.filter((film) =>
+          similarFilmsId.includes(film.id)
+        )
+        dispatch(setSimilarFilmList(similarFilms))
+      } else {
+        dispatch(setSimilarFilmList([]))
+      }
+
       dispatch(setActiveFilm(activeFilmFromParams))
     } else {
       setCurrentFilm(null)
