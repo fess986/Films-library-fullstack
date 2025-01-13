@@ -16,6 +16,7 @@ import {
   setSimilarFilmList,
 } from '../../../store/films/filmsSlice'
 import { FilmProps } from '../../../types/types'
+import { getSimilarFilms } from '../../../utils/filmsUtils'
 
 type SmallFilmCardProps = {
   film: FilmProps
@@ -33,16 +34,8 @@ const SmallFilmCard: React.FC<SmallFilmCardProps> = ({ film }) => {
     console.log(film)
     dispatch(setIsSimilarFilmsLoaded(false))
     dispatch(setActiveFilm(film))
-
-    const similarFilmsId = film?.similarFilms
-    if (similarFilmsId && similarFilmsId.length !== 0) {
-      const similarFilms = films.filter((film) =>
-        similarFilmsId.includes(film.id)
-      )
-      dispatch(setSimilarFilmList(similarFilms))
-    } else {
-      dispatch(setSimilarFilmList([]))
-    }
+    const similarFilms = getSimilarFilms(films, film)
+    dispatch(setSimilarFilmList(similarFilms))
     dispatch(setIsSimilarFilmsLoaded(true))
   }
 

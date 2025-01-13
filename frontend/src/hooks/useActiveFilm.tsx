@@ -12,11 +12,13 @@ import {
 import { getFilmList } from '../store/films/filmsSelector'
 import { setActiveFilm, setSimilarFilmList } from '../store/films/filmsSlice'
 import { FilmProps } from '../types/types'
+import { getSimilarFilms } from '../utils/filmsUtils'
 
 type UseActiveFilm = {
   currentFilm: FilmProps | null
   isActiveFilmLoaded: boolean
   id: string | undefined
+  getSimilarFilms: (allFilms: FilmProps[], activeFilm: FilmProps | null) => void
 }
 
 const useActiveFilm = (): UseActiveFilm => {
@@ -28,19 +30,13 @@ const useActiveFilm = (): UseActiveFilm => {
   const isActiveFilmLoaded = useSelector(getIsActiveFilmLoaded)
   const toast = useToast()
 
+  // устанавливаем список похожих фильмов по текущему и
   const setSimilarFilms = useCallback(
     (allFilms: FilmProps[], activeFilm: FilmProps | null) => {
-      const similarFilmsId = activeFilm?.similarFilms
-      if (similarFilmsId && similarFilmsId.length !== 0) {
-        const similarFilms = allFilms.filter((film) =>
-          similarFilmsId.includes(film.id)
-        )
-        dispatch(setSimilarFilmList(similarFilms))
-        dispatch(setIsSimilarFilmsLoaded(true))
-      } else {
-        dispatch(setSimilarFilmList([]))
-        dispatch(setIsSimilarFilmsLoaded(true))
-      }
+      dispatch(setIsSimilarFilmsLoaded(false))
+      const similarFilms = getSimilarFilms(allFilms, activeFilm) // получаем список похожих фильмов
+      dispatch(setSimilarFilmList(similarFilms))
+      dispatch(setIsSimilarFilmsLoaded(true))
     },
     [dispatch]
   )
@@ -61,7 +57,7 @@ const useActiveFilm = (): UseActiveFilm => {
     setSimilarFilms(films, activeFilmFromParams)
   }, [id, films, dispatch, toast, setSimilarFilms])
 
-  return { id, currentFilm, isActiveFilmLoaded }
+  return { id, currentFilm, isActiveFilmLoaded, getSimilarFilms }
 }
 
 export default useActiveFilm
