@@ -47,7 +47,9 @@ export enum ApiActions {
 
   FETCH_FAVORITE_FILMS = 'user/fetchFavoriteFilms', // получить избранные
   ADD_FAVORITE_FILM = 'user/addFavoriteFilm', // добавить в избранное
+  ADD_FAVORITE_FILM_DB = 'user/addFavoriteFilmdb', // добавить в избранное
   REMOVE_FAVORITE_FILM = 'user/removeFavoriteFilm', // удалить из избранного
+  REMOVE_FAVORITE_FILM_DB = 'user/removeFavoriteFilmdb', // удалить из избранного
 
   FETCH_REVIEWS = 'reviews/fetchReviews', // получить отзывы
   SEND_REVIEW = 'reviews/sendReview', // отправить отзыв

@@ -8,6 +8,7 @@ import { ApiRoutes } from '../const/const.js'
 
 const router = Router()
 
+// получение фильмов из БД
 router.get(ApiRoutes.GET_FILMS, async (req, res) => {
   try {
     const films = await Film.find({}, { similarMockFilms: 0 }).lean() // находим все фильмы, кроме similarMockFilms, и преобразуем в массив с объектами
@@ -42,14 +43,10 @@ router.get(ApiRoutes.GET_FILMS, async (req, res) => {
   }
 })
 
+// добавление фильма в БД
 router.post(ApiRoutes.SET_FILMS, isAuth, async (req, res) => {
   try {
     console.log(Films)
-
-    // for (const filmData of Films) {
-    //   const film = new Film(filmData);
-    //   await film.save();
-    // }
 
     // Добавляем фильмы в базу данных
     const savedFilms = await Film.insertMany(Films)
@@ -77,6 +74,18 @@ router.post(ApiRoutes.SET_FILMS, isAuth, async (req, res) => {
     console.log(error)
     res.status(500).json({
       message: 'Что-то пошло не так при загрузке фильмов на сервер',
+    })
+  }
+})
+
+router.post(ApiRoutes.ADD_FAVORITE_FILM, isAuth, async (req, res) => {
+  try {
+    console.log('получен запрос на сервере')
+    res.status(200).json({ message: 'Фильм добавлен в избранное' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      message: 'Что-то пошло не так при добавлении фильма в избранное',
     })
   }
 })

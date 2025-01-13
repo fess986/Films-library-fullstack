@@ -7,6 +7,7 @@ import { useAppDispatch } from '../../../../store'
 import {
   addFavoriteFilm,
   removeFavoriteFilm,
+  addFavoriteFilmDB,
 } from '../../../../store/api-actions'
 import { getActiveFilm } from '../../../../store/films/filmsSelector'
 import {
@@ -29,17 +30,21 @@ const ButtonAdd: React.FC = () => {
   const userId = useSelector(getUserId)
   const activeFilm = useSelector(getActiveFilm)
 
+  // проверка в списке ли любимых фильмов этот
   useEffect(() => {
+    // заглушка если пользователь не авторизован
     if (isAuth === AuthStatus.NO_AUTH || isAuth === AuthStatus.UNKNOWN) {
       setAdded(false)
     }
 
+    // заглушка если активного фильма нет
     if (isAuth === AuthStatus.AUTH) {
       if (activeFilm === null) {
         setAdded(false)
         return
       }
 
+      // определяем статус фильма
       if (favoriteFilmListId.includes(activeFilm.id)) {
         setAdded(true)
       } else {
@@ -69,6 +74,7 @@ const ButtonAdd: React.FC = () => {
         })
       )
     } else {
+      dispatch(addFavoriteFilmDB())
       dispatch(
         addFavoriteFilm({
           userId: userId || '666',
