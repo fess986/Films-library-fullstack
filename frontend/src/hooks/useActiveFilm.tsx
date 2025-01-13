@@ -34,7 +34,7 @@ const useActiveFilm = (): UseActiveFilm => {
   const setSimilarFilms = useCallback(
     (allFilms: FilmProps[], activeFilm: FilmProps | null) => {
       dispatch(setIsSimilarFilmsLoaded(false))
-      const similarFilms = getSimilarFilms(allFilms, activeFilm)  // получаем список похожих фильмов
+      const similarFilms = getSimilarFilms(allFilms, activeFilm) // получаем список похожих фильмов
       dispatch(setSimilarFilmList(similarFilms))
       dispatch(setIsSimilarFilmsLoaded(true))
     },
