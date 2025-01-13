@@ -1,7 +1,6 @@
 import { useMemo, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-
 import { SectionHero } from './styles'
 import { useAppDispatch } from '../../../../store'
 import { getIsActiveFilmLoaded } from '../../../../store/app/appSelectors'
