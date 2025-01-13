@@ -23,15 +23,10 @@ type SmallFilmCardProps = {
 }
 
 const SmallFilmCard: React.FC<SmallFilmCardProps> = ({ film }) => {
-  console.log(film)
   const dispatch = useAppDispatch()
   const films = useSelector(getFilmList)
 
   const handleClick = () => {
-    console.log(
-      'click...............................................................'
-    )
-    console.log(film)
     dispatch(setIsSimilarFilmsLoaded(false))
     dispatch(setActiveFilm(film))
     const similarFilms = getSimilarFilms(films, film)

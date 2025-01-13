@@ -1,6 +1,7 @@
 import { useMemo, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
+
 import { SectionHero } from './styles'
 import { useAppDispatch } from '../../../../store'
 import { getIsActiveFilmLoaded } from '../../../../store/app/appSelectors'
@@ -13,6 +14,7 @@ import {
   setActiveFilm,
   setSimilarFilmList,
 } from '../../../../store/films/filmsSlice'
+import { getSimilarFilms } from '../../../../utils/filmsUtils'
 import FilmInfo from '../../../blocks/FilmInfo/FilmInfo'
 import Header from '../../../blocks/Header/Header'
 import { H1Hidden } from '../../../styled/Components/Title/H1Hidden'
@@ -35,15 +37,8 @@ const HeaderMain: React.FC = () => {
       dispatch(setActiveFilm(randomFilm))
       dispatch(setIsActiveFilmLoaded(true))
 
-      const similarFilmsId = randomFilm?.similarFilms
-      if (similarFilmsId && similarFilmsId.length !== 0) {
-        const similarFilms = films.filter((film) =>
-          similarFilmsId.includes(film.id)
-        )
-        dispatch(setSimilarFilmList(similarFilms))
-      } else {
-        dispatch(setSimilarFilmList([]))
-      }
+      const similarFilms = getSimilarFilms(films, randomFilm)
+      dispatch(setSimilarFilmList(similarFilms))
     }
   }, [dispatch, randomFilm, isActiveFilmLoaded, films])
 
