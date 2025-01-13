@@ -8,4 +8,6 @@ export declare const ApiRoutes: {
   FILMS: string
   GET_FILMS: string
   SET_FILMS: string
+  ADD_FAVORITE_FILM: string
+  REMOVE_FAVORITE_FILM: string
 }
