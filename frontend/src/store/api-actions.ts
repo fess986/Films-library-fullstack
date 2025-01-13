@@ -136,7 +136,9 @@ export const addFavoriteFilmDB = createAsyncThunk<
     try {
       console.log('отправлен api-запрос')
       // const toast = useToast()
-      await api.post(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.ADD_FAVORITE_FILM}`)
+      await api.post(
+        `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.ADD_FAVORITE_FILM}`
+      )
       console.log('доставлен api-запрос')
 
       // dispatch(setIsDataLoading(true))
