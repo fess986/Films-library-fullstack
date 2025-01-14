@@ -139,7 +139,8 @@ export const addFavoriteFilmDB = createAsyncThunk<
 
       // отправляем запрос, при этом прокидываем через params id пользователя, а через тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
       await api.post(
-        `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.ADD_FAVORITE_FILM.replace(':userId', 'ass')}`, { 'filmId': 'ass' }
+        `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.ADD_FAVORITE_FILM.replace(':userId', 'ass')}`,
+        { filmId: 'ass' }
       )
       console.log('доставлен api-запрос')
 
