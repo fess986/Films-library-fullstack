@@ -81,6 +81,11 @@ router.post(ApiRoutes.SET_FILMS, isAuth, async (req, res) => {
 router.post(ApiRoutes.ADD_FAVORITE_FILM, isAuth, async (req, res) => {
   try {
     console.log('получен запрос на сервере')
+    const { userId} = req.params  // получаем id пользователя по передаваемым в url параметрам (вместо :userId)
+    console.log('userId - ', userId)
+    const { filmId } = req.body
+    console.log('filmId - ', filmId)
+
     res.status(200).json({ message: 'Фильм добавлен в избранное' })
   } catch (error) {
     console.log(error)

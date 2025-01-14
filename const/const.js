@@ -21,6 +21,6 @@ export const ApiRoutes = {
   FILMS: '/api/films', // общий для фильмов
   GET_FILMS: '/get-films', // get
   SET_FILMS: '/set-films', // post
-  ADD_FAVORITE_FILM: '/add-favorite', // post - id пользователя в параметрах, id фильма в теле
+  ADD_FAVORITE_FILM: '/add-favorite/:userId', // post - id пользователя в параметрах, id фильма в теле
   REMOVE_FAVORITE_FILM: '/remove-favorite', // post - id пользователя в параметрах, id фильма в теле
 }
