@@ -92,12 +92,12 @@ router.post(ApiRoutes.ADD_FAVORITE_FILM, isAuth, async (req, res) => {
 
     if (user && film) {
       if (!user.favoriteFilms.includes(filmId)) {
-        user.favoriteFilms.push(filmId);
-        await user.save();
+        user.favoriteFilms.push(filmId)
+        await user.save()
       }
       if (!film.likedByUsers.includes(userId)) {
-        film.likedByUsers.push(userId);
-        await film.save();
+        film.likedByUsers.push(userId)
+        await film.save()
       }
     } else {
       return res.status(404).json({
