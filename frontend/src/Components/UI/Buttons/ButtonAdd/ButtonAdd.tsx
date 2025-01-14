@@ -74,10 +74,12 @@ const ButtonAdd: React.FC = () => {
         })
       )
     } else {
-      dispatch(addFavoriteFilmDB({
-        userId: userId || '666',
-        filmId: activeFilm.id,
-      }))
+      dispatch(
+        addFavoriteFilmDB({
+          userId: userId || '666',
+          filmId: activeFilm.id,
+        })
+      )
       dispatch(
         addFavoriteFilm({
           userId: userId || '666',

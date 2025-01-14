@@ -126,9 +126,9 @@ export const addFavoriteFilmDB = createAsyncThunk<
   void, // Возвращаемый тип данных
   { userId: string; filmId: string }, // передаём объект с данными пользователя и добавляемого фильма
   {
-    dispatch: AppDispatch 
+    dispatch: AppDispatch
     state: RootState
-    extra: AxiosInstance 
+    extra: AxiosInstance
   }
 >(
   ApiActions.ADD_FAVORITE_FILM_DB, // Имя thunka
