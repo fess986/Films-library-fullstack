@@ -124,23 +124,23 @@ export const setFilmsDB = createAsyncThunk<
 // записываем в базу фильмы все фильмы
 export const addFavoriteFilmDB = createAsyncThunk<
   void, // Возвращаемый тип данных
-  void, // Аргументы, передаваемые в thunk
+  { userId: string; filmId: string }, // передаём объект с данными пользователя и добавляемого фильма
   {
-    dispatch: AppDispatch // Типизация dispatch для опций функции
+    dispatch: AppDispatch 
     state: RootState
-    extra: AxiosInstance // Типизация extra аргумента
+    extra: AxiosInstance 
   }
 >(
   ApiActions.ADD_FAVORITE_FILM_DB, // Имя thunka
-  async (_arg, { dispatch, extra: api }) => {
+  async ({ userId, filmId }, { dispatch, extra: api }) => {
     try {
       console.log('отправлен api-запрос')
       // const toast = useToast()
 
       // отправляем запрос, при этом прокидываем через params id пользователя, а через тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
       await api.post(
-        `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.ADD_FAVORITE_FILM.replace(':userId', 'ass')}`,
-        { filmId: 'ass' }
+        `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.ADD_FAVORITE_FILM.replace(':userId', userId)}`,
+        { filmId: filmId }
       )
       console.log('доставлен api-запрос')
 
