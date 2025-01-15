@@ -89,6 +89,7 @@ router.post(
       const { email, password } = req.body
 
       const user = await User.findOne({ email }) // ищем пользователя в базе по email
+      console.log('user', user)
 
       if (!user) {
         // если нет такого email - выходим
@@ -109,7 +110,8 @@ router.post(
         expiresIn: '1d',
       }) // создаем токен
 
-      res.json({ token, userId: user.id }) // отправляем токен на клиент
+      res.json({ token, userId: user.id, favoriteFilms: user.favoriteFilms }) // отправляем токен на клиент
+      // res.json({ token, userId: user.id, favoriteFilms: ['ass6'] }) // отправляем токен на клиент
     } catch (error) {
       console.log(error)
       res.status(500).json({

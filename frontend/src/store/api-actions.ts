@@ -134,20 +134,14 @@ export const addFavoriteFilmDB = createAsyncThunk<
   ApiActions.ADD_FAVORITE_FILM_DB, // Имя thunka
   async ({ userId, filmId }, { dispatch, extra: api }) => {
     try {
-      console.log('отправлен api-запрос')
-      // const toast = useToast()
-
+      const toast = useToast()
       // отправляем запрос, при этом прокидываем через params id пользователя, а через тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
       await api.post(
         `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.ADD_FAVORITE_FILM.replace(':userId', userId)}`,
         { filmId: filmId }
       )
-      console.log('доставлен api-запрос')
-
       // dispatch(setIsDataLoading(true))
-      // await api.post(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.SET_FILMS}`)
-      // await api.get(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.GET_FILMS}`)
-      // toast.success('Данные загружены')
+      toast.success('Фильм успешно добавлен в избранное')
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
       dispatch(setAuthStatus(AuthStatus.NO_AUTH))
@@ -229,7 +223,13 @@ export const loginAction = createAsyncThunk<
       dispatch(setIsDataLoading(false)) // конец загрузки
 
       // регистрируем пользователя с полученными данными и записываем данные в redux и localStorage
-      loginUtil(dispatch, data.data.token, data.data.userId)
+      console.log('data - ', data)
+      loginUtil(
+        dispatch,
+        data.data.token,
+        data.data.userId,
+        data.data.favoriteFilms
+      )
 
       // редирект в мэйн
       dispatch(redirect(`${AppRoutes.ROOT}`))
@@ -261,7 +261,7 @@ export const registerAction = createAsyncThunk<
       )
       dispatch(setIsDataLoading(false))
 
-      loginUtil(dispatch, data.data.token, data.data.userId)
+      loginUtil(dispatch, data.data.token, data.data.userId, [])
 
       dispatch(redirect(`${AppRoutes.ROOT}`))
       toast.success(

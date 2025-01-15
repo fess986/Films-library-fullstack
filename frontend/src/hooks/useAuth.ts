@@ -8,8 +8,8 @@ export const useAuth = () => {
   const dispatch = useAppDispatch()
 
   const login = useCallback(
-    (jwtToken: string, id: string) => {
-      loginUtil(dispatch, jwtToken, id)
+    (jwtToken: string, id: string, favoriteFilms: string[]) => {
+      loginUtil(dispatch, jwtToken, id, favoriteFilms)
     },
     [dispatch]
   )
@@ -26,7 +26,8 @@ export const useAuth = () => {
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem(storageName) || '{}')
     if (data && data.token) {
-      login(data.token, data.userId)
+      console.log('data effect - ', data)
+      login(data.token, data.userId, data.favoriteFilms)
     }
   }, [login])
 
