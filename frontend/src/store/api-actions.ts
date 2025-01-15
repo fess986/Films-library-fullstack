@@ -224,7 +224,12 @@ export const loginAction = createAsyncThunk<
 
       // регистрируем пользователя с полученными данными и записываем данные в redux и localStorage
       console.log('data - ', data)
-      loginUtil(dispatch, data.data.token, data.data.userId, data.data.favoriteFilms)
+      loginUtil(
+        dispatch,
+        data.data.token,
+        data.data.userId,
+        data.data.favoriteFilms
+      )
 
       // редирект в мэйн
       dispatch(redirect(`${AppRoutes.ROOT}`))

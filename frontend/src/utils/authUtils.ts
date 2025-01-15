@@ -1,7 +1,12 @@
 import { AuthStatus, storageName } from '../const/const'
 import { AppDispatch } from '../store'
 import { resetFilmsShownCount } from '../store/app/appSlice'
-import { setToken, setUserId, setAuthStatus, setFavoriteFilms } from '../store/user/userSlice'
+import {
+  setToken,
+  setUserId,
+  setAuthStatus,
+  setFavoriteFilms,
+} from '../store/user/userSlice'
 
 export const loginUtil = (
   dispatch: AppDispatch,
