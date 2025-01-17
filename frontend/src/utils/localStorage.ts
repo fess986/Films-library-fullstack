@@ -1,8 +1,7 @@
 import { storageName } from '../const/const'
 
 class localStore {
-
-  private storageName: string;
+  private storageName: string
   constructor(storageName: string) {
     this.storageName = storageName
   }

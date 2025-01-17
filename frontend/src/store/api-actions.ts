@@ -17,8 +17,8 @@ import {
   ApiActions,
   ApiRoutesMock,
   AppRoutes,
-  AuthStatus,
-} from '../const/const'
+  AuthStatus
+  } from '../const/const'
 import { useError } from '../hooks/useError'
 import { Films } from '../mock/films'
 import { Reviews } from '../mock/reviews'
@@ -26,7 +26,6 @@ import { commentProps, UserInfo, Review, FilmProps } from '../types/types'
 import { loginUtil } from '../utils/authUtils'
 
 import { RootState, AppDispatch } from '.'
-
 type ThunkConfig = {
   dispatch: AppDispatch
   state: RootState
@@ -140,6 +139,7 @@ export const addFavoriteFilmDB = createAsyncThunk<
         `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.ADD_FAVORITE_FILM.replace(':userId', userId)}`,
         { filmId: filmId }
       )
+      
       // dispatch(setIsDataLoading(true))
       toast.success('Фильм успешно добавлен в избранное')
     } catch (err) {
