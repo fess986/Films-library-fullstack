@@ -1,5 +1,6 @@
-import { AuthStatus, storageName } from '../const/const'
+import { AuthStatus } from '../const/const'
 import { AppDispatch } from '../store'
+import local from './localStorage'
 import { resetFilmsShownCount } from '../store/app/appSlice'
 import {
   setToken,
@@ -22,8 +23,7 @@ export const loginUtil = (
   dispatch(setFavoriteFilms(favoriteFilms))
 
   // Сохраняем данные в localStorage
-  localStorage.setItem(
-    storageName,
+  local.setItem(
     JSON.stringify({
       userId: id,
       token: jwtToken,
@@ -39,11 +39,11 @@ export const logoutUtil = (dispatch: AppDispatch): void => {
   dispatch(resetFilmsShownCount())
   dispatch(setFavoriteFilms([]))
 
-  localStorage.removeItem(storageName)
+  local.removeItem()
 }
 
 export const checkAuthUtil = (dispatch: AppDispatch): AuthStatus => {
-  const data = JSON.parse(localStorage.getItem(storageName) || '{}')
+  const data = JSON.parse(local.getItem() || '{}')
   if (data && data.token) {
     loginUtil(dispatch, data.token, data.userId, data.favoriteFilms)
     return AuthStatus.AUTH
