@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios'
 import type { AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 
-import { storageName } from '../const/const'
+import local from '../utils/localStorage'
 
 // Создаем экземпляр Axios
 const api = axios.create({
@@ -21,7 +21,7 @@ export interface ApiError {
 api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     // добавление токена авторизации если он есть в локальном хранилище
-    const tokenString = localStorage.getItem(storageName)
+    const tokenString = local.getItem()
     const token = tokenString ? JSON.parse(tokenString).token : null
     // console.log('token - ', token)
     // console.log(token)

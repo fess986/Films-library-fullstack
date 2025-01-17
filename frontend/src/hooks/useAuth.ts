@@ -1,8 +1,8 @@
 import { useCallback, useEffect } from 'react'
 
-import { storageName } from '../const/const'
 import { useAppDispatch } from '../store'
 import { loginUtil, logoutUtil, checkAuthUtil } from '../utils/authUtils'
+import local from '../utils/localStorage'
 
 export const useAuth = () => {
   const dispatch = useAppDispatch()
@@ -24,7 +24,7 @@ export const useAuth = () => {
 
   // для обновления состояния приложения
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem(storageName) || '{}')
+    const data = JSON.parse(local.getItem() || '{}')
     if (data && data.token) {
       console.log('data effect - ', data)
       login(data.token, data.userId, data.favoriteFilms)
