@@ -23,13 +23,11 @@ export const loginUtil = (
   dispatch(setFavoriteFilms(favoriteFilms))
 
   // Сохраняем данные в localStorage
-  local.setItem(
-    JSON.stringify({
-      userId: id,
-      token: jwtToken,
-      favoriteFilms: favoriteFilms,
-    })
-  )
+  local.setItem({
+    userId: id,
+    token: jwtToken,
+    favoriteFilms: favoriteFilms,
+  })
 }
 
 export const logoutUtil = (dispatch: AppDispatch): void => {
@@ -43,7 +41,8 @@ export const logoutUtil = (dispatch: AppDispatch): void => {
 }
 
 export const checkAuthUtil = (dispatch: AppDispatch): AuthStatus => {
-  const data = JSON.parse(local.getItem() || '{}')
+  // const data = JSON.parse(local.getItem() || '{}')
+  const data = local.getItem()
   if (data && data.token) {
     loginUtil(dispatch, data.token, data.userId, data.favoriteFilms)
     return AuthStatus.AUTH
