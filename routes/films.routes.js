@@ -81,12 +81,10 @@ router.post(ApiRoutes.SET_FILMS, isAuth, async (req, res) => {
 
 router.post(ApiRoutes.ADD_FAVORITE_FILM, isAuth, async (req, res) => {
   try {
-    console.log('получен запрос на сервере')
     const { userId } = req.params // получаем id пользователя по передаваемым в url параметрам (вместо :userId)
-    console.log('userId - ', userId)
+    // console.log('userId - ', userId)
     const { filmId } = req.body
 
-    // const user = await User.findById(userId)
     const user = await User.findById(userId)
     const film = await Film.findById(filmId)
 

@@ -18,6 +18,27 @@ class localStore {
   removeItem() {
     localStorage.removeItem(this.storageName)
   }
+
+  addFavoriteFilm(id: string) {
+    const userData = this.getItem()
+    if (userData) {
+      if (!userData.favoriteFilms.includes(id)) {
+        userData.favoriteFilms.push(id)
+        this.setItem(userData)
+      }
+    }
+  }
+
+  removeFavoriteFilm(id: string) {
+    const userData = this.getItem()
+    if (userData) {
+      userData.favoriteFilms = userData.favoriteFilms.filter(
+        (filmId: string) => filmId !== id
+      )
+      this.setItem(userData)
+    }
+  }
+
 }
 
 const local = new localStore(storageName)
