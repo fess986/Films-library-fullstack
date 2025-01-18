@@ -23,13 +23,11 @@ export const loginUtil = (
   dispatch(setFavoriteFilms(favoriteFilms))
 
   // Сохраняем данные в localStorage
-  local.setItem(
-    {
-      userId: id,
-      token: jwtToken,
-      favoriteFilms: favoriteFilms,
-    }
-  )
+  local.setItem({
+    userId: id,
+    token: jwtToken,
+    favoriteFilms: favoriteFilms,
+  })
 }
 
 export const logoutUtil = (dispatch: AppDispatch): void => {
