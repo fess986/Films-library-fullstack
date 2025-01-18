@@ -38,7 +38,6 @@ class localStore {
       this.setItem(userData)
     }
   }
-
 }
 
 const local = new localStore(storageName)
