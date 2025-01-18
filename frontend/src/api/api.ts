@@ -22,9 +22,7 @@ api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     // добавление токена авторизации если он есть в локальном хранилище
     const tokenString = local.getItem()
-    const token = tokenString ? JSON.parse(tokenString).token : null
-    // console.log('token - ', token)
-    // console.log(token)
+    const token = tokenString ? tokenString.token : null
     if (token) {
       if (config.headers) {
         config.headers.Authorization = `Bearer ${token}`

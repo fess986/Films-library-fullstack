@@ -6,12 +6,13 @@ class localStore {
     this.storageName = storageName
   }
 
-  setItem(value: string) {
-    localStorage.setItem(this.storageName, value)
+  setItem(value: unknown) {
+    localStorage.setItem(this.storageName, JSON.stringify(value))
   }
 
   getItem() {
-    return localStorage.getItem(this.storageName)
+    const userData = localStorage.getItem(this.storageName)
+    return userData ? JSON.parse(userData) : null
   }
 
   removeItem() {
