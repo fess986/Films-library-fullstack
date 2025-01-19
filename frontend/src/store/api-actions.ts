@@ -228,13 +228,14 @@ export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
 
 export const sendReviewDB = createAsyncThunk<
   void, // Возвращаемый тип данных
-  void, // Аргументы, передаваемые в thunk
+  { filmId: string; userId: string }, // Аргументы, передаваемые в thunk
   ThunkConfig // используем типизированную конфигурацию
->(ApiActions.SEND_REVIEW_DB, async (_id, { dispatch, extra: api }) => {
+>(ApiActions.SEND_REVIEW_DB, async ({ filmId, userId }, { dispatch, extra: api }) => {
   console.log('отправка review с фронта')
   console.log(dispatch)
 
-  await api.post(`${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.SET_REVIEW}`)
+  await api.post(`${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.SET_REVIEW.replace(':filmId', filmId)}`, {
+    userId: userId})
   // console.log(reviews)
 
   // const reviews = await api

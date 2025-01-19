@@ -54,6 +54,7 @@ const useActiveFilm = (): UseActiveFilm => {
 
     setCurrentFilm(activeFilmFromParams)
     dispatch(setActiveFilm(activeFilmFromParams))
+    dispatch(setIsActiveFilmLoaded(true))
     setSimilarFilms(films, activeFilmFromParams)
   }, [id, films, dispatch, toast, setSimilarFilms])
 
