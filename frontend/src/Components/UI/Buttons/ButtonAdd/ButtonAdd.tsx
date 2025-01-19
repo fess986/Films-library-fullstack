@@ -68,12 +68,6 @@ const ButtonAdd: React.FC = () => {
     // если фильм уже в списке любимых, то удаляем его, если нет, то добавляем
     if (added) {
       dispatch(
-        removeFavoriteFilm({
-          userId: userId || '666',
-          filmId: activeFilm.id,
-        })
-      )
-      dispatch(
         removeFavoriteFilmDB({
           userId: userId || '666',
           filmId: activeFilm.id,
