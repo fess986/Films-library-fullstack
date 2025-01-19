@@ -145,8 +145,8 @@ export const removeFavoriteFilmDB = createAsyncThunk<
         `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.REMOVE_FAVORITE_FILM.replace(':userId', userId)}`,
         { data: { filmId } }
       )
-      // local.addFavoriteFilm(filmId)
-      // dispatch(addToFavoriteFilm(filmId))
+      local.removeFavoriteFilm(filmId)  // удаляем из хранилища
+      dispatch(removeFromFavoriteFilm(filmId))  // удаляем из redux
       toast.success('Фильм удалён из избранного')
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
