@@ -36,32 +36,6 @@ type ThunkConfig = {
 const baseMockUrl = 'http://localhost:5173'
 const baseURL = import.meta.env.VITE_BASE_URL
 
-// получаем все фильмы
-// export const fetchFilms = createAsyncThunk<
-//   void, // Возвращаемый тип данных
-//   void, // Аргументы, передаваемые в thunk
-//   {
-//     dispatch: AppDispatch // Типизация dispatch для опций функции
-//     state: RootState
-//     extra: AxiosInstance // Типизация extra аргумента
-//   }
-// >(
-//   // 'films/fetchFilms', // Имя thunka
-//   ApiActions.FETCH_FILMS, // Имя thunka
-//   // async (_arg, {dispatch, extra: api, requestId, signal }) => {  // доступные аргументы для опций функции, есть ещё
-//   async (_arg, { dispatch, extra: api }) => {
-//     // dispatch(redirect('/mylist'));
-
-//     dispatch(setIsFilmsLoaded(false))
-//     const response = await api
-//       .get(baseMockUrl + ApiRoutesMock.FILMS)
-//       .then(() => Films as FilmProps[])
-//     // console.log(response);
-//     dispatch(setFilmList(response))
-//     dispatch(setIsFilmsLoaded(true))
-//   }
-// )
-
 // получаем все фильмы из базы данных
 export const fetchFilmsDB = createAsyncThunk<
   void, // Возвращаемый тип данных
@@ -75,7 +49,7 @@ export const fetchFilmsDB = createAsyncThunk<
   ApiActions.FETCH_FILMS_DB, // Имя thunka
   async (_arg, { dispatch, extra: api }) => {
     try {
-      const toast = useToast()
+      // const toast = useToast()
       dispatch(setIsDataLoading(true))
       dispatch(setIsFilmsLoaded(true))
       const films = await api.get(
@@ -84,7 +58,7 @@ export const fetchFilmsDB = createAsyncThunk<
       // console.log('films - ', films)
       dispatch(setFilmList(films.data))
       dispatch(setIsDataLoading(false))
-      toast.success('Фильмы загружены')
+      // toast.success('Фильмы загружены')
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
       dispatch(setIsDataLoading(false))
@@ -165,7 +139,7 @@ export const removeFavoriteFilmDB = createAsyncThunk<
   async ({ userId, filmId }, { dispatch, extra: api }) => {
     try {
       console.log(userId)
-      // const toast = useToast()
+      const toast = useToast()
       // отправляем запрос, при этом прокидываем через params id пользователя, а через DATA(особенность delete роута) - тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
       await api.delete(
         `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.REMOVE_FAVORITE_FILM.replace(':userId', userId)}`,
@@ -173,7 +147,7 @@ export const removeFavoriteFilmDB = createAsyncThunk<
       )
       // local.addFavoriteFilm(filmId)
       // dispatch(addToFavoriteFilm(filmId))
-      // toast.success('Фильм успешно добавлен в избранное')
+      toast.success('Фильм удалён из избранного')
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
       dispatch(setAuthStatus(AuthStatus.NO_AUTH))
@@ -357,3 +331,29 @@ export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
     }
   }
 )
+
+// получаем все фильмы
+// export const fetchFilms = createAsyncThunk<
+//   void, // Возвращаемый тип данных
+//   void, // Аргументы, передаваемые в thunk
+//   {
+//     dispatch: AppDispatch // Типизация dispatch для опций функции
+//     state: RootState
+//     extra: AxiosInstance // Типизация extra аргумента
+//   }
+// >(
+//   // 'films/fetchFilms', // Имя thunka
+//   ApiActions.FETCH_FILMS, // Имя thunka
+//   // async (_arg, {dispatch, extra: api, requestId, signal }) => {  // доступные аргументы для опций функции, есть ещё
+//   async (_arg, { dispatch, extra: api }) => {
+//     // dispatch(redirect('/mylist'));
+
+//     dispatch(setIsFilmsLoaded(false))
+//     const response = await api
+//       .get(baseMockUrl + ApiRoutesMock.FILMS)
+//       .then(() => Films as FilmProps[])
+//     // console.log(response);
+//     dispatch(setFilmList(response))
+//     dispatch(setIsFilmsLoaded(true))
+//   }
+// )
