@@ -48,16 +48,13 @@ export const fetchFilmsDB = createAsyncThunk<
   ApiActions.FETCH_FILMS_DB, // Имя thunka
   async (_arg, { dispatch, extra: api }) => {
     try {
-      // const toast = useToast()
       dispatch(setIsDataLoading(true))
       dispatch(setIsFilmsLoaded(true))
       const films = await api.get(
         `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.GET_FILMS}`
       )
-      // console.log('films - ', films)
       dispatch(setFilmList(films.data))
       dispatch(setIsDataLoading(false))
-      // toast.success('Фильмы загружены')
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
       dispatch(setIsDataLoading(false))
@@ -83,7 +80,6 @@ export const setFilmsDB = createAsyncThunk<
       const toast = useToast()
       dispatch(setIsDataLoading(true))
       await api.post(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.SET_FILMS}`)
-      // await api.get(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.GET_FILMS}`)
       toast.success('Данные загружены')
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
@@ -94,7 +90,7 @@ export const setFilmsDB = createAsyncThunk<
   }
 )
 
-// записываем в базу фильмы все фильмы
+// добавляем фильм в избранное
 export const addFavoriteFilmDB = createAsyncThunk<
   void, // Возвращаемый тип данных
   { userId: string; filmId: string }, // передаём объект с данными пользователя и добавляемого фильма
@@ -156,6 +152,7 @@ export const removeFavoriteFilmDB = createAsyncThunk<
   }
 )
 
+// действия с отзывами........................
 // получаем отзывы по id фильма
 export const fetchReviews = createAsyncThunk<
   string, // Возвращаемый тип данных
@@ -173,6 +170,38 @@ export const fetchReviews = createAsyncThunk<
 
   return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
 })
+
+export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
+  ApiActions.SEND_REVIEW,
+  async (commentInfo, { dispatch, extra: api }) => {
+    try {
+      const toast = useToast()
+      // await api.post(ApiRoutesMock.SEND_REVIEW, commentInfo);
+      toast.info('Отправка отзыва')
+
+      // нужно будет заменить на post, отправляем данные пользователя и комментария на сервер и получаем назад актуальные отзывы на фильм
+      const response = await api
+        .get(baseMockUrl + ApiRoutesMock.SEND_REVIEW)
+        .then(() => Reviews as Review[])
+
+      dispatch(setReviewsList(response))
+      dispatch(
+        redirect(
+          `${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(
+            ':id/*',
+            String(commentInfo.filmId)
+          )}`
+        )
+      )
+
+      toast.success('Отзыв отправлен')
+    } catch (error) {
+      const toast = useToast()
+      console.log(error)
+      toast.error('Ошибка отправки отзыва')
+    }
+  }
+)
 
 // экшены связанные с авторизацией.............
 // логин пользователя
@@ -252,38 +281,6 @@ export const registerAction = createAsyncThunk<
   }
 )
 
-export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
-  ApiActions.SEND_REVIEW,
-  async (commentInfo, { dispatch, extra: api }) => {
-    try {
-      const toast = useToast()
-      // await api.post(ApiRoutesMock.SEND_REVIEW, commentInfo);
-      toast.info('Отправка отзыва')
-
-      // нужно будет заменить на post, отправляем данные пользователя и комментария на сервер и получаем назад актуальные отзывы на фильм
-      const response = await api
-        .get(baseMockUrl + ApiRoutesMock.SEND_REVIEW)
-        .then(() => Reviews as Review[])
-
-      dispatch(setReviewsList(response))
-      dispatch(
-        redirect(
-          `${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(
-            ':id/*',
-            String(commentInfo.filmId)
-          )}`
-        )
-      )
-
-      toast.success('Отзыв отправлен')
-    } catch (error) {
-      const toast = useToast()
-      console.log(error)
-      toast.error('Ошибка отправки отзыва')
-    }
-  }
-)
-
 // получаем все фильмы
 // export const fetchFilms = createAsyncThunk<
 //   void, // Возвращаемый тип данных
@@ -341,3 +338,14 @@ export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
 // 		dispatch(setFavoriteFilms(response));
 // 	}
 // );
+
+// пример испозования функции populate, которая преобразовывает айдишники фильмов в сами объекты этих фильмов
+// async function getFavoriteFilms(userId: string) {
+//   const user = await User.findById(userId).populate('favoriteFilms');
+//   if (!user) {
+//     throw new Error('User not found');
+//   }
+
+//   console.log('Favorite films:', user.favoriteFilms);
+//   return user.favoriteFilms;
+// }
