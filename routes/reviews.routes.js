@@ -24,6 +24,10 @@ router.get(ApiRoutes.GET_REVIEWS, async (req, res) => {
 
 router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
   try {
+    const { userId } = req.body
+    console.log('userId - ', userId)
+    const { filmId } = req.params
+    console.log('filmId - ', filmId)
     console.log('запись review пришел на бэк')
     // const reviews = await Review.find({})
     // console.log(reviews)
