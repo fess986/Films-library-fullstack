@@ -18,9 +18,9 @@ const FilmReview: React.FC<FilmReviewProps> = ({ review }) => {
   return (
     <ReviewContainer>
       <ReviewQuote>
-        <ReviewText>{review.comment}</ReviewText>
+        <ReviewText>{review.commentText}</ReviewText>
         <ReviewFooter>
-          <ReviewAuthor>{review.user.name}</ReviewAuthor>
+          <ReviewAuthor>{review.userName}</ReviewAuthor>
           <ReviewDate dateTime={formatDate(review.date)}>
             {parseCommentDate(review.date)}
           </ReviewDate>

@@ -19,22 +19,33 @@ export type FilmProps = {
   likedByUsers?: string[] // id-шники пользователей, которые лайкнули фильм
 }
 
+// export type Review = {
+//   id: number
+//   user: {
+//     id: number
+//     name: string
+//   }
+//   rating: number
+//   comment: string
+//   date: string
+// }
+
 export type Review = {
-  id: number
-  user: {
-    id: number
-    name: string
-  }
+  id: string
+  userId: string
+  userName: string
+  filmId: string
   rating: number
-  comment: string
+  commentText: string
   date: string
 }
 
 export type commentProps = {
   text: string
   rating: number
-  filmId: number
+  filmId: string
   userId: string
+  date: string
 }
 
 export type UserInfo = {
