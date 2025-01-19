@@ -166,9 +166,9 @@ export const removeFavoriteFilmDB = createAsyncThunk<
     try {
       console.log(userId)
       // const toast = useToast()
-      // отправляем запрос, при этом прокидываем через params id пользователя, а через тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
+      // отправляем запрос, при этом прокидываем через params id пользователя, а через DATA(особенность delete роута) - тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
       await api.delete(
-        `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.REMOVE_FAVORITE_FILM}`,
+        `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.REMOVE_FAVORITE_FILM.replace(':userId', userId)}`,
         { data: { filmId } }
       )
       // local.addFavoriteFilm(filmId)

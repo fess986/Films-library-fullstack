@@ -115,9 +115,10 @@ router.post(ApiRoutes.ADD_FAVORITE_FILM, isAuth, async (req, res) => {
 router.delete(ApiRoutes.REMOVE_FAVORITE_FILM, isAuth, async (req, res) => {
   try {
     console.log('удаляем фильм из избранного')
-    // const { userId } = req.params // получаем id пользователя по передаваемым в url параметрам (вместо :userId)
-    // console.log('userId - ', userId)
-    // const { filmId } = req.body
+    const { userId } = req.params // получаем id пользователя по передаваемым в url параметрам (вместо :userId)
+    console.log('userId - ', userId)
+    const { filmId } = req.body
+    console.log('filmId - ', filmId)
 
     // const user = await User.findById(userId)
     // const film = await Film.findById(filmId)
