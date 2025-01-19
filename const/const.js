@@ -26,5 +26,5 @@ export const ApiRoutes = {
 
   REVIEWS: '/api/reviews', // общий для отзывов
   GET_REVIEWS: '/get-reviews', // get
-  SET_REVIEWS: '/set-reviews', // post
+  SET_REVIEW: '/set-review', // post
 }

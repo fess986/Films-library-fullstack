@@ -22,4 +22,17 @@ router.get(ApiRoutes.GET_REVIEWS, async (req, res) => {
   }
 })
 
+router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
+  try {
+    console.log('запись review пришел на бэк')
+    // const reviews = await Review.find({})
+    // console.log(reviews)
+    // res.status(200).json(reviews)
+    res.status(200).json({ message: 'Отзывы отправлен' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Что-то пошло не так при отправке отзыва' })
+  }
+})
+
 export default router

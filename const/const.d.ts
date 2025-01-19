@@ -13,5 +13,5 @@ export declare const ApiRoutes: {
 
   REVIEWS: string
   GET_REVIEWS: string
-  SET_REVIEWS: string
+  SET_REVIEW: string
 }
