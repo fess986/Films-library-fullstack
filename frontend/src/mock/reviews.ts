@@ -4,7 +4,7 @@ export const Reviews: Review[] = [
   {
     id: '1',
     userId: '1',
-    userName: 'my name',    
+    userName: 'my name',
     filmId: '1',
     rating: 1.4,
 
@@ -15,7 +15,7 @@ export const Reviews: Review[] = [
   {
     id: '2',
     userId: '2',
-    userName: 'Kate Muir', 
+    userName: 'Kate Muir',
     filmId: '2',
     rating: 8.9,
     commentText:
@@ -26,7 +26,7 @@ export const Reviews: Review[] = [
   {
     id: '3',
     userId: '3',
-    userName: 'Bill Goodykoontz', 
+    userName: 'Bill Goodykoontz',
     filmId: '3',
     rating: 4.3,
     commentText: `Anderson's films are too precious for some, but for those of
@@ -40,7 +40,7 @@ export const Reviews: Review[] = [
   {
     id: '4',
     userId: '4',
-    userName: 'Piter Parker', 
+    userName: 'Piter Parker',
     filmId: '4',
     rating: 7.0,
     commentText:
@@ -51,7 +51,7 @@ export const Reviews: Review[] = [
   {
     id: '5',
     userId: '4',
-    userName: 'Matthew Lickona', 
+    userName: 'Matthew Lickona',
     filmId: '4',
     rating: 4.0,
     commentText: `The mannered, madcap proceedings are often delightful,
