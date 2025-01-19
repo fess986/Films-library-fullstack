@@ -47,8 +47,6 @@ router.get(ApiRoutes.GET_FILMS, async (req, res) => {
 // добавление фильма в БД
 router.post(ApiRoutes.SET_FILMS, isAuth, async (req, res) => {
   try {
-    console.log(Films)
-
     // Добавляем фильмы в базу данных
     const savedFilms = await Film.insertMany(Films)
 
@@ -57,8 +55,6 @@ router.post(ApiRoutes.SET_FILMS, isAuth, async (req, res) => {
       map[film.name] = film._id
       return map
     }, {})
-
-    console.log('filmIdMap - ', filmIdMap)
 
     // Обновляем поле similarFilms на основе similarMockFilms
     for (const film of savedFilms) {
@@ -82,7 +78,6 @@ router.post(ApiRoutes.SET_FILMS, isAuth, async (req, res) => {
 router.post(ApiRoutes.ADD_FAVORITE_FILM, isAuth, async (req, res) => {
   try {
     const { userId } = req.params // получаем id пользователя по передаваемым в url параметрам (вместо :userId)
-    // console.log('userId - ', userId)
     const { filmId } = req.body
 
     const user = await User.findById(userId)
