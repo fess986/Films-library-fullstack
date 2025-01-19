@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { toast } from 'react-toastify'
 
 import { StoreNames } from '../../const/const'
-import { fetchSimilarFilms } from '../api-actions'
+// import { fetchSimilarFilms } from '../api-actions'
 
 type AppState = {
   filmsShownCount: number
@@ -70,16 +69,16 @@ export const appSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchSimilarFilms.pending, (state) => {
-        state.isSimilarFilmsLoaded = false
-      })
-      .addCase(fetchSimilarFilms.fulfilled, (state) => {
-        state.isSimilarFilmsLoaded = true
-      })
-      .addCase(fetchSimilarFilms.rejected, (state) => {
-        state.isSimilarFilmsLoaded = false
-        toast.error('Не удалось загрузить похожие фильмы')
-      })
+    // .addCase(fetchSimilarFilms.pending, (state) => {
+    //   state.isSimilarFilmsLoaded = false
+    // })
+    // .addCase(fetchSimilarFilms.fulfilled, (state) => {
+    //   state.isSimilarFilmsLoaded = true
+    // })
+    // .addCase(fetchSimilarFilms.rejected, (state) => {
+    //   state.isSimilarFilmsLoaded = false
+    //   toast.error('Не удалось загрузить похожие фильмы')
+    // })
   },
 })
 

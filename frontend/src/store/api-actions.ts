@@ -5,7 +5,7 @@ import type { AxiosInstance } from 'axios' // Импортируем тип Axio
 import { redirect } from './actions'
 import useToast from '../hooks/useToast'
 import { setIsFilmsLoaded, setIsDataLoading } from './app/appSlice'
-import { setFilmList, setSimilarFilmList } from './films/filmsSlice'
+import { setFilmList } from './films/filmsSlice'
 import { setReviewsList } from './reviews/reviewsSlice'
 import {
   setAuthStatus,
@@ -20,9 +20,8 @@ import {
   AuthStatus,
 } from '../const/const'
 import { useError } from '../hooks/useError'
-import { Films } from '../mock/films'
 import { Reviews } from '../mock/reviews'
-import { commentProps, UserInfo, Review, FilmProps } from '../types/types'
+import { commentProps, UserInfo, Review } from '../types/types'
 import { loginUtil } from '../utils/authUtils'
 import local from '../utils/localStorage'
 
@@ -157,24 +156,6 @@ export const removeFavoriteFilmDB = createAsyncThunk<
   }
 )
 
-export const removeFavoriteFilm = createAsyncThunk<
-  void,
-  { userId: string; filmId: string }, // передаём объект с данными пользователя и удаляемого фильма
-  ThunkConfig
->(
-  ApiActions.REMOVE_FAVORITE_FILM,
-  async (requestInfo, { dispatch, extra: api }) => {
-    // отправляем данные пользователя и удаляемого фильма на сервер
-    // const response = await api.delete(ApiRoutesMock.REMOVE_FAVORITE_FILM, {data: requestInfo}).then(() => requestInfo.filmId); // получаем id удаляемого фильма
-    // нужно будет заменить на delete
-    const response = await api
-      .get(baseMockUrl + ApiRoutesMock.REMOVE_FAVORITE_FILM)
-      .then(() => requestInfo.filmId) // получаем id удаляемого фильма
-
-    dispatch(removeFromFavoriteFilm(response)) // получаем id удаляемого фильма и удаляем его из списка любимых
-  }
-)
-
 // получаем отзывы по id фильма
 export const fetchReviews = createAsyncThunk<
   string, // Возвращаемый тип данных
@@ -193,38 +174,8 @@ export const fetchReviews = createAsyncThunk<
   return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
 })
 
-// получаем похожие фильмы
-export const fetchSimilarFilms = createAsyncThunk<
-  void, // Возвращаемый тип данных
-  string, // Аргументы, передаваемые в thunk
-  ThunkConfig
->(
-  ApiActions.FETCH_SIMILAR_FILMS, // Имя thunkа
-  async (id, { dispatch, extra: api }) => {
-    const response = await api
-      .get(baseMockUrl + ApiRoutesMock.SIMILAR_FILMS.replace(':id', String(id)))
-      .then(() => Films as FilmProps[])
-
-    dispatch(setSimilarFilmList(response))
-  }
-)
-
-// export const fetchFavoriteFilms = createAsyncThunk<
-// 	void, // Возвращаемый тип данных
-// 	number, // Аргументы, передаваемые в thunk
-// 	ThunkConfig
-// >(
-// 	ApiActions.FETCH_FAVORITE_FILMS, // Имя thunkа
-// 	async (userId, { dispatch, extra: api }) => {
-
-// 		const response = await api
-// 			.get(ApiRoutesMock.FETCH_FAVORITE_FILMS.replace(':id', String(userId)))
-// 			.then(() => [1, 3, 5]);
-
-// 		dispatch(setFavoriteFilms(response));
-// 	}
-// );
-
+// экшены связанные с авторизацией.............
+// логин пользователя
 export const loginAction = createAsyncThunk<
   void, // Возвращаемый тип данных
   UserInfo, // Аргументы, передаваемые в thunk
@@ -269,6 +220,7 @@ export const loginAction = createAsyncThunk<
   }
 )
 
+// регистрация нового пользователя
 export const registerAction = createAsyncThunk<
   void, // Возвращаемый тип данных
   UserInfo, // Аргументы, передаваемые в thunk
@@ -357,3 +309,35 @@ export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
 //     dispatch(setIsFilmsLoaded(true))
 //   }
 // )
+
+// получаем похожие фильмы
+// export const fetchSimilarFilms = createAsyncThunk<
+//   void, // Возвращаемый тип данных
+//   string, // Аргументы, передаваемые в thunk
+//   ThunkConfig
+// >(
+//   ApiActions.FETCH_SIMILAR_FILMS, // Имя thunkа
+//   async (id, { dispatch, extra: api }) => {
+//     const response = await api
+//       .get(baseMockUrl + ApiRoutesMock.SIMILAR_FILMS.replace(':id', String(id)))
+//       .then(() => Films as FilmProps[])
+
+//     dispatch(setSimilarFilmList(response))
+//   }
+// )
+
+// export const fetchFavoriteFilms = createAsyncThunk<
+// 	void, // Возвращаемый тип данных
+// 	number, // Аргументы, передаваемые в thunk
+// 	ThunkConfig
+// >(
+// 	ApiActions.FETCH_FAVORITE_FILMS, // Имя thunkа
+// 	async (userId, { dispatch, extra: api }) => {
+
+// 		const response = await api
+// 			.get(ApiRoutesMock.FETCH_FAVORITE_FILMS.replace(':id', String(userId)))
+// 			.then(() => [1, 3, 5]);
+
+// 		dispatch(setFavoriteFilms(response));
+// 	}
+// );

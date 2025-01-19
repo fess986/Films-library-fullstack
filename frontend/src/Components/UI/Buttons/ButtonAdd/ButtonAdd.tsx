@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 import { AuthStatus, AppRoutes } from '../../../../const/const'
 import { useAppDispatch } from '../../../../store'
 import {
-  removeFavoriteFilm,
   addFavoriteFilmDB,
   removeFavoriteFilmDB,
 } from '../../../../store/api-actions'
@@ -67,12 +66,6 @@ const ButtonAdd: React.FC = () => {
 
     // если фильм уже в списке любимых, то удаляем его, если нет, то добавляем
     if (added) {
-      dispatch(
-        removeFavoriteFilm({
-          userId: userId || '666',
-          filmId: activeFilm.id,
-        })
-      )
       dispatch(
         removeFavoriteFilmDB({
           userId: userId || '666',
