@@ -31,9 +31,7 @@ router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
     res.status(200).json({ message: 'Отзывы отправлен' })
   } catch (error) {
     console.log(error)
-    res
-      .status(500)
-      .json({ message: 'Что-то пошло не так при отправке отзыва' })
+    res.status(500).json({ message: 'Что-то пошло не так при отправке отзыва' })
   }
 })
 

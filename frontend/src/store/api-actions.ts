@@ -234,9 +234,7 @@ export const sendReviewDB = createAsyncThunk<
   console.log('отправка review с фронта')
   console.log(dispatch)
 
-  await api.post(
-    `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.SET_REVIEW}`
-  )
+  await api.post(`${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.SET_REVIEW}`)
   // console.log(reviews)
 
   // const reviews = await api
