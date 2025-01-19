@@ -226,6 +226,30 @@ export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
   }
 )
 
+export const sendReviewDB = createAsyncThunk<
+  void, // Возвращаемый тип данных
+  void, // Аргументы, передаваемые в thunk
+  ThunkConfig // используем типизированную конфигурацию
+>(ApiActions.SEND_REVIEW_DB, async (_id, { dispatch, extra: api }) => {
+  console.log('отправка review с фронта')
+  console.log(dispatch)
+
+  await api.post(
+    `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.SET_REVIEW}`
+  )
+  // console.log(reviews)
+
+  // const reviews = await api
+  //   .get(baseMockUrl + ApiRoutesMock.FETCH_REVIEWS.replace(':id', String(id)))
+  //   .then(() => Reviews as Review[])
+  // dispatch(setReviewsList(reviews))
+
+  // dispatch(setIsReviewsLoaded(true)); // перенесено в extraReducers
+
+  // return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
+  console.log('отправка review с фронта успешна')
+})
+
 // экшены связанные с авторизацией.............
 // логин пользователя
 export const loginAction = createAsyncThunk<
