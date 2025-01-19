@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom'
 import { AuthStatus, AppRoutes } from '../../../../const/const'
 import { useAppDispatch } from '../../../../store'
 import {
-  addFavoriteFilm,
   removeFavoriteFilm,
   addFavoriteFilmDB,
+  removeFavoriteFilmDB
 } from '../../../../store/api-actions'
 import { getActiveFilm } from '../../../../store/films/filmsSelector'
 import {
@@ -73,19 +73,18 @@ const ButtonAdd: React.FC = () => {
           filmId: activeFilm.id,
         })
       )
+      dispatch(removeFavoriteFilmDB({
+        userId: userId || '666',
+        filmId: activeFilm.id,
+      }))
     } else {
       dispatch(
         addFavoriteFilmDB({
-          userId: userId || '666',
+          userId: userId || '',
           filmId: activeFilm.id,
         })
       )
-      dispatch(
-        addFavoriteFilm({
-          userId: userId || '666',
-          filmId: activeFilm.id,
-        })
-      )
+
     }
   }
 

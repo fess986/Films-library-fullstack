@@ -141,7 +141,7 @@ export const addFavoriteFilmDB = createAsyncThunk<
         { filmId: filmId }
       )
       local.addFavoriteFilm(filmId)
-      // dispatch(setIsDataLoading(true))
+      dispatch(addToFavoriteFilm(filmId)) 
       toast.success('Фильм успешно добавлен в избранное')
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
@@ -151,6 +151,55 @@ export const addFavoriteFilmDB = createAsyncThunk<
     }
   }
 )
+
+export const removeFavoriteFilmDB = createAsyncThunk<
+void, // Возвращаемый тип данных
+{ userId: string; filmId: string }, // передаём объект с данными пользователя и добавляемого фильма
+{
+  dispatch: AppDispatch
+  state: RootState
+  extra: AxiosInstance
+}
+>(
+ApiActions.REMOVE_FAVORITE_FILM_DB, 
+async ({ userId, filmId }, { dispatch, extra: api }) => {
+  try {
+    // const toast = useToast()
+    // отправляем запрос, при этом прокидываем через params id пользователя, а через тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
+    await api.delete(
+      `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.REMOVE_FAVORITE_FILM}`,
+      { data: { filmId } }
+    )
+    // local.addFavoriteFilm(filmId)
+    // dispatch(addToFavoriteFilm(filmId)) 
+    // toast.success('Фильм успешно добавлен в избранное')
+  } catch (err) {
+    // при ошибке отклоняем авторизацию и показываем сообщение
+    dispatch(setAuthStatus(AuthStatus.NO_AUTH))
+    dispatch(setIsDataLoading(false))
+    useError(err as AxiosError | Error)
+  }
+}
+)
+
+export const removeFavoriteFilm = createAsyncThunk<
+  void,
+  { userId: string; filmId: string }, // передаём объект с данными пользователя и удаляемого фильма
+  ThunkConfig
+>(
+  ApiActions.REMOVE_FAVORITE_FILM,
+  async (requestInfo, { dispatch, extra: api }) => {
+    // отправляем данные пользователя и удаляемого фильма на сервер
+    // const response = await api.delete(ApiRoutesMock.REMOVE_FAVORITE_FILM, {data: requestInfo}).then(() => requestInfo.filmId); // получаем id удаляемого фильма
+    // нужно будет заменить на delete
+    const response = await api
+      .get(baseMockUrl + ApiRoutesMock.REMOVE_FAVORITE_FILM)
+      .then(() => requestInfo.filmId) // получаем id удаляемого фильма
+
+    dispatch(removeFromFavoriteFilm(response)) // получаем id удаляемого фильма и удаляем его из списка любимых
+  }
+)
+
 
 // получаем отзывы по id фильма
 export const fetchReviews = createAsyncThunk<
@@ -277,42 +326,7 @@ export const registerAction = createAsyncThunk<
   }
 )
 
-// добавляем фильм в список избранных
-export const addFavoriteFilm = createAsyncThunk<
-  void,
-  { userId: string; filmId: string }, // передаём объект с данными пользователя и добавляемого фильма
-  ThunkConfig
->(
-  ApiActions.ADD_FAVORITE_FILM,
-  async (requestInfo, { dispatch, extra: api }) => {
-    // отправляем данные пользователя и любимого фильма на сервер
-    // const response = await api.post(ApiRoutesMock.ADD_FAVORITE_FILM, requestInfo).then(() => requestInfo.filmId);
-    // нужно будет заменить на post
-    const response = await api
-      .get(baseMockUrl + ApiRoutesMock.ADD_FAVORITE_FILM)
-      .then(() => requestInfo.filmId)
 
-    dispatch(addToFavoriteFilm(response)) // получаем id добавленного фильма и добавляем его в список любимых
-  }
-)
-
-export const removeFavoriteFilm = createAsyncThunk<
-  void,
-  { userId: string; filmId: string }, // передаём объект с данными пользователя и удаляемого фильма
-  ThunkConfig
->(
-  ApiActions.REMOVE_FAVORITE_FILM,
-  async (requestInfo, { dispatch, extra: api }) => {
-    // отправляем данные пользователя и удаляемого фильма на сервер
-    // const response = await api.delete(ApiRoutesMock.REMOVE_FAVORITE_FILM, {data: requestInfo}).then(() => requestInfo.filmId); // получаем id удаляемого фильма
-    // нужно будет заменить на delete
-    const response = await api
-      .get(baseMockUrl + ApiRoutesMock.REMOVE_FAVORITE_FILM)
-      .then(() => requestInfo.filmId) // получаем id удаляемого фильма
-
-    dispatch(removeFromFavoriteFilm(response)) // получаем id удаляемого фильма и удаляем его из списка любимых
-  }
-)
 
 export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
   ApiActions.SEND_REVIEW,

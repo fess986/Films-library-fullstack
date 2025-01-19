@@ -112,4 +112,38 @@ router.post(ApiRoutes.ADD_FAVORITE_FILM, isAuth, async (req, res) => {
   }
 })
 
+router.delete(ApiRoutes.REMOVE_FAVORITE_FILM, isAuth, async (req, res) => {
+  try {
+    console.log('удаляем фильм из избранного')
+    // const { userId } = req.params // получаем id пользователя по передаваемым в url параметрам (вместо :userId)
+    // console.log('userId - ', userId)
+    // const { filmId } = req.body
+
+    // const user = await User.findById(userId)
+    // const film = await Film.findById(filmId)
+
+    // if (user && film) {
+    //   if (!user.favoriteFilms.includes(filmId)) {
+    //     user.favoriteFilms.push(filmId)
+    //     await user.save()
+    //   }
+    //   if (!film.likedByUsers.includes(userId)) {
+    //     film.likedByUsers.push(userId)
+    //     await film.save()
+    //   }
+    // } else {
+    //   return res.status(404).json({
+    //     message: 'Фильм или пользователь не найден',
+    //   })
+    // }
+
+    res.status(200).json({ message: 'Фильм удален из избранного' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      message: 'Что-то пошло не так при удалении фильма из избранного',
+    })
+  }
+})
+
 export default router
