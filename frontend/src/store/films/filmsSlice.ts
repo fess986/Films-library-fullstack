@@ -9,17 +9,16 @@ import { fetchFilmsDB } from '../api-actions'
 
 type FilmsState = {
   filmList: FilmProps[]
-  myFilmList: FilmProps[]
   similarFilmList: FilmProps[]
 
   activeFilm: FilmProps | null
 }
 
 const initialFilmsState: FilmsState = {
-  activeFilm: null,
   filmList: [],
   similarFilmList: [],
-  myFilmList: [],
+
+  activeFilm: null,
 }
 
 export const filmsSlice = createSlice({
@@ -35,9 +34,6 @@ export const filmsSlice = createSlice({
     setSimilarFilmList: (state, action: PayloadAction<FilmProps[]>) => {
       state.similarFilmList = action.payload
     },
-    setMyFilmList: (state, action: PayloadAction<FilmProps[]>) => {
-      state.myFilmList = action.payload
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchFilmsDB.rejected, () => {
@@ -47,5 +43,5 @@ export const filmsSlice = createSlice({
   },
 })
 
-export const { setActiveFilm, setFilmList, setSimilarFilmList, setMyFilmList } =
+export const { setActiveFilm, setFilmList, setSimilarFilmList } =
   filmsSlice.actions
