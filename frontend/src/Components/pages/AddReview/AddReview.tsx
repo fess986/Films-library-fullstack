@@ -29,8 +29,9 @@ const AddReview: React.FC = () => {
   const comment: commentProps = {
     text: reviewText,
     rating: reviewRating,
-    filmId: Number(id),
-    userId: userId || '1',
+    filmId: id || '',
+    userId: userId || '',
+    date: new Date().toISOString(),
   }
 
   const handleReviewTextChange = (text: string) => {
@@ -38,9 +39,11 @@ const AddReview: React.FC = () => {
       text.length < MINIMUM_REVIEW_LENGTH || text.length > MAXIMUM_REVIEW_LENGTH
     )
     setReviewText(text)
+    console.log(comment)
   }
 
   const submitHandler = () => {
+    console.log(comment)
     dispatch(sendReview(comment))
   }
 
