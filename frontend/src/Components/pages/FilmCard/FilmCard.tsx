@@ -10,7 +10,7 @@ import {
 } from './styles'
 import { FilmMenuList } from '../../../const/const'
 import { useAppDispatch } from '../../../store'
-import { fetchReviews } from '../../../store/api-actions'
+import { fetchReviews, fetchReviewsDB } from '../../../store/api-actions'
 import { getIsSimilarFilmsLoaded } from '../../../store/app/appSelectors'
 import {
   getActiveFilm,
@@ -42,6 +42,7 @@ const FilmCard: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchReviews(activeFilm?.id || '0'))
+    dispatch(fetchReviewsDB())
   }, [dispatch, activeFilm?.id])
 
   return (
