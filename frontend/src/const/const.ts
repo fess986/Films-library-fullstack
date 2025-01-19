@@ -52,6 +52,7 @@ export enum ApiActions {
   REMOVE_FAVORITE_FILM_DB = 'user/removeFavoriteFilmdb', // удалить из избранного
 
   FETCH_REVIEWS = 'reviews/fetchReviews', // получить отзывы
+  FETCH_REVIEWS_DB = 'reviews/fetchReviewsdb', // получить отзывы
   SEND_REVIEW = 'reviews/sendReview', // отправить отзыв
 }
 

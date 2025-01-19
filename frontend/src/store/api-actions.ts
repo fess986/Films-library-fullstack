@@ -171,6 +171,29 @@ export const fetchReviews = createAsyncThunk<
   return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
 })
 
+export const fetchReviewsDB = createAsyncThunk<
+  string, // Возвращаемый тип данных
+  void, // Аргументы, передаваемые в thunk
+  ThunkConfig // используем типизированную конфигурацию
+>(ApiActions.FETCH_REVIEWS, async (_id, { dispatch, extra: api }) => {
+  console.log('запрос reviews с фронта')
+  console.log(dispatch)
+
+  const reviews = await api.get(
+    `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_REVIEWS}`
+  )
+  console.log(reviews)
+
+  // const reviews = await api
+  //   .get(baseMockUrl + ApiRoutesMock.FETCH_REVIEWS.replace(':id', String(id)))
+  //   .then(() => Reviews as Review[])
+  // dispatch(setReviewsList(reviews))
+
+  // dispatch(setIsReviewsLoaded(true)); // перенесено в extraReducers
+
+  return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
+})
+
 export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
   ApiActions.SEND_REVIEW,
   async (commentInfo, { dispatch, extra: api }) => {
