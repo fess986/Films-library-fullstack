@@ -45,7 +45,7 @@ const AddReview: React.FC = () => {
   const submitHandler = () => {
     console.log(comment)
     dispatch(sendReview(comment))
-    dispatch(sendReviewDB({filmId: '123' , userId: '321'}))
+    dispatch(sendReviewDB({ filmId: '123', userId: '321' }))
   }
 
   console.log(isActiveFilmLoaded)
