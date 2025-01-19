@@ -23,4 +23,8 @@ export const ApiRoutes = {
   SET_FILMS: '/set-films', // post
   ADD_FAVORITE_FILM: '/add-favorite/:userId', // post - id пользователя в параметрах, id фильма в теле
   REMOVE_FAVORITE_FILM: '/remove-favorite/:userId', // post - id пользователя в параметрах, id фильма в теле
+
+  REVIEWS: '/api/reviews', // общий для отзывов
+  GET_REVIEWS: '/get-reviews', // get
+  SET_REVIEWS: '/set-reviews', // post
 }
