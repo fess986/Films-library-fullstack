@@ -174,8 +174,6 @@ export const fetchReviews = createAsyncThunk<
   return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
 })
 
-
-
 // экшены связанные с авторизацией.............
 // логин пользователя
 export const loginAction = createAsyncThunk<

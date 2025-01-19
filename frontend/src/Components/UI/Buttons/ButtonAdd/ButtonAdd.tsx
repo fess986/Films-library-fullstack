@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 import { AuthStatus, AppRoutes } from '../../../../const/const'
 import { useAppDispatch } from '../../../../store'
 import {
-  removeFavoriteFilm,
   addFavoriteFilmDB,
   removeFavoriteFilmDB,
 } from '../../../../store/api-actions'
