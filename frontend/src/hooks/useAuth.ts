@@ -24,10 +24,8 @@ export const useAuth = () => {
 
   // для обновления состояния приложения
   useEffect(() => {
-    // const data = JSON.parse(local.getItem() || '{}')
     const data = local.getItem()
     if (data && data.token) {
-      console.log('data effect - ', data)
       login(data.token, data.userId, data.favoriteFilms)
     }
   }, [login])

@@ -15,7 +15,6 @@ export const loginUtil = (
   id: string,
   favoriteFilms: string[]
 ): void => {
-  console.log(favoriteFilms)
   // Диспатчим действия в Redux
   dispatch(setToken(jwtToken))
   dispatch(setUserId(id))

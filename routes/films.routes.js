@@ -114,29 +114,30 @@ router.post(ApiRoutes.ADD_FAVORITE_FILM, isAuth, async (req, res) => {
 
 router.delete(ApiRoutes.REMOVE_FAVORITE_FILM, isAuth, async (req, res) => {
   try {
-    console.log('удаляем фильм из избранного')
     const { userId } = req.params // получаем id пользователя по передаваемым в url параметрам (вместо :userId)
-    console.log('userId - ', userId)
-    const { filmId } = req.body
-    console.log('filmId - ', filmId)
+    const { filmId } = req.body // в body лежит то что мы передали в data
 
-    // const user = await User.findById(userId)
-    // const film = await Film.findById(filmId)
+    const user = await User.findById(userId)
+    const film = await Film.findById(filmId)
 
-    // if (user && film) {
-    //   if (!user.favoriteFilms.includes(filmId)) {
-    //     user.favoriteFilms.push(filmId)
-    //     await user.save()
-    //   }
-    //   if (!film.likedByUsers.includes(userId)) {
-    //     film.likedByUsers.push(userId)
-    //     await film.save()
-    //   }
-    // } else {
-    //   return res.status(404).json({
-    //     message: 'Фильм или пользователь не найден',
-    //   })
-    // }
+    if (user && film) {
+      if (user.favoriteFilms.includes(filmId)) {
+        user.favoriteFilms = user.favoriteFilms.filter(
+          (id) => id.toString() !== filmId
+        )
+        await user.save()
+      }
+      if (film.likedByUsers.includes(userId)) {
+        film.likedByUsers = film.likedByUsers.filter(
+          (id) => id.toString() !== userId
+        )
+        await film.save()
+      }
+    } else {
+      return res.status(404).json({
+        message: 'Фильм или пользователь не найден',
+      })
+    }
 
     res.status(200).json({ message: 'Фильм удален из избранного' })
   } catch (error) {
