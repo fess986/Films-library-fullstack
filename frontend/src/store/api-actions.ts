@@ -141,7 +141,7 @@ export const addFavoriteFilmDB = createAsyncThunk<
         { filmId: filmId }
       )
       local.addFavoriteFilm(filmId)
-      dispatch(addToFavoriteFilm(filmId)) 
+      dispatch(addToFavoriteFilm(filmId))
       toast.success('Фильм успешно добавлен в избранное')
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
@@ -153,33 +153,34 @@ export const addFavoriteFilmDB = createAsyncThunk<
 )
 
 export const removeFavoriteFilmDB = createAsyncThunk<
-void, // Возвращаемый тип данных
-{ userId: string; filmId: string }, // передаём объект с данными пользователя и добавляемого фильма
-{
-  dispatch: AppDispatch
-  state: RootState
-  extra: AxiosInstance
-}
->(
-ApiActions.REMOVE_FAVORITE_FILM_DB, 
-async ({ userId, filmId }, { dispatch, extra: api }) => {
-  try {
-    // const toast = useToast()
-    // отправляем запрос, при этом прокидываем через params id пользователя, а через тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
-    await api.delete(
-      `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.REMOVE_FAVORITE_FILM}`,
-      { data: { filmId } }
-    )
-    // local.addFavoriteFilm(filmId)
-    // dispatch(addToFavoriteFilm(filmId)) 
-    // toast.success('Фильм успешно добавлен в избранное')
-  } catch (err) {
-    // при ошибке отклоняем авторизацию и показываем сообщение
-    dispatch(setAuthStatus(AuthStatus.NO_AUTH))
-    dispatch(setIsDataLoading(false))
-    useError(err as AxiosError | Error)
+  void, // Возвращаемый тип данных
+  { userId: string; filmId: string }, // передаём объект с данными пользователя и добавляемого фильма
+  {
+    dispatch: AppDispatch
+    state: RootState
+    extra: AxiosInstance
   }
-}
+>(
+  ApiActions.REMOVE_FAVORITE_FILM_DB,
+  async ({ userId, filmId }, { dispatch, extra: api }) => {
+    try {
+      console.log(userId)
+      // const toast = useToast()
+      // отправляем запрос, при этом прокидываем через params id пользователя, а через тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
+      await api.delete(
+        `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.REMOVE_FAVORITE_FILM}`,
+        { data: { filmId } }
+      )
+      // local.addFavoriteFilm(filmId)
+      // dispatch(addToFavoriteFilm(filmId))
+      // toast.success('Фильм успешно добавлен в избранное')
+    } catch (err) {
+      // при ошибке отклоняем авторизацию и показываем сообщение
+      dispatch(setAuthStatus(AuthStatus.NO_AUTH))
+      dispatch(setIsDataLoading(false))
+      useError(err as AxiosError | Error)
+    }
+  }
 )
 
 export const removeFavoriteFilm = createAsyncThunk<
@@ -199,7 +200,6 @@ export const removeFavoriteFilm = createAsyncThunk<
     dispatch(removeFromFavoriteFilm(response)) // получаем id удаляемого фильма и удаляем его из списка любимых
   }
 )
-
 
 // получаем отзывы по id фильма
 export const fetchReviews = createAsyncThunk<
@@ -325,8 +325,6 @@ export const registerAction = createAsyncThunk<
     }
   }
 )
-
-
 
 export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
   ApiActions.SEND_REVIEW,

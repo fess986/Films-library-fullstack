@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../../../store'
 import {
   removeFavoriteFilm,
   addFavoriteFilmDB,
-  removeFavoriteFilmDB
+  removeFavoriteFilmDB,
 } from '../../../../store/api-actions'
 import { getActiveFilm } from '../../../../store/films/filmsSelector'
 import {
@@ -73,10 +73,12 @@ const ButtonAdd: React.FC = () => {
           filmId: activeFilm.id,
         })
       )
-      dispatch(removeFavoriteFilmDB({
-        userId: userId || '666',
-        filmId: activeFilm.id,
-      }))
+      dispatch(
+        removeFavoriteFilmDB({
+          userId: userId || '666',
+          filmId: activeFilm.id,
+        })
+      )
     } else {
       dispatch(
         addFavoriteFilmDB({
@@ -84,7 +86,6 @@ const ButtonAdd: React.FC = () => {
           filmId: activeFilm.id,
         })
       )
-
     }
   }
 
