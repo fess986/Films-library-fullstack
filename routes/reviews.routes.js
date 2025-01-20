@@ -2,6 +2,8 @@ import { Router } from 'express'
 
 import { ApiRoutes } from '../const/const.js'
 import { Review } from '../models/Reviews.js'
+import { User } from '../models/User.js'
+import { Film } from '../models/Films.js'
 
 const router = Router()
 
@@ -24,11 +26,26 @@ router.get(ApiRoutes.GET_REVIEWS, async (req, res) => {
 
 router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
   try {
-    const { userId } = req.body
-    console.log('userId - ', userId)
+    const { review } = req.body
+    console.log('review - ', review)
     const { filmId } = req.params
     console.log('filmId - ', filmId)
-    console.log('запись review пришел на бэк')
+
+    const user = await User.findById(review.userId)
+    console.log('user - ', user)
+    const film = await Film.findById(filmId)
+    console.log('film - ', film)
+
+    const newReview = new Review({
+      userId: review.userId,
+      userName: user.email,
+      filmId,
+      rating: review.rating,
+      commentText: review.text,
+      date: review.date,
+    })
+
+    await newReview.save()
     // const reviews = await Review.find({})
     // console.log(reviews)
     // res.status(200).json(reviews)

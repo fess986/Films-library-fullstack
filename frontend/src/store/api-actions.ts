@@ -228,33 +228,28 @@ export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
 
 export const sendReviewDB = createAsyncThunk<
   void, // Возвращаемый тип данных
-  { filmId: string; userId: string }, // Аргументы, передаваемые в thunk
+  commentProps, // Аргументы, передаваемые в thunk
   ThunkConfig // используем типизированную конфигурацию
->(
-  ApiActions.SEND_REVIEW_DB,
-  async ({ filmId, userId }, { dispatch, extra: api }) => {
-    console.log('отправка review с фронта')
-    console.log(dispatch)
+>(ApiActions.SEND_REVIEW_DB, async (review, { dispatch, extra: api }) => {
+  console.log('отправка review с фронта')
+  console.log(dispatch)
 
-    await api.post(
-      `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.SET_REVIEW.replace(':filmId', filmId)}`,
-      {
-        userId: userId,
-      }
-    )
-    // console.log(reviews)
+  await api.post(
+    `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.SET_REVIEW.replace(':filmId', review.filmId)}`,
+    { review }
+  )
+  // console.log(reviews)
 
-    // const reviews = await api
-    //   .get(baseMockUrl + ApiRoutesMock.FETCH_REVIEWS.replace(':id', String(id)))
-    //   .then(() => Reviews as Review[])
-    // dispatch(setReviewsList(reviews))
+  // const reviews = await api
+  //   .get(baseMockUrl + ApiRoutesMock.FETCH_REVIEWS.replace(':id', String(id)))
+  //   .then(() => Reviews as Review[])
+  // dispatch(setReviewsList(reviews))
 
-    // dispatch(setIsReviewsLoaded(true)); // перенесено в extraReducers
+  // dispatch(setIsReviewsLoaded(true)); // перенесено в extraReducers
 
-    // return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
-    console.log('отправка review с фронта успешна')
-  }
-)
+  // return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
+  console.log('отправка review с фронта успешна')
+})
 
 // экшены связанные с авторизацией.............
 // логин пользователя
