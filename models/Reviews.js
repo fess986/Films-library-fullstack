@@ -2,16 +2,16 @@ import { Schema, model, Types } from 'mongoose'
 
 const reviewSchema = new Schema({
   userId: {
-    type: String,
-    required: true,
+      type: Types.ObjectId,
+      ref: 'User', // Связь с таблицей пользователей
   },
   userName: {
     type: String,
     required: true,
   },
   filmId: {
-    type: String,
-    required: true,
+    type: Types.ObjectId, // тип - идентификатор
+    ref: 'Films', // привязываемся к модели Films
   },
   rating: {
     type: Number,
