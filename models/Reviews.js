@@ -2,8 +2,8 @@ import { Schema, model, Types } from 'mongoose'
 
 const reviewSchema = new Schema({
   userId: {
-      type: Types.ObjectId,
-      ref: 'User', // Связь с таблицей пользователей
+    type: Types.ObjectId,
+    ref: 'User', // Связь с таблицей пользователей
   },
   userName: {
     type: String,
