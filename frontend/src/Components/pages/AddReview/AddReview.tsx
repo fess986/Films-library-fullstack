@@ -8,7 +8,7 @@ import {
 } from '../../../const/const'
 import useActiveFilm from '../../../hooks/useActiveFilm'
 import { useAppDispatch } from '../../../store'
-import { sendReview, sendReviewDB } from '../../../store/api-actions'
+import { sendReviewDB } from '../../../store/api-actions'
 import { getIsReviewsSending } from '../../../store/reviews/reviewsSelector'
 import { getUserId } from '../../../store/user/userSelectors'
 import { commentProps } from '../../../types/types'
@@ -43,7 +43,6 @@ const AddReview: React.FC = () => {
 
   const submitHandler = () => {
     console.log(comment)
-    dispatch(sendReview(comment))
     dispatch(sendReviewDB(comment))
   }
 
