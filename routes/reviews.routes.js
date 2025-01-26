@@ -63,13 +63,11 @@ router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
 
       // Отправляем отзывы на фронт
       return res.status(200).json(formattedReviews)
-
     } else {
       return res.status(404).json({
         message: 'Фильм или пользователь не найден',
       })
     }
-
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'Что-то пошло не так при отправке отзыва' })
