@@ -25,6 +25,6 @@ export const ApiRoutes = {
   REMOVE_FAVORITE_FILM: '/remove-favorite/:userId', // post - id пользователя в параметрах, id фильма в теле
 
   REVIEWS: '/api/reviews', // общий для отзывов
-  GET_REVIEWS: '/get-reviews', // get
+  GET_REVIEWS: '/get-reviews/:filmId', // get
   SET_REVIEW: '/set-review/:filmId', // post
 }

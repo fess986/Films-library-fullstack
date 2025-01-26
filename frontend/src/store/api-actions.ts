@@ -173,23 +173,17 @@ export const fetchReviews = createAsyncThunk<
 
 export const fetchReviewsDB = createAsyncThunk<
   string, // Возвращаемый тип данных
-  void, // Аргументы, передаваемые в thunk
+  string, // передаём id фильма для скачивания отзывов
   ThunkConfig // используем типизированную конфигурацию
->(ApiActions.FETCH_REVIEWS, async (_id, { dispatch, extra: api }) => {
+>(ApiActions.FETCH_REVIEWS, async (filmId, { dispatch, extra: api }) => {
   console.log('запрос reviews с фронта')
   console.log(dispatch)
+  console.log('filmId в api - ', filmId.toString())
 
   const reviews = await api.get(
-    `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_REVIEWS}`
+    `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_REVIEWS.replace(':filmId', filmId)}`
   )
   console.log(reviews)
-
-  // const reviews = await api
-  //   .get(baseMockUrl + ApiRoutesMock.FETCH_REVIEWS.replace(':id', String(id)))
-  //   .then(() => Reviews as Review[])
-  // dispatch(setReviewsList(reviews))
-
-  // dispatch(setIsReviewsLoaded(true)); // перенесено в extraReducers
 
   return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
 })
