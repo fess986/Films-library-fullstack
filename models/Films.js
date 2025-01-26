@@ -68,6 +68,12 @@ const filmSchema = new Schema({
       ref: 'User', // Связь с таблицей пользователей
     },
   ],
+  reviews: [
+    {
+      type: Types.ObjectId, // тип - идентификатор
+      ref: 'Review', // привязываемся к модели Review
+    },
+  ],
 })
 
 export const Film = model('Film', filmSchema)

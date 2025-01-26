@@ -51,6 +51,8 @@ router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
 
       user.reviews.push(reviewId)
       await user.save()
+      film.reviews.push(reviewId)
+      await film.save()
     } else {
       return res.status(404).json({
         message: 'Фильм или пользователь не найден',
