@@ -45,7 +45,6 @@ router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
 
       film.reviews.push(reviewId)
       await film.save()
-
     } else {
       return res.status(404).json({
         message: 'Фильм или пользователь не найден',
@@ -58,7 +57,7 @@ router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
     // потом преобразовать их к виду Review[]
     // и отправить на фронт
 
-    res.status(200).json({ message: 'Отзывы отправлены' })  // вместо этого нужно отправить массив отзывов
+    res.status(200).json({ message: 'Отзывы отправлены' }) // вместо этого нужно отправить массив отзывов
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'Что-то пошло не так при отправке отзыва' })

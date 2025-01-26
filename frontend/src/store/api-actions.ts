@@ -100,7 +100,7 @@ export const addFavoriteFilmDB = createAsyncThunk<
     extra: AxiosInstance
   }
 >(
-  ApiActions.ADD_FAVORITE_FILM_DB, 
+  ApiActions.ADD_FAVORITE_FILM_DB,
   async ({ userId, filmId }, { dispatch, extra: api }) => {
     try {
       const toast = useToast()
@@ -240,7 +240,7 @@ export const sendReviewDB = createAsyncThunk<
   )
 
   // тут нужно дописать код...
-  // dispatch(setReviewsList(response)) 
+  // dispatch(setReviewsList(response))
 
   console.log('отправка review с фронта успешна')
 })
