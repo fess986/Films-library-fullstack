@@ -100,7 +100,7 @@ export const addFavoriteFilmDB = createAsyncThunk<
     extra: AxiosInstance
   }
 >(
-  ApiActions.ADD_FAVORITE_FILM_DB, // Имя thunka
+  ApiActions.ADD_FAVORITE_FILM_DB,
   async ({ userId, filmId }, { dispatch, extra: api }) => {
     try {
       const toast = useToast()
@@ -238,16 +238,10 @@ export const sendReviewDB = createAsyncThunk<
     `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.SET_REVIEW.replace(':filmId', review.filmId)}`,
     { review }
   )
-  // console.log(reviews)
 
-  // const reviews = await api
-  //   .get(baseMockUrl + ApiRoutesMock.FETCH_REVIEWS.replace(':id', String(id)))
-  //   .then(() => Reviews as Review[])
-  // dispatch(setReviewsList(reviews))
+  // тут нужно дописать код...
+  // dispatch(setReviewsList(response))
 
-  // dispatch(setIsReviewsLoaded(true)); // перенесено в extraReducers
-
-  // return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
   console.log('отправка review с фронта успешна')
 })
 

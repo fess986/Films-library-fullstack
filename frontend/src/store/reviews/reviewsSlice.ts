@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 
 import { StoreNames } from '../../const/const'
-import { fetchReviews, sendReview } from '../../store/api-actions'
+import { fetchReviews, sendReview, sendReviewDB } from '../../store/api-actions'
 import { Review } from '../../types/types'
 
 type ReviewsState = {
@@ -56,6 +56,17 @@ export const reviewsSlice = createSlice({
         state.isReviewSending = false
       })
       .addCase(sendReview.rejected, (state) => {
+        state.isReviewSending = false
+        toast.error('Не удалось отправить отзыв')
+      })
+
+      .addCase(sendReviewDB.pending, (state) => {
+        state.isReviewSending = true
+      })
+      .addCase(sendReviewDB.fulfilled, (state) => {
+        state.isReviewSending = false
+      })
+      .addCase(sendReviewDB.rejected, (state) => {
         state.isReviewSending = false
         toast.error('Не удалось отправить отзыв')
       })
