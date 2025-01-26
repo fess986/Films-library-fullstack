@@ -33,7 +33,7 @@ export type FilmProps = {
 export type Review = {
   id: string
   userId: string
-  userName: string  
+  userName: string
   filmId: string
   rating: number
   commentText: string
