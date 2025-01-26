@@ -194,55 +194,66 @@ export const fetchReviewsDB = createAsyncThunk<
   return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
 })
 
-export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
-  ApiActions.SEND_REVIEW,
-  async (commentInfo, { dispatch, extra: api }) => {
-    try {
-      const toast = useToast()
-      // await api.post(ApiRoutesMock.SEND_REVIEW, commentInfo);
-      toast.info('Отправка отзыва')
+// уже не нужен, так как есть версия которая работает с базой данных
+// export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
+//   ApiActions.SEND_REVIEW,
+//   async (commentInfo, { dispatch, extra: api }) => {
+//     try {
+//       const toast = useToast()
+//       // await api.post(ApiRoutesMock.SEND_REVIEW, commentInfo);
+//       toast.info('Отправка отзыва')
 
-      // нужно будет заменить на post, отправляем данные пользователя и комментария на сервер и получаем назад актуальные отзывы на фильм
-      const response = await api
-        .get(baseMockUrl + ApiRoutesMock.SEND_REVIEW)
-        .then(() => Reviews as Review[])
+//       // нужно будет заменить на post, отправляем данные пользователя и комментария на сервер и получаем назад актуальные отзывы на фильм
+//       const response = await api
+//         .get(baseMockUrl + ApiRoutesMock.SEND_REVIEW)
+//         .then(() => Reviews as Review[])
 
-      dispatch(setReviewsList(response))
-      dispatch(
-        redirect(
-          `${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(
-            ':id/*',
-            String(commentInfo.filmId)
-          )}`
-        )
-      )
+//       dispatch(setReviewsList(response))
+//       dispatch(
+//         redirect(
+//           `${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(
+//             ':id/*',
+//             String(commentInfo.filmId)
+//           )}`
+//         )
+//       )
 
-      toast.success('Отзыв отправлен')
-    } catch (error) {
-      const toast = useToast()
-      console.log(error)
-      toast.error('Ошибка отправки отзыва')
-    }
-  }
-)
+//       toast.success('Отзыв отправлен')
+//     } catch (error) {
+//       const toast = useToast()
+//       console.log(error)
+//       toast.error('Ошибка отправки отзыва')
+//     }
+//   }
+// )
 
 export const sendReviewDB = createAsyncThunk<
   void, // Возвращаемый тип данных
   commentProps, // Аргументы, передаваемые в thunk
   ThunkConfig // используем типизированную конфигурацию
 >(ApiActions.SEND_REVIEW_DB, async (review, { dispatch, extra: api }) => {
+  const toast = useToast()
   console.log('отправка review с фронта')
   console.log(dispatch)
 
-  await api.post(
+  const response = await api.post(
     `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.SET_REVIEW.replace(':filmId', review.filmId)}`,
     { review }
   )
 
-  // тут нужно дописать код...
-  // dispatch(setReviewsList(response))
+  dispatch(setReviewsList(response.data as Review[]))
+
+  dispatch(
+    redirect(
+      `${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(
+        ':id/*',
+        String(review.filmId)
+      )}`
+    )
+  )
 
   console.log('отправка review с фронта успешна')
+  toast.success('Отзыв отправлен')
 })
 
 // экшены связанные с авторизацией.............
