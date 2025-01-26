@@ -8,13 +8,8 @@ import { Film } from '../models/Films.js'
 const router = Router()
 
 router.get(ApiRoutes.GET_REVIEWS, async (req, res) => {
-  // console.log(req)
-  // console.log(res)
   try {
-    console.log('запрос reviews пришел на бэк')
     const reviews = await Review.find({})
-    // console.log(reviews)
-    // res.status(200).json(reviews)
     res.status(200).json({ message: 'Отзывы загружены' })
   } catch (error) {
     console.log(error)
@@ -27,14 +22,10 @@ router.get(ApiRoutes.GET_REVIEWS, async (req, res) => {
 router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
   try {
     const { review } = req.body
-    console.log('review - ', review)
     const { filmId } = req.params
-    console.log('filmId - ', filmId)
 
     const user = await User.findById(review.userId)
-    console.log('user - ', user)
     const film = await Film.findById(filmId)
-    console.log('film - ', film)
 
     if (user && film) {
       const newReview = new Review({
@@ -51,18 +42,23 @@ router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
 
       user.reviews.push(reviewId)
       await user.save()
+
       film.reviews.push(reviewId)
       await film.save()
+
     } else {
       return res.status(404).json({
         message: 'Фильм или пользователь не найден',
       })
     }
 
-    // const reviews = await Review.find({})
-    // console.log(reviews)
-    // res.status(200).json(reviews)
-    res.status(200).json({ message: 'Отзывы отправлен' })
+    // console.log(film.reviews)
+    // тут нужно дописать код...
+    // тут нужно получить отзывы по фильму
+    // потом преобразовать их к виду Review[]
+    // и отправить на фронт
+
+    res.status(200).json({ message: 'Отзывы отправлены' })  // вместо этого нужно отправить массив отзывов
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'Что-то пошло не так при отправке отзыва' })

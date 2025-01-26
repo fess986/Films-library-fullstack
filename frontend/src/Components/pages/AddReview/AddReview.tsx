@@ -39,7 +39,6 @@ const AddReview: React.FC = () => {
       text.length < MINIMUM_REVIEW_LENGTH || text.length > MAXIMUM_REVIEW_LENGTH
     )
     setReviewText(text)
-    console.log(comment)
   }
 
   const submitHandler = () => {
@@ -47,9 +46,6 @@ const AddReview: React.FC = () => {
     dispatch(sendReview(comment))
     dispatch(sendReviewDB(comment))
   }
-
-  console.log(isActiveFilmLoaded)
-  console.log(currentFilm)
 
   return !isActiveFilmLoaded || !currentFilm ? (
     <div>Loading</div>
