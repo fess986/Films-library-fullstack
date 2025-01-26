@@ -13,7 +13,7 @@ router.get(ApiRoutes.GET_REVIEWS, async (req, res) => {
   try {
     console.log('запрос reviews пришел на бэк')
     const reviews = await Review.find({})
-    console.log(reviews)
+    // console.log(reviews)
     // res.status(200).json(reviews)
     res.status(200).json({ message: 'Отзывы загружены' })
   } catch (error) {
@@ -36,16 +36,28 @@ router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
     const film = await Film.findById(filmId)
     console.log('film - ', film)
 
-    const newReview = new Review({
-      userId: review.userId,
-      userName: user.email,
-      filmId,
-      rating: review.rating,
-      commentText: review.text,
-      date: review.date,
-    })
+    if (user && film) {
+      const newReview = new Review({
+        userId: review.userId,
+        userName: user.email,
+        filmId,
+        rating: review.rating,
+        commentText: review.text,
+        date: review.date,
+      })
+      await newReview.save()
 
-    await newReview.save()
+      const reviewId = newReview._id.toString()
+
+      user.reviews.push(reviewId)
+      await user.save()
+
+    } else {
+      return res.status(404).json({
+        message: 'Фильм или пользователь не найден',
+      })
+    }
+
     // const reviews = await Review.find({})
     // console.log(reviews)
     // res.status(200).json(reviews)
