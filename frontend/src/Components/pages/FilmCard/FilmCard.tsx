@@ -42,7 +42,10 @@ const FilmCard: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchReviews(activeFilm?.id || '0'))
-    dispatch(fetchReviewsDB())
+
+    if (activeFilm?.id) {
+      dispatch(fetchReviewsDB(activeFilm.id))
+    }
   }, [dispatch, activeFilm?.id])
 
   return (
