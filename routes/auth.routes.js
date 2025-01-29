@@ -20,8 +20,6 @@ router.post(
   ],
   async (req, res) => {
     try {
-      console.log('register')
-      console.log('req.body', req.body)
       const errors = validationResult(req) // таким образом мы подключаем валидацию
 
       if (!errors.isEmpty()) {
@@ -89,7 +87,6 @@ router.post(
       const { email, password } = req.body
 
       const user = await User.findOne({ email }) // ищем пользователя в базе по email
-      console.log('user', user)
 
       if (!user) {
         // если нет такого email - выходим

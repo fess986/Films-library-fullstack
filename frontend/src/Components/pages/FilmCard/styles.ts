@@ -32,6 +32,6 @@ export const SectionMoreFilms = styled(Section)`
 export const H2MoreFilmsTitle = styled(H2)`
   ${fontH2}
 
-  text-decoration: underline dotted black;
+  text-decoration: underline black;
   text-underline-offset: 5px;
 `

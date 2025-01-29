@@ -18,8 +18,8 @@ const MyList: React.FC = () => {
   return (
     <SectionCatalogContainer>
       <SectionCatalog>
-        <H2Hidden as="h2">My list</H2Hidden>
-        <H2CatalogTitle>My list</H2CatalogTitle>
+        <H2Hidden as="h2">My favorite films</H2Hidden>
+        <H2CatalogTitle>My favorite films</H2CatalogTitle>
 
         {isFilmsLoaded ? (
           <FilmList films={favoriteFilms} />

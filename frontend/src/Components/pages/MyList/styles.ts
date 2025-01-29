@@ -9,6 +9,7 @@ export const H2Hidden = styled(H1Hidden)`
 `
 
 export const H2CatalogTitle = styled(H2)`
+  text-decoration: underline;
   ${fontH2}
 `
 export const SectionCatalog = styled(Section)`

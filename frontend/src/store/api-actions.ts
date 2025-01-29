@@ -286,7 +286,6 @@ export const loginAction = createAsyncThunk<
       dispatch(setIsDataLoading(false)) // конец загрузки
 
       // регистрируем пользователя с полученными данными и записываем данные в redux и localStorage
-      console.log('data - ', data)
       loginUtil(
         dispatch,
         data.data.token,
