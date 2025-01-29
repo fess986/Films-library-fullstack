@@ -1,25 +1,19 @@
 import React from 'react'
-// import { useSelector } from 'react-redux'
-// import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-// import { AppRoutes } from '../../../../const/const'
-// import { useAppDispatch } from '../../../../store'
-// import { resetFilmsShownCount } from '../../../../store/app/appSlice'
-// import { getActiveFilm } from '../../../../store/films/filmsSelector'
+import { AuthStatus, AppRoutes } from '../../../../const/const'
+import { getIsAuth } from '../../../../store/user/userSelectors'
 import { StyledButton } from '../styles'
 
 const ButtonUserPage: React.FC = () => {
-  // const navigate = useNavigate()
-  // const dispatch = useAppDispatch()
-  // const currentFilm = useSelector(getActiveFilm)
+  const navigate = useNavigate()
+  const isAuth = useSelector(getIsAuth)
 
   const handleClick = () => {
-    console.log('click')
-    // currentFilm &&
-    //   navigate(
-    //     `${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(':id/*', String(currentFilm.id))}`
-    //   )
-    // dispatch(resetFilmsShownCount())
+    isAuth === AuthStatus.AUTH
+      ? navigate(AppRoutes.MY_LIST)
+      : navigate(AppRoutes.SIGN_IN)
   }
 
   return (
