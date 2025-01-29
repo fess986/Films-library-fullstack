@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 
 import { StoreNames } from '../../const/const'
-import { fetchReviews, sendReviewDB } from '../../store/api-actions'
+import { fetchReviewsDB, sendReviewDB } from '../../store/api-actions'
 import { Review } from '../../types/types'
 
 type ReviewsState = {
@@ -36,15 +36,13 @@ export const reviewsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchReviews.pending, (state) => {
+      .addCase(fetchReviewsDB.pending, (state) => {
         state.isReviewsLoaded = false
       })
-      .addCase(fetchReviews.fulfilled, (state) => {
-        // state.reviewsList = action.payload;  // сюда попадает то что возвращается из thunk
-        // console.log(action.payload);
+      .addCase(fetchReviewsDB.fulfilled, (state) => {
         state.isReviewsLoaded = true
       })
-      .addCase(fetchReviews.rejected, (state) => {
+      .addCase(fetchReviewsDB.rejected, (state) => {
         state.isReviewsLoaded = false
         toast.error('Не удалось загрузить отзывы')
       })

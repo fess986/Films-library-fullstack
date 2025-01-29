@@ -15,12 +15,10 @@ import {
 import { ApiRoutes } from '../../../const/const'
 import {
   ApiActions,
-  ApiRoutesMock,
   AppRoutes,
   AuthStatus,
 } from '../const/const'
 import { useError } from '../hooks/useError'
-import { Reviews } from '../mock/reviews'
 import { commentProps, UserInfo, Review, fetchedReview } from '../types/types'
 import { loginUtil } from '../utils/authUtils'
 import local from '../utils/localStorage'
@@ -32,7 +30,7 @@ type ThunkConfig = {
   extra: AxiosInstance
 }
 
-const baseMockUrl = 'http://localhost:5173'
+// const baseMockUrl = 'http://localhost:5173'
 const baseURL = import.meta.env.VITE_BASE_URL
 
 // получаем все фильмы из базы данных
@@ -153,22 +151,22 @@ export const removeFavoriteFilmDB = createAsyncThunk<
 
 // действия с отзывами........................
 // получаем отзывы по id фильма
-export const fetchReviews = createAsyncThunk<
-  string, // Возвращаемый тип данных
-  string, // Аргументы, передаваемые в thunk
-  ThunkConfig // используем типизированную конфигурацию
->(ApiActions.FETCH_REVIEWS, async (id, { dispatch, extra: api }) => {
-  // dispatch(setIsReviewsLoaded(false)); // перенесено в extraReducers
+// export const fetchReviews = createAsyncThunk<
+//   string, // Возвращаемый тип данных
+//   string, // Аргументы, передаваемые в thunk
+//   ThunkConfig // используем типизированную конфигурацию
+// >(ApiActions.FETCH_REVIEWS, async (id, { dispatch, extra: api }) => {
+//   // dispatch(setIsReviewsLoaded(false)); // перенесено в extraReducers
 
-  const reviews = await api
-    .get(baseMockUrl + ApiRoutesMock.FETCH_REVIEWS.replace(':id', String(id)))
-    .then(() => Reviews as Review[])
-  dispatch(setReviewsList(reviews))
+//   const reviews = await api
+//     .get(baseMockUrl + ApiRoutesMock.FETCH_REVIEWS.replace(':id', String(id)))
+//     .then(() => Reviews as Review[])
+//   dispatch(setReviewsList(reviews))
 
-  // dispatch(setIsReviewsLoaded(true)); // перенесено в extraReducers
+//   // dispatch(setIsReviewsLoaded(true)); // перенесено в extraReducers
 
-  return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
-})
+//   return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
+// })
 
 export const fetchReviewsDB = createAsyncThunk<
   void, // Возвращаемый тип данных
