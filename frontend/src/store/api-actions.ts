@@ -180,10 +180,10 @@ export const fetchReviewsDB = createAsyncThunk<
     `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_REVIEWS.replace(':filmId', filmId)}`
   )
 
-  const reviews = response.data;
+  const reviews = response.data
 
   // нужно чтобы в normolizeReviews был массив переданных reviews, только вместо reviews._id было id
-  const normolizeReviews : Review[] = reviews.map((review : fetchedReview) => {
+  const normolizeReviews: Review[] = reviews.map((review: fetchedReview) => {
     return {
       id: review._id,
       userId: review.userId,
@@ -195,7 +195,6 @@ export const fetchReviewsDB = createAsyncThunk<
     }
   })
   dispatch(setReviewsList(normolizeReviews))
-  
 })
 
 // уже не нужен, так как есть версия которая работает с базой данных

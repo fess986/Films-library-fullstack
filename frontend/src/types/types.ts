@@ -41,13 +41,13 @@ export type Review = {
 }
 
 export type fetchedReview = {
-  _id: string;
-  userId: string;
-  userName: string;
-  filmId: string;
-  rating: number;
-  commentText: string;
-  date: string;
+  _id: string
+  userId: string
+  userName: string
+  filmId: string
+  rating: number
+  commentText: string
+  date: string
 }
 
 export type commentProps = {
