@@ -21,7 +21,7 @@ import {
 } from '../const/const'
 import { useError } from '../hooks/useError'
 import { Reviews } from '../mock/reviews'
-import { commentProps, UserInfo, Review } from '../types/types'
+import { commentProps, UserInfo, Review, fetchedReview } from '../types/types'
 import { loginUtil } from '../utils/authUtils'
 import local from '../utils/localStorage'
 
@@ -172,20 +172,29 @@ export const fetchReviews = createAsyncThunk<
 })
 
 export const fetchReviewsDB = createAsyncThunk<
-  string, // Возвращаемый тип данных
+  void, // Возвращаемый тип данных
   string, // передаём id фильма для скачивания отзывов
   ThunkConfig // используем типизированную конфигурацию
 >(ApiActions.FETCH_REVIEWS, async (filmId, { dispatch, extra: api }) => {
-  console.log('запрос reviews с фронта')
-  console.log(dispatch)
-  console.log('filmId в api - ', filmId.toString())
-
-  const reviews = await api.get(
+  const response = await api.get(
     `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_REVIEWS.replace(':filmId', filmId)}`
   )
-  console.log(reviews)
 
-  return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
+  const reviews = response.data
+
+  // нужно чтобы в normolizeReviews был массив переданных reviews, только вместо reviews._id было id
+  const normolizeReviews: Review[] = reviews.map((review: fetchedReview) => {
+    return {
+      id: review._id,
+      userId: review.userId,
+      userName: review.userName,
+      filmId: review.filmId,
+      rating: review.rating,
+      commentText: review.commentText,
+      date: review.date,
+    }
+  })
+  dispatch(setReviewsList(normolizeReviews))
 })
 
 // уже не нужен, так как есть версия которая работает с базой данных
