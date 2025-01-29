@@ -10,11 +10,14 @@ const router = Router()
 router.get(ApiRoutes.GET_REVIEWS, async (req, res) => {
   try {
     const { filmId } = req.params
-    console.log(filmId)
 
-    const reviews = await Review.find({ filmId }).lean()
+    if (filmId) {
+      const reviews = await Review.find({ filmId }).lean()
 
-    res.status(200).json(reviews)
+      res.status(200).json(reviews)
+    } else {
+      res.status(404).json({ message: 'Фильм не найден' })
+    }
   } catch (error) {
     console.log(error)
     res
