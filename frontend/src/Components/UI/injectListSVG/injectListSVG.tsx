@@ -1,4 +1,12 @@
-import { Add, FullScreen, InList, Play, Pause, Details, UserPage } from './svgList'
+import {
+  Add,
+  FullScreen,
+  InList,
+  Play,
+  Pause,
+  Details,
+  UserPage,
+} from './svgList'
 import { DivHidden } from '../../styled/Components'
 
 type InjectListSVGProps = {

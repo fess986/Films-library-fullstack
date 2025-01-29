@@ -24,7 +24,7 @@ const ButtonUserPage: React.FC = () => {
 
   return (
     <StyledButton onClick={handleClick}>
-      <svg viewBox="0 0 25 25" width={24} height={25}>
+      <svg viewBox="0 0 25 25" width={25} height={25}>
         <use xlinkHref="#user" />
       </svg>
       <span>User Page</span>
