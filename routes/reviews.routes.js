@@ -11,8 +11,10 @@ router.get(ApiRoutes.GET_REVIEWS, async (req, res) => {
   try {
     const { filmId } = req.params
     console.log(filmId)
-    // const reviews = await Review.find({})
-    res.status(200).json({ message: 'Отзывы загружены' })
+
+    const reviews = await Review.find({ filmId }).lean()
+
+    res.status(200).json(reviews)
   } catch (error) {
     console.log(error)
     res
