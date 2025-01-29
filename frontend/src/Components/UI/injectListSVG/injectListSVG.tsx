@@ -8,6 +8,7 @@ type InjectListSVGProps = {
   play?: boolean
   pause?: boolean
   details?: boolean
+  userPage?: boolean
 }
 
 const InjectListSVG: React.FC<InjectListSVGProps> = ({
@@ -17,6 +18,7 @@ const InjectListSVG: React.FC<InjectListSVGProps> = ({
   play,
   pause,
   details,
+  userPage,
 }) => {
   return (
     <DivHidden>
@@ -36,6 +38,8 @@ const InjectListSVG: React.FC<InjectListSVGProps> = ({
         {pause && <Pause />}
 
         {details && <Details />}
+
+        {userPage && <Details />}
       </svg>
       {/* endinject */}
     </DivHidden>
