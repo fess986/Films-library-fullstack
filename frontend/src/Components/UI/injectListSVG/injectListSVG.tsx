@@ -1,4 +1,12 @@
-import { Add, FullScreen, InList, Play, Pause, Details } from './svgList'
+import {
+  Add,
+  FullScreen,
+  InList,
+  Play,
+  Pause,
+  Details,
+  UserPage,
+} from './svgList'
 import { DivHidden } from '../../styled/Components'
 
 type InjectListSVGProps = {
@@ -39,7 +47,7 @@ const InjectListSVG: React.FC<InjectListSVGProps> = ({
 
         {details && <Details />}
 
-        {userPage && <Details />}
+        {userPage && <UserPage />}
       </svg>
       {/* endinject */}
     </DivHidden>
