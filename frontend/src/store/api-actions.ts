@@ -133,7 +133,6 @@ export const removeFavoriteFilmDB = createAsyncThunk<
   ApiActions.REMOVE_FAVORITE_FILM_DB,
   async ({ userId, filmId }, { dispatch, extra: api }) => {
     try {
-      console.log(userId)
       const toast = useToast()
       // отправляем запрос, при этом прокидываем через params id пользователя, а через DATA(особенность delete роута) - тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
       await api.delete(
@@ -176,25 +175,35 @@ export const fetchReviewsDB = createAsyncThunk<
   string, // передаём id фильма для скачивания отзывов
   ThunkConfig // используем типизированную конфигурацию
 >(ApiActions.FETCH_REVIEWS, async (filmId, { dispatch, extra: api }) => {
-  const response = await api.get(
-    `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_REVIEWS.replace(':filmId', filmId)}`
-  )
+  try {
+    dispatch(setIsDataLoading(true))
 
-  const reviews = response.data
+    const response = await api.get(
+      `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_REVIEWS.replace(':filmId', filmId)}`
+    )
 
-  // нужно чтобы в normolizeReviews был массив переданных reviews, только вместо reviews._id было id
-  const normolizeReviews: Review[] = reviews.map((review: fetchedReview) => {
-    return {
-      id: review._id,
-      userId: review.userId,
-      userName: review.userName,
-      filmId: review.filmId,
-      rating: review.rating,
-      commentText: review.commentText,
-      date: review.date,
-    }
-  })
-  dispatch(setReviewsList(normolizeReviews))
+    const reviews = response.data
+
+    // нужно чтобы в normolizeReviews был массив переданных reviews, только вместо reviews._id было id
+    const normolizeReviews: Review[] = reviews.map((review: fetchedReview) => {
+      return {
+        id: review._id,
+        userId: review.userId,
+        userName: review.userName,
+        filmId: review.filmId,
+        rating: review.rating,
+        commentText: review.commentText,
+        date: review.date,
+      }
+    })
+
+    dispatch(setReviewsList(normolizeReviews))
+    dispatch(setIsDataLoading(false))
+  } catch (err) {
+    // при ошибке показываем сообщение об ошибке
+    dispatch(setIsDataLoading(false))
+    useError(err as AxiosError | Error)
+  }
 })
 
 // уже не нужен, так как есть версия которая работает с базой данных
