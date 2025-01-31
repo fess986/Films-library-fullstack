@@ -9,7 +9,10 @@ import {
   DivReviewsCol,
 } from './styles'
 import { Reviews } from '../../../mock/reviews'
-import { getIsFilmsLoaded, getIsDataLoading } from '../../../store/app/appSelectors'
+import {
+  getIsFilmsLoaded,
+  getIsDataLoading,
+} from '../../../store/app/appSelectors'
 import { getFavoriteFilmList } from '../../../store/films/filmsSelector'
 import { FilmProps } from '../../../types/types'
 import FilmList from '../../blocks/FilmList/FilmList'
@@ -51,12 +54,9 @@ const MyList: React.FC = () => {
           <H2Hidden as="h2">My reviews</H2Hidden>
           <H2CatalogTitle>My reviews</H2CatalogTitle>
 
-
           {!isDataLoading ? (
             <DivReviewsContainer>
-              <DivReviewsCol>
-                {getReviews(0, firstColEnd)}
-              </DivReviewsCol>
+              <DivReviewsCol>{getReviews(0, firstColEnd)}</DivReviewsCol>
 
               <DivReviewsCol>
                 {getReviews(firstColEnd, reviews.length)}
@@ -65,12 +65,9 @@ const MyList: React.FC = () => {
           ) : (
             <div>Loading...</div>
           )}
-
-
         </SectionCatalog>
       </SectionCatalogContainer>
     </>
-
   )
 }
 
