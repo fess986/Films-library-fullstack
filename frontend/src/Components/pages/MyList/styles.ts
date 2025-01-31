@@ -28,13 +28,13 @@ export const DivReviewsContainer = styled(Div)`
   flex-direction: row;
   align-items: flex-start;
 
-  max-width: 792px;
+  max-width: 1200px;
 `
 
 export const DivReviewsCol = styled(Div)`
   width: calc((100% - 60px) / 2);
   margin-right: 60px;
-  max-width: 365px;
+  max-width: 570px;
 
   &:nth-last-child(1) {
     margin-right: 0;
