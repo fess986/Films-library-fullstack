@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { H1Hidden, H2, Section } from '../../styled/Components'
+import { H1Hidden, H2, Section, Div } from '../../styled/Components'
 import { fontH2 } from '../../styled/Mixins/mixins'
 
 export const H2Hidden = styled(H1Hidden)`
@@ -12,14 +12,31 @@ export const H2CatalogTitle = styled(H2)`
   text-decoration: underline;
   ${fontH2}
 `
-export const SectionCatalog = styled(Section)`
+export const SectionCatalog = styled(Section)<{ $isMoved?: boolean }>`
   width: 100%;
   width: 1200px;
   max-width: 1200px;
 
   padding: 20px 75px;
-  margin-top: -200px;
+  margin-top: ${(props) => props.$isMoved && '-200px'};
 `
 export const SectionCatalogContainer = styled(Section)`
   width: 1200px;
+`
+export const DivReviewsContainer = styled(Div)`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  max-width: 792px;
+`
+
+export const DivReviewsCol = styled(Div)`
+  width: calc((100% - 60px) / 2);
+  margin-right: 60px;
+  max-width: 365px;
+
+  &:nth-last-child(1) {
+    margin-right: 0;
+  }
 `
