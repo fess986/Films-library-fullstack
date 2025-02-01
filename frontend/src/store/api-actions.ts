@@ -336,7 +336,6 @@ export const registerAction = createAsyncThunk<
   }
 )
 
-
 // оставляю старые версии кода, для дальнейшего использования, если что-то будет не так в будущем, то можно будет вернуть
 // получаем все фильмы
 // export const fetchFilms = createAsyncThunk<
