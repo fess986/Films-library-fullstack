@@ -44,7 +44,9 @@ router.get(ApiRoutes.GET_USER_REVIEWS, async (req, res) => {
     console.log(error)
     res
       .status(500)
-      .json({ message: 'Что-то пошло не так при загрузке отзывов пользователя' })
+      .json({
+        message: 'Что-то пошло не так при загрузке отзывов пользователя',
+      })
   }
 })
 
