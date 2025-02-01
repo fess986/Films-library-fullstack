@@ -55,6 +55,8 @@ export enum ApiActions {
   FETCH_REVIEWS_DB = 'reviews/fetchReviewsdb', // получить отзывы
   SEND_REVIEW = 'reviews/sendReview', // отправить отзыв
   SEND_REVIEW_DB = 'reviews/sendReviewdb', // отправить отзыв
+
+  FETCH_USER_REVIEWS_DB = 'reviews/fetchUserReviewsdb', // получить отзывы пользователя
 }
 
 export enum ApiRoutesMock {

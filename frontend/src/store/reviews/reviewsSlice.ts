@@ -40,6 +40,9 @@ export const reviewsSlice = createSlice({
     setUserReviewsList: (state, action: PayloadAction<Review[]>) => {
       state.userReviewsList = action.payload
     },
+    setIsUserReviewsLoaded: (state, action: PayloadAction<boolean>) => {
+      state.isUserReviewsLoaded = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -67,5 +70,5 @@ export const reviewsSlice = createSlice({
   },
 })
 
-export const { setIsReviewsLoaded, setIsReviewSending, setReviewsList } =
+export const { setIsReviewsLoaded, setIsReviewSending, setReviewsList, setIsUserReviewsLoaded, setUserReviewsList } =
   reviewsSlice.actions
