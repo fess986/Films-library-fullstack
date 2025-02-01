@@ -26,6 +26,28 @@ router.get(ApiRoutes.GET_REVIEWS, async (req, res) => {
   }
 })
 
+router.get(ApiRoutes.GET_USER_REVIEWS, async (req, res) => {
+  try {
+    const { userId } = req.params
+    console.log(userId)
+
+    // if (filmId) {
+    //   const reviews = await Review.find({ filmId }).lean()
+
+    //   res.status(200).json(reviews)
+    // } else {
+    //   res.status(404).json({ message: 'Фильм не найден' })
+    // }
+
+    res.status(200).json('ok')
+  } catch (error) {
+    console.log(error)
+    res
+      .status(500)
+      .json({ message: 'Что-то пошло не так при загрузке отзывов пользователя' })
+  }
+})
+
 router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
   try {
     const { review } = req.body

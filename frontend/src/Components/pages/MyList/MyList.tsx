@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import {
@@ -9,18 +10,31 @@ import {
   DivReviewsCol,
 } from './styles'
 import { Reviews } from '../../../mock/reviews'
+import { useAppDispatch } from '../../../store'
+import { fetchUserReviewsDB } from '../../../store/api-actions'
 import {
   getIsFilmsLoaded,
   getIsDataLoading,
 } from '../../../store/app/appSelectors'
 import { getFavoriteFilmList } from '../../../store/films/filmsSelector'
+import { getUserId } from '../../../store/user/userSelectors'
 import { FilmProps } from '../../../types/types'
 import FilmList from '../../blocks/FilmList/FilmList'
 import FilmReview from '../../UI/FilmReview/FilmReview'
 
 const MyList: React.FC = () => {
+  const dispatch = useAppDispatch()
+
   const isFilmsLoaded = useSelector(getIsFilmsLoaded)
   const isDataLoading = useSelector(getIsDataLoading)
+  const userId = useSelector(getUserId)
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(fetchUserReviewsDB(userId))
+    }
+  }, [userId, dispatch])
+
   const favoriteFilms: FilmProps[] = useSelector(getFavoriteFilmList)
   const reviews = Reviews
 
