@@ -9,14 +9,13 @@ import {
   DivReviewsContainer,
   DivReviewsCol,
 } from './styles'
-import { Reviews } from '../../../mock/reviews'
 import { useAppDispatch } from '../../../store'
 import { fetchUserReviewsDB } from '../../../store/api-actions'
 import {
   getIsFilmsLoaded,
-  getIsDataLoading,
 } from '../../../store/app/appSelectors'
 import { getFavoriteFilmList } from '../../../store/films/filmsSelector'
+import { getIsUserReviewsLoaded, getUserReviewsList } from '../../../store/reviews/reviewsSelector'
 import { getUserId } from '../../../store/user/userSelectors'
 import { FilmProps } from '../../../types/types'
 import FilmList from '../../blocks/FilmList/FilmList'
@@ -26,8 +25,8 @@ const MyList: React.FC = () => {
   const dispatch = useAppDispatch()
 
   const isFilmsLoaded = useSelector(getIsFilmsLoaded)
-  const isDataLoading = useSelector(getIsDataLoading)
   const userId = useSelector(getUserId)
+  const isReviewsLoaded = useSelector(getIsUserReviewsLoaded)
 
   useEffect(() => {
     if (userId) {
@@ -36,7 +35,7 @@ const MyList: React.FC = () => {
   }, [userId, dispatch])
 
   const favoriteFilms: FilmProps[] = useSelector(getFavoriteFilmList)
-  const reviews = Reviews
+  const reviews = useSelector(getUserReviewsList)
 
   const firstColEnd: number = Math.ceil(reviews.length / 2)
 
@@ -68,7 +67,7 @@ const MyList: React.FC = () => {
           <H2Hidden as="h2">My reviews</H2Hidden>
           <H2CatalogTitle>My reviews</H2CatalogTitle>
 
-          {!isDataLoading ? (
+          {!isReviewsLoaded ? (
             <DivReviewsContainer>
               <DivReviewsCol>{getReviews(0, firstColEnd)}</DivReviewsCol>
 
