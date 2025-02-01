@@ -6,7 +6,11 @@ import { redirect } from './actions'
 import useToast from '../hooks/useToast'
 import { setIsFilmsLoaded, setIsDataLoading } from './app/appSlice'
 import { setFilmList } from './films/filmsSlice'
-import { setReviewsList, setIsUserReviewsLoaded } from './reviews/reviewsSlice'
+import {
+  setReviewsList,
+  setUserReviewsList,
+  setIsUserReviewsLoaded,
+} from './reviews/reviewsSlice'
 import {
   setAuthStatus,
   addToFavoriteFilm,
@@ -209,31 +213,29 @@ export const fetchUserReviewsDB = createAsyncThunk<
   async (userId, { dispatch, extra: api }) => {
     try {
       dispatch(setIsUserReviewsLoaded(true))
-      // console.log(userId)
-      // console.log(api)
 
       const response = await api.get(
         `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_USER_REVIEWS.replace(':userId', userId)}`
       )
 
-      console.log(response)
-
-      // const reviews = response.data
+      const reviews = response.data
 
       // нужно чтобы в normolizeReviews был массив переданных reviews, только вместо reviews._id было id
-      // const normolizeReviews: Review[] = reviews.map((review: fetchedReview) => {
-      //   return {
-      //     id: review._id,
-      //     userId: review.userId,
-      //     userName: review.userName,
-      //     filmId: review.filmId,
-      //     rating: review.rating,
-      //     commentText: review.commentText,
-      //     date: review.date,
-      //   }
-      // })
+      const normolizeReviews: Review[] = reviews.map(
+        (review: fetchedReview) => {
+          return {
+            id: review._id,
+            userId: review.userId,
+            userName: review.userName,
+            filmId: review.filmId,
+            rating: review.rating,
+            commentText: review.commentText,
+            date: review.date,
+          }
+        }
+      )
 
-      // dispatch(setReviewsList(normolizeReviews))
+      dispatch(setUserReviewsList(normolizeReviews))
       dispatch(setIsUserReviewsLoaded(false))
     } catch (err) {
       // при ошибке показываем сообщение об ошибке

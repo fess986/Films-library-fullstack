@@ -31,22 +31,18 @@ router.get(ApiRoutes.GET_USER_REVIEWS, async (req, res) => {
     const { userId } = req.params
     console.log(userId)
 
-    // if (filmId) {
-    //   const reviews = await Review.find({ filmId }).lean()
+    if (userId) {
+      const reviews = await Review.find({ userId }).lean()
 
-    //   res.status(200).json(reviews)
-    // } else {
-    //   res.status(404).json({ message: 'Фильм не найден' })
-    // }
-
-    res.status(200).json('ok')
+      res.status(200).json(reviews)
+    } else {
+      res.status(404).json({ message: 'Пользователь не найден' })
+    }
   } catch (error) {
     console.log(error)
-    res
-      .status(500)
-      .json({
-        message: 'Что-то пошло не так при загрузке отзывов пользователя',
-      })
+    res.status(500).json({
+      message: 'Что-то пошло не так при загрузке отзывов пользователя',
+    })
   }
 })
 
