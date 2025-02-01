@@ -13,7 +13,7 @@ export const redirect: Middleware = () => (next) => (action: any) => {
   }
 
   // в случае ошибки скачивания рецензий перенаправляем на главную
-  if (action.type === `${ApiActions.FETCH_REVIEWS}/rejected`) {
+  if (action.type === `${ApiActions.FETCH_REVIEWS_DB}/rejected`) {
     console.log('redirect to main from middleware')
     browserHistory.push(AppRoutes.ROOT)
     return next(action)

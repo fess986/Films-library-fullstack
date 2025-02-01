@@ -37,39 +37,19 @@ export enum AuthStatus {
 }
 
 export enum ApiActions {
-  // FETCH_FILMS = 'films/fetchFilms', // получить все фильмы
-  // FETCH_SIMILAR_FILMS = 'films/fetchSimilarFilms', // получить похожие
   FETCH_FILMS_DB = 'films/fetchFilmsdb',
   SET_FILMS_DB = 'films/setFilmsdb',
 
   LOGIN = 'user/login', // авторизация
   REGISTER = 'user/register', // регистрация пользователя
 
-  FETCH_FAVORITE_FILMS = 'user/fetchFavoriteFilms', // получить избранные
-  ADD_FAVORITE_FILM = 'user/addFavoriteFilm', // добавить в избранное
   ADD_FAVORITE_FILM_DB = 'user/addFavoriteFilmdb', // добавить в избранное
-  REMOVE_FAVORITE_FILM = 'user/removeFavoriteFilm', // удалить из избранного
   REMOVE_FAVORITE_FILM_DB = 'user/removeFavoriteFilmdb', // удалить из избранного
 
-  FETCH_REVIEWS = 'reviews/fetchReviews', // получить отзывы
   FETCH_REVIEWS_DB = 'reviews/fetchReviewsdb', // получить отзывы
-  SEND_REVIEW = 'reviews/sendReview', // отправить отзыв
   SEND_REVIEW_DB = 'reviews/sendReviewdb', // отправить отзыв
 
   FETCH_USER_REVIEWS_DB = 'reviews/fetchUserReviewsdb', // получить отзывы пользователя
-}
-
-export enum ApiRoutesMock {
-  FILMS = '/films', // get
-  SIMILAR_FILMS = '/films/similar/:id', // get - id фильма
-  FETCH_FAVORITE_FILMS = '/films/favorite/:id', // get - id пользователя,
-  ADD_FAVORITE_FILM = '/films/add-favorite', // post - id пользователя, id фильма
-  REMOVE_FAVORITE_FILM = '/films/remove-favorite', // post - id пользователя, id фильма
-
-  FETCH_REVIEWS = '/reviews/:id', // get - /reviews/:film_id
-  SEND_REVIEW = '/reviews/add-review', // post, {commentProps}
-
-  LOGIN = '/login', // post - email, password
 }
 
 export const ALL_GENRES = 'All genres'
@@ -80,3 +60,16 @@ export const FilmMenuList = ['Overview', 'Details', 'Reviews'] as const
 
 type FilmMenuListType = typeof FilmMenuList
 export type FilmMenuItemProps = FilmMenuListType[number]
+
+// export enum ApiRoutesMock {
+//   FILMS = '/films', // get
+//   SIMILAR_FILMS = '/films/similar/:id', // get - id фильма
+//   FETCH_FAVORITE_FILMS = '/films/favorite/:id', // get - id пользователя,
+//   ADD_FAVORITE_FILM = '/films/add-favorite', // post - id пользователя, id фильма
+//   REMOVE_FAVORITE_FILM = '/films/remove-favorite', // post - id пользователя, id фильма
+
+//   FETCH_REVIEWS = '/reviews/:id', // get - /reviews/:film_id
+//   SEND_REVIEW = '/reviews/add-review', // post, {commentProps}
+
+//   LOGIN = '/login', // post - email, password
+// }
