@@ -209,8 +209,8 @@ export const fetchUserReviewsDB = createAsyncThunk<
   async (userId, { dispatch, extra: api }) => {
     try {
       dispatch(setIsUserReviewsLoaded(true))
-      console.log(userId)
-      console.log(api)
+      // console.log(userId)
+      // console.log(api)
 
       const response = await api.get(
         `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_USER_REVIEWS.replace(':userId', userId)}`
