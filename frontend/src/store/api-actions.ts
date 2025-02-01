@@ -204,15 +204,17 @@ export const fetchUserReviewsDB = createAsyncThunk<
   void, // Возвращаемый тип данных
   string, // передаём id пользователя для скачивания отзывов
   ThunkConfig // используем типизированную конфигурацию
->(ApiActions.FETCH_REVIEWS, async (userId, { dispatch, extra: api }) => {
+>(ApiActions.FETCH_USER_REVIEWS_DB, async (userId, { dispatch, extra: api }) => {
   try {
     dispatch(setIsUserReviewsLoaded(true))
     console.log(userId)
     console.log(api)
 
-    // const response = await api.get(
-    //   `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_REVIEWS.replace(':filmId', filmId)}`
-    // )
+    const response = await api.get(
+      `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_USER_REVIEWS.replace(':userId', userId)}`
+    )
+
+    console.log(response)
 
     // const reviews = response.data
 
