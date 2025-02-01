@@ -11,11 +11,12 @@ import {
 } from './styles'
 import { useAppDispatch } from '../../../store'
 import { fetchUserReviewsDB } from '../../../store/api-actions'
-import {
-  getIsFilmsLoaded,
-} from '../../../store/app/appSelectors'
+import { getIsFilmsLoaded } from '../../../store/app/appSelectors'
 import { getFavoriteFilmList } from '../../../store/films/filmsSelector'
-import { getIsUserReviewsLoaded, getUserReviewsList } from '../../../store/reviews/reviewsSelector'
+import {
+  getIsUserReviewsLoaded,
+  getUserReviewsList,
+} from '../../../store/reviews/reviewsSelector'
 import { getUserId } from '../../../store/user/userSelectors'
 import { FilmProps } from '../../../types/types'
 import FilmList from '../../blocks/FilmList/FilmList'
