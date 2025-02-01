@@ -30,8 +30,9 @@ type ThunkConfig = {
   extra: AxiosInstance
 }
 
-// const baseMockUrl = 'http://localhost:5173'
 const baseURL = import.meta.env.VITE_BASE_URL
+
+// действия связанные с фильмами
 
 // получаем все фильмы из базы данных
 export const fetchFilmsDB = createAsyncThunk<
@@ -150,29 +151,12 @@ export const removeFavoriteFilmDB = createAsyncThunk<
 )
 
 // действия с отзывами........................
-// получаем отзывы по id фильма
-// export const fetchReviews = createAsyncThunk<
-//   string, // Возвращаемый тип данных
-//   string, // Аргументы, передаваемые в thunk
-//   ThunkConfig // используем типизированную конфигурацию
-// >(ApiActions.FETCH_REVIEWS, async (id, { dispatch, extra: api }) => {
-//   // dispatch(setIsReviewsLoaded(false)); // перенесено в extraReducers
-
-//   const reviews = await api
-//     .get(baseMockUrl + ApiRoutesMock.FETCH_REVIEWS.replace(':id', String(id)))
-//     .then(() => Reviews as Review[])
-//   dispatch(setReviewsList(reviews))
-
-//   // dispatch(setIsReviewsLoaded(true)); // перенесено в extraReducers
-
-//   return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
-// })
 
 export const fetchReviewsDB = createAsyncThunk<
   void, // Возвращаемый тип данных
   string, // передаём id фильма для скачивания отзывов
   ThunkConfig // используем типизированную конфигурацию
->(ApiActions.FETCH_REVIEWS, async (filmId, { dispatch, extra: api }) => {
+>(ApiActions.FETCH_REVIEWS_DB, async (filmId, { dispatch, extra: api }) => {
   try {
     dispatch(setIsDataLoading(true))
 
@@ -245,39 +229,6 @@ export const fetchUserReviewsDB = createAsyncThunk<
   }
 )
 
-// уже не нужен, так как есть версия которая работает с базой данных
-// export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
-//   ApiActions.SEND_REVIEW,
-//   async (commentInfo, { dispatch, extra: api }) => {
-//     try {
-//       const toast = useToast()
-//       // await api.post(ApiRoutesMock.SEND_REVIEW, commentInfo);
-//       toast.info('Отправка отзыва')
-
-//       // нужно будет заменить на post, отправляем данные пользователя и комментария на сервер и получаем назад актуальные отзывы на фильм
-//       const response = await api
-//         .get(baseMockUrl + ApiRoutesMock.SEND_REVIEW)
-//         .then(() => Reviews as Review[])
-
-//       dispatch(setReviewsList(response))
-//       dispatch(
-//         redirect(
-//           `${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(
-//             ':id/*',
-//             String(commentInfo.filmId)
-//           )}`
-//         )
-//       )
-
-//       toast.success('Отзыв отправлен')
-//     } catch (error) {
-//       const toast = useToast()
-//       console.log(error)
-//       toast.error('Ошибка отправки отзыва')
-//     }
-//   }
-// )
-
 export const sendReviewDB = createAsyncThunk<
   void, // Возвращаемый тип данных
   commentProps, // Аргументы, передаваемые в thunk
@@ -308,6 +259,7 @@ export const sendReviewDB = createAsyncThunk<
 })
 
 // экшены связанные с авторизацией.............
+
 // логин пользователя
 export const loginAction = createAsyncThunk<
   void, // Возвращаемый тип данных
@@ -384,6 +336,8 @@ export const registerAction = createAsyncThunk<
   }
 )
 
+
+// оставляю старые версии кода, для дальнейшего использования, если что-то будет не так в будущем, то можно будет вернуть
 // получаем все фильмы
 // export const fetchFilms = createAsyncThunk<
 //   void, // Возвращаемый тип данных
@@ -452,3 +406,54 @@ export const registerAction = createAsyncThunk<
 //   console.log('Favorite films:', user.favoriteFilms);
 //   return user.favoriteFilms;
 // }
+
+// получаем отзывы по id фильма
+// export const fetchReviews = createAsyncThunk<
+//   string, // Возвращаемый тип данных
+//   string, // Аргументы, передаваемые в thunk
+//   ThunkConfig // используем типизированную конфигурацию
+// >(ApiActions.FETCH_REVIEWS, async (id, { dispatch, extra: api }) => {
+//   // dispatch(setIsReviewsLoaded(false)); // перенесено в extraReducers
+
+//   const reviews = await api
+//     .get(baseMockUrl + ApiRoutesMock.FETCH_REVIEWS.replace(':id', String(id)))
+//     .then(() => Reviews as Review[])
+//   dispatch(setReviewsList(reviews))
+
+//   // dispatch(setIsReviewsLoaded(true)); // перенесено в extraReducers
+
+//   return 'some data' // то что мы возвращаем из thunk - попадает в action.payload при перехвате через slice extraReducers
+// })
+
+// // уже не нужен, так как есть версия которая работает с базой данных
+// export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
+//   ApiActions.SEND_REVIEW,
+//   async (commentInfo, { dispatch, extra: api }) => {
+//     try {
+//       const toast = useToast()
+//       // await api.post(ApiRoutesMock.SEND_REVIEW, commentInfo);
+//       toast.info('Отправка отзыва')
+
+//       // нужно будет заменить на post, отправляем данные пользователя и комментария на сервер и получаем назад актуальные отзывы на фильм
+//       const response = await api
+//         .get(baseMockUrl + ApiRoutesMock.SEND_REVIEW)
+//         .then(() => Reviews as Review[])
+
+//       dispatch(setReviewsList(response))
+//       dispatch(
+//         redirect(
+//           `${AppRoutes.ROOT}${AppRoutes.FILM_CARD.replace(
+//             ':id/*',
+//             String(commentInfo.filmId)
+//           )}`
+//         )
+//       )
+
+//       toast.success('Отзыв отправлен')
+//     } catch (error) {
+//       const toast = useToast()
+//       console.log(error)
+//       toast.error('Ошибка отправки отзыва')
+//     }
+//   }
+// )
