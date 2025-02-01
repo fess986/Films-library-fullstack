@@ -8,16 +8,20 @@ import { Review } from '../../types/types'
 
 type ReviewsState = {
   reviewsList: Review[]
+  userReviewsList: Review[]
 
   isReviewsLoaded: boolean
   isReviewSending: boolean
+  isUserReviewsLoaded: boolean
 }
 
 const initialReviewsState: ReviewsState = {
   reviewsList: [],
+  userReviewsList: [],
 
   isReviewsLoaded: false,
   isReviewSending: false,
+  isUserReviewsLoaded: false,
 }
 
 export const reviewsSlice = createSlice({
@@ -32,6 +36,9 @@ export const reviewsSlice = createSlice({
     },
     setReviewsList: (state, action: PayloadAction<Review[]>) => {
       state.reviewsList = action.payload
+    },
+    setUserReviewsList: (state, action: PayloadAction<Review[]>) => {
+      state.userReviewsList = action.payload
     },
   },
   extraReducers: (builder) => {
