@@ -14,4 +14,6 @@ export declare const ApiRoutes: {
   REVIEWS: string
   GET_REVIEWS: string
   SET_REVIEW: string
+
+  GET_USER_REVIEWS: string
 }

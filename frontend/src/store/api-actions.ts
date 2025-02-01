@@ -204,39 +204,44 @@ export const fetchUserReviewsDB = createAsyncThunk<
   void, // Возвращаемый тип данных
   string, // передаём id пользователя для скачивания отзывов
   ThunkConfig // используем типизированную конфигурацию
->(ApiActions.FETCH_REVIEWS, async (userId, { dispatch, extra: api }) => {
-  try {
-    dispatch(setIsUserReviewsLoaded(true))
-    console.log(userId)
-    console.log(api)
+>(
+  ApiActions.FETCH_USER_REVIEWS_DB,
+  async (userId, { dispatch, extra: api }) => {
+    try {
+      dispatch(setIsUserReviewsLoaded(true))
+      console.log(userId)
+      console.log(api)
 
-    // const response = await api.get(
-    //   `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_REVIEWS.replace(':filmId', filmId)}`
-    // )
+      const response = await api.get(
+        `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.GET_USER_REVIEWS.replace(':userId', userId)}`
+      )
 
-    // const reviews = response.data
+      console.log(response)
 
-    // нужно чтобы в normolizeReviews был массив переданных reviews, только вместо reviews._id было id
-    // const normolizeReviews: Review[] = reviews.map((review: fetchedReview) => {
-    //   return {
-    //     id: review._id,
-    //     userId: review.userId,
-    //     userName: review.userName,
-    //     filmId: review.filmId,
-    //     rating: review.rating,
-    //     commentText: review.commentText,
-    //     date: review.date,
-    //   }
-    // })
+      // const reviews = response.data
 
-    // dispatch(setReviewsList(normolizeReviews))
-    dispatch(setIsUserReviewsLoaded(false))
-  } catch (err) {
-    // при ошибке показываем сообщение об ошибке
-    dispatch(setIsDataLoading(false))
-    useError(err as AxiosError | Error)
+      // нужно чтобы в normolizeReviews был массив переданных reviews, только вместо reviews._id было id
+      // const normolizeReviews: Review[] = reviews.map((review: fetchedReview) => {
+      //   return {
+      //     id: review._id,
+      //     userId: review.userId,
+      //     userName: review.userName,
+      //     filmId: review.filmId,
+      //     rating: review.rating,
+      //     commentText: review.commentText,
+      //     date: review.date,
+      //   }
+      // })
+
+      // dispatch(setReviewsList(normolizeReviews))
+      dispatch(setIsUserReviewsLoaded(false))
+    } catch (err) {
+      // при ошибке показываем сообщение об ошибке
+      dispatch(setIsDataLoading(false))
+      useError(err as AxiosError | Error)
+    }
   }
-})
+)
 
 // уже не нужен, так как есть версия которая работает с базой данных
 // export const sendReview = createAsyncThunk<void, commentProps, ThunkConfig>(
