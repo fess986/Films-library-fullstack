@@ -10,7 +10,7 @@ interface BodySignInProps {
 const BodySignIn: React.FC<BodySignInProps> = ({ children }) => {
   return (
     <BodyMainStyled>
-      <InjectListSVG add/>
+      <InjectListSVG add />
       <DivMainContainer>{children}</DivMainContainer>
     </BodyMainStyled>
   )
