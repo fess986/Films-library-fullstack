@@ -48,6 +48,7 @@ export enum ApiActions {
 
   FETCH_REVIEWS_DB = 'reviews/fetchReviewsdb', // получить отзывы
   SEND_REVIEW_DB = 'reviews/sendReviewdb', // отправить отзыв
+  REMOVE_REVIEW_DB = 'reviews/removeReviewdb', // удалить отзыв
 
   FETCH_USER_REVIEWS_DB = 'reviews/fetchUserReviewsdb', // получить отзывы пользователя
 }
