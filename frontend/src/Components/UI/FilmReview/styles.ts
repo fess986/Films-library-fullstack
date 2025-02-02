@@ -11,11 +11,11 @@ export const ReviewText = styled(P)`
   min-height: 50px;
   ${fontMedium}
   ${textColorAdditional}
-  overflow-wrap: break-word; 
+  overflow-wrap: break-word;
 
   margin-bottom: 10px;
 
-	&::first-letter {
+  &::first-letter {
     initial-letter: 2;
     text-transform: uppercase;
   }
@@ -35,7 +35,7 @@ export const ReviewAuthor = styled(Cite)`
   ${fontMedium}
   ${textColorAdditional}
   font-weight: 700;
-  overflow-wrap: break-word; 
+  overflow-wrap: break-word;
 `
 
 export const ReviewFilm = styled(Cite)`
@@ -44,7 +44,7 @@ export const ReviewFilm = styled(Cite)`
   ${fontMedium}
   ${textColorAdditional}
   font-weight: 700;
-  overflow-wrap: break-word; 
+  overflow-wrap: break-word;
 `
 
 export const ReviewDate = styled(Time)`
