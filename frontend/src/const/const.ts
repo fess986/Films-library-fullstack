@@ -1,7 +1,7 @@
 export default {}
 
 export const MINIMUM_REVIEW_LENGTH = 10
-export const MAXIMUM_REVIEW_LENGTH = 150
+export const MAXIMUM_REVIEW_LENGTH = 1100
 export const storageName = 'userData'
 
 export const AppRoutes = {

@@ -62,6 +62,8 @@ const MyList: React.FC = () => {
           ) : (
             <div>Loading...</div>
           )}
+
+          {!favoriteFilms.length && <div>No favorite films to show...</div>}
         </SectionCatalog>
       </SectionCatalogContainer>
 

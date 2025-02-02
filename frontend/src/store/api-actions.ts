@@ -260,8 +260,6 @@ export const sendReviewDB = createAsyncThunk<
   ThunkConfig // используем типизированную конфигурацию
 >(ApiActions.SEND_REVIEW_DB, async (review, { dispatch, extra: api }) => {
   const toast = useToast()
-  console.log('отправка review с фронта')
-  console.log(dispatch)
 
   const response = await api.post(
     `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.SET_REVIEW.replace(':filmId', review.filmId)}`,
@@ -279,7 +277,6 @@ export const sendReviewDB = createAsyncThunk<
     )
   )
 
-  console.log('отправка review с фронта успешна')
   toast.success('Отзыв отправлен')
 })
 

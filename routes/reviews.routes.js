@@ -30,7 +30,6 @@ router.get(ApiRoutes.GET_REVIEWS, async (req, res) => {
 router.get(ApiRoutes.GET_USER_REVIEWS, async (req, res) => {
   try {
     const { userId } = req.params
-    console.log(userId)
 
     if (userId) {
       const reviews = await Review.find({ userId }).lean()
@@ -76,7 +75,6 @@ router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
 
       // Получение всех отзывов для фильма
       const reviews = await Review.find({ filmId }).lean()
-      // console.log(reviews)
 
       // Приведение к формату Review[]
       const formattedReviews = reviews.map((r) => ({
@@ -105,9 +103,6 @@ router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
 router.delete(ApiRoutes.REMOVE_REVIEW, isAuth, async (req, res) => {
   try {
     const { reviewId } = req.body // в body лежит то что мы передали в data
-    console.log(reviewId)
-
-    // код удаления отзыва из моделей Review, User, Films
 
     // Находим отзыв и через populate получаем ссылки на пользователя и фильм
     const review = await Review.findById(reviewId).populate('userId filmId')
