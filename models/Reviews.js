@@ -5,13 +5,14 @@ const reviewSchema = new Schema({
     type: Types.ObjectId,
     ref: 'User', // Связь с таблицей пользователей
   },
+
+  filmId: {
+    type: Types.ObjectId, // тип - идентификатор
+    ref: 'Film', // привязываемся к модели Films
+  },
   userName: {
     type: String,
     required: true,
-  },
-  filmId: {
-    type: Types.ObjectId, // тип - идентификатор
-    ref: 'Films', // привязываемся к модели Films
   },
   rating: {
     type: Number,
