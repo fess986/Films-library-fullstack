@@ -6,6 +6,7 @@ import {
   Pause,
   Details,
   UserPage,
+  Remove,
 } from './svgList'
 import { DivHidden } from '../../styled/Components'
 
@@ -17,6 +18,7 @@ type InjectListSVGProps = {
   pause?: boolean
   details?: boolean
   userPage?: boolean
+  remove?: boolean
 }
 
 const InjectListSVG: React.FC<InjectListSVGProps> = ({
@@ -27,6 +29,7 @@ const InjectListSVG: React.FC<InjectListSVGProps> = ({
   pause,
   details,
   userPage,
+  remove,
 }) => {
   return (
     <DivHidden>
@@ -48,6 +51,8 @@ const InjectListSVG: React.FC<InjectListSVGProps> = ({
         {details && <Details />}
 
         {userPage && <UserPage />}
+
+        {remove && <Remove />}
       </svg>
       {/* endinject */}
     </DivHidden>

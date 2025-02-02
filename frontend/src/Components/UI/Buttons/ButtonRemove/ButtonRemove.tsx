@@ -10,7 +10,7 @@ const ButtonRemove: React.FC = () => {
   return (
     <StyledButton onClick={handleClick}>
       <svg viewBox="0 0 19 20" width={19} height={20}>
-        <use xlinkHref="#add" />
+        <use xlinkHref="#remove" />
       </svg>
       <span>Add review</span>
     </StyledButton>
