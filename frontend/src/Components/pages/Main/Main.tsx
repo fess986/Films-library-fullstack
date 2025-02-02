@@ -26,12 +26,14 @@ const Main: React.FC<MainProps> = ({ films }) => {
       <SectionCatalog>
         <H2Hidden as="h2">Catalog</H2Hidden>
         <GenreList films={films} />
+
         {isFilmsLoaded ? (
           <FilmList films={shownFilms} />
         ) : (
           <div>Loading...</div>
         )}
-        <MoreFilmsButton />
+
+        {filteredFilmList.length > filmsShownCount && <MoreFilmsButton />}
       </SectionCatalog>
     </DivCatalogContent>
   )
