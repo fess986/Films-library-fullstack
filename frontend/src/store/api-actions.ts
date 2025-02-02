@@ -229,6 +229,39 @@ export const fetchUserReviewsDB = createAsyncThunk<
   }
 )
 
+// удаление отзыва у пользователя и сервера
+export const removeUserReviewDB = createAsyncThunk<
+  void, // Возвращаемый тип данных
+  string, // передаём id отзыва
+  {
+    dispatch: AppDispatch
+    state: RootState
+    extra: AxiosInstance
+  }
+>(
+  ApiActions.REMOVE_REVIEW_DB,
+  async (reviewId, { dispatch, extra: api }) => {
+    try {
+      const toast = useToast()
+      console.log(reviewId)
+      console.log(api)
+      // отправляем запрос, при этом прокидываем через params id пользователя, а через DATA(особенность delete роута) - тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
+      // await api.delete(
+      //   `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.REMOVE_FAVORITE_FILM.replace(':userId', userId)}`,
+      //   { data: { filmId } }
+      // )
+      // local.removeFavoriteFilm(filmId) // удаляем из хранилища
+      // dispatch(removeFromFavoriteFilm(filmId)) // удаляем из redux
+      toast.success('Отзыв удалён')
+    } catch (err) {
+      // при ошибке отклоняем авторизацию и показываем сообщение
+      dispatch(setAuthStatus(AuthStatus.NO_AUTH))
+      dispatch(setIsDataLoading(false))
+      useError(err as AxiosError | Error)
+    }
+  }
+)
+
 export const sendReviewDB = createAsyncThunk<
   void, // Возвращаемый тип данных
   commentProps, // Аргументы, передаваемые в thunk

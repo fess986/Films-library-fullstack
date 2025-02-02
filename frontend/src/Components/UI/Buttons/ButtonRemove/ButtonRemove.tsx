@@ -10,7 +10,7 @@ type PropsButtonRemove = {
 const ButtonRemove: React.FC<PropsButtonRemove> = ({ id }) => {
   const dispatch = useAppDispatch()
   const handleClick = () => {
-    dispatch(removeUserReview(id))
+    dispatch(removeUserReview(id))  // удаляем локально в redux
   }
 
   return (
