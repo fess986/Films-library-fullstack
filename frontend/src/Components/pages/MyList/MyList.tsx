@@ -43,7 +43,7 @@ const MyList: React.FC = () => {
   const getReviews = (start: number, end: number): JSX.Element[] => {
     const content: JSX.Element[] = []
     for (let i = start; i < end; i++) {
-      content.push(<FilmReview key={reviews[i].id} review={reviews[i]} />)
+      content.push(<FilmReview key={reviews[i].id} review={reviews[i]} withButton/>)
     }
     return content
   }

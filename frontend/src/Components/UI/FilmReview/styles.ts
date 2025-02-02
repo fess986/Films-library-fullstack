@@ -61,3 +61,9 @@ export const ReviewRating = styled(Div)`
   background: rgba(0, 0, 0, 0.24);
   border-radius: 8px;
 `
+
+export const ButtonContainer = styled(Div)`
+  position: absolute;
+  right: 0;
+  top: 55px;
+`
