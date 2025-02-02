@@ -9,7 +9,7 @@ import {
   ReviewContainer,
   ReviewRating,
   ButtonContainer,
-  ReviewFilm
+  ReviewFilm,
 } from './styles'
 import { getFilmById } from '../../../store/films/filmsSelector'
 import { Review } from '../../../types/types'
@@ -22,7 +22,6 @@ type FilmReviewProps = {
 }
 
 const FilmReview: React.FC<FilmReviewProps> = ({ review, withButton }) => {
-
   const film = useSelector(getFilmById(review.filmId))
   const filmName = film?.name || 'Unknown film'
 
@@ -31,11 +30,11 @@ const FilmReview: React.FC<FilmReviewProps> = ({ review, withButton }) => {
       <ReviewQuote>
         <ReviewText>{review.commentText}</ReviewText>
         <ReviewFooter>
-
-          {withButton ?
+          {withButton ? (
             <ReviewFilm>{filmName}</ReviewFilm>
-            :
-            <ReviewAuthor>{review.userName}</ReviewAuthor>}
+          ) : (
+            <ReviewAuthor>{review.userName}</ReviewAuthor>
+          )}
 
           <ReviewDate dateTime={formatDate(review.date)}>
             {parseCommentDate(review.date)}
@@ -49,7 +48,6 @@ const FilmReview: React.FC<FilmReviewProps> = ({ review, withButton }) => {
           <ButtonRemove id={review.id} />
         </ButtonContainer>
       )}
-
     </ReviewContainer>
   )
 }
