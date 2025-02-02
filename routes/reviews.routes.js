@@ -109,31 +109,31 @@ router.delete(ApiRoutes.REMOVE_REVIEW, isAuth, async (req, res) => {
 
     // код удаления отзыва из моделей Review, User, Films
 
-      // Находим отзыв и через populate получаем ссылки на пользователя и фильм
-      const review = await Review.findById(reviewId).populate('userId filmId')
+    // Находим отзыв и через populate получаем ссылки на пользователя и фильм
+    const review = await Review.findById(reviewId).populate('userId filmId')
 
-      if (!review) {
-        return res.status(404).json({ message: 'Отзыв не найден' })
-      }
-  
-      // Удаляем сам отзыв, при этом не нужно делать save()
-      await Review.findByIdAndDelete(reviewId)
-  
-      // Удаляем ссылку на отзыв у пользователя (если userId есть)
-      // так как review.userId - это объект пользователя, обращаемся к его id
-      // метод $pull удаляет ссылку на отзыв в поле reviews
-      if (review.userId) {
-        await User.findByIdAndUpdate(review.userId._id, {
-          $pull: { reviews: reviewId },
-        })
-      }
-  
-      // Удаляем ссылку на отзыв у фильма (если filmId есть)
-      if (review.filmId) {
-        await Film.findByIdAndUpdate(review.filmId._id, {
-          $pull: { reviews: reviewId },
-        })
-      }
+    if (!review) {
+      return res.status(404).json({ message: 'Отзыв не найден' })
+    }
+
+    // Удаляем сам отзыв, при этом не нужно делать save()
+    await Review.findByIdAndDelete(reviewId)
+
+    // Удаляем ссылку на отзыв у пользователя (если userId есть)
+    // так как review.userId - это объект пользователя, обращаемся к его id
+    // метод $pull удаляет ссылку на отзыв в поле reviews
+    if (review.userId) {
+      await User.findByIdAndUpdate(review.userId._id, {
+        $pull: { reviews: reviewId },
+      })
+    }
+
+    // Удаляем ссылку на отзыв у фильма (если filmId есть)
+    if (review.filmId) {
+      await Film.findByIdAndUpdate(review.filmId._id, {
+        $pull: { reviews: reviewId },
+      })
+    }
 
     res.status(200).json({ message: 'Отзыв удален' })
   } catch (error) {
