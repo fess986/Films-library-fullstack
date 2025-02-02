@@ -12,7 +12,7 @@ const ButtonRemove: React.FC = () => {
       <svg viewBox="0 0 19 20" width={19} height={20}>
         <use xlinkHref="#remove" />
       </svg>
-      <span>Add review</span>
+      <span>remove</span>
     </StyledButton>
   )
 }
