@@ -43,6 +43,11 @@ export const reviewsSlice = createSlice({
     setIsUserReviewsLoaded: (state, action: PayloadAction<boolean>) => {
       state.isUserReviewsLoaded = action.payload
     },
+    removeUserReview: (state, action: PayloadAction<string>) => {
+      state.userReviewsList = state.userReviewsList.filter(
+        (review) => review.id !== action.payload
+      )
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -76,4 +81,5 @@ export const {
   setReviewsList,
   setIsUserReviewsLoaded,
   setUserReviewsList,
+  removeUserReview
 } = reviewsSlice.actions

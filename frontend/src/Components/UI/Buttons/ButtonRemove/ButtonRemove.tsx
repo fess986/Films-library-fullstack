@@ -1,10 +1,16 @@
 import React from 'react'
 
+import { useAppDispatch } from '../../../../store'
+import { removeUserReview } from '../../../../store/reviews/reviewsSlice'
 import { StyledButton } from '../styles'
 
-const ButtonRemove: React.FC = () => {
+type PropsButtonRemove = {
+  id: string
+}
+const ButtonRemove: React.FC<PropsButtonRemove> = ( {id} ) => {
+  const dispatch = useAppDispatch()
   const handleClick = () => {
-    console.log('click')
+    dispatch(removeUserReview(id))
   }
 
   return (

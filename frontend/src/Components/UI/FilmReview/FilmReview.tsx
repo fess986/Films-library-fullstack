@@ -32,7 +32,7 @@ const FilmReview: React.FC<FilmReviewProps> = ({ review, withButton }) => {
       <ReviewRating>{review.rating.toFixed(1)}</ReviewRating>
       {withButton && (
         <ButtonContainer>
-          <ButtonRemove />
+          <ButtonRemove id={review.id} />
         </ButtonContainer>
       )}
     </ReviewContainer>
