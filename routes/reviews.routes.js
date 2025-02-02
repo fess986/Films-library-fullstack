@@ -107,29 +107,33 @@ router.delete(ApiRoutes.REMOVE_REVIEW, isAuth, async (req, res) => {
     const { reviewId } = req.body // в body лежит то что мы передали в data
     console.log(reviewId)
 
-    // const user = await User.findById(userId)
-    // const film = await Film.findById(filmId)
+    // код удаления отзыва из моделей Review, User, Films
 
-    // if (user && film) {
-    //   if (user.favoriteFilms.includes(filmId)) {
-    //     user.favoriteFilms = user.favoriteFilms.filter(
-    //       (id) => id.toString() !== filmId
-    //     )
-    //     await user.save()
-    //   }
-    //   if (film.likedByUsers.includes(userId)) {
-    //     film.likedByUsers = film.likedByUsers.filter(
-    //       (id) => id.toString() !== userId
-    //     )
-    //     await film.save()
-    //   }
-    // } else {
-    //   return res.status(404).json({
-    //     message: 'Фильм или пользователь не найден',
-    //   })
-    // }
+    // Находим отзыв и через populate получаем ссылки на пользователя и фильм
+    const review = await Review.findById(reviewId).populate('userId filmId')
 
-    // res.status(200).json({ message: 'Фильм удален из избранного' })
+    if (!review) {
+      return res.status(404).json({ message: 'Отзыв не найден' })
+    }
+
+    // Удаляем сам отзыв, при этом не нужно делать save()
+    await Review.findByIdAndDelete(reviewId)
+
+    // Удаляем ссылку на отзыв у пользователя (если userId есть)
+    // так как review.userId - это объект пользователя, обращаемся к его id
+    // метод $pull удаляет ссылку на отзыв в поле reviews
+    if (review.userId) {
+      await User.findByIdAndUpdate(review.userId._id, {
+        $pull: { reviews: reviewId },
+      })
+    }
+
+    // Удаляем ссылку на отзыв у фильма (если filmId есть)
+    if (review.filmId) {
+      await Film.findByIdAndUpdate(review.filmId._id, {
+        $pull: { reviews: reviewId },
+      })
+    }
 
     res.status(200).json({ message: 'Отзыв удален' })
   } catch (error) {
