@@ -6,7 +6,7 @@ import {
   ReviewDate,
   ReviewContainer,
   ReviewRating,
-  ButtonContainer
+  ButtonContainer,
 } from './styles'
 import { Review } from '../../../types/types'
 import { parseCommentDate, formatDate } from '../../../utils/utils'
