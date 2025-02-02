@@ -47,7 +47,7 @@ export const reviewsSlice = createSlice({
       state.userReviewsList = state.userReviewsList.filter(
         (review) => review.id !== action.payload
       )
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -81,5 +81,5 @@ export const {
   setReviewsList,
   setIsUserReviewsLoaded,
   setUserReviewsList,
-  removeUserReview
+  removeUserReview,
 } = reviewsSlice.actions

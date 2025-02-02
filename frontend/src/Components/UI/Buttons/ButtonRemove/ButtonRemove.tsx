@@ -7,7 +7,7 @@ import { StyledButton } from '../styles'
 type PropsButtonRemove = {
   id: string
 }
-const ButtonRemove: React.FC<PropsButtonRemove> = ( {id} ) => {
+const ButtonRemove: React.FC<PropsButtonRemove> = ({ id }) => {
   const dispatch = useAppDispatch()
   const handleClick = () => {
     dispatch(removeUserReview(id))
