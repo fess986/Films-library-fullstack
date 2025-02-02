@@ -33,6 +33,13 @@ export const ReviewAuthor = styled(Cite)`
   font-weight: 700;
 `
 
+export const ReviewFilm = styled(Cite)`
+  display: block;
+  ${fontMedium}
+  ${textColorAdditional}
+  font-weight: 700;
+`
+
 export const ReviewDate = styled(Time)`
   ${fontMedium}
   ${textColorAdditional}
