@@ -243,11 +243,11 @@ export const removeUserReviewDB = createAsyncThunk<
     const toast = useToast()
     console.log(reviewId)
     console.log(api)
-    // отправляем запрос, при этом прокидываем через params id пользователя, а через DATA(особенность delete роута) - тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
-    // await api.delete(
-    //   `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.REMOVE_FAVORITE_FILM.replace(':userId', userId)}`,
-    //   { data: { filmId } }
-    // )
+    // отправляем запрос, при этом прокидываем через params id ревью, а через DATA(особенность delete роута) - тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - тоже id ревью (дублирование чисто для практики)
+    await api.delete(
+      `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.REMOVE_REVIEW.replace(':reviewId', reviewId)}`,
+      { data: { reviewId } }
+    )
     // local.removeFavoriteFilm(filmId) // удаляем из хранилища
     // dispatch(removeFromFavoriteFilm(filmId)) // удаляем из redux
     toast.success('Отзыв удалён')

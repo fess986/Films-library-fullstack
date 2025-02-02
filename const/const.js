@@ -12,6 +12,7 @@ export const ApiRoutes = {
   REVIEWS: '/api/reviews', // общий для отзывов
   GET_REVIEWS: '/get-reviews/:filmId', // get
   SET_REVIEW: '/set-review/:filmId', // post
+  REMOVE_REVIEW: '/remove-review/:reviewId', // post
 
   GET_USER_REVIEWS: '/get-user-reviews/:userId', // get
 }
