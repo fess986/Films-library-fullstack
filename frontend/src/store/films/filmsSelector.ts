@@ -12,6 +12,8 @@ export const getActiveFilm = (state: RootState) =>
   state[StoreNames.Films].activeFilm
 export const getSimilarFilmList = (state: RootState) =>
   state[StoreNames.Films].similarFilmList
+export const getFilmById = (id: string) => (state: RootState) =>
+  state[StoreNames.Films].filmList.find((film: FilmProps) => film.id === id)
 
 // фильтр фильмов по жанру с использование библиотеки reselect, строенной в reduxjs/toolkit - она позволяет объединять селекторы а так же мемоизировать результаты выполнения селекторов
 export const getFilteredFilmList = createSelector(
