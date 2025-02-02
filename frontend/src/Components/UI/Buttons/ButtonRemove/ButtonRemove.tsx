@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useAppDispatch } from '../../../../store'
+import {removeUserReviewDB} from '../../../../store/api-actions'
 import { removeUserReview } from '../../../../store/reviews/reviewsSlice'
 import { StyledButton } from '../styles'
 
@@ -11,6 +12,7 @@ const ButtonRemove: React.FC<PropsButtonRemove> = ({ id }) => {
   const dispatch = useAppDispatch()
   const handleClick = () => {
     dispatch(removeUserReview(id)) // удаляем локально в redux
+    dispatch(removeUserReviewDB(id))
   }
 
   return (

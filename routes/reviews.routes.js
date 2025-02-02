@@ -4,6 +4,7 @@ import { ApiRoutes } from '../const/const.js'
 import { Review } from '../models/Reviews.js'
 import { User } from '../models/User.js'
 import { Film } from '../models/Films.js'
+import isAuth from '../middlewares/isauth.middleware.js'
 
 const router = Router()
 
@@ -98,6 +99,44 @@ router.post(ApiRoutes.SET_REVIEW, async (req, res) => {
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'Что-то пошло не так при отправке отзыва' })
+  }
+})
+
+router.delete(ApiRoutes.REMOVE_REVIEW, isAuth, async (req, res) => {
+  try {
+    const { reviewId } = req.body // в body лежит то что мы передали в data
+    console.log(reviewId)
+
+    // const user = await User.findById(userId)
+    // const film = await Film.findById(filmId)
+
+    // if (user && film) {
+    //   if (user.favoriteFilms.includes(filmId)) {
+    //     user.favoriteFilms = user.favoriteFilms.filter(
+    //       (id) => id.toString() !== filmId
+    //     )
+    //     await user.save()
+    //   }
+    //   if (film.likedByUsers.includes(userId)) {
+    //     film.likedByUsers = film.likedByUsers.filter(
+    //       (id) => id.toString() !== userId
+    //     )
+    //     await film.save()
+    //   }
+    // } else {
+    //   return res.status(404).json({
+    //     message: 'Фильм или пользователь не найден',
+    //   })
+    // }
+
+    // res.status(200).json({ message: 'Фильм удален из избранного' })
+
+    res.status(200).json({ message: 'Отзыв удален' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      message: 'Что-то пошло не так при удалении отзыва',
+    })
   }
 })
 
