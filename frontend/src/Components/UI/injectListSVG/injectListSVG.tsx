@@ -6,7 +6,7 @@ import {
   Pause,
   Details,
   UserPage,
-  Remove
+  Remove,
 } from './svgList'
 import { DivHidden } from '../../styled/Components'
 
@@ -29,7 +29,7 @@ const InjectListSVG: React.FC<InjectListSVGProps> = ({
   pause,
   details,
   userPage,
-  remove
+  remove,
 }) => {
   return (
     <DivHidden>

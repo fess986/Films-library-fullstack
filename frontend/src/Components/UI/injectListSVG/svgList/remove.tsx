@@ -21,4 +21,4 @@ const Remove = (): JSX.Element => {
   )
 }
 
-export default Remove;
+export default Remove
