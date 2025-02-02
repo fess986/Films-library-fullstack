@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useAppDispatch } from '../../../../store'
-import {removeUserReviewDB} from '../../../../store/api-actions'
+import { removeUserReviewDB } from '../../../../store/api-actions'
 import { removeUserReview } from '../../../../store/reviews/reviewsSlice'
 import { StyledButton } from '../styles'
 
