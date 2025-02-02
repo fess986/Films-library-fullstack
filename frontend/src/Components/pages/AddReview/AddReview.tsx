@@ -42,7 +42,6 @@ const AddReview: React.FC = () => {
   }
 
   const submitHandler = () => {
-    console.log(comment)
     dispatch(sendReviewDB(comment))
   }
 

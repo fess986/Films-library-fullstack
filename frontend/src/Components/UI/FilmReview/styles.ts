@@ -11,6 +11,9 @@ export const ReviewText = styled(P)`
   min-height: 50px;
   ${fontMedium}
   ${textColorAdditional}
+  overflow-wrap: break-word; 
+
+  margin-bottom: 10px;
 
 	&::first-letter {
     initial-letter: 2;
@@ -28,16 +31,20 @@ export const ReviewQuote = styled(Blockquote)`
 
 export const ReviewAuthor = styled(Cite)`
   display: block;
+
   ${fontMedium}
   ${textColorAdditional}
   font-weight: 700;
+  overflow-wrap: break-word; 
 `
 
 export const ReviewFilm = styled(Cite)`
   display: block;
+
   ${fontMedium}
   ${textColorAdditional}
   font-weight: 700;
+  overflow-wrap: break-word; 
 `
 
 export const ReviewDate = styled(Time)`
@@ -72,5 +79,5 @@ export const ReviewRating = styled(Div)`
 export const ButtonContainer = styled(Div)`
   position: absolute;
   right: 0;
-  top: 55px;
+  bottom: 20px;
 `
