@@ -10,7 +10,11 @@
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "types": "tsc --noEmit",
-    "pretify": "npx prettier --write . --config ./.prettierrc.json"
+    "pretify": "npx prettier --write . --config ./.prettierrc.json",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "test:file": "vitest --test"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
@@ -41,6 +45,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "faker": "^6.6.6",
+    "jsdom": "^26.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vitest": "^3.0.5"
