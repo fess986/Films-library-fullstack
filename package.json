@@ -12,6 +12,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "prettify": "npx prettier --cache --write '**/*.{js,jsx,ts,tsx}' '!node_modules/' '!dist/'",
     "types": "npm run types --prefix frontend",
+    "test": "npm run test --prefix frontend",
+    "test:watch": "npm run test:watch --prefix frontend",
     "prepare": "husky install"
   },
   "keywords": [
