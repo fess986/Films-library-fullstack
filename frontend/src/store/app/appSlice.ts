@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 import { StoreNames } from '../../const/const'
-// import { fetchSimilarFilms } from '../api-actions'
 
 type AppState = {
   filmsShownCount: number
@@ -11,8 +10,6 @@ type AppState = {
   isActiveFilmLoaded: boolean
   isFilmsLoaded: boolean
   isSimilarFilmsLoaded: boolean
-  isFavoriteFilmsLoaded: boolean
-  isPromoFilmLoaded: boolean
   isDataLoading: boolean
 
   error: string | null
@@ -25,8 +22,6 @@ export const initialAppState: AppState = {
   isActiveFilmLoaded: false,
   isFilmsLoaded: false,
   isSimilarFilmsLoaded: false,
-  isFavoriteFilmsLoaded: false,
-  isPromoFilmLoaded: false,
   isDataLoading: false,
 
   error: null,
@@ -51,12 +46,6 @@ export const appSlice = createSlice({
     setIsSimilarFilmsLoaded: (state, action: PayloadAction<boolean>) => {
       state.isSimilarFilmsLoaded = action.payload
     },
-    setIsFavoriteFilmsLoaded: (state, action: PayloadAction<boolean>) => {
-      state.isFavoriteFilmsLoaded = action.payload
-    },
-    setIsPromoFilmLoaded: (state, action: PayloadAction<boolean>) => {
-      state.isPromoFilmLoaded = action.payload
-    },
     setIsDataLoading: (state, action: PayloadAction<boolean>) => {
       state.isDataLoading = action.payload
     },
@@ -67,19 +56,6 @@ export const appSlice = createSlice({
       state.error = action.payload
     },
   },
-  extraReducers: (builder) => {
-    builder
-    // .addCase(fetchSimilarFilms.pending, (state) => {
-    //   state.isSimilarFilmsLoaded = false
-    // })
-    // .addCase(fetchSimilarFilms.fulfilled, (state) => {
-    //   state.isSimilarFilmsLoaded = true
-    // })
-    // .addCase(fetchSimilarFilms.rejected, (state) => {
-    //   state.isSimilarFilmsLoaded = false
-    //   toast.error('Не удалось загрузить похожие фильмы')
-    // })
-  },
 })
 
 export const {
@@ -88,8 +64,6 @@ export const {
   setIsActiveFilmLoaded,
   setIsFilmsLoaded,
   setIsSimilarFilmsLoaded,
-  setIsFavoriteFilmsLoaded,
-  setIsPromoFilmLoaded,
   setError,
   resetFilmsShownCount,
   setIsDataLoading,
