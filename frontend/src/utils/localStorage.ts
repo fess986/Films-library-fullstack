@@ -19,6 +19,7 @@ class localStore {
     localStorage.removeItem(this.storageName)
   }
 
+  // для изменения данных в local storage - сначала данные получаются, потом модифицируются и только потом записываются, так как нельзя взаимодействовать с ним напрямую
   addFavoriteFilm(id: string) {
     const userData = this.getItem()
     if (userData) {
