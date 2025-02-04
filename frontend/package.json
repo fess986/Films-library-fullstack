@@ -31,7 +31,6 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^18.2.66",
@@ -39,6 +38,7 @@
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/expect": "^3.0.5",
     "axios-mock-adapter": "^2.1.0",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.31.0",
