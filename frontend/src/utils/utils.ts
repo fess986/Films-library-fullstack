@@ -8,14 +8,15 @@ export const getDuration = (runTime: number): string => {
 }
 
 export const parseCommentDate = (date: string): string => {
-  return moment(date).format('MMMM DD[,] YYYY')
+  return moment(date).format('MMMM D[,] YYYY')
 }
 
 export const formatDate = (date: string) => {
   return moment(date).format('YYYY-MM-DD')
 }
 
-export const parseMinutes = (timeInSeconds: number): string => {
+// из переданных секунд формируем время в часах, минутах и секундах
+export const parseSeconds = (timeInSeconds: number): string => {
   const runtime = timeInSeconds / 60
   let hours: number | string = Math.floor(runtime / 60)
   let minutes: number | string = Math.floor(runtime - hours * 60)
