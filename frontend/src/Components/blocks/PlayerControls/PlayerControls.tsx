@@ -4,7 +4,7 @@ import {
   DivControlsName,
   DivControlsContainer,
 } from './styles'
-import { parseMinutes } from '../../../utils/utils'
+import { parseSeconds } from '../../../utils/utils'
 import ButtonFullScreen from '../../UI/Buttons/ButtonFullScreen/ButtonFullScreen'
 import ButtonPlayerPlay from '../../UI/Buttons/ButtonPlayerPlay/ButtonPlayerPlay'
 import ProgressBar from '../../UI/ProgressBar/ProgressBar'
@@ -35,7 +35,7 @@ const PlayerControls: React.FC<PlayerControlsProps> = ({
           max={100}
           name="Toggler"
         />
-        <DivControlsTime>{parseMinutes(remainingTime)}</DivControlsTime>
+        <DivControlsTime>{parseSeconds(remainingTime)}</DivControlsTime>
       </DivConrolRow>
 
       <DivConrolRow>
