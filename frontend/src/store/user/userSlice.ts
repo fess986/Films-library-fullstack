@@ -11,7 +11,7 @@ type UserState = {
   token: string | null
 }
 
-const initialUserState: UserState = {
+export const initialUserState: UserState = {
   isAuth: AuthStatus.UNKNOWN,
   token: null,
   favoriteFilms: [],
