@@ -8,6 +8,7 @@ import { useAppDispatch } from './store'
 import { fetchFilmsDB } from './store/api-actions'
 import { getFilmList } from './store/films/filmsSelector'
 import BrowserHistory from './utils/browser-history'
+import { shuffleFilms } from './utils/utils'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -23,7 +24,8 @@ function App() {
   }, [checkAuth])
 
   const films = useSelector(getFilmList)
-  const routes = useRoutes(films)
+  const shuffledFilms = shuffleFilms(films)
+  const routes = useRoutes(shuffledFilms)
 
   return (
     <>

@@ -7,6 +7,7 @@ import {
 } from '../../../store/app/appSelectors'
 import { getFilteredFilmList } from '../../../store/films/filmsSelector'
 import { FilmProps } from '../../../types/types'
+import { shuffleFilms } from '../../../utils/utils'
 import FilmList from '../../blocks/FilmList/FilmList'
 import GenreList from '../../blocks/GenreList/GenreList'
 import MoreFilmsButton from '../../UI/Buttons/MoreFilmsButton/MoreFilmsButton'
@@ -17,9 +18,11 @@ type MainProps = {
 
 const Main: React.FC<MainProps> = ({ films }) => {
   const filteredFilmList = useSelector(getFilteredFilmList) // получаем отфильтрованный по активному жанру список фильмов
+  const shuffledFilms = shuffleFilms(filteredFilmList)
+
   const isFilmsLoaded = useSelector(getIsFilmsLoaded)
   const filmsShownCount = useSelector(getFilmsShownCount) // получаем количество отображаемых фильмов
-  const shownFilms = filteredFilmList.slice(0, filmsShownCount) // учитываем количество отображаемых фильмов
+  const shownFilms = shuffledFilms.slice(0, filmsShownCount) // учитываем количество отображаемых фильмов
 
   return (
     <DivCatalogContent>
