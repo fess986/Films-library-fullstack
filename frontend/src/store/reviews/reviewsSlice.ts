@@ -15,7 +15,7 @@ type ReviewsState = {
   isUserReviewsLoaded: boolean
 }
 
-const initialReviewsState: ReviewsState = {
+export const initialReviewsState: ReviewsState = {
   reviewsList: [],
   userReviewsList: [],
 
