@@ -1,5 +1,7 @@
 import moment from 'moment'
 
+import { FilmProps } from '../types/types'
+
 export const getDuration = (runTime: number): string => {
   if (runTime < 0) {
     return '0h 0m'
@@ -32,4 +34,18 @@ export const parseSeconds = (timeInSeconds: number): string => {
     hours === `00` ? `${minutes}:${seconds}` : `${hours}:${minutes}:${seconds}`
 
   return parsedTime
+}
+
+export function shuffleFilms(shuftledFilms: FilmProps[]) {
+  // Создаем копию массива, чтобы не изменять оригинал
+  const shuffled = [...shuftledFilms]
+
+  // Алгоритм Фишера-Йетса
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)) // Генерируем случайный индекс
+    // Меняем местами элементы
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+
+  return shuffled
 }
