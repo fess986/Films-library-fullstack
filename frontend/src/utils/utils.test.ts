@@ -3,7 +3,9 @@ import {
   parseCommentDate,
   formatDate,
   parseSeconds,
+  shuffleFilms,
 } from './utils'
+import createFakeFilm from '../test/test-utils/mockFilm'
 
 describe('getDuration', () => {
   test('корректно форматирует минуты в часы и минуты', () => {
@@ -49,4 +51,51 @@ describe('parseSeconds', () => {
     test('корректно форматирует время с часами', () => {
       expect(parseSeconds(4000)).toBe('01:06:40')
     })
+})
+
+describe('shuffleFilms', () => {
+  it('should return a new array and not mutate the original', () => {
+    const original = [createFakeFilm(), createFakeFilm(), createFakeFilm()]
+    const copy = [...original]
+
+    const shuffled = shuffleFilms(original)
+
+    expect(shuffled).not.toBe(original) // Новый массив
+    expect(original).toEqual(copy) // Оригинал не изменился
+  })
+
+  it('should return an array of the same length', () => {
+    const films = Array.from({ length: 5 }, () => createFakeFilm())
+    const shuffled = shuffleFilms(films)
+
+    expect(shuffled).toHaveLength(films.length)
+  })
+
+  it('should contain the same elements after shuffling', () => {
+    const films = Array.from({ length: 5 }, () => createFakeFilm())
+    const shuffled = shuffleFilms(films)
+
+    expect(shuffled.map((f) => f.id).sort()).toEqual(
+      films.map((f) => f.id).sort()
+    )
+  })
+
+  it('should shuffle the array (not always in the same order)', () => {
+    const films = Array.from({ length: 10 }, () => createFakeFilm())
+
+    let differentOrder = false
+    for (let i = 0; i < 5; i++) {
+      const shuffled = shuffleFilms(films)
+      if (JSON.stringify(shuffled) !== JSON.stringify(films)) {
+        differentOrder = true
+        break
+      }
+    }
+
+    expect(differentOrder).toBe(true)
+  })
+
+  it('should return an empty array if input is empty', () => {
+    expect(shuffleFilms([])).toEqual([])
+  })
 })
