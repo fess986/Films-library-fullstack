@@ -14,7 +14,7 @@ type FilmsState = {
   activeFilm: FilmProps | null
 }
 
-const initialFilmsState: FilmsState = {
+export const initialFilmsState: FilmsState = {
   filmList: [],
   similarFilmList: [],
 
