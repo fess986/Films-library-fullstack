@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 
-import { Review } from '../../types/types';
+import { Review } from '../../types/types'
 
 export const createFakeReview = (overrides?: Partial<Review>): Review => ({
   id: faker.string.uuid(),
@@ -11,4 +11,4 @@ export const createFakeReview = (overrides?: Partial<Review>): Review => ({
   commentText: faker.lorem.sentences(2),
   date: faker.date.past().toISOString(),
   ...overrides,
-});
+})
