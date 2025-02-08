@@ -1,6 +1,6 @@
 import { describe, it, vi, beforeEach } from 'vitest'
 
-import { redirect } from './redirect' 
+import { redirect } from './redirect'
 import { ApiActions, AppRoutes } from '../../const/const'
 import browserHistory from '../../utils/browser-history'
 import { AppActions } from '../actions'
@@ -13,11 +13,11 @@ vi.mock('../../utils/browser-history', () => ({
 describe('Middleware: redirect', () => {
   // так как мы не мокаем store, мы вместо этого просто замокаем его дефолтные методы
   let next: ReturnType<typeof vi.fn> // подготавливаем next
-  let dispatch: ReturnType<typeof vi.fn>  // подготавливаем dispatch
+  let dispatch: ReturnType<typeof vi.fn> // подготавливаем dispatch
 
   // обнуляем все функции и моки перед каждым тестом
   beforeEach(() => {
-    next = vi.fn()// мокаем next
+    next = vi.fn() // мокаем next
     dispatch = vi.fn() // мокаем dispatch
     vi.clearAllMocks() // очищаем мок перед каждым тестом
   })
@@ -28,7 +28,7 @@ describe('Middleware: redirect', () => {
     // вызываем middleware по сигнатуре (store) => (next) => (action)
     redirect({ dispatch, getState: vi.fn() })(next)(action)
 
-    expect(browserHistory.push).toHaveBeenCalledWith('/some-path')  // происходит перенаправление
+    expect(browserHistory.push).toHaveBeenCalledWith('/some-path') // происходит перенаправление
     expect(next).toHaveBeenCalledWith(action) // экшен должен передаваться дальше
   })
 
