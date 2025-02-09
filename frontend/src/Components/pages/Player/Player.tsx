@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react'
 
 import { DivPlayerContainer } from './styles'
 import useActiveFilm from '../../../hooks/useActiveFilm'
-import useToast from '../../../hooks/useToast'
 import { FilmProps } from '../../../types/types'
+import createToast from '../../../utils/toast'
 import PlayerControls from '../../blocks/PlayerControls/PlayerControls'
 import ButtonPlayerExit from '../../UI/Buttons/ButtonPlayerExit/ButtonPlayerExit'
 import Video from '../../UI/Video/Video'
@@ -22,7 +22,7 @@ const Player: React.FC<PlayerProps> = () => {
 
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const { currentFilm } = useActiveFilm()
-  const toast = useToast()
+  const toast = createToast()
 
   // обновляем текущее время видео
   const handlerCurrentTimePlaying = () => {

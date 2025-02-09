@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import useToast from './useToast'
 import { useAppDispatch } from '../store'
 import { getIsActiveFilmLoaded } from '../store/app/appSelectors'
 import {
@@ -13,6 +12,7 @@ import { getFilmList } from '../store/films/filmsSelector'
 import { setActiveFilm, setSimilarFilmList } from '../store/films/filmsSlice'
 import { FilmProps } from '../types/types'
 import { getSimilarFilms } from '../utils/filmsUtils'
+import createToast from '../utils/toast'
 
 type UseActiveFilm = {
   currentFilm: FilmProps | null
@@ -28,7 +28,7 @@ const useActiveFilm = (): UseActiveFilm => {
 
   const [currentFilm, setCurrentFilm] = useState<FilmProps | null>(null)
   const isActiveFilmLoaded = useSelector(getIsActiveFilmLoaded)
-  const toast = useToast()
+  const toast = createToast()
 
   // устанавливаем список похожих фильмов по текущему и
   const setSimilarFilms = useCallback(
