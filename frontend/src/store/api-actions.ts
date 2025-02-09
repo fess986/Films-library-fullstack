@@ -3,7 +3,7 @@ import { AxiosError } from 'axios'
 import type { AxiosInstance } from 'axios' // Импортируем тип AxiosInstance
 
 import { redirect } from './actions'
-import useToast from '../hooks/useToast'
+import createToast from '../utils/toast'
 import { setIsFilmsLoaded, setIsDataLoading } from './app/appSlice'
 import { setFilmList } from './films/filmsSlice'
 import {
@@ -46,7 +46,7 @@ export const fetchFilmsDB = createAsyncThunk<
   async (_arg, { dispatch, extra: api }) => {
     try {
       // console.log('assssssssssssssssssssssssssssssssssss')
-      // const toast = useToast()
+      // const toast = createToast()
       // toast.success('ass')
 
       dispatch(setIsDataLoading(true))
@@ -78,7 +78,7 @@ export const setFilmsDB = createAsyncThunk<
   ApiActions.SET_FILMS_DB, // Имя thunka
   async (_arg, { dispatch, extra: api }) => {
     try {
-      const toast = useToast()
+      const toast = createToast()
       dispatch(setIsDataLoading(true))
       await api.post(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.SET_FILMS}`)
       dispatch(setIsDataLoading(false))
@@ -134,7 +134,7 @@ export const removeFavoriteFilmDB = createAsyncThunk<
   ApiActions.REMOVE_FAVORITE_FILM_DB,
   async ({ userId, filmId }, { dispatch, extra: api }) => {
     try {
-      const toast = useToast()
+      const toast = createToast()
       // отправляем запрос, при этом прокидываем через params id пользователя, а через DATA(особенность delete роута) - тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
       await api.delete(
         `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.REMOVE_FAVORITE_FILM.replace(':userId', userId)}`,
@@ -242,7 +242,7 @@ export const removeUserReviewDB = createAsyncThunk<
   }
 >(ApiActions.REMOVE_REVIEW_DB, async (reviewId, { dispatch, extra: api }) => {
   try {
-    const toast = useToast()
+    const toast = createToast()
     // отправляем запрос, при этом прокидываем через params id ревью, а через DATA(особенность delete роута) - тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - тоже id ревью (дублирование чисто для практики)
     await api.delete(
       `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.REMOVE_REVIEW.replace(':reviewId', reviewId)}`,
@@ -261,7 +261,7 @@ export const sendReviewDB = createAsyncThunk<
   commentProps, // Аргументы, передаваемые в thunk
   ThunkConfig // используем типизированную конфигурацию
 >(ApiActions.SEND_REVIEW_DB, async (review, { dispatch, extra: api }) => {
-  const toast = useToast()
+  const toast = createToast()
 
   const response = await api.post(
     `${baseURL}${ApiRoutes.REVIEWS}${ApiRoutes.SET_REVIEW.replace(':filmId', review.filmId)}`,
@@ -293,7 +293,7 @@ export const loginAction = createAsyncThunk<
   ApiActions.LOGIN, // Имя thunkа
   async (loginInfo, { dispatch, extra: api }) => {
     try {
-      const toast = useToast()
+      const toast = createToast()
       dispatch(setIsDataLoading(true)) // загрузка
 
       // await api.post(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.SET_FILMS}`)
@@ -337,7 +337,7 @@ export const registerAction = createAsyncThunk<
   ApiActions.REGISTER, // Имя thunkа
   async (registerInfo, { dispatch, extra: api }) => {
     try {
-      const toast = useToast()
+      const toast = createToast()
       dispatch(setIsDataLoading(true))
       const data = await api.post(
         `${baseURL}${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`,
@@ -453,7 +453,7 @@ export const registerAction = createAsyncThunk<
 //   ApiActions.SEND_REVIEW,
 //   async (commentInfo, { dispatch, extra: api }) => {
 //     try {
-//       const toast = useToast()
+//       const toast = createToast()
 //       // await api.post(ApiRoutesMock.SEND_REVIEW, commentInfo);
 //       toast.info('Отправка отзыва')
 
@@ -474,7 +474,7 @@ export const registerAction = createAsyncThunk<
 
 //       toast.success('Отзыв отправлен')
 //     } catch (error) {
-//       const toast = useToast()
+//       const toast = createToast()
 //       console.log(error)
 //       toast.error('Ошибка отправки отзыва')
 //     }

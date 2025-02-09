@@ -1,8 +1,9 @@
 import { AxiosError } from 'axios'
 
-import useToast from './useToast'
+import createToast from '../utils/toast'
+
 export const useError = (err: AxiosError | Error) => {
-  const toast = useToast()
+  const toast = createToast()
 
   if (err instanceof AxiosError) {
     const serverMessage =

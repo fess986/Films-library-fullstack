@@ -15,7 +15,6 @@ import {
 } from './styles'
 import GetFilmsButton from './testingButtons/GetFilmButton'
 import SetFilmsButton from './testingButtons/SetFilmsButton'
-import useToast from '../../../hooks/useToast.js'
 import {
   registerAction,
   loginAction,
@@ -24,10 +23,11 @@ import {
 } from '../../../store/api-actions.js'
 import { getIsDataLoading } from '../../../store/app/appSelectors.js'
 import { useAppDispatch } from '../../../store/index.js'
+import createToast from '../../../utils/toast.js'
 
 const SignInForm: React.FC = () => {
   const dispatch = useAppDispatch()
-  const toast = useToast()
+  const toast = createToast()
 
   const isLoading = useSelector(getIsDataLoading)
 
