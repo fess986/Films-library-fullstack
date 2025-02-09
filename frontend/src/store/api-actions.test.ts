@@ -8,17 +8,18 @@ import { baseURL, AuthStatus } from '../const/const'
 import { useError } from '../hooks/useError'
 import { fetchFilmsDB, addFavoriteFilmDB } from '../store/api-actions'
 import { rootReducer, RootState, AppDispatch } from '../store/index'
-// import local from '../utils/localStorage'
+import local from '../utils/localStorage'
 
 vi.mock('../hooks/useError', () => ({ useError: vi.fn() }))
 
-// const localMock = vi.fn()
-// vi.mock('../utils/localStorage', () => ({
-//   default: localMock,
-//   }))
-
 const api = axios.create()
 const mockAxios = new AxiosMockAdapter(api) // делаем надстройку над axios, которая позволит перехватывать вызовы и эмулировать возврат данных от сервера
+
+vi.mock('../utils/localStorage', () => ({
+  default: {
+    addFavoriteFilm: vi.fn(),
+  },
+}))
 
 describe('fetchFilmsDB thunk', () => {
   let store: ReturnType<typeof configureStore<RootState>>
@@ -100,6 +101,9 @@ describe('addFavoriteFilmDB thunk', () => {
 
     // проверяем что данные записались в стор
     expect(store.getState().USER.favoriteFilms).toContain(filmId)
+
+    // проверяем, что local.addFavoriteFilm был вызван с правильным параметром
+    expect(local.addFavoriteFilm).toHaveBeenCalledWith(filmId)
   })
 
   it('dispatches actions correctly on failure', async () => {
