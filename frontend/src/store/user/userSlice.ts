@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { toast } from 'react-toastify'
 
 import { StoreNames, AuthStatus } from '../../const/const'
+import createToast from '../../utils/toast'
 import { addFavoriteFilmDB } from '../api-actions'
 
+const toast = createToast()
 type UserState = {
   isAuth: AuthStatus
   favoriteFilms: string[]
