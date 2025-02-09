@@ -10,7 +10,7 @@ import { reviewsSlice } from './reviews/reviewsSlice'
 import { userSlice } from './user/userSlice'
 import api from '../api/api'
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   [StoreNames.App]: appSlice.reducer,
   [StoreNames.Films]: filmsSlice.reducer,
   [StoreNames.Reviews]: reviewsSlice.reducer,

@@ -17,7 +17,7 @@ import {
   removeFromFavoriteFilm,
 } from './user/userSlice'
 import { ApiRoutes } from '../../../const/const'
-import { ApiActions, AppRoutes, AuthStatus } from '../const/const'
+import { ApiActions, AppRoutes, AuthStatus , baseURL } from '../const/const'
 import { useError } from '../hooks/useError'
 import { commentProps, UserInfo, Review, fetchedReview } from '../types/types'
 import { loginUtil } from '../utils/authUtils'
@@ -29,8 +29,6 @@ type ThunkConfig = {
   state: RootState
   extra: AxiosInstance
 }
-
-const baseURL = import.meta.env.VITE_BASE_URL
 
 // действия связанные с фильмами
 
