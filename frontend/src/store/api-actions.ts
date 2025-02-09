@@ -45,6 +45,10 @@ export const fetchFilmsDB = createAsyncThunk<
   ApiActions.FETCH_FILMS_DB, // Имя thunka
   async (_arg, { dispatch, extra: api }) => {
     try {
+      // console.log('assssssssssssssssssssssssssssssssssss')
+      // const toast = useToast()
+      // toast.success('ass')
+
       dispatch(setIsDataLoading(true))
       dispatch(setIsFilmsLoaded(true))
       const films = await api.get(
@@ -77,6 +81,7 @@ export const setFilmsDB = createAsyncThunk<
       const toast = useToast()
       dispatch(setIsDataLoading(true))
       await api.post(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.SET_FILMS}`)
+      dispatch(setIsDataLoading(false))
       toast.success('Данные загружены')
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
@@ -100,7 +105,6 @@ export const addFavoriteFilmDB = createAsyncThunk<
   ApiActions.ADD_FAVORITE_FILM_DB,
   async ({ userId, filmId }, { dispatch, extra: api }) => {
     try {
-      const toast = useToast()
       // отправляем запрос, при этом прокидываем через params id пользователя, а через тело(обязательно объект который можно преобразовать в json - что происходит под капотом) - id фильма
       await api.post(
         `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.ADD_FAVORITE_FILM.replace(':userId', userId)}`,
@@ -108,7 +112,7 @@ export const addFavoriteFilmDB = createAsyncThunk<
       )
       local.addFavoriteFilm(filmId)
       dispatch(addToFavoriteFilm(filmId))
-      toast.success('Фильм успешно добавлен в избранное')
+      // toast.success('Фильм успешно добавлен в избранное') // перенесено в extraReducers для того чтобы toast не ломал тесты. Дело в том что это хук, и при запуске тестов, окружение не может воспринять его и всё ломается 
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
       dispatch(setAuthStatus(AuthStatus.NO_AUTH))

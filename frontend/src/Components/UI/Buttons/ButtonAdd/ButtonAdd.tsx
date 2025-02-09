@@ -16,8 +16,6 @@ import {
 } from '../../../../store/user/userSelectors'
 import { StyledButton } from '../styles'
 
-// "prettify": "npx prettier --cache --write 'src/**/*.{js,jsx,ts,tsx}' '**/*.{js,jsx,ts,tsx}' '!**/node_modules/**' '!**/dist/**'"
-
 const ButtonAdd: React.FC = () => {
   const [added, setAdded] = useState(false)
 

@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { toast } from 'react-toastify';
 
 import { StoreNames, AuthStatus } from '../../const/const'
-// import { addFavoriteFilm } from "../api-actions";
+import { addFavoriteFilmDB } from "../api-actions";
 
 type UserState = {
   isAuth: AuthStatus
@@ -43,6 +44,12 @@ export const userSlice = createSlice({
       state.token = action.payload
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(addFavoriteFilmDB.fulfilled, () => {
+      toast.success('Фильм успешно добавлен в избранное')
+    })
+    
+  }
 })
 
 export const {
