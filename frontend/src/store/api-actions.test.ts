@@ -14,12 +14,11 @@ vi.mock('../hooks/useError', () => ({ useError: vi.fn() }))
 
 // const localMock = vi.fn()
 // vi.mock('../utils/localStorage', () => ({
-//   default: localMock, 
+//   default: localMock,
 //   }))
 
 const api = axios.create()
 const mockAxios = new AxiosMockAdapter(api) // делаем надстройку над axios, которая позволит перехватывать вызовы и эмулировать возврат данных от сервера
-
 
 describe('fetchFilmsDB thunk', () => {
   let store: ReturnType<typeof configureStore<RootState>>
@@ -89,7 +88,7 @@ describe('addFavoriteFilmDB thunk', () => {
   it('dispatches actions correctly on success', async () => {
     const userId = '123'
     const filmId = '456'
-    
+
     mockAxios
       .onPost(
         `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.ADD_FAVORITE_FILM.replace(':userId', userId)}`,
@@ -98,7 +97,7 @@ describe('addFavoriteFilmDB thunk', () => {
       .reply(200)
 
     await (store.dispatch as AppDispatch)(addFavoriteFilmDB({ userId, filmId }))
-    
+
     // проверяем что данные записались в стор
     expect(store.getState().USER.favoriteFilms).toContain(filmId)
   })
@@ -106,14 +105,14 @@ describe('addFavoriteFilmDB thunk', () => {
   it('dispatches actions correctly on failure', async () => {
     const userId = '123'
     const filmId = '456'
-    
+
     mockAxios
       .onPost(
         `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.ADD_FAVORITE_FILM.replace(':userId', userId)}`,
         { filmId }
       )
       .reply(500)
-    
+
     // проверяем начальное состояние
     expect(store.getState().USER.isAuth).toBe(AuthStatus.UNKNOWN)
 

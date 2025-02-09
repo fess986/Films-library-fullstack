@@ -112,7 +112,7 @@ export const addFavoriteFilmDB = createAsyncThunk<
       )
       local.addFavoriteFilm(filmId)
       dispatch(addToFavoriteFilm(filmId))
-      // toast.success('Фильм успешно добавлен в избранное') // перенесено в extraReducers для того чтобы toast не ломал тесты. Дело в том что это хук, и при запуске тестов, окружение не может воспринять его и всё ломается 
+      // toast.success('Фильм успешно добавлен в избранное') // перенесено в extraReducers для того чтобы toast не ломал тесты. Дело в том что это хук, и при запуске тестов, окружение не может воспринять его и всё ломается
     } catch (err) {
       // при ошибке отклоняем авторизацию и показываем сообщение
       dispatch(setAuthStatus(AuthStatus.NO_AUTH))
