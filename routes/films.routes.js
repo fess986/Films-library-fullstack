@@ -12,7 +12,6 @@ const router = Router()
 // получение фильмов из БД
 router.get(ApiRoutes.GET_FILMS, async (req, res) => {
   try {
-    console.log('Get Films from DB...')
     const films = await Film.find({}, { similarMockFilms: 0 }).lean() // находим все фильмы, кроме similarMockFilms, и преобразуем в массив с объектами
 
     // преобразуем данные с базы данных к нужному формату
