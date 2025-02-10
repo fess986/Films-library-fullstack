@@ -140,8 +140,8 @@ describe('api-actions tests', () => {
         )
         .reply(200)
 
-      store.dispatch(addToFavoriteFilm(filmId))  // добавляем фильм в избранное для проверки последущего удаления
-      expect(store.getState().USER.favoriteFilms).toContain(filmId)  // проверяем что фильм добавлен
+      store.dispatch(addToFavoriteFilm(filmId)) // добавляем фильм в избранное для проверки последущего удаления
+      expect(store.getState().USER.favoriteFilms).toContain(filmId) // проверяем что фильм добавлен
 
       // выполняем действие
       await (store.dispatch as AppDispatch)(
