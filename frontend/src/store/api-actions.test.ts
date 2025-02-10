@@ -1,19 +1,29 @@
 import { configureStore } from '@reduxjs/toolkit'
+import axios from 'axios'
+import AxiosMockAdapter from 'axios-mock-adapter'
 import { describe, it, expect, beforeEach } from 'vitest'
 
 import { ApiRoutes } from '../../../const/const'
 import { baseURL, AuthStatus } from '../const/const'
 import { useError } from '../hooks/useError'
-import { fetchFilmsDB, addFavoriteFilmDB } from '../store/api-actions'
-import { RootState, AppDispatch } from '../store/index'
-import { createTestStore, mockAxios } from '../test/test-utils/createStore'
+import {
+  fetchFilmsDB,
+  addFavoriteFilmDB,
+  removeFavoriteFilmDB,
+} from '../store/api-actions'
+import { rootReducer, RootState, AppDispatch } from '../store/index'
 import local from '../utils/localStorage'
+import { addToFavoriteFilm } from './user/userSlice'
 
 vi.mock('../hooks/useError', () => ({ useError: vi.fn() }))
+
+const api = axios.create()
+const mockAxios = new AxiosMockAdapter(api) // делаем надстройку над axios, которая позволит перехватывать вызовы и эмулировать возврат данных от сервера
 
 vi.mock('../utils/localStorage', () => ({
   default: {
     addFavoriteFilm: vi.fn(),
+    removeFavoriteFilm: vi.fn(),
   },
 }))
 
@@ -21,10 +31,16 @@ describe('api-actions tests', () => {
   let store: ReturnType<typeof configureStore<RootState>>
 
   beforeEach(() => {
-    store = createTestStore()
+    store = configureStore({
+      reducer: rootReducer,
+      middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({ thunk: { extraArgument: api } }),
+    })
+
     mockAxios.reset()
     vi.clearAllMocks()
   })
+
   describe('fetchFilmsDB thunk', () => {
     it('dispatches actions correctly on success', async () => {
       const mockFilms = [
@@ -107,6 +123,57 @@ describe('api-actions tests', () => {
 
       expect(store.getState().APP.isDataLoading).toBe(false)
       expect(store.getState().USER.isAuth).toBe(AuthStatus.NO_AUTH)
+      expect(useError).toHaveBeenCalled()
+    })
+  })
+
+  describe('removeFavoriteFilmDB thunk', () => {
+    it('dispatches actions correctly on success', async () => {
+      const userId = '123'
+      const filmId = '456'
+
+      // настраиваем ответ сервера на запрос
+      mockAxios
+        .onDelete(
+          `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.REMOVE_FAVORITE_FILM.replace(':userId', userId)}`,
+          { data: { filmId } }
+        )
+        .reply(200)
+
+      store.dispatch(addToFavoriteFilm(filmId))  // добавляем фильм в избранное для проверки последущего удаления
+      expect(store.getState().USER.favoriteFilms).toContain(filmId)  // проверяем что фильм добавлен
+
+      // выполняем действие
+      await (store.dispatch as AppDispatch)(
+        removeFavoriteFilmDB({ userId, filmId })
+      )
+
+      // Проверяем, что фильм удалён из избранного
+      expect(store.getState().USER.favoriteFilms).not.toContain(filmId)
+
+      // Проверяем, что вызвалась локальная функция удаления
+      expect(local.removeFavoriteFilm).toHaveBeenCalledWith(filmId)
+    })
+
+    it('dispatches actions correctly on failure', async () => {
+      const userId = '123'
+      const filmId = '456'
+
+      mockAxios
+        .onDelete(
+          `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.REMOVE_FAVORITE_FILM.replace(':userId', userId)}`,
+          { data: { filmId } }
+        )
+        .reply(500)
+
+      await (store.dispatch as AppDispatch)(
+        removeFavoriteFilmDB({ userId, filmId })
+      )
+
+      // Проверяем, что статус авторизации изменился
+      expect(store.getState().USER.isAuth).toBe(AuthStatus.NO_AUTH)
+
+      // Проверяем, что хук useError был вызван
       expect(useError).toHaveBeenCalled()
     })
   })
