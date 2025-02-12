@@ -45,15 +45,13 @@ export const fetchFilmsDB = createAsyncThunk<
   ApiActions.FETCH_FILMS_DB, // Имя thunka
   async (_arg, { dispatch, extra: api }) => {
     try {
-      // console.log('assssssssssssssssssssssssssssssssssss')
-      // const toast = createToast()
-      // toast.success('ass')
-
       dispatch(setIsDataLoading(true))
       dispatch(setIsFilmsLoaded(true))
+
       const films = await api.get(
         `${baseURL}${ApiRoutes.FILMS}${ApiRoutes.GET_FILMS}`
       )
+
       dispatch(setFilmList(films.data))
       dispatch(setIsDataLoading(false))
     } catch (err) {
@@ -296,10 +294,7 @@ export const loginAction = createAsyncThunk<
       const toast = createToast()
       dispatch(setIsDataLoading(true)) // загрузка
 
-      // await api.post(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.SET_FILMS}`)
-      // await api.get(`${baseURL}${ApiRoutes.FILMS}${ApiRoutes.GET_FILMS}`)
-
-      // обращаемся к нашему серверу который при успехе вернет нам токен и userId
+      // обращаемся к нашему серверу который при успехе вернет нам токен, userId и favoriteFilms
       const data = await api.post(
         `${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`,
         loginInfo

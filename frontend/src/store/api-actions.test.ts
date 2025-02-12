@@ -10,22 +10,26 @@ import {
   fetchFilmsDB,
   addFavoriteFilmDB,
   removeFavoriteFilmDB,
+  loginAction,
 } from '../store/api-actions'
 import { rootReducer, RootState, AppDispatch } from '../store/index'
 import local from '../utils/localStorage'
 import { addToFavoriteFilm } from './user/userSlice'
+import { loginUtil } from '../utils/authUtils'
 
-vi.mock('../hooks/useError', () => ({ useError: vi.fn() }))
-
-const api = axios.create()
-const mockAxios = new AxiosMockAdapter(api) // делаем надстройку над axios, которая позволит перехватывать вызовы и эмулировать возврат данных от сервера
-
+// мокаем функции используемые в тестах
+vi.mock('../hooks/useError', () => ({ useError: vi.fn() })) // useError
 vi.mock('../utils/localStorage', () => ({
+  // local
   default: {
     addFavoriteFilm: vi.fn(),
     removeFavoriteFilm: vi.fn(),
   },
 }))
+vi.mock('../utils/authUtils', () => ({ loginUtil: vi.fn() })) // loginUtil
+
+const api = axios.create()
+const mockAxios = new AxiosMockAdapter(api) // делаем надстройку над axios, которая позволит перехватывать вызовы и эмулировать возврат данных от сервера
 
 describe('api-actions tests', () => {
   let store: ReturnType<typeof configureStore<RootState>>
@@ -60,7 +64,6 @@ describe('api-actions tests', () => {
 
       // перезапись экшенов и проверка что они изменились предсказуемым образом
       actions = store.getState()
-      console.log(actions)
       expect(actions.FILMS.filmList).toEqual(mockFilms)
       expect(actions.APP.isDataLoading).toBe(false)
       expect(actions.APP.isFilmsLoaded).toBe(true)
@@ -174,6 +177,51 @@ describe('api-actions tests', () => {
       expect(store.getState().USER.isAuth).toBe(AuthStatus.NO_AUTH)
 
       // Проверяем, что хук useError был вызван
+      expect(useError).toHaveBeenCalled()
+    })
+  })
+
+  describe('loginAction thunk', () => {
+    const userInfo = { email: 'test@example.com', password: 'password123' }
+    const mockResponse = {
+      token: 'test-token',
+      userId: '123',
+      favoriteFilms: ['456', '789'],
+    }
+
+    it('dispatches actions correctly on success', async () => {
+      mockAxios
+        .onPost(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, userInfo)
+        .reply(200, mockResponse)
+
+      await (store.dispatch as AppDispatch)(loginAction(userInfo))
+
+      const actions = store.getState()
+      // Проверяем загрузку
+      expect(actions.APP.isDataLoading).toBe(false)
+
+      // Проверяем, что loginUtil вызван с правильными данными
+      expect(loginUtil).toHaveBeenCalledWith(
+        expect.any(Function), // dispatch
+        mockResponse.token,
+        mockResponse.userId,
+        mockResponse.favoriteFilms
+      )
+    })
+
+    it('dispatches actions correctly on failure', async () => {
+      mockAxios
+        .onPost(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, userInfo)
+        .reply(500)
+
+      await (store.dispatch as AppDispatch)(loginAction(userInfo))
+
+      const actions = store.getState()
+
+      // Проверяем, что статус авторизации изменился
+      expect(actions.USER.isAuth).toBe(AuthStatus.NO_AUTH)
+
+      // Проверяем, что useError был вызван
       expect(useError).toHaveBeenCalled()
     })
   })
