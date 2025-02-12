@@ -11,6 +11,7 @@ import {
   addFavoriteFilmDB,
   removeFavoriteFilmDB,
   loginAction,
+  registerAction,
 } from '../store/api-actions'
 import { rootReducer, RootState, AppDispatch } from '../store/index'
 import local from '../utils/localStorage'
@@ -212,6 +213,51 @@ describe('api-actions tests', () => {
     it('dispatches actions correctly on failure', async () => {
       mockAxios
         .onPost(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.LOGIN}`, userInfo)
+        .reply(500)
+
+      await (store.dispatch as AppDispatch)(loginAction(userInfo))
+
+      const actions = store.getState()
+
+      // Проверяем, что статус авторизации изменился
+      expect(actions.USER.isAuth).toBe(AuthStatus.NO_AUTH)
+
+      // Проверяем, что useError был вызван
+      expect(useError).toHaveBeenCalled()
+    })
+  })
+
+  describe('registerAction thunk', () => {
+    const userInfo = { email: 'test@example.com', password: 'password123' }
+    const mockResponse = {
+      token: 'test-token',
+      userId: '123',
+      favoriteFilms: [],
+    }
+
+    it('dispatches actions correctly on success', async () => {
+      mockAxios
+        .onPost(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`, userInfo)
+        .reply(200, mockResponse)
+
+      await (store.dispatch as AppDispatch)(registerAction(userInfo))
+
+      const actions = store.getState()
+      // Проверяем загрузку
+      expect(actions.APP.isDataLoading).toBe(false)
+
+      // Проверяем, что loginUtil вызван с правильными данными
+      expect(loginUtil).toHaveBeenCalledWith(
+        expect.any(Function), // dispatch
+        mockResponse.token,
+        mockResponse.userId,
+        mockResponse.favoriteFilms
+      )
+    })
+
+    it('dispatches actions correctly on failure', async () => {
+      mockAxios
+        .onPost(`${baseURL}${ApiRoutes.AUTH}${ApiRoutes.REGISTER}`, userInfo)
         .reply(500)
 
       await (store.dispatch as AppDispatch)(loginAction(userInfo))
