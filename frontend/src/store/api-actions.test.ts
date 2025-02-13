@@ -29,7 +29,7 @@ vi.mock('../utils/localStorage', () => ({
 }))
 vi.mock('../utils/authUtils', () => ({ loginUtil: vi.fn() })) // loginUtil
 
-const api = axios.create()
+const api = axios.create() // создаём инстанс axios
 const mockAxios = new AxiosMockAdapter(api) // делаем надстройку над axios, которая позволит перехватывать вызовы и эмулировать возврат данных от сервера
 
 describe('api-actions tests', () => {
