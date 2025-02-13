@@ -9,7 +9,7 @@ import { resetFilmsShownCount } from '../../../store/app/appSlice'
 
 // Мокаем useAppDispatch
 vi.mock('../../../store', async () => {
-  const actual = await import('../../../store')  // получаем то что должен вернуть диспатч
+  const actual = await import('../../../store') // получаем то что должен вернуть диспатч
   return {
     ...actual,
     useAppDispatch: vi.fn(),
@@ -54,8 +54,8 @@ describe('Logo Component', () => {
     )
 
     const link = screen.getByRole('link')
-    await userEvent.click(link)  // кликаем по кнопке
+    await userEvent.click(link) // кликаем по кнопке
 
-    expect(mockDispatch).toHaveBeenCalledWith(resetFilmsShownCount())  // вызываем диспатч экшена
+    expect(mockDispatch).toHaveBeenCalledWith(resetFilmsShownCount()) // вызываем диспатч экшена
   })
 })
