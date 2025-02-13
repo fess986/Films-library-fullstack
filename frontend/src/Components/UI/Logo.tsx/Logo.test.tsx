@@ -16,14 +16,19 @@ vi.mock('../../../store', async () => {
   }
 })
 
+// вынесем в отдельную функцию рендер для удобства
+const renderLogo = () => {
+  render(
+    <MemoryRouter>
+      <Logo />
+    </MemoryRouter>
+  )
+}
+
 describe('Logo Component', () => {
   it('должен рендерить логотип с alt-текстом', () => {
     // рендерим компонент
-    render(
-      <MemoryRouter>
-        <Logo />
-      </MemoryRouter>
-    )
+    renderLogo()
 
     // находим картинку по alt
     const logoImage = screen.getByAltText('Films Library')
@@ -31,11 +36,7 @@ describe('Logo Component', () => {
   })
 
   it('должен содержать ссылку на главную страницу', () => {
-    render(
-      <MemoryRouter>
-        <Logo />
-      </MemoryRouter>
-    )
+    renderLogo()
 
     const link = screen.getByRole('link') // находим по роли
     expect(link).toHaveAttribute('href', '/') // проверяем что есть нужный переход
@@ -47,11 +48,7 @@ describe('Logo Component', () => {
     // Мокаем useAppDispatch, чтобы использовать mockDispatch
     vi.mocked(useAppDispatch).mockReturnValue(mockDispatch)
 
-    render(
-      <MemoryRouter>
-        <Logo />
-      </MemoryRouter>
-    )
+    renderLogo()
 
     const link = screen.getByRole('link')
     await userEvent.click(link) // кликаем по кнопке
