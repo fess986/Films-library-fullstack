@@ -11,7 +11,7 @@ import {
   loginAction,
   registerAction,
 } from '../store/api-actions'
-import {  RootState, AppDispatch } from '../store/index'
+import { RootState, AppDispatch } from '../store/index'
 import local from '../utils/localStorage'
 import { addToFavoriteFilm } from './user/userSlice'
 import { createMockStore, api, mockAxios } from '../test/test-utils/createStore'
@@ -32,7 +32,7 @@ describe('api-actions tests', () => {
   let store: ReturnType<typeof configureStore<RootState>>
 
   beforeEach(() => {
-    store = createMockStore(api)  // создаём на каждом шагу новый мок стора
+    store = createMockStore(api) // создаём на каждом шагу новый мок стора
 
     mockAxios.reset() // очищаем axios перед каждым тестом
     vi.clearAllMocks() // очищаем все моки перед каждым тестом

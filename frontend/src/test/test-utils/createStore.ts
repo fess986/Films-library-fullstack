@@ -14,5 +14,5 @@ export const createMockStore = (apiInstance?: typeof api) => {
       getDefaultMiddleware({
         thunk: { extraArgument: apiInstance },
       }),
-  })}
-
+  })
+}
