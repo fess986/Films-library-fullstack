@@ -1,6 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import axios from 'axios'
-import AxiosMockAdapter from 'axios-mock-adapter'
 import { describe, it, expect, beforeEach } from 'vitest'
 
 import { ApiRoutes } from '../../../const/const'
@@ -13,9 +11,10 @@ import {
   loginAction,
   registerAction,
 } from '../store/api-actions'
-import { rootReducer, RootState, AppDispatch } from '../store/index'
+import {  RootState, AppDispatch } from '../store/index'
 import local from '../utils/localStorage'
 import { addToFavoriteFilm } from './user/userSlice'
+import { createMockStore, api, mockAxios } from '../test/test-utils/createStore'
 import { loginUtil } from '../utils/authUtils'
 
 // мокаем функции используемые в тестах
@@ -29,21 +28,14 @@ vi.mock('../utils/localStorage', () => ({
 }))
 vi.mock('../utils/authUtils', () => ({ loginUtil: vi.fn() })) // loginUtil
 
-const api = axios.create() // создаём инстанс axios
-const mockAxios = new AxiosMockAdapter(api) // делаем надстройку над axios, которая позволит перехватывать вызовы и эмулировать возврат данных от сервера
-
 describe('api-actions tests', () => {
   let store: ReturnType<typeof configureStore<RootState>>
 
   beforeEach(() => {
-    store = configureStore({
-      reducer: rootReducer,
-      middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({ thunk: { extraArgument: api } }),
-    })
+    store = createMockStore(api)  // создаём на каждом шагу новый мок стора
 
-    mockAxios.reset()
-    vi.clearAllMocks()
+    mockAxios.reset() // очищаем axios перед каждым тестом
+    vi.clearAllMocks() // очищаем все моки перед каждым тестом
   })
 
   describe('fetchFilmsDB thunk', () => {
