@@ -7,7 +7,11 @@ import { describe, it, beforeEach } from 'vitest'
 import GenreItem from './GenreItem'
 import { createMockStore } from '../../../test/test-utils/createStore'
 
-const renderGenreItem = (store: ReturnType<typeof createMockStore>, genre: string, active = false) => {
+const renderGenreItem = (
+  store: ReturnType<typeof createMockStore>,
+  genre: string,
+  active = false
+) => {
   render(
     <Provider store={store}>
       <MemoryRouter>
