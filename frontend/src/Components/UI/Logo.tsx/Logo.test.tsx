@@ -2,13 +2,15 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Provider } from 'react-redux'
 import { MemoryRouter } from 'react-router-dom' // уже готовый роутер с историей
-import { describe, it, } from 'vitest'
+import { describe, it } from 'vitest'
 
 import Logo from './Logo'
 // import { resetFilmsShownCount } from '../../../store/app/appSlice'
-import { setFilmsShownCount, initialAppState } from '../../../store/app/appSlice'
+import {
+  setFilmsShownCount,
+  initialAppState,
+} from '../../../store/app/appSlice'
 import { createMockStore } from '../../../test/test-utils/createStore'
-
 
 // вынесем в отдельную функцию рендер для удобства
 const renderLogo = (store: ReturnType<typeof createMockStore>) => {
@@ -37,7 +39,6 @@ describe('Logo Component', () => {
   })
 
   it('должен содержать ссылку на главную страницу', () => {
-
     const link = screen.getByRole('link') // находим по роли
     expect(link).toHaveAttribute('href', '/') // проверяем что есть нужный переход
   })
@@ -49,6 +50,8 @@ describe('Logo Component', () => {
     const link = screen.getByRole('link')
     await userEvent.click(link) // кликаем по кнопке
 
-    expect(store.getState().APP.filmsShownCount).toBe(initialAppState.filmsShownCount)
+    expect(store.getState().APP.filmsShownCount).toBe(
+      initialAppState.filmsShownCount
+    )
   })
 })
