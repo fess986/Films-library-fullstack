@@ -17,12 +17,15 @@ const mockFilms: FilmProps[] = [
   createFakeFilm(),
 ]
 
-// 
+//
 mockFilms[0].genre = ['Action']
 mockFilms[1].genre = ['Drama']
 mockFilms[2].genre = ['Comedy']
 
-const renderGenreList = (store: ReturnType<typeof createMockStore>, films: FilmProps[]) => {
+const renderGenreList = (
+  store: ReturnType<typeof createMockStore>,
+  films: FilmProps[]
+) => {
   render(
     <Provider store={store}>
       <MemoryRouter>
