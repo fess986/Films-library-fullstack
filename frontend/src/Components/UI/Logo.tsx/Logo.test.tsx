@@ -14,7 +14,6 @@ import { createMockStore } from '../../../test/test-utils/createStore'
 
 // вынесем в отдельную функцию рендер для удобства
 const renderLogo = (store: ReturnType<typeof createMockStore>) => {
-  // const store = createMockStore()
   render(
     <Provider store={store}>
       <MemoryRouter>
@@ -25,11 +24,11 @@ const renderLogo = (store: ReturnType<typeof createMockStore>) => {
 }
 
 describe('Logo Component', () => {
-  let store: ReturnType<typeof createMockStore>
+  let store: ReturnType<typeof createMockStore> // для того чтобы переменная была доступна во всех тестах
 
   beforeEach(() => {
-    store = createMockStore()
-    renderLogo(store)
+    store = createMockStore() // создаём инстанс стора
+    renderLogo(store) // рендерим компонент
   })
 
   it('должен рендерить логотип с alt-текстом', () => {
@@ -44,14 +43,14 @@ describe('Logo Component', () => {
   })
 
   it('должен диспатчить resetFilmsShownCount при клике', async () => {
-    store.dispatch(setFilmsShownCount(1))
-    expect(store.getState().APP.filmsShownCount).toBe(1)
+    store.dispatch(setFilmsShownCount(1)) // сначала устанавливаем нужное состояние
+    expect(store.getState().APP.filmsShownCount).toBe(1) // проверяем начальное состояние
 
-    const link = screen.getByRole('link')
+    const link = screen.getByRole('link') // находим по роли
     await userEvent.click(link) // кликаем по кнопке
 
     expect(store.getState().APP.filmsShownCount).toBe(
-      initialAppState.filmsShownCount
+      initialAppState.filmsShownCount // провеяем что стор исменил состояние на начальное
     )
   })
 })
