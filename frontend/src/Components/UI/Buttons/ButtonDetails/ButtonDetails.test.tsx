@@ -5,14 +5,18 @@ import { MemoryRouter, useNavigate } from 'react-router-dom'
 import { describe, it, beforeEach, vi } from 'vitest'
 
 import ButtonDetails from './ButtonDetails'
-import { setFilmsShownCount, initialAppState } from '../../../../store/app/appSlice'
+import {
+  setFilmsShownCount,
+  initialAppState,
+} from '../../../../store/app/appSlice'
 import { setActiveFilm } from '../../../../store/films/filmsSlice'
 import { createMockStore } from '../../../../test/test-utils/createStore'
 import createFakeFilm from '../../../../test/test-utils/mockFilm'
 
 // мокаем useNavigate
 vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom')
+  const actual =
+    await vi.importActual<typeof import('react-router-dom')>('react-router-dom')
   return {
     ...actual,
     useNavigate: vi.fn(),
@@ -58,10 +62,12 @@ describe('ButtonDetails Component', () => {
   it('должен диспатчить resetFilmsShownCount при клике', async () => {
     const button = screen.getByRole('button', { name: /details/i })
 
-    store.dispatch(setFilmsShownCount(1))  // установим тестовое состояние
-    expect(store.getState().APP.filmsShownCount).toBe(1)  // проверим запись в стор
+    store.dispatch(setFilmsShownCount(1)) // установим тестовое состояние
+    expect(store.getState().APP.filmsShownCount).toBe(1) // проверим запись в стор
 
     await userEvent.click(button) // нажимаем на кнопку
-    expect(store.getState().APP.filmsShownCount).toBe(initialAppState.filmsShownCount)  // ожидаем что состояние сбросилось
+    expect(store.getState().APP.filmsShownCount).toBe(
+      initialAppState.filmsShownCount
+    ) // ожидаем что состояние сбросилось
   })
 })
