@@ -17,7 +17,6 @@ import MyList from '../Components/pages/MyList/MyList'
 import Player from '../Components/pages/Player/Player'
 import SignIn from '../Components/pages/SignIn/SignIn'
 import { AppRoutes } from '../const/const'
-import { Films } from '../mock/films'
 import { FilmProps } from '../types/types'
 
 export default function useRoutes(films: FilmProps[]) {
@@ -63,7 +62,7 @@ export default function useRoutes(films: FilmProps[]) {
             HeaderComponent={HeaderReview}
             FooterComponent={Footer}
             bodyProps={{}}
-            headerProps={{ currentFilm: Films[0] }}
+            headerProps={{ currentFilm: films[0] }}
           />
         }
       >
@@ -93,7 +92,7 @@ export default function useRoutes(films: FilmProps[]) {
           <Layout BodyComponent={BodyPlayer} bodyProps={{}} headerProps={{}} />
         }
       >
-        <Route path={AppRoutes.PLAYER} element={<Player film={Films[0]} />} />
+        <Route path={AppRoutes.PLAYER} element={<Player film={films[0]} />} />
       </Route>
 
       <Route path="*" element={<Navigate to={AppRoutes.MAIN} replace />} />

@@ -16,7 +16,7 @@ type AppState = {
 }
 
 export const initialAppState: AppState = {
-  filmsShownCount: 5,
+  filmsShownCount: 8,
   activeGenre: 'All genres',
 
   isActiveFilmLoaded: false,
