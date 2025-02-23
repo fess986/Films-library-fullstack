@@ -17,10 +17,6 @@ const filmSchema = new Schema({
     type: String,
     required: true,
   },
-  previewVideoLink: {
-    type: String,
-    required: true,
-  },
   description: {
     type: String,
     required: true,

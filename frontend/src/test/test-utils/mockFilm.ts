@@ -8,7 +8,6 @@ const createFakeFilm = (overrides?: Partial<FilmProps>): FilmProps => ({
   posterImage: faker.image.url(),
   previewImage: faker.image.url(),
   videoLink: faker.internet.url(),
-  previewVideoLink: faker.internet.url(),
   description: faker.lorem.paragraph(),
   rating: faker.number.float({ min: 1, max: 10, multipleOf: 0.1 }),
   scoresCount: faker.number.int({ min: 0, max: 10000 }),
