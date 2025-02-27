@@ -11,7 +11,6 @@ import Video from '../../UI/Video/Video'
 
 type PlayerProps = {
   film: FilmProps
-  
 }
 
 const altVideoLink = 'https://assets.mixkit.co/videos/4078/4078-720.mp4'

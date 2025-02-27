@@ -5,8 +5,7 @@ const initialFilms = [
     name: 'The Grand Budapest Hotel',
     posterImage: '/images/posters/The grand budapest hotel poster.jpg',
     previewImage: '/images/the-grand-budapest-hotel-poster.jpg',
-    videoLink:
-      'https://assets.mixkit.co/videos/4078/4078-720.mp4',
+    videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
     description: `In the 1930s, the Grand Budapest Hotel is a popular European ski
     resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby
     boy, becomes Gustave's friend and protege.`,
@@ -211,8 +210,7 @@ const additionalFilms = [
     name: 'City Hunter',
     posterImage: '/images/to-compress/posters/City Hunter poster.jpg',
     previewImage: '/images/to-compress/City Hunter.jpg',
-    videoLink:
-      'https://assets.mixkit.co/videos/4078/4078-720.mp4',
+    videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
     description: `Nicky Larson, the best private investigator in the business, is called for a high-risk mission: to recover the perfume of Cupid, a perfume that would make irresistible the one who uses it.`,
     rating: 9.5,
     scoresCount: 260,
