@@ -8,13 +8,14 @@ type VideoProps = {
   ref?: React.Ref<HTMLVideoElement>
   onTimeUpdate?: (evt: SyntheticEvent<HTMLVideoElement>) => void
   onClick?: () => void
+  onError?: () => void
 }
 
 // так выглядело до forwardRef
 // const Video: React.FC<VideoProps> = ({ poster, src, onTimeUpdate, onClick, ref }) => {
 
 const Video = forwardRef<HTMLVideoElement, VideoProps>(
-  ({ poster, src, onTimeUpdate, onClick }, ref) => {
+  ({ poster, src, onTimeUpdate, onClick, onError }, ref) => {
     return (
       <VideoPlayer
         ref={ref}
@@ -23,6 +24,7 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
         poster={poster}
         onTimeUpdate={onTimeUpdate}
         onClick={onClick}
+        onError={onError}
       />
     )
   }

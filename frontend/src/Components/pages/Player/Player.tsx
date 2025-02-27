@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
 
 import { DivPlayerContainer } from './styles'
 import useActiveFilm from '../../../hooks/useActiveFilm'
@@ -11,18 +11,24 @@ import Video from '../../UI/Video/Video'
 
 type PlayerProps = {
   film: FilmProps
+  
 }
+
+const altVideoLink = 'https://assets.mixkit.co/videos/4078/4078-720.mp4'
 
 const Player: React.FC<PlayerProps> = () => {
   const [isLoading, setIsloading] = useState(true)
+  const [loadingAttempt, setLoadingAttempt] = useState(0)
   const [isPlaying, setIsPlaing] = useState(false)
   const [currentTimePlaying, setCurrentTimePlaying] = useState(0)
   const [filmDuration, setfilmDuration] = useState(0)
   const [playRowPosition, setPlayRowPosition] = useState(0)
+  const [videoSource, setVideoSource] = useState<string>('')
 
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const { currentFilm } = useActiveFilm()
   const toast = createToast()
+  const timeoutRef = useRef<NodeJS.Timeout>()
 
   // обновляем текущее время видео
   const handlerCurrentTimePlaying = () => {
@@ -97,23 +103,93 @@ const Player: React.FC<PlayerProps> = () => {
     }
   }
 
-  // получаем длинну видео
+  // обработка ошибки загрузки видео
+  const handleVideoError = useCallback(() => {
+    console.log('Ошибка загрузки:', videoRef.current?.src)
+
+    if (videoRef.current?.src !== altVideoLink) {
+      if (loadingAttempt === 0) {
+        console.log('Первая попытка перезагрузки')
+        setLoadingAttempt(1)
+        // Пробуем загрузить текущий источник еще раз
+        videoRef.current?.load()
+        return
+      }
+
+      console.log('Переключение на альтернативную ссылку')
+      toast.error(
+        'Проблема с загрузкой видео, используем альтернативный источник'
+      )
+      setVideoSource(altVideoLink)
+      setLoadingAttempt(0)
+    } else {
+      toast.error('Не удалось загрузить видео')
+    }
+  }, [loadingAttempt, toast])
+
+  const checkVideoPlayability = useCallback(async () => {
+    if (!videoRef.current) return
+
+    try {
+      await videoRef.current.play()
+      videoRef.current.pause()
+      setIsloading(false)
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    } catch (error) {
+      handleVideoError()
+    }
+  }, [handleVideoError])
+
   useEffect(() => {
-    if (videoRef.current === null) {
-      return
+    if (!videoRef.current || !videoSource) return
+
+    const videoElement = videoRef.current
+
+    // Очищаем предыдущий таймаут если он был
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
     }
 
-    videoRef.current.addEventListener('loadeddata', () => {
-      setIsloading(false)
-      setfilmDuration((current) => {
-        if (videoRef.current) {
-          // console.log(videoRef.current)
-          current = videoRef.current.duration
-        }
-        return current
-      })
-    })
-  }, [])
+    // Устанавливаем новый таймаут
+    timeoutRef.current = setTimeout(() => {
+      console.log('Запуск проверки через 5 секунд') // для отладки
+      checkVideoPlayability()
+    }, 5000)
+
+    const handleLoadedData = () => {
+      console.log('Видео загружено') // для отладки
+      setfilmDuration(videoElement.duration)
+      checkVideoPlayability()
+    }
+
+    videoElement.addEventListener('loadeddata', handleLoadedData)
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+      videoElement.removeEventListener('loadeddata', handleLoadedData)
+    }
+  }, [videoSource, checkVideoPlayability])
+
+  // инициализация источника видео
+  useEffect(() => {
+    if (currentFilm?.videoLink) {
+      const cleanUrl = currentFilm.videoLink.startsWith('@')
+        ? currentFilm.videoLink.slice(1)
+        : currentFilm.videoLink
+
+      try {
+        new URL(cleanUrl) // проверка валидности URL
+        setVideoSource(cleanUrl)
+      } catch {
+        console.log('Невалидный URL:', cleanUrl)
+        setVideoSource(altVideoLink)
+      }
+    }
+  }, [currentFilm])
 
   // устанавливаем позицию прогресс бара
   useEffect(() => {
@@ -129,7 +205,8 @@ const Player: React.FC<PlayerProps> = () => {
             ? currentFilm?.playerImage
             : '/images/player-poster.jpg'
         }
-        src={currentFilm?.videoLink}
+        src={videoSource}
+        onError={handleVideoError}
         onTimeUpdate={handlerCurrentTimePlaying}
         onClick={playButtonClick}
       />
