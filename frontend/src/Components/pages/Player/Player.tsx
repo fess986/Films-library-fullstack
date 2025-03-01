@@ -193,7 +193,7 @@ const Player: React.FC<PlayerProps> = () => {
   useEffect(() => {
     const initializeVideo = async () => {
       if (currentFilm?.tmdbId) {
-      // if (TestId) {
+        // if (TestId) {
         // Предполагая, что у вас есть ID фильма из TMDB
         try {
           const videoUrl = await TMDBService.getMovieVideos(currentFilm?.tmdbId)

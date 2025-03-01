@@ -7,7 +7,6 @@ const TMDB_CONFIG = {
 export const TMDBService = {
   async getMovieVideos(movieId: string | number) {
     try {
-
       const response = await fetch(
         `${TMDB_CONFIG.BASE_URL}/movie/${movieId}/videos?api_key=${TMDB_CONFIG.API_KEY}&language=${TMDB_CONFIG.LANGUAGE}`
       )
