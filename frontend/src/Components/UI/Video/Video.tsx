@@ -1,6 +1,6 @@
 import { SyntheticEvent, forwardRef } from 'react'
 
-import { VideoPlayer } from './styles'
+import { VideoPlayer, IframePlayer } from './styles'
 
 type VideoProps = {
   poster: string
@@ -16,7 +16,16 @@ type VideoProps = {
 
 const Video = forwardRef<HTMLVideoElement, VideoProps>(
   ({ poster, src, onTimeUpdate, onClick, onError }, ref) => {
-    return (
+    const isYouTube = src?.includes('youtube.com/embed')
+
+    return isYouTube ? (
+      <IframePlayer
+        src={src}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    ) : (
       <VideoPlayer
         ref={ref}
         src={src ? src : '#'}

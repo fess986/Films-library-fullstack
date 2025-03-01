@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 
 import { DivPlayerContainer } from './styles'
+import { TMDBService, TestId } from '../../../api/tmdb.service'
 import useActiveFilm from '../../../hooks/useActiveFilm'
 import { FilmProps } from '../../../types/types'
 import createToast from '../../../utils/toast'
@@ -174,20 +175,41 @@ const Player: React.FC<PlayerProps> = () => {
   }, [videoSource, checkVideoPlayability])
 
   // инициализация источника видео
-  useEffect(() => {
-    if (currentFilm?.videoLink) {
-      const cleanUrl = currentFilm.videoLink.startsWith('@')
-        ? currentFilm.videoLink.slice(1)
-        : currentFilm.videoLink
+  // useEffect(() => {
+  //   if (currentFilm?.videoLink) {
+  //     const cleanUrl = currentFilm.videoLink.startsWith('@')
+  //       ? currentFilm.videoLink.slice(1)
+  //       : currentFilm.videoLink
 
-      try {
-        new URL(cleanUrl) // проверка валидности URL
-        setVideoSource(cleanUrl)
-      } catch {
-        console.log('Невалидный URL:', cleanUrl)
-        setVideoSource(altVideoLink)
+  //     try {
+  //       new URL(cleanUrl) // проверка валидности URL
+  //       setVideoSource(cleanUrl)
+  //     } catch {
+  //       console.log('Невалидный URL:', cleanUrl)
+  //       setVideoSource(altVideoLink)
+  //     }
+  //   }
+  // }, [currentFilm])
+
+  useEffect(() => {
+    const initializeVideo = async () => {
+      if (TestId) {
+        // Предполагая, что у вас есть ID фильма из TMDB
+        try {
+          const videoUrl = await TMDBService.getMovieVideos(TestId)
+          console.log('videoUrl', videoUrl)
+          if (videoUrl) {
+            setVideoSource(videoUrl)
+          } else {
+            setVideoSource(altVideoLink)
+          }
+        } catch {
+          setVideoSource(altVideoLink)
+        }
       }
     }
+
+    initializeVideo()
   }, [currentFilm])
 
   // устанавливаем позицию прогресс бара
