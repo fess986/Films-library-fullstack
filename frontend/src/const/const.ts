@@ -4,6 +4,7 @@ export const baseURL = import.meta.env.VITE_BASE_URL
 export const MINIMUM_REVIEW_LENGTH = 10
 export const MAXIMUM_REVIEW_LENGTH = 1100
 export const storageName = 'userData'
+export const altVideoLink = 'https://assets.mixkit.co/videos/4078/4078-720.mp4'
 
 export const AppRoutes = {
   ROOT: '/',
