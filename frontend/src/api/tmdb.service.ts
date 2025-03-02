@@ -1,4 +1,4 @@
-import createToast from "../utils/toast"
+import createToast from '../utils/toast'
 
 const toast = createToast()
 
@@ -38,7 +38,9 @@ export const TMDBService = {
       return null
     } catch (error) {
       console.error('Error fetching TMDB videos:', error)
-      toast.error('ошибка получения настоящено тизера фильма, попробуйте через VPN ')
+      toast.error(
+        'ошибка получения настоящено тизера фильма, попробуйте через VPN '
+      )
       return null
     }
   },
