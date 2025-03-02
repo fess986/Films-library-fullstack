@@ -1,3 +1,7 @@
+import createToast from "../utils/toast"
+
+const toast = createToast()
+
 const TMDB_CONFIG = {
   API_KEY: '08c7a52e0f9692a6b875c08d416797cb', // ключ сервиса с  https://www.themoviedb.org/settings/api
   BASE_URL: 'https://api.themoviedb.org/3', // базовый URL для API, где 3 - версия API
@@ -34,6 +38,7 @@ export const TMDBService = {
       return null
     } catch (error) {
       console.error('Error fetching TMDB videos:', error)
+      toast.error('ошибка получения настоящено тизера фильма, попробуйте через VPN ')
       return null
     }
   },

@@ -117,7 +117,7 @@ const Player: React.FC<PlayerProps> = () => {
 
       console.log('Переключение на альтернативную ссылку')
       toast.error(
-        'Проблема с загрузкой видео, используем альтернативный источник'
+        'Проблема с загрузкой видео, возможно из-за проблем с YOUTUBE , используем альтернативное видео'
       )
       setVideoSource(altVideoLink)
       setLoadingAttempt(0)
@@ -153,12 +153,10 @@ const Player: React.FC<PlayerProps> = () => {
 
     // Устанавливаем новый таймаут
     timeoutRef.current = setTimeout(() => {
-      console.log('Запуск проверки через 2 секунды') // для отладки
       checkVideoPlayability()
     }, 2000)
 
     const handleLoadedData = () => {
-      console.log('Видео загружено') // для отладки
       setfilmDuration(videoElement.duration)
       checkVideoPlayability()
     }
@@ -193,7 +191,6 @@ const Player: React.FC<PlayerProps> = () => {
   useEffect(() => {
     const initializeVideo = async () => {
       if (currentFilm?.tmdbId) {
-        // if (TestId) {
         // Предполагая, что у вас есть ID фильма из TMDB
         try {
           const videoUrl = await TMDBService.getMovieVideos(currentFilm?.tmdbId)
