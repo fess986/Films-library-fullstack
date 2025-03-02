@@ -1,20 +1,18 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 
 import { DivPlayerContainer } from './styles'
-import { TMDBService, TestId } from '../../../api/tmdb.service'
+import { TMDBService } from '../../../api/tmdb.service'
+import { altVideoLink } from '../../../const/const'
 import useActiveFilm from '../../../hooks/useActiveFilm'
 import { FilmProps } from '../../../types/types'
 import createToast from '../../../utils/toast'
 import PlayerControls from '../../blocks/PlayerControls/PlayerControls'
 import ButtonPlayerExit from '../../UI/Buttons/ButtonPlayerExit/ButtonPlayerExit'
 import Video from '../../UI/Video/Video'
-// import { current } from "@reduxjs/toolkit";
 
 type PlayerProps = {
   film: FilmProps
 }
-
-const altVideoLink = 'https://assets.mixkit.co/videos/4078/4078-720.mp4'
 
 const Player: React.FC<PlayerProps> = () => {
   const [isLoading, setIsloading] = useState(true)
@@ -106,6 +104,7 @@ const Player: React.FC<PlayerProps> = () => {
   // обработка ошибки загрузки видео
   const handleVideoError = useCallback(() => {
     console.log('Ошибка загрузки:', videoRef.current?.src)
+    console.log(currentFilm?.tmdbId)
 
     if (videoRef.current?.src !== altVideoLink) {
       if (loadingAttempt === 0) {
@@ -118,14 +117,14 @@ const Player: React.FC<PlayerProps> = () => {
 
       console.log('Переключение на альтернативную ссылку')
       toast.error(
-        'Проблема с загрузкой видео, используем альтернативный источник'
+        'Проблема с загрузкой видео, возможно из-за проблем с YOUTUBE , используем альтернативное видео'
       )
       setVideoSource(altVideoLink)
       setLoadingAttempt(0)
     } else {
       toast.error('Не удалось загрузить видео')
     }
-  }, [loadingAttempt, toast])
+  }, [loadingAttempt, toast, currentFilm?.tmdbId])
 
   const checkVideoPlayability = useCallback(async () => {
     if (!videoRef.current) return
@@ -154,12 +153,10 @@ const Player: React.FC<PlayerProps> = () => {
 
     // Устанавливаем новый таймаут
     timeoutRef.current = setTimeout(() => {
-      console.log('Запуск проверки через 5 секунд') // для отладки
       checkVideoPlayability()
-    }, 5000)
+    }, 2000)
 
     const handleLoadedData = () => {
-      console.log('Видео загружено') // для отладки
       setfilmDuration(videoElement.duration)
       checkVideoPlayability()
     }
@@ -193,10 +190,11 @@ const Player: React.FC<PlayerProps> = () => {
 
   useEffect(() => {
     const initializeVideo = async () => {
-      if (TestId) {
+      if (currentFilm?.tmdbId) {
         // Предполагая, что у вас есть ID фильма из TMDB
         try {
-          const videoUrl = await TMDBService.getMovieVideos(TestId)
+          const videoUrl = await TMDBService.getMovieVideos(currentFilm?.tmdbId)
+          console.log(currentFilm?.tmdbId)
           console.log('videoUrl', videoUrl)
           if (videoUrl) {
             setVideoSource(videoUrl)

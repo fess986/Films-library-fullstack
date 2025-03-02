@@ -15,7 +15,11 @@ const filmSchema = new Schema({
   },
   videoLink: {
     type: String,
-    required: true,
+    required: false,
+  },
+  tmdbId: {
+    type: Number,
+    required: false,
   },
   description: {
     type: String,

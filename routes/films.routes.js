@@ -21,6 +21,7 @@ router.get(ApiRoutes.GET_FILMS, async (req, res) => {
       posterImage: film.posterImage,
       previewImage: film.previewImage,
       videoLink: film.videoLink,
+      tmdbId: film.tmdbId,
       description: film.description,
       rating: film.rating,
       scoresCount: film.scoresCount,

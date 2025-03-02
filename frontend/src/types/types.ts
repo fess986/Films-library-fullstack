@@ -3,7 +3,8 @@ export type FilmProps = {
   name: string
   posterImage: string
   previewImage: string
-  videoLink: string
+  videoLink?: string
+  tmdbId?: number
   description: string
   rating: number
   scoresCount: number
