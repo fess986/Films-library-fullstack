@@ -28,7 +28,7 @@ export const TMDBService = {
       }
 
       const video = data.results?.find(
-        (v: { type: string }) => v.type === 'Trailer' || v.type === 'Teaser'
+        (video: { type: string }) => video.type === 'Trailer'
       )
 
       if (video) {

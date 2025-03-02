@@ -230,30 +230,28 @@ const additionalFilms = [
     released: 2018,
     isFavorite: false,
     likedByUsers: [],
-    similarMockFilms: ['Johnny English'],
+    similarMockFilms: ['Johnny English', 'Why Him?'],
   },
 
-  // {
-  //   id: 1,
-  //   name: 'Moonrise Kingdom',
-  //   posterImage: '/images/posters/Moonrise Kingdom.jpg',
-  //   previewImage: '/images/moonrise-kingdom.jpg',
-  //   playerImage: '/images/posters/The grand budapest hotel poster.jpg',
-  //   videoLink:
-  //     'https://assets.mixkit.co/videos/4078/4078-720.mp4',
-  //   description:
-  //     'A pair of young lovers flee their New England town, which causes a local search party to fan out to find them',
-  //   rating: 3,
-  //   scoresCount: 800,
-  //   director: 'Wes Anderson',
-  //   starring: ['Jared Gilman', 'Kara Hayward', 'Bruce Willis'],
-  //   runTime: 94,
-  //   genre: ['Comedy'],
-  //   similarFilms: [],
-  //   released: 2012,
-  //   isFavorite: false,
-  //   similarMockFilms: ['Moonrise Kingdom', 'The Darjeeling Limited'],
-  // },
+  {
+    id: 9,
+    name: 'Why Him?',
+    posterImage: '/images/posters/why him poster.jpg',
+    previewImage: '/images/why him.jpg',
+    tmdbId: 356305,
+    description:
+      'A holiday gathering threatens to go off the rails when Ned Fleming realizes that his daughters Silicon Valley millionaire boyfriend is about to pop the question.',
+    rating: 6.5,
+    scoresCount: 300,
+    director: 'John Hamburg',
+    starring: ['Zoey Deutch', 'James Franco', 'Tangie Ambrose'],
+    runTime: 111,
+    genre: ['Comedy'],
+    similarFilms: [],
+    released: 2016,
+    isFavorite: false,
+    similarMockFilms: ['City Hunter'],
+  },
 ]
 
 export const Films = [...initialFilms, ...additionalFilms]
