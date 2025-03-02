@@ -35,8 +35,7 @@ const initialFilms = [
     posterImage: '/images/posters/Moonrise Kingdom.jpg',
     previewImage: '/images/moonrise-kingdom.jpg',
     playerImage: '/images/posters/The grand budapest hotel poster.jpg',
-    videoLink:
-      'https://assets.mixkit.co/videos/4078/4078-720.mp4',
+    videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
     description:
       'A pair of young lovers flee their New England town, which causes a local search party to fan out to find them',
     rating: 3,
@@ -56,8 +55,7 @@ const initialFilms = [
     name: 'Pulp Fiction',
     posterImage: '/images/posters/Pulp Fiction.jpg',
     previewImage: '/images/pulp-fiction.jpg',
-    videoLink:
-      'https://assets.mixkit.co/videos/4078/4078-720.mp4',
+    videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
     description:
       'Pulp Fiction is the story of three men — Jules, Vincent, and Butch — and the choices each of them makes regarding life and death, honor and disgrace, and the vagaries of chance',
     rating: 8.8,
@@ -84,8 +82,7 @@ const initialFilms = [
     name: 'The Darjeeling Limited',
     posterImage: '/images/posters/The Darjeeling Limited.jpg',
     previewImage: '/images/dardjeeling-limited.jpg',
-    videoLink:
-      'https://assets.mixkit.co/videos/4078/4078-720.mp4',
+    videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
     description:
       'A year after their father`s funeral, three brothers travel across India by train in an attempt to bond with each other',
     rating: 7.2,
@@ -110,8 +107,7 @@ const initialFilms = [
     name: 'The Aviator',
     posterImage: '/images/posters/The Aviator.jpg',
     previewImage: '/images/aviator.jpg',
-    videoLink:
-      'https://assets.mixkit.co/videos/4078/4078-720.mp4',
+    videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
     description:
       'A biopic depicting the early years of legendary Director and aviator Howard Hughes` career from the late 1920s to the mid 1940s',
     rating: 7.5,
@@ -136,8 +132,7 @@ const initialFilms = [
     name: 'The Revenant',
     posterImage: '/images/posters/The Revenant.jpg',
     previewImage: '/images/revenant.jpg',
-    videoLink:
-      'https://assets.mixkit.co/videos/4078/4078-720.mp4',
+    videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
     description:
       'A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team',
     rating: 8.0,
@@ -162,8 +157,7 @@ const initialFilms = [
     name: 'Johnny English',
     posterImage: '/images/posters/Johnny English.jpg',
     previewImage: '/images/johnny-english.jpg',
-    videoLink:
-      'https://assets.mixkit.co/videos/4078/4078-720.mp4',
+    videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
     description:
       'After a sudden attack on MI5, Johnny English, Britain`s most confident, yet unintelligent spy, becomes Britain`s only spy',
     rating: 6.2,
@@ -187,8 +181,7 @@ const initialFilms = [
     name: 'Bohemian Rhapsody',
     posterImage: '/images/posters/Bohemian Rhapsody.jpg',
     previewImage: '/images/bohemian-rhapsody.jpg',
-    videoLink:
-      'https://assets.mixkit.co/videos/4078/4078-720.mp4',
+    videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
     description:
       'The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985)',
     rating: 7.9,
