@@ -16,3 +16,18 @@ export const ApiRoutes = {
 
   GET_USER_REVIEWS: '/get-user-reviews/:userId', // get
 }
+
+const FILM_GENRES = {
+  Comedy: 'Comedy',
+  Action: 'Action',
+  Crime: 'Crime',
+  Documentary: 'Documentary',
+  Drama: 'Drama',
+  Horror: 'Horror',
+  Mystery: 'Mystery',
+  Romance: 'Romance',
+  Thriller: 'Thriller',
+  Adventure: 'Adventure',
+  Biography: 'Biography',
+  Criminal: 'Criminal',
+}
