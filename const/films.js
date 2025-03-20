@@ -50,7 +50,10 @@ const initialFilms = [
     released: 2012,
     isFavorite: false,
     // similarMockFilms: ['Moonrise Kingdom', 'The Darjeeling Limited'],
-    similarMockFilms: [FILM_LIST.MoonriseKingdom, FILM_LIST.TheDarjeelingLimited],
+    similarMockFilms: [
+      FILM_LIST.MoonriseKingdom,
+      FILM_LIST.TheDarjeelingLimited,
+    ],
   },
 
   {
@@ -103,7 +106,10 @@ const initialFilms = [
     released: 2007,
     isFavorite: true,
     // similarMockFilms: ['The Darjeeling Limited', 'Moonrise Kingdom'],
-    similarMockFilms: [FILM_LIST.TheDarjeelingLimited, FILM_LIST.MoonriseKingdom],
+    similarMockFilms: [
+      FILM_LIST.TheDarjeelingLimited,
+      FILM_LIST.MoonriseKingdom,
+    ],
   },
 
   {
@@ -173,7 +179,11 @@ const initialFilms = [
     similarFilms: [],
     released: 2003,
     isFavorite: true,
-    similarMockFilms: [ FILM_LIST.JohnnyEnglish, FILM_LIST.TheGrandBudapestHotel, FILM_LIST.PulpFiction],
+    similarMockFilms: [
+      FILM_LIST.JohnnyEnglish,
+      FILM_LIST.TheGrandBudapestHotel,
+      FILM_LIST.PulpFiction,
+    ],
   },
 
   {
@@ -194,7 +204,10 @@ const initialFilms = [
     released: 2018,
     isFavorite: false,
     // similarMockFilms: ['Bohemian Rhapsody', 'The Darjeeling Limited'],
-    similarMockFilms: [FILM_LIST.BohemianRhapsody, FILM_LIST.TheDarjeelingLimited],
+    similarMockFilms: [
+      FILM_LIST.BohemianRhapsody,
+      FILM_LIST.TheDarjeelingLimited,
+    ],
   },
 ]
 
@@ -223,7 +236,11 @@ const additionalFilms = [
     released: 2018,
     isFavorite: false,
     likedByUsers: [],
-    similarMockFilms: [FILM_LIST.JohnnyEnglish, FILM_LIST.WhyHim, FILM_LIST.Crank],
+    similarMockFilms: [
+      FILM_LIST.JohnnyEnglish,
+      FILM_LIST.WhyHim,
+      FILM_LIST.Crank,
+    ],
   },
 
   {
