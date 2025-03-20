@@ -5,6 +5,7 @@ import {
   PMeta,
   SpanRating,
   DivDescription,
+  SpanLocalization,
 } from './styles'
 import { FilmProps } from '../../../types/types'
 
@@ -17,7 +18,7 @@ const FilmCardDescription: React.FC<FilmCardDescriptionProps> = ({ film }) => {
     <DivDescription>
       <H2FilmName>{film.name}</H2FilmName>
       <PMeta>
-        <SpanRating>Локализация: "{film.localizedName}"</SpanRating>
+        <SpanLocalization>Локализация: "{film.localizedName}"</SpanLocalization>
       </PMeta>
       <PMeta>
         <SpanGenre>{film.genre.join(', ')}</SpanGenre>

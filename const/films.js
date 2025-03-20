@@ -3,7 +3,6 @@ import { FILM_GENRES, FILM_LIST, FILM_LIST_RUS } from './const.js'
 const initialFilms = [
   {
     // пока ещё не смотрел но обязательно нужно
-    id: 0,
     name: FILM_LIST.TheGrandBudapestHotel,
     localizedName: FILM_LIST_RUS.TheGrandBudapestHotel,
     posterImage: '/images/posters/The grand budapest hotel poster.jpg',
@@ -33,7 +32,6 @@ const initialFilms = [
   },
 
   {
-    id: 1,
     name: FILM_LIST.MoonriseKingdom,
     localizedName: FILM_LIST_RUS.MoonriseKingdom,
     posterImage: '/images/posters/Moonrise Kingdom.jpg',
@@ -51,7 +49,6 @@ const initialFilms = [
     similarFilms: [],
     released: 2012,
     isFavorite: false,
-    // similarMockFilms: ['Moonrise Kingdom', 'The Darjeeling Limited'],
     similarMockFilms: [
       FILM_LIST.MoonriseKingdom,
       FILM_LIST.TheDarjeelingLimited,
@@ -59,7 +56,6 @@ const initialFilms = [
   },
 
   {
-    id: 2,
     name: FILM_LIST.PulpFiction,
     localizedName: FILM_LIST_RUS.PulpFiction,
     posterImage: '/images/posters/Pulp Fiction.jpg',
@@ -87,7 +83,6 @@ const initialFilms = [
   },
 
   {
-    id: 3,
     name: FILM_LIST.TheDarjeelingLimited,
     localizedName: FILM_LIST_RUS.TheDarjeelingLimited,
     posterImage: '/images/posters/The Darjeeling Limited.jpg',
@@ -109,7 +104,6 @@ const initialFilms = [
     similarFilms: [],
     released: 2007,
     isFavorite: true,
-    // similarMockFilms: ['The Darjeeling Limited', 'Moonrise Kingdom'],
     similarMockFilms: [
       FILM_LIST.TheDarjeelingLimited,
       FILM_LIST.MoonriseKingdom,
@@ -117,7 +111,6 @@ const initialFilms = [
   },
 
   {
-    id: 4,
     name: FILM_LIST.TheAviator,
     localizedName: FILM_LIST_RUS.TheAviator,
     posterImage: '/images/posters/The Aviator.jpg',
@@ -143,7 +136,6 @@ const initialFilms = [
   },
 
   {
-    id: 5,
     name: FILM_LIST.TheRevenant,
     localizedName: FILM_LIST_RUS.TheRevenant,
     posterImage: '/images/posters/The Revenant.jpg',
@@ -169,7 +161,6 @@ const initialFilms = [
   },
 
   {
-    id: 6,
     name: FILM_LIST.JohnnyEnglish,
     localizedName: FILM_LIST_RUS.JohnnyEnglish,
     posterImage: '/images/posters/Johnny English.jpg',
@@ -194,7 +185,6 @@ const initialFilms = [
   },
 
   {
-    id: 7,
     name: FILM_LIST.BohemianRhapsody,
     localizedName: FILM_LIST_RUS.BohemianRhapsody,
     posterImage: '/images/posters/Bohemian Rhapsody.jpg',
@@ -221,7 +211,6 @@ const initialFilms = [
 
 const additionalFilms = [
   {
-    id: 8,
     name: FILM_LIST.CityHunter,
     localizedName: FILM_LIST_RUS.CityHunter,
     posterImage: '/images/posters/City Hunter poster.jpg',
@@ -253,7 +242,6 @@ const additionalFilms = [
   },
 
   {
-    id: 9,
     name: FILM_LIST.WhyHim,
     localizedName: FILM_LIST_RUS.WhyHim,
     posterImage: '/images/posters/why him poster.jpg',
@@ -274,7 +262,6 @@ const additionalFilms = [
   },
 
   {
-    id: 10,
     name: FILM_LIST.Crank,
     localizedName: FILM_LIST_RUS.Crank,
     posterImage: '/images/posters/crank poster.jpg',
