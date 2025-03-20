@@ -20,6 +20,8 @@ export const SpanYear = styled(Span)``
 
 export const SpanRating = styled(Span)``
 
+export const SpanLocalization = styled(Span)``
+
 export const PMeta = styled(PMediumMain)`
   font-weight: 700;
   margin-bottom: 25px;

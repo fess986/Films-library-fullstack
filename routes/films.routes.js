@@ -76,6 +76,7 @@ router.post(ApiRoutes.SET_FILMS, isAuth, async (req, res) => {
   }
 })
 
+// добавление фильма в избранное
 router.post(ApiRoutes.ADD_FAVORITE_FILM, isAuth, async (req, res) => {
   try {
     const { userId } = req.params // получаем id пользователя по передаваемым в url параметрам (вместо :userId)
@@ -108,6 +109,7 @@ router.post(ApiRoutes.ADD_FAVORITE_FILM, isAuth, async (req, res) => {
   }
 })
 
+// удаление избранного фильма
 router.delete(ApiRoutes.REMOVE_FAVORITE_FILM, isAuth, async (req, res) => {
   try {
     const { userId } = req.params // получаем id пользователя по передаваемым в url параметрам (вместо :userId)
