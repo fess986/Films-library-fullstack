@@ -44,6 +44,7 @@ export const FILM_LIST = {
   CityHunter: 'City Hunter',
   WhyHim: 'Why Him?',
   Crank: 'Crank',
+  BadSanta: 'Bad Santa',
 }
 
 export const FILM_LIST_RUS = {
@@ -58,4 +59,5 @@ export const FILM_LIST_RUS = {
   CityHunter: 'Плейбой под прикрытием',
   WhyHim: 'Почему он?',
   Crank: 'Адреналин',
+  BadSanta: 'Плохой Санта',
 }
