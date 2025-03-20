@@ -1,10 +1,11 @@
-import { FILM_GENRES, FILM_LIST } from './const.js'
+import { FILM_GENRES, FILM_LIST, FILM_LIST_RUS } from './const.js'
 
 const initialFilms = [
   {
     // пока ещё не смотрел но обязательно нужно
     id: 0,
     name: FILM_LIST.TheGrandBudapestHotel,
+    localizedName: FILM_LIST_RUS.TheGrandBudapestHotel,
     posterImage: '/images/posters/The grand budapest hotel poster.jpg',
     previewImage: '/images/the-grand-budapest-hotel.jpg',
     videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
@@ -34,6 +35,7 @@ const initialFilms = [
   {
     id: 1,
     name: FILM_LIST.MoonriseKingdom,
+    localizedName: FILM_LIST_RUS.MoonriseKingdom,
     posterImage: '/images/posters/Moonrise Kingdom.jpg',
     previewImage: '/images/moonrise-kingdom.jpg',
     playerImage: '/images/posters/The grand budapest hotel poster.jpg',
@@ -59,6 +61,7 @@ const initialFilms = [
   {
     id: 2,
     name: FILM_LIST.PulpFiction,
+    localizedName: FILM_LIST_RUS.PulpFiction,
     posterImage: '/images/posters/Pulp Fiction.jpg',
     previewImage: '/images/pulp-fiction.jpg',
     videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
@@ -86,6 +89,7 @@ const initialFilms = [
   {
     id: 3,
     name: FILM_LIST.TheDarjeelingLimited,
+    localizedName: FILM_LIST_RUS.TheDarjeelingLimited,
     posterImage: '/images/posters/The Darjeeling Limited.jpg',
     previewImage: '/images/dardjeeling-limited.jpg',
     videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
@@ -115,6 +119,7 @@ const initialFilms = [
   {
     id: 4,
     name: FILM_LIST.TheAviator,
+    localizedName: FILM_LIST_RUS.TheAviator,
     posterImage: '/images/posters/The Aviator.jpg',
     previewImage: '/images/aviator.jpg',
     videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
@@ -140,6 +145,7 @@ const initialFilms = [
   {
     id: 5,
     name: FILM_LIST.TheRevenant,
+    localizedName: FILM_LIST_RUS.TheRevenant,
     posterImage: '/images/posters/The Revenant.jpg',
     previewImage: '/images/revenant.jpg',
     videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
@@ -165,6 +171,7 @@ const initialFilms = [
   {
     id: 6,
     name: FILM_LIST.JohnnyEnglish,
+    localizedName: FILM_LIST_RUS.JohnnyEnglish,
     posterImage: '/images/posters/Johnny English.jpg',
     previewImage: '/images/johnny-english.jpg',
     videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
@@ -189,6 +196,7 @@ const initialFilms = [
   {
     id: 7,
     name: FILM_LIST.BohemianRhapsody,
+    localizedName: FILM_LIST_RUS.BohemianRhapsody,
     posterImage: '/images/posters/Bohemian Rhapsody.jpg',
     previewImage: '/images/bohemian-rhapsody.jpg',
     videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
@@ -215,6 +223,7 @@ const additionalFilms = [
   {
     id: 8,
     name: FILM_LIST.CityHunter,
+    localizedName: FILM_LIST_RUS.CityHunter,
     posterImage: '/images/posters/City Hunter poster.jpg',
     previewImage: '/images/City Hunter.jpg',
     // videoLink: 'https://assets.mixkit.co/videos/4078/4078-720.mp4',
@@ -246,6 +255,7 @@ const additionalFilms = [
   {
     id: 9,
     name: FILM_LIST.WhyHim,
+    localizedName: FILM_LIST_RUS.WhyHim,
     posterImage: '/images/posters/why him poster.jpg',
     previewImage: '/images/why him.jpg',
     tmdbId: 356305,
@@ -266,6 +276,7 @@ const additionalFilms = [
   {
     id: 10,
     name: FILM_LIST.Crank,
+    localizedName: FILM_LIST_RUS.Crank,
     posterImage: '/images/posters/crank poster.jpg',
     previewImage: '/images/crank.jpg',
     tmdbId: 1948,
