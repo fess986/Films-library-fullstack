@@ -45,3 +45,17 @@ export const FILM_LIST = {
   WhyHim: 'Why Him?',
   Crank: 'Crank',
 }
+
+export const FILM_LIST_RUS = {
+  TheGrandBudapestHotel: 'Отель Гранд Будапешт',
+  MoonriseKingdom: 'Королевство полной луны',
+  PulpFiction: 'Криминальное чтиво',
+  TheDarjeelingLimited: 'Поезд на Дарджилинг',
+  TheAviator: 'Авиатор',
+  TheRevenant: 'Выживший',
+  JohnnyEnglish: 'Агент Джонни Инглиш',
+  BohemianRhapsody: 'Богемская рапсодия',
+  CityHunter: 'Плейбой под прикрытием',
+  WhyHim: 'Почему он?',
+  Crank: 'Адреналин',
+}
