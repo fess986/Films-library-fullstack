@@ -5,7 +5,7 @@ import {
   PMeta,
   SpanRating,
   DivDescription,
-  SpanLocalization
+  SpanLocalization,
 } from './styles'
 import { FilmProps } from '../../../types/types'
 
