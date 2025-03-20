@@ -1,6 +1,7 @@
 export type FilmProps = {
   id: string // _id из базы
   name: string
+  localizedName?: string
   posterImage: string
   previewImage: string
   videoLink?: string
