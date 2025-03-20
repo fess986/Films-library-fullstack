@@ -17,7 +17,7 @@ export const ApiRoutes = {
   GET_USER_REVIEWS: '/get-user-reviews/:userId', // get
 }
 
-const FILM_GENRES = {
+export const FILM_GENRES = {
   Comedy: 'Comedy',
   Action: 'Action',
   Crime: 'Crime',
@@ -30,4 +30,18 @@ const FILM_GENRES = {
   Adventure: 'Adventure',
   Biography: 'Biography',
   Criminal: 'Criminal',
+}
+
+export const FILM_LIST = {
+  TheGrandBudapestHotel: 'The Grand Budapest Hotel',
+  MoonriseKingdom: 'Moonrise Kingdom',
+  PulpFiction: 'Pulp Fiction',
+  TheDarjeelingLimited: 'The Darjeeling Limited',
+  TheAviator: 'The Aviator',
+  TheRevenant: 'The Revenant',
+  JohnnyEnglish: 'Johnny English',
+  BohemianRhapsody: 'Bohemian Rhapsody',
+  CityHunter: 'City Hunter',
+  WhyHim: 'Why Him?',
+  Crank: 'Crank',
 }
