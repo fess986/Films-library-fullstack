@@ -5,6 +5,10 @@ const filmSchema = new Schema({
     type: String,
     required: true,
   },
+  localizedName: {
+    type: String,
+    required: false,
+  },
   posterImage: {
     type: String,
     required: true,

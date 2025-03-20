@@ -18,6 +18,7 @@ router.get(ApiRoutes.GET_FILMS, async (req, res) => {
     const result = films.map((film) => ({
       id: film._id.toString(), // Преобразуем _id из ObjectId в строку
       name: film.name,
+      localizedName: film.localizedName || null,
       posterImage: film.posterImage,
       previewImage: film.previewImage,
       videoLink: film.videoLink,

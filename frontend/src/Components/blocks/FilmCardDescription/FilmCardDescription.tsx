@@ -17,6 +17,9 @@ const FilmCardDescription: React.FC<FilmCardDescriptionProps> = ({ film }) => {
     <DivDescription>
       <H2FilmName>{film.name}</H2FilmName>
       <PMeta>
+        <SpanRating>Локализация: "{film.localizedName}"</SpanRating>
+      </PMeta>
+      <PMeta>
         <SpanGenre>{film.genre.join(', ')}</SpanGenre>
         <SpanYear>{film.released}</SpanYear>
       </PMeta>
