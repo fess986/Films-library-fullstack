@@ -278,7 +278,7 @@ const additionalFilms = [
     similarFilms: [],
     released: 2016,
     isFavorite: false,
-    similarMockFilms: [FILM_LIST.CityHunter, FILM_LIST.IronMan],
+    similarMockFilms: [FILM_LIST.CityHunter, FILM_LIST.IronMan, FILM_LIST.KingsmanTheSecretService],
   },
 
   {
@@ -294,7 +294,7 @@ const additionalFilms = [
     director: 'Terry Zwigoff',
     starring: ['Billy Bob Thornton', 'Tony Cox', 'Lauren Graham '],
     runTime: 92,
-    genre: [FILM_GENRES.Comedy, FILM_GENRES.Criminal],
+    genre: [FILM_GENRES.Comedy],
     similarFilms: [],
     released: 2003,
     isFavorite: false,
@@ -338,8 +338,29 @@ const additionalFilms = [
     similarFilms: [],
     released: 2008,
     isFavorite: false,
-    similarMockFilms: [FILM_LIST.Crank],
+    similarMockFilms: [FILM_LIST.Crank, FILM_LIST.KingsmanTheSecretService],
   },
+
+  {
+    name: FILM_LIST.KingsmanTheSecretService,
+    localizedName: FILM_LIST_RUS.KingsmanTheSecretService,
+    posterImage: '/images/posters/kingsman poster.jpg',
+    previewImage: '/images/kingsman.jpg',
+    tmdbId: 207703,
+    description:
+      'The story of a super-secret spy organization that recruits an unrefined but promising street kid into the agencys ultra-competitive training program just as a global threat emerges from a twisted tech genius.',
+    rating: 7.1,
+    scoresCount: 300,
+    director: 'Matthew Vaughn',
+    starring: ['Taron Egerton', 'Colin Firth', 'Samuel L. Jackson'],
+    runTime: 126,
+    genre: [FILM_GENRES.Action, FILM_GENRES.Adventure, FILM_GENRES.Comedy],
+    similarFilms: [],
+    released: 2014,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.Crank, FILM_LIST.IronMan],
+  },
+
 ]
 
 export const Films = [...initialFilms, ...additionalFilms]
