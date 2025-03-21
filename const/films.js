@@ -280,8 +280,8 @@ const additionalFilms = [
     isFavorite: false,
     similarMockFilms: [
       FILM_LIST.CityHunter,
-      FILM_LIST.IronMan,
       FILM_LIST.KingsmanTheSecretService,
+      FILM_LIST.Oldboy,
     ],
   },
 
@@ -363,6 +363,26 @@ const additionalFilms = [
     released: 2014,
     isFavorite: false,
     similarMockFilms: [FILM_LIST.Crank, FILM_LIST.IronMan],
+  },
+
+  {
+    name: FILM_LIST.Oldboy,
+    localizedName: FILM_LIST_RUS.Oldboy,
+    posterImage: '/images/posters/oldboy poster.jpg',
+    previewImage: '/images/oldboy.jpg',
+    tmdbId: 670,
+    description:
+      'With no clue how he came to be imprisoned, drugged and tortured for 15 years, a desperate man seeks revenge on his captors.',
+    rating: 7.5,
+    scoresCount: 300,
+    director: 'Park Chan-wook',
+    starring: ['Choi Min-sik', 'Yoo Ji-tae', 'Kang Hye-jung'],
+    runTime: 120,
+    genre: [FILM_GENRES.Action, FILM_GENRES.Drama],
+    similarFilms: [],
+    released: 2003,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.Crank],
   },
 ]
 
