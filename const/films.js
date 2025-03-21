@@ -278,7 +278,11 @@ const additionalFilms = [
     similarFilms: [],
     released: 2016,
     isFavorite: false,
-    similarMockFilms: [FILM_LIST.CityHunter, FILM_LIST.IronMan, FILM_LIST.KingsmanTheSecretService],
+    similarMockFilms: [
+      FILM_LIST.CityHunter,
+      FILM_LIST.IronMan,
+      FILM_LIST.KingsmanTheSecretService,
+    ],
   },
 
   {
@@ -360,7 +364,6 @@ const additionalFilms = [
     isFavorite: false,
     similarMockFilms: [FILM_LIST.Crank, FILM_LIST.IronMan],
   },
-
 ]
 
 export const Films = [...initialFilms, ...additionalFilms]
