@@ -46,6 +46,7 @@ export const FILM_LIST = {
   Crank: 'Crank',
   BadSanta: 'Bad Santa',
   EuroTrip: 'EuroTrip',
+  IronMan: 'Iron Man',
 }
 
 export const FILM_LIST_RUS = {
@@ -62,4 +63,5 @@ export const FILM_LIST_RUS = {
   Crank: 'Адреналин',
   BadSanta: 'Плохой Санта',
   EuroTrip: 'Евротур',
+  IronMan: 'Железный человек',
 }

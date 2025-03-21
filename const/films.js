@@ -278,7 +278,7 @@ const additionalFilms = [
     similarFilms: [],
     released: 2016,
     isFavorite: false,
-    similarMockFilms: [FILM_LIST.CityHunter],
+    similarMockFilms: [FILM_LIST.CityHunter, FILM_LIST.IronMan],
   },
 
   {
@@ -319,6 +319,26 @@ const additionalFilms = [
     released: 2004,
     isFavorite: false,
     similarMockFilms: [FILM_LIST.TheGrandBudapestHotel],
+  },
+
+  {
+    name: FILM_LIST.IronMan,
+    localizedName: FILM_LIST_RUS.IronMan,
+    posterImage: '/images/posters/ironman poster.jpg',
+    previewImage: '/images/ironman.jpg',
+    tmdbId: 1726,
+    description:
+      'After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.',
+    rating: 7.9,
+    scoresCount: 300,
+    director: 'Jon Favreau',
+    starring: ['Robert Downey Jr.', 'Terrence Howard', 'Gwyneth Paltrow'],
+    runTime: 126,
+    genre: [FILM_GENRES.Action, FILM_GENRES.Adventure],
+    similarFilms: [],
+    released: 2008,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.Crank],
   },
 ]
 
