@@ -281,7 +281,7 @@ const additionalFilms = [
     similarMockFilms: [
       FILM_LIST.CityHunter,
       FILM_LIST.KingsmanTheSecretService,
-      FILM_LIST.Oldboy
+      FILM_LIST.Oldboy,
     ],
   },
 
