@@ -45,6 +45,7 @@ export const FILM_LIST = {
   WhyHim: 'Why Him?',
   Crank: 'Crank',
   BadSanta: 'Bad Santa',
+  EuroTrip: 'EuroTrip',
 }
 
 export const FILM_LIST_RUS = {
@@ -60,4 +61,5 @@ export const FILM_LIST_RUS = {
   WhyHim: 'Почему он?',
   Crank: 'Адреналин',
   BadSanta: 'Плохой Санта',
+  EuroTrip: 'Евротур',
 }

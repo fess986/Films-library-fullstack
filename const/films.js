@@ -300,6 +300,26 @@ const additionalFilms = [
     isFavorite: false,
     similarMockFilms: [FILM_LIST.CityHunter],
   },
+
+  {
+    name: FILM_LIST.EuroTrip,
+    localizedName: FILM_LIST_RUS.EuroTrip,
+    posterImage: '/images/posters/eurotrip poster.jpg',
+    previewImage: '/images/eurotrip.jpg',
+    tmdbId: 9352,
+    description:
+      'When Scott learns that his longtime cyber-buddy from Berlin is a gorgeous young woman, he and his friends embark on a trip across Europe.',
+    rating: 7.5,
+    scoresCount: 300,
+    director: 'Jeff Schaffer',
+    starring: ['Scott Mechlowicz', 'Jacob Pitts', 'Michelle Trachtenberg'],
+    runTime: 92,
+    genre: [FILM_GENRES.Comedy],
+    similarFilms: [],
+    released: 2004,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.TheGrandBudapestHotel],
+  },
 ]
 
 export const Films = [...initialFilms, ...additionalFilms]
