@@ -45,6 +45,7 @@ export const FILM_LIST = {
   KingsmanTheSecretService: 'Kingsman: The Secret Service',
   IronMan: 'Iron Man',
   Crank: 'Crank',
+  Oldboy: 'Oldboy',
 
   MoonriseKingdom: 'Moonrise Kingdom',
   PulpFiction: 'Pulp Fiction',
@@ -70,4 +71,5 @@ export const FILM_LIST_RUS = {
   EuroTrip: 'Евротур',
   IronMan: 'Железный человек',
   KingsmanTheSecretService: 'Кингсмен: Секретная служба',
+  Oldboy: 'Олдбой',
 }
