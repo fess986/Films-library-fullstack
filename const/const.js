@@ -33,20 +33,25 @@ export const FILM_GENRES = {
 }
 
 export const FILM_LIST = {
+  // комедии
   TheGrandBudapestHotel: 'The Grand Budapest Hotel',
+  JohnnyEnglish: 'Johnny English',
+  EuroTrip: 'EuroTrip',
+  WhyHim: 'Why Him?',
+  CityHunter: 'City Hunter',
+  BadSanta: 'Bad Santa',
+
+  // боевики
+  KingsmanTheSecretService: 'Kingsman: The Secret Service',
+  IronMan: 'Iron Man',
+  Crank: 'Crank',
+
   MoonriseKingdom: 'Moonrise Kingdom',
   PulpFiction: 'Pulp Fiction',
   TheDarjeelingLimited: 'The Darjeeling Limited',
   TheAviator: 'The Aviator',
   TheRevenant: 'The Revenant',
-  JohnnyEnglish: 'Johnny English',
   BohemianRhapsody: 'Bohemian Rhapsody',
-  CityHunter: 'City Hunter',
-  WhyHim: 'Why Him?',
-  Crank: 'Crank',
-  BadSanta: 'Bad Santa',
-  EuroTrip: 'EuroTrip',
-  IronMan: 'Iron Man',
 }
 
 export const FILM_LIST_RUS = {
@@ -64,4 +69,5 @@ export const FILM_LIST_RUS = {
   BadSanta: 'Плохой Санта',
   EuroTrip: 'Евротур',
   IronMan: 'Железный человек',
+  KingsmanTheSecretService: 'Кингсмен: Секретная служба',
 }
