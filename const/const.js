@@ -50,7 +50,6 @@ export const FILM_LIST = {
   Oldboy: 'Oldboy',
   Thursday: 'Thursday',
   SpartacusBloodAndSand: 'Spartacus: Blood and Sand',
-  
 
   // мистика
   TheLostRoom: 'The Lost Room',
