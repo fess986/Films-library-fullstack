@@ -488,6 +488,26 @@ const additionalFilms = [
     isFavorite: false,
     similarMockFilms: [FILM_LIST.Firefly],
   },
+
+  {
+    name: FILM_LIST.ClockworkOrange,
+    localizedName: FILM_LIST_RUS.ClockworkOrange,
+    posterImage: '/images/posters/clockwork orange poster.jpg',
+    previewImage: '/images/clockwork orange.jpg',
+    tmdbId: 185,
+    description:
+      'In a near-future Britain, young Alexander DeLarge and his pals get their kicks beating and raping anyone they please. When not destroying the lives of others, Alex swoons to the music of Beethoven. The state, eager to crack down on juvenile crime, gives an incarcerated Alex the option to undergo an invasive procedure thatll rob him of all personal agency. In a time when conscience is a commodity, can Alex change his tune?',
+    rating: 7.9,
+    scoresCount: 300,
+    director: 'Stanley Kubrick',
+    starring: ['Malcolm McDowell', 'James Marcus', 'Carl Duering'],
+    runTime: 137,
+    genre: [FILM_GENRES.Drama, FILM_GENRES.Criminal],
+    similarFilms: [],
+    released: 1971,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.Thursday, FILM_LIST.Oldboy],
+  },
 ]
 
 export const Films = [...initialFilms, ...additionalFilms]
