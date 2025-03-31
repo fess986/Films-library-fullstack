@@ -384,6 +384,26 @@ const additionalFilms = [
     isFavorite: false,
     similarMockFilms: [FILM_LIST.Crank],
   },
+
+  {
+    name: FILM_LIST.Thursday,
+    localizedName: FILM_LIST_RUS.Thursday,
+    posterImage: '/images/posters/thursday poster.jpg',
+    previewImage: '/images/thursday.jpg',
+    tmdbId: 9812,
+    description:
+      'A former Los Angeles drug dealer moves far away to Texas, making a new life for himself as a married architect in the suburbs. His old crime partner unexpectedly shows up with heroin and gangster business, attracting a slew of violent unsavory characters.',
+    rating: 8.5,
+    scoresCount: 300,
+    director: 'Skip Woods',
+    starring: ['Thomas Jane', 'Paula Marshall', 'Aaron Eckhart'],
+    runTime: 87,
+    genre: [FILM_GENRES.Action, FILM_GENRES.Comedy, FILM_GENRES.Thriller],
+    similarFilms: [],
+    released: 1998,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.Crank, FILM_LIST.Oldboy],
+  },
 ]
 
 export const Films = [...initialFilms, ...additionalFilms]
