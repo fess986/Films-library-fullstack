@@ -57,6 +57,9 @@ export const FILM_LIST = {
   // фантастика
   Firefly: 'Firefly',
 
+  // драмма/криминал
+  ClockworkOrange: 'A Clockwork Orange',
+
   MoonriseKingdom: 'Moonrise Kingdom',
   PulpFiction: 'Pulp Fiction',
   TheDarjeelingLimited: 'The Darjeeling Limited',
@@ -87,4 +90,5 @@ export const FILM_LIST_RUS = {
   TheLostRoom: 'Потерянная комната',
   Firefly: 'Светлячок',
   SpartacusBloodAndSand: 'Спартак: Кровь и песок',
+  ClockworkOrange: 'Заводной апельсин',
 }
