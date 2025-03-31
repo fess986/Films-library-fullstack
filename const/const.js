@@ -30,6 +30,7 @@ export const FILM_GENRES = {
   Adventure: 'Adventure',
   Biography: 'Biography',
   Criminal: 'Criminal',
+  Fantasy: 'Fantasy',
 }
 
 export const FILM_LIST = {
@@ -51,6 +52,9 @@ export const FILM_LIST = {
 
   // мистика
   TheLostRoom: 'The Lost Room',
+
+  // фантастика
+  Firefly: 'Firefly',
 
   MoonriseKingdom: 'Moonrise Kingdom',
   PulpFiction: 'Pulp Fiction',
@@ -80,4 +84,5 @@ export const FILM_LIST_RUS = {
   Thursday: 'Кровавый четверг',
   Clue: 'Улика',
   TheLostRoom: 'Потерянная комната',
+  Firefly: 'Светлячок',
 }

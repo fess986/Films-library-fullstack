@@ -448,6 +448,26 @@ const additionalFilms = [
     isFavorite: false,
     similarMockFilms: [FILM_LIST.Oldboy],
   },
+
+  {
+    name: FILM_LIST.Firefly,
+    localizedName: FILM_LIST_RUS.Firefly,
+    posterImage: '/images/posters/firefly poster.jpg',
+    previewImage: '/images/firefly.jpg',
+    tmdbId: 1437,
+    description:
+      'In the year 2517, after the arrival of humans in a new star system, follow the adventures of the renegade crew of Serenity, a "Firefly-class" spaceship.',
+    rating: 9.1,
+    scoresCount: 300,
+    director: 'Joss Whedon',
+    starring: ['Nathan Fillion', 'Alan Tudyk', 'Morena Baccarin'],
+    runTime: 0,
+    genre: [FILM_GENRES.Fantasy, FILM_GENRES.Action, FILM_GENRES.Drama],
+    similarFilms: [],
+    released: 2002,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.TheLostRoom],
+  },
 ]
 
 export const Films = [...initialFilms, ...additionalFilms]
