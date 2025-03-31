@@ -428,6 +428,26 @@ const additionalFilms = [
     isFavorite: false,
     similarMockFilms: [FILM_LIST.TheGrandBudapestHotel],
   },
+
+  {
+    name: FILM_LIST.TheLostRoom,
+    localizedName: FILM_LIST_RUS.TheLostRoom,
+    posterImage: '/images/posters/the lost room poster.jpg',
+    previewImage: '/images/the lost room.jpg',
+    tmdbId: 3868,
+    description:
+      'A detective investigates a mysterious motel room, which acts as a portal to an alternate universe.',
+    rating: 8.5,
+    scoresCount: 300,
+    director: 'Christopher Leone',
+    starring: ['Peter Krause', 'Julianna Margulies', 'Peter Jacobson'],
+    runTime: 0,
+    genre: [FILM_GENRES.Mystery],
+    similarFilms: [],
+    released: 2006,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.Oldboy],
+  },
 ]
 
 export const Films = [...initialFilms, ...additionalFilms]

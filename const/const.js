@@ -49,6 +49,9 @@ export const FILM_LIST = {
   Oldboy: 'Oldboy',
   Thursday: 'Thursday',
 
+  // мистика
+  TheLostRoom: 'The Lost Room',
+
   MoonriseKingdom: 'Moonrise Kingdom',
   PulpFiction: 'Pulp Fiction',
   TheDarjeelingLimited: 'The Darjeeling Limited',
@@ -76,4 +79,5 @@ export const FILM_LIST_RUS = {
   Oldboy: 'Олдбой',
   Thursday: 'Кровавый четверг',
   Clue: 'Улика',
+  TheLostRoom: 'Потерянная комната',
 }
