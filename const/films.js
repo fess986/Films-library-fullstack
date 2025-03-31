@@ -28,7 +28,11 @@ const initialFilms = [
     released: 2014,
     isFavorite: false,
     likedByUsers: [],
-    similarMockFilms: [FILM_LIST.JohnyEnglish, FILM_LIST.MoonriseKingdom],
+    similarMockFilms: [
+      FILM_LIST.JohnyEnglish,
+      FILM_LIST.MoonriseKingdom,
+      FILM_LIST.Clue,
+    ],
   },
 
   // {
@@ -403,6 +407,26 @@ const additionalFilms = [
     released: 1998,
     isFavorite: false,
     similarMockFilms: [FILM_LIST.Crank, FILM_LIST.Oldboy],
+  },
+
+  {
+    name: FILM_LIST.Clue,
+    localizedName: FILM_LIST_RUS.Clue,
+    posterImage: '/images/posters/clue poster.jpg',
+    previewImage: '/images/clue.jpg',
+    tmdbId: 15196,
+    description:
+      'Clue finds six colorful dinner guests gathered at the mansion of their host, Mr. Boddy -- who turns up dead after his secret is exposed: He was blackmailing all of them. With the killer among them, the guests and Boddys chatty butler must suss out the culprit before the body count rises.',
+    rating: 8.5,
+    scoresCount: 300,
+    director: 'Jonathan Lynn',
+    starring: ['Christopher Lloyd', 'Tim Curry', 'Eileen Brennan'],
+    runTime: 94,
+    genre: [FILM_GENRES.Comedy, FILM_GENRES.Criminal],
+    similarFilms: [],
+    released: 1985,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.TheGrandBudapestHotel],
   },
 ]
 

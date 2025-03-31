@@ -40,6 +40,7 @@ export const FILM_LIST = {
   WhyHim: 'Why Him?',
   CityHunter: 'City Hunter',
   BadSanta: 'Bad Santa',
+  Clue: 'Clue',
 
   // боевики
   KingsmanTheSecretService: 'Kingsman: The Secret Service',
@@ -74,4 +75,5 @@ export const FILM_LIST_RUS = {
   KingsmanTheSecretService: 'Кингсмен: Секретная служба',
   Oldboy: 'Олдбой',
   Thursday: 'Кровавый четверг',
+  Clue: 'Улика',
 }
