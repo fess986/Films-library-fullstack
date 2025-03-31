@@ -54,7 +54,6 @@ export const FILM_LIST = {
   TheAviator: 'The Aviator',
   TheRevenant: 'The Revenant',
   BohemianRhapsody: 'Bohemian Rhapsody',
-  
 }
 
 export const FILM_LIST_RUS = {
