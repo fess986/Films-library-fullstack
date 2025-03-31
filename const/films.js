@@ -28,7 +28,11 @@ const initialFilms = [
     released: 2014,
     isFavorite: false,
     likedByUsers: [],
-    similarMockFilms: [FILM_LIST.JohnyEnglish, FILM_LIST.MoonriseKingdom, FILM_LIST.Clue],
+    similarMockFilms: [
+      FILM_LIST.JohnyEnglish,
+      FILM_LIST.MoonriseKingdom,
+      FILM_LIST.Clue,
+    ],
   },
 
   // {
