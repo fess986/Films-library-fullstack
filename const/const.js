@@ -50,6 +50,7 @@ export const FILM_LIST = {
   Oldboy: 'Oldboy',
   Thursday: 'Thursday',
   SpartacusBloodAndSand: 'Spartacus: Blood and Sand',
+  Equilibrium: 'Equilibrium',
 
   // мистика
   TheLostRoom: 'The Lost Room',
@@ -91,4 +92,5 @@ export const FILM_LIST_RUS = {
   Firefly: 'Светлячок',
   SpartacusBloodAndSand: 'Спартак: Кровь и песок',
   ClockworkOrange: 'Заводной апельсин',
+  Equilibrium: 'Эквилибриум',
 }
