@@ -526,7 +526,27 @@ const additionalFilms = [
     similarFilms: [],
     released: 2002,
     isFavorite: false,
-    similarMockFilms: [FILM_LIST.Oldboy],
+    similarMockFilms: [FILM_LIST.Oldboy, FILM_LIST.EdgeOfTomorrow],
+  },
+
+  {
+    name: FILM_LIST.EdgeOfTomorrow,
+    localizedName: FILM_LIST_RUS.EdgeOfTomorrow,
+    posterImage: '/images/posters/Edge of Tomorrow poster.jpg',
+    previewImage: '/images/Edge of Tomorrow.jpg',
+    tmdbId: 137113,
+    description:
+      'Major Bill Cage is an officer who has never seen a day of combat when he is unceremoniously demoted and dropped into combat. Cage is killed within minutes, managing to take an alpha alien down with him. He awakens back at the beginning of the same day and is forced to fight and die again... and again - as physical contact with the alien has thrown him into a time loop.',
+    rating: 7.9,
+    scoresCount: 300,
+    director: 'Doug Liman',
+    starring: ['Tom Cruise', 'Emily Blunt', 'Bill Paxton'],
+    runTime: 114,
+    genre: [FILM_GENRES.Fantasy, FILM_GENRES.Action],
+    similarFilms: [],
+    released: 2014,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.Equilibrium],
   },
 ]
 
