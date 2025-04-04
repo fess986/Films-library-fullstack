@@ -52,6 +52,7 @@ export const FILM_LIST = {
   SpartacusBloodAndSand: 'Spartacus: Blood and Sand',
   Equilibrium: 'Equilibrium',
   EdgeOfTomorrow: 'Edge of Tomorrow',
+  UNCLE: 'The Man from U.N.C.L.E.',
 
   // мистика
   TheLostRoom: 'The Lost Room',
@@ -99,4 +100,5 @@ export const FILM_LIST_RUS = {
   EdgeOfTomorrow: 'Грань будущего',
   StonehearstAsylum: 'Обитель проклятых',
   TheShawshankRedemption: 'Побег из Шоушенка',
+  UNCLE: 'Агенты А.Н.К.Л.',
 }
