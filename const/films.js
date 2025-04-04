@@ -566,7 +566,27 @@ const additionalFilms = [
     similarFilms: [],
     released: 2014,
     isFavorite: false,
-    similarMockFilms: [FILM_LIST.TheLostRoom],
+    similarMockFilms: [FILM_LIST.TheLostRoom, FILM_LIST.TheShawshankRedemption],
+  },
+
+  {
+    name: FILM_LIST.TheShawshankRedemption,
+    localizedName: FILM_LIST_RUS.TheShawshankRedemption,
+    posterImage: '/images/posters/The Shawshank Redemption poster.jpg',
+    previewImage: '/images/The Shawshank Redemption.jpg',
+    tmdbId: 278,
+    description:
+      'Imprisoned in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.',
+    rating: 7.5,
+    scoresCount: 300,
+    director: 'Frank Darabont',
+    starring: ['Morgan Freeman', 'Tim Robbins', 'Clancy Brown'],
+    runTime: 142,
+    genre: [FILM_GENRES.Thriller, FILM_GENRES.Drama],
+    similarFilms: [],
+    released: 2014,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.StonehearstAsylum],
   },
 ]
 

@@ -62,6 +62,7 @@ export const FILM_LIST = {
 
   // драмма/криминал
   ClockworkOrange: 'A Clockwork Orange',
+  TheShawshankRedemption: 'The Shawshank Redemption',
 
   MoonriseKingdom: 'Moonrise Kingdom',
   PulpFiction: 'Pulp Fiction',
@@ -97,4 +98,5 @@ export const FILM_LIST_RUS = {
   Equilibrium: 'Эквилибриум',
   EdgeOfTomorrow: 'Грань будущего',
   StonehearstAsylum: 'Обитель проклятых',
+  TheShawshankRedemption: 'Побег из Шоушенка',
 }
