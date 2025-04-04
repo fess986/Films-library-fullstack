@@ -57,7 +57,6 @@ export const FILM_LIST = {
   TheLostRoom: 'The Lost Room',
   StonehearstAsylum: 'Stonehearst Asylum',
 
-
   // фантастика
   Firefly: 'Firefly',
 
