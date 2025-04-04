@@ -566,7 +566,7 @@ const additionalFilms = [
     similarFilms: [],
     released: 2014,
     isFavorite: false,
-    similarMockFilms: [FILM_LIST.TheLostRoom, FILM_LIST.TheShawshankRedemption],
+    similarMockFilms: [FILM_LIST.TheLostRoom, FILM_LIST.TheShawshankRedemption, FILM_LIST.ThePlatform],
   },
 
   {
@@ -610,6 +610,29 @@ const additionalFilms = [
       FILM_LIST.Crank,
       FILM_LIST.CityHunter,
       FILM_LIST.KingsmanTheSecretService,
+    ],
+  },
+
+  {
+    name: FILM_LIST.ThePlatform,
+    localizedName: FILM_LIST_RUS.ThePlatform,
+    posterImage: '/images/posters/The Platform poster.jpg',
+    previewImage: '/images/The Platform.jpg',
+    tmdbId: 619264,
+    description:
+      'A slab of food descends down a vertical facility. The residents above eat heartily, leaving those below starving and desperate. A rebellion is imminent.',
+    rating: 7.5,
+    scoresCount: 300,
+    director: 'David Desola',
+    starring: ['Ivan Massagué', 'Antonia San Juan', 'Zorion Eguileor'],
+    runTime: 95,
+    genre: [FILM_GENRES.Drama, FILM_GENRES.Thriller],
+    similarFilms: [],
+    released: 2019,
+    isFavorite: false,
+    similarMockFilms: [
+      FILM_LIST.TheLostRoom,
+      FILM_LIST.StonehearstAsylum,
     ],
   },
 ]
