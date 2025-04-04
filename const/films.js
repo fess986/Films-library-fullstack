@@ -656,6 +656,26 @@ const additionalFilms = [
     isFavorite: false,
     similarMockFilms: [FILM_LIST.WhyHim, FILM_LIST.EuroTrip],
   },
+
+  {
+    name: FILM_LIST.TuckerAndDale,
+    localizedName: FILM_LIST_RUS.TuckerAndDale,
+    posterImage: '/images/posters/Tucker and Dale poster.jpg',
+    previewImage: '/images/Tucker and Dale.jpg',
+    tmdbId: 46838,
+    description:
+      'Two hillbillies are suspected of being killers by a group of paranoid college kids camping near the duos West Virginian cabin. As the body count climbs, so does the fear and confusion as the college kids try to seek revenge against the pair.',
+    rating: 8.5,
+    scoresCount: 300,
+    director: 'Eli Craig',
+    starring: ['Tyler Labine', 'Alan Tudyk', 'Katrina Bowden'],
+    runTime: 99,
+    genre: [FILM_GENRES.Comedy],
+    similarFilms: [],
+    released: 2010,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.WhyHim, FILM_LIST.EuroTrip, FILM_LIST.TheGirlNextDoor],
+  },
 ]
 
 export const Films = [...initialFilms, ...additionalFilms]

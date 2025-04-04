@@ -43,6 +43,7 @@ export const FILM_LIST = {
   BadSanta: 'Bad Santa',
   Clue: 'Clue',
   TheGirlNextDoor: 'The Girl Next Door',
+  TuckerAndDale: 'Tucker and Dale vs. Evil',
 
   // боевики
   KingsmanTheSecretService: 'Kingsman: The Secret Service',
@@ -105,4 +106,5 @@ export const FILM_LIST_RUS = {
   UNCLE: 'Агенты А.Н.К.Л.',
   ThePlatform: 'Платформа',
   TheGirlNextDoor: 'Соседка',
+  TuckerAndDale: 'Убойные каникулы',
 }
