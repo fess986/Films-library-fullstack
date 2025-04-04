@@ -606,7 +606,11 @@ const additionalFilms = [
     similarFilms: [],
     released: 2015,
     isFavorite: false,
-    similarMockFilms: [FILM_LIST.Crank, FILM_LIST.CityHunter, FILM_LIST.KingsmanTheSecretService],
+    similarMockFilms: [
+      FILM_LIST.Crank,
+      FILM_LIST.CityHunter,
+      FILM_LIST.KingsmanTheSecretService,
+    ],
   },
 ]
 
