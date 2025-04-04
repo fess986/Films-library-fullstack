@@ -446,7 +446,7 @@ const additionalFilms = [
   //   similarFilms: [],
   //   released: 2006,
   //   isFavorite: false,
-  //   similarMockFilms: [FILM_LIST.Oldboy, FILM_LIST.Firefly],
+  //   similarMockFilms: [FILM_LIST.Oldboy, FILM_LIST.Firefly, FILM_LIST.StonehearstAsylum],
   // },
 
   // {
@@ -547,6 +547,26 @@ const additionalFilms = [
     released: 2014,
     isFavorite: false,
     similarMockFilms: [FILM_LIST.Equilibrium],
+  },
+
+  {
+    name: FILM_LIST.StonehearstAsylum,
+    localizedName: FILM_LIST_RUS.StonehearstAsylum,
+    posterImage: '/images/posters/Stonehearst Asylum poster.jpg',
+    previewImage: '/images/Stonehearst Asylum.jpg',
+    tmdbId: 207933,
+    description:
+      'An Oxford Medical School graduate takes a position at a mental institution and soon becomes obsessed with a female mental patient, but he has no idea of a recent and horrifying staffing change.',
+    rating: 7.5,
+    scoresCount: 300,
+    director: 'Brad Anderson',
+    starring: ['Kate Beckinsale', 'Jim Sturgess', 'Ben Kingsley'],
+    runTime: 112,
+    genre: [FILM_GENRES.Thriller, FILM_GENRES.Horror],
+    similarFilms: [],
+    released: 2014,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.TheLostRoom],
   },
 ]
 

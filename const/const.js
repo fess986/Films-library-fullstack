@@ -55,6 +55,8 @@ export const FILM_LIST = {
 
   // мистика
   TheLostRoom: 'The Lost Room',
+  StonehearstAsylum: 'Stonehearst Asylum',
+
 
   // фантастика
   Firefly: 'Firefly',
@@ -95,4 +97,5 @@ export const FILM_LIST_RUS = {
   ClockworkOrange: 'Заводной апельсин',
   Equilibrium: 'Эквилибриум',
   EdgeOfTomorrow: 'Грань будущего',
+  StonehearstAsylum: 'Обитель проклятых',
 }
