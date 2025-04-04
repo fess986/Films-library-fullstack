@@ -239,9 +239,9 @@ const additionalFilms = [
   //   isFavorite: false,
   //   likedByUsers: [],
   //   similarMockFilms: [
-  //     FILM_LIST.JohnnyEnglish,
+  //     FILM_LIST.UNCLE,
   //     FILM_LIST.WhyHim,
-  //     FILM_LIST.Crank,
+  //     FILM_LIST.KingsmanTheSecretService,
   //   ],
   // },
 
@@ -587,6 +587,30 @@ const additionalFilms = [
     released: 2014,
     isFavorite: false,
     similarMockFilms: [FILM_LIST.StonehearstAsylum],
+  },
+
+  {
+    name: FILM_LIST.UNCLE,
+    localizedName: FILM_LIST_RUS.UNCLE,
+    posterImage: '/images/posters/UNCLE poster.jpg',
+    previewImage: '/images/UNKLE.jpg',
+    tmdbId: 203801,
+    description:
+      'At the height of the Cold War, a mysterious criminal organization plans to use nuclear weapons and technology to upset the fragile balance of power between the United States and Soviet Union. CIA agent Napoleon Solo and KGB agent Illya Kuryakin are forced to put aside their hostilities and work together to stop the evildoers in their tracks. The duos only lead is the daughter of a missing German scientist, whom they must find soon to prevent a global catastrophe.',
+    rating: 8.0,
+    scoresCount: 300,
+    director: 'Guy Ritchie',
+    starring: ['Henry Cavill', 'Armie Hammer', 'Alicia Vikander'],
+    runTime: 118,
+    genre: [FILM_GENRES.Action, FILM_GENRES.Comedy],
+    similarFilms: [],
+    released: 2015,
+    isFavorite: false,
+    similarMockFilms: [
+      FILM_LIST.Crank,
+      FILM_LIST.CityHunter,
+      FILM_LIST.KingsmanTheSecretService,
+    ],
   },
 ]
 
