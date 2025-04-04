@@ -64,6 +64,7 @@ export const FILM_LIST = {
   // драмма/криминал
   ClockworkOrange: 'A Clockwork Orange',
   TheShawshankRedemption: 'The Shawshank Redemption',
+  ThePlatform: 'The Platform',
 
   MoonriseKingdom: 'Moonrise Kingdom',
   PulpFiction: 'Pulp Fiction',
@@ -101,4 +102,5 @@ export const FILM_LIST_RUS = {
   StonehearstAsylum: 'Обитель проклятых',
   TheShawshankRedemption: 'Побег из Шоушенка',
   UNCLE: 'Агенты А.Н.К.Л.',
+  ThePlatform: 'Платформа',
 }
