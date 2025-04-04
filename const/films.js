@@ -566,7 +566,11 @@ const additionalFilms = [
     similarFilms: [],
     released: 2014,
     isFavorite: false,
-    similarMockFilms: [FILM_LIST.TheLostRoom, FILM_LIST.TheShawshankRedemption, FILM_LIST.ThePlatform],
+    similarMockFilms: [
+      FILM_LIST.TheLostRoom,
+      FILM_LIST.TheShawshankRedemption,
+      FILM_LIST.ThePlatform,
+    ],
   },
 
   {
@@ -630,10 +634,7 @@ const additionalFilms = [
     similarFilms: [],
     released: 2019,
     isFavorite: false,
-    similarMockFilms: [
-      FILM_LIST.TheLostRoom,
-      FILM_LIST.StonehearstAsylum,
-    ],
+    similarMockFilms: [FILM_LIST.TheLostRoom, FILM_LIST.StonehearstAsylum],
   },
 ]
 
