@@ -674,7 +674,11 @@ const additionalFilms = [
     similarFilms: [],
     released: 2010,
     isFavorite: false,
-    similarMockFilms: [FILM_LIST.WhyHim, FILM_LIST.EuroTrip, FILM_LIST.TheGirlNextDoor],
+    similarMockFilms: [
+      FILM_LIST.WhyHim,
+      FILM_LIST.EuroTrip,
+      FILM_LIST.TheGirlNextDoor,
+    ],
   },
 ]
 
