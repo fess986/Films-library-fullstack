@@ -326,7 +326,7 @@ const additionalFilms = [
   //   similarFilms: [],
   //   released: 2004,
   //   isFavorite: false,
-  //   similarMockFilms: [FILM_LIST.TheGrandBudapestHotel],
+  //   similarMockFilms: [FILM_LIST.TheGrandBudapestHotel, FILM_LIST.TheGirlNextDoor],
   // },
 
   // {
@@ -635,6 +635,26 @@ const additionalFilms = [
     released: 2019,
     isFavorite: false,
     similarMockFilms: [FILM_LIST.TheLostRoom, FILM_LIST.StonehearstAsylum],
+  },
+
+  {
+    name: FILM_LIST.TheGirlNextDoor,
+    localizedName: FILM_LIST_RUS.TheGirlNextDoor,
+    posterImage: '/images/posters/The Girl Next Door poster.jpg',
+    previewImage: '/images/The Girl Next Door.jpg',
+    tmdbId: 10591,
+    description:
+      'Exceptionally ambitious high schooler Matthew has aspirations for a career in politics when he falls in love with his gorgeous 19-year-old neighbor, Danielle. But Matthews bright future is jeopardized when he finds Danielle was once a porn star. As Danielles past catches up with her, Matthews love for her forces him to re-evaluate his goals.',
+    rating: 8.0,
+    scoresCount: 300,
+    director: 'Luke Greenfield',
+    starring: ['Emile Hirsch', 'Elisha Cuthbert', 'Timothy Olyphant'],
+    runTime: 110,
+    genre: [FILM_GENRES.Comedy],
+    similarFilms: [],
+    released: 2004,
+    isFavorite: false,
+    similarMockFilms: [FILM_LIST.WhyHim, FILM_LIST.EuroTrip],
   },
 ]
 
