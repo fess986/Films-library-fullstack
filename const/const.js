@@ -42,6 +42,7 @@ export const FILM_LIST = {
   CityHunter: 'City Hunter',
   BadSanta: 'Bad Santa',
   Clue: 'Clue',
+  TheGirlNextDoor: 'The Girl Next Door',
 
   // боевики
   KingsmanTheSecretService: 'Kingsman: The Secret Service',
@@ -103,4 +104,5 @@ export const FILM_LIST_RUS = {
   TheShawshankRedemption: 'Побег из Шоушенка',
   UNCLE: 'Агенты А.Н.К.Л.',
   ThePlatform: 'Платформа',
+  TheGirlNextDoor: 'Соседка',
 }
