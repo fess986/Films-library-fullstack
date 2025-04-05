@@ -26,7 +26,6 @@ const FilmReviews: React.FC<FilmReviewsProps> = ({ reviews }) => {
       <DivReviewsCol>{getReviews(firstColEnd, reviews.length)}</DivReviewsCol>
     </DivReviewsContainer>
   )
-
 }
 
 export default FilmReviews
