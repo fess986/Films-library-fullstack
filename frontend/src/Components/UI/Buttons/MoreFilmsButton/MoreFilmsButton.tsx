@@ -11,7 +11,6 @@ const MoreFilmsButton: React.FC = () => {
   const filmsShownCount = useSelector(getFilmsShownCount)
   const buttonRef = useRef<HTMLButtonElement | null>(null)
 
-
   const handleClick = () => {
     dispatch(setFilmsShownCount(filmsShownCount + 1))
     // Прокручиваем к кнопке
@@ -21,10 +20,7 @@ const MoreFilmsButton: React.FC = () => {
   }
 
   return (
-    <ButtonMoreFilms
-      ref={buttonRef}
-      onClick={handleClick}
-    >
+    <ButtonMoreFilms ref={buttonRef} onClick={handleClick}>
       Show more
     </ButtonMoreFilms>
   )
