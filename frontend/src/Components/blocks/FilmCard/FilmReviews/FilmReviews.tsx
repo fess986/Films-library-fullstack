@@ -18,10 +18,11 @@ const FilmReviews: React.FC<FilmReviewsProps> = ({ reviews }) => {
     return content
   }
 
-  return (
+  return reviews.length === 1 ? (
+    <DivReviewsContainer>{getReviews(0, reviews.length)}</DivReviewsContainer>
+  ) : (
     <DivReviewsContainer>
       <DivReviewsCol>{getReviews(0, firstColEnd)}</DivReviewsCol>
-
       <DivReviewsCol>{getReviews(firstColEnd, reviews.length)}</DivReviewsCol>
     </DivReviewsContainer>
   )
