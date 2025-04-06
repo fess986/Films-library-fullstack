@@ -3,20 +3,20 @@ import styled from 'styled-components'
 import { Button } from '../../../styled/Components'
 import {
   zIndexMiddle,
-  fontSmall,
   textColorMain,
+  fontBig,
 } from '../../../styled/Mixins/mixins'
 
 export const ButtonExit = styled(Button).attrs(() => ({
   type: 'button',
 }))`
   position: absolute;
-  top: 37px;
-  right: 32px;
+  top: 60px;
+  right: 60px;
 
   display: block;
   ${zIndexMiddle}
-  ${fontSmall}
+  ${fontBig}
   ${textColorMain}
 
   background: 0 0;
