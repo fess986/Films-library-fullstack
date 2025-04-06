@@ -22,6 +22,7 @@ const Player: React.FC<PlayerProps> = () => {
   const [filmDuration, setfilmDuration] = useState(0)
   const [playRowPosition, setPlayRowPosition] = useState(0)
   const [videoSource, setVideoSource] = useState<string>('')
+  const [tmdbVideoLoaded, setTmdbVideoLoaded] = useState(false)
 
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const { currentFilm } = useActiveFilm()
@@ -105,6 +106,7 @@ const Player: React.FC<PlayerProps> = () => {
   const handleVideoError = useCallback(() => {
     console.log('Ошибка загрузки:', videoRef.current?.src)
     console.log(currentFilm?.tmdbId)
+    setTmdbVideoLoaded(false)
 
     if (videoRef.current?.src !== altVideoLink) {
       if (loadingAttempt === 0) {
@@ -116,9 +118,9 @@ const Player: React.FC<PlayerProps> = () => {
       }
 
       console.log('Переключение на альтернативную ссылку')
-      toast.error(
-        'Проблема с загрузкой видео, возможно из-за проблем с YOUTUBE , используем альтернативное видео'
-      )
+      // toast.error(
+      //   'Проблема с загрузкой видео, возможно из-за проблем с YOUTUBE , используем альтернативное видео'
+      // )
       setVideoSource(altVideoLink)
       setLoadingAttempt(0)
     } else {
@@ -198,8 +200,11 @@ const Player: React.FC<PlayerProps> = () => {
           console.log('videoUrl', videoUrl)
           if (videoUrl) {
             setVideoSource(videoUrl)
+            setTmdbVideoLoaded(true)
+            console.log('загружено вииииииииииииииидео........................')
           } else {
             setVideoSource(altVideoLink)
+            setTmdbVideoLoaded(false)
           }
         } catch {
           setVideoSource(altVideoLink)
@@ -237,6 +242,7 @@ const Player: React.FC<PlayerProps> = () => {
         onPlayButtonClick={playButtonClick}
         handlerToggleFullScreen={handlerToggleFullScreen}
         isPlaying={isPlaying}
+        isShown={!tmdbVideoLoaded}
         progress={playRowPosition || 0}
         remainingTime={Math.floor(filmDuration - currentTimePlaying)}
       />

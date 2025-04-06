@@ -11,6 +11,7 @@ import ProgressBar from '../../UI/ProgressBar/ProgressBar'
 
 type PlayerControlsProps = {
   isPlaying: boolean
+  isShown: boolean
   progress?: number
   remainingTime?: number
   onPlayButtonClick: () => void
@@ -20,6 +21,7 @@ type PlayerControlsProps = {
 
 const PlayerControls: React.FC<PlayerControlsProps> = ({
   isPlaying,
+  isShown,
   progress = 0,
   remainingTime = 0,
   onPlayButtonClick,
@@ -27,7 +29,7 @@ const PlayerControls: React.FC<PlayerControlsProps> = ({
   onProgressBarClick,
 }) => {
   return (
-    <DivControlsContainer>
+    <DivControlsContainer $isShown={isShown}>
       <DivConrolRow>
         <ProgressBar
           onClick={onProgressBarClick}
