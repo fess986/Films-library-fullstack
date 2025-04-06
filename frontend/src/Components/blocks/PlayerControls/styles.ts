@@ -3,13 +3,12 @@ import styled from 'styled-components'
 import { Div } from '../../styled/Components'
 import { textColorMain, zIndexMiddle } from '../../styled/Mixins/mixins'
 
-
 type DivControlsContainerProps = {
   $isShown: boolean
 }
 
 export const DivControlsContainer = styled(Div)<DivControlsContainerProps>`
-  display: ${props => props.$isShown ? 'block' : 'none'};
+  display: ${(props) => (props.$isShown ? 'block' : 'none')};
 
   position: absolute;
 
@@ -49,5 +48,3 @@ export const DivControlsName = styled(Div)`
 
   margin: 0 30px;
 `
-
-
