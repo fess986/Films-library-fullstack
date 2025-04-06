@@ -3,6 +3,23 @@ import styled from 'styled-components'
 import { Div } from '../../styled/Components'
 import { textColorMain, zIndexMiddle } from '../../styled/Mixins/mixins'
 
+type DivControlsContainerProps = {
+  $isShown: boolean
+}
+
+export const DivControlsContainer = styled(Div)<DivControlsContainerProps>`
+  display: ${(props) => (props.$isShown ? 'block' : 'none')};
+
+  position: absolute;
+
+  ${zIndexMiddle}
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 25px;
+`
+
 export const DivConrolRow = styled(Div)`
   display: flex;
 
@@ -30,15 +47,4 @@ export const DivControlsName = styled(Div)`
   font-weight: 700;
 
   margin: 0 30px;
-`
-
-export const DivControlsContainer = styled(Div)`
-  position: absolute;
-
-  ${zIndexMiddle}
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  padding: 25px;
 `
