@@ -58,8 +58,8 @@ ul {
   width: 100%;
   margin: 0 auto;
   background-color: gray;
-  /* background: gray url(../../../src/images/content-fone.jpg) -330px 330px repeat */
-  background: gray url('/images/content-fone.jpg') -330px 330px repeat
+  /* background: gray url(../../../src/images/content-fone.png) -330px 330px repeat */
+  background: gray url('/images/content-fone.png') -330px 330px repeat
 }
 .hero__container {
   position: absolute;
