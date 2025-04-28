@@ -11,7 +11,8 @@ console.log(config.get('ENV'))
 // Настройка CORS
 app.use(
   cors({
-    origin: 'http://localhost:5173', //  адрес фронтенда
+    // origin: 'http://localhost:5173', //  адрес фронтенда
+    origin: 'http://localhost:4173', //  адрес фронтенда
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // допустимые методы
     allowedHeaders: ['Content-Type', 'Authorization'], // заголовки, которые мы хотим поддерживать
   })
