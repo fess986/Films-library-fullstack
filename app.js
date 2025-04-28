@@ -3,20 +3,15 @@ import config from 'config'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import { ApiRoutes } from './const/const.js'
+import { corsOptions } from './middlewares/corsConfig.middleware.js'
 
 const app = express()
 const port = config.get('PORT') || 4000
 console.log(config.get('ENV'))
 
-// Настройка CORS
-app.use(
-  cors({
-    // origin: 'http://localhost:5173', //  адрес фронтенда
-    origin: 'http://localhost:4173', //  адрес фронтенда
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // допустимые методы
-    allowedHeaders: ['Content-Type', 'Authorization'], // заголовки, которые мы хотим поддерживать
-  })
-)
+// Настройка CORS через настроенный в отдельном файле объект
+// теперь при запуске в дев-режиме будет обращение к порту локала 5173, для билда - 4173, а для прода - адрес домена
+app.use(cors(corsOptions))
 
 app.use(express.json({ extended: true }))
 

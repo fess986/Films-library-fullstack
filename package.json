@@ -9,6 +9,7 @@
     "server": "cross-env NODE_ENV=development nodemon app.js",
     "client": "npm run dev --prefix frontend",
     "client:build": "npm run build --prefix frontend",    
+    "client:preview": "npm run preview --prefix frontend",    
     "lint": "npm run lint --prefix frontend",
     "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\"",
     "prettify": "npx prettier --cache --write '**/*.{js,jsx,ts,tsx}' '!node_modules/' '!dist/'",
@@ -31,7 +32,7 @@
   "dependencies": {
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
-    "config": "^3.3.11",
+    "config": "^3.3.12",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "express-validator": "^7.2.0",
