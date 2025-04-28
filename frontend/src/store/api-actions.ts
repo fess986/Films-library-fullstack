@@ -30,6 +30,8 @@ type ThunkConfig = {
   extra: AxiosInstance
 }
 
+console.log(baseURL)
+
 // действия связанные с фильмами
 
 // получаем все фильмы из базы данных

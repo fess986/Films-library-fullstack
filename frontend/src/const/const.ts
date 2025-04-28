@@ -1,6 +1,6 @@
 export default {}
 
-export const baseURL = import.meta.env.VITE_BASE_URL
+export const baseURL = import.meta.env.VITE_BASE_URL // берём из переменных окружения прописанных для прода и дева, хранятся в файлах .env.development и .env.production в корне папки frontend
 export const MINIMUM_REVIEW_LENGTH = 10
 export const MAXIMUM_REVIEW_LENGTH = 1100
 export const storageName = 'userData'
