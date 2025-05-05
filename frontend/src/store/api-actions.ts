@@ -17,7 +17,13 @@ import {
   removeFromFavoriteFilm,
 } from './user/userSlice'
 import { ApiRoutes } from '../../../const/const'
-import { ApiActions, AppRoutes, AuthStatus, baseURL } from '../const/const'
+import {
+  ApiActions,
+  AppRoutes,
+  AuthStatus,
+  baseURL,
+  frontENV,
+} from '../const/const'
 import { useError } from '../hooks/useError'
 import { commentProps, UserInfo, Review, fetchedReview } from '../types/types'
 import { loginUtil } from '../utils/authUtils'
@@ -30,7 +36,8 @@ type ThunkConfig = {
   extra: AxiosInstance
 }
 
-console.log(baseURL)
+console.log('окружение фронта - ', frontENV)
+console.log('базовый URL - ', baseURL)
 
 // действия связанные с фильмами
 
