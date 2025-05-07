@@ -3,6 +3,7 @@ import { defineConfig } from 'vitest/config'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   define: {
     'process.env.NODE_ENV': `"${process.env.NODE_ENV || 'development'}"`,
   },
