@@ -37,7 +37,7 @@ type ThunkConfig = {
 }
 
 console.log('окружение фронта - ', frontENV)
-console.log('базовый URL - ', baseURL)
+console.log('базовый URL фронта- ', baseURL)
 
 // действия связанные с фильмами
 
