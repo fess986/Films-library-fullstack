@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const baseURL = `${window.location.protocol}//${window.location.hostname}:${window.location.port}` // используем по умолчанию localhost с текущим портом на котором запущен сервер
 
-console.log('baseURL axios', baseURL)  // не используется
+console.log('baseURL axios', baseURL) // не используется
 
 const api = axios.create({
   baseURL,
