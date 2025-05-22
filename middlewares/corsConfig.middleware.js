@@ -6,6 +6,8 @@ console.log(allowedOrigins)
 
 export const corsOptions = {
   origin: (origin, callback) => {
+    // console.log('Incoming Origin:', origin)  // для отладки входящих запросов
+
     if (!origin) return callback(null, true) // разрешить запросы без origin (например, Postman)
     if (allowedOrigins.includes(origin)) {
       // если же есть в списке, то продолжаем

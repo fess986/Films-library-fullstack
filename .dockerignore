@@ -1,0 +1,19 @@
+# Игнорировать node_modules (и фронта, и бэка)
+node_modules
+frontend/node_modules
+
+# игнорировать сборку фронта (она делается в Dockerfile)
+frontend/dist
+
+# игнорировать git-репу
+.git
+.gitignore
+
+# логи, временные файлы
+*.log
+*.env
+*.DS_Store
+
+# VSCode и другие IDE-шные штуки
+.vscode
+.idea
