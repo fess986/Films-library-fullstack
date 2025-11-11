@@ -11,7 +11,7 @@ export const corsOptions = {
     if (!origin) return callback(null, true) // разрешить запросы без origin (например, Postman)
     if (allowedOrigins.includes(origin)) {
       // если же есть в списке, то продолжаем
-      return callback(null, true)
+      return callback(null, true)      
     }
     return callback(new Error('Not allowed by CORS from server'))
   },
